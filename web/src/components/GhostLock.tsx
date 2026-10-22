@@ -32,6 +32,7 @@ export default function GhostLock({ before, after, ratio, marks }: Props) {
       const ghost = ".gl-ghost";
       if (reduce) {
         gsap.set(ghost, { xPercent: 0, yPercent: 0, rotation: 0, scale: 1 });
+        gsap.set(".gl-after, .gl-marks", { opacity: 1 });
         setPhase("read");
         setStep(3);
         return;
@@ -42,7 +43,7 @@ export default function GhostLock({ before, after, ratio, marks }: Props) {
         setStep(0);
       })
         .set(ghost, { xPercent: 7, yPercent: -5, rotation: -3.2, scale: 0.9, opacity: 1 })
-        .set(".gl-marks", { opacity: 0 })
+        .set(".gl-marks, .gl-after", { opacity: 0 })
         .set(".gl-diff", { opacity: 0.55 })
         .to(ghost, { xPercent: 2.5, yPercent: -4, rotation: -2, duration: 1.1 })
         .call(() => setStep(1))
@@ -57,10 +58,10 @@ export default function GhostLock({ before, after, ratio, marks }: Props) {
         .set(".gl-target", { scale: 1, opacity: 1 }, ">")
         .to({}, { duration: 1.6 })
         .call(() => setPhase("read"))
-        .to(".gl-diff", { opacity: 0, duration: 0.7, ease: "power1.inOut" })
+        .to(".gl-after", { opacity: 1, duration: 0.7, ease: "power1.inOut" })
         .to(".gl-marks", { opacity: 1, duration: 0.4 }, "-=0.2")
         .to({}, { duration: 4.2 })
-        .to(".gl-marks", { opacity: 0, duration: 0.3 });
+        .to(".gl-marks, .gl-after", { opacity: 0, duration: 0.5 });
     }, el);
     return () => ctx.revert();
   }, []);
@@ -71,6 +72,7 @@ export default function GhostLock({ before, after, ratio, marks }: Props) {
       <div className="gl-diff">
         <img className="gl-ghost" src={after} alt="" />
       </div>
+      <img className="gl-after" src={after} alt="" />
       <div className="gl-ghost gl-frame" aria-hidden="true">
         <Reg className="tl" />
         <Reg className="tr" />

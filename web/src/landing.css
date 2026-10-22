@@ -54,6 +54,11 @@
   mix-blend-mode: normal;
 }
 
+.gl-after {
+  opacity: 0;
+  clip-path: inset(4px);
+}
+
 .gl-ghost {
   position: absolute;
   inset: 0;
