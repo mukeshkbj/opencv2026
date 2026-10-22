@@ -7,6 +7,7 @@
       "before": "room-before.jpg",
       "after": "room-after.jpg",
       "scene": "room-scene.jpg",
+      "parallax": "room-parallax.jpg",
       "truth": [
         "wall stain",
         "floor scuff",
@@ -18,6 +19,7 @@
       "before": "desk-before.jpg",
       "after": "desk-after.jpg",
       "scene": "desk-scene.jpg",
+      "parallax": "desk-parallax.jpg",
       "truth": [
         "coffee ring",
         "missing item",

@@ -200,9 +200,13 @@ def _caption(cid: str, sid: str, state: SpotState) -> None:
 
 @app.post("/api/checks/{cid}/spots/{sid}/after")
 async def add_after(cid: str, sid: str, file: UploadFile) -> dict:
+    data, img = await read_image(file=file)
+    return run_after(cid, sid, data, img)
+
+
+def run_after(cid: str, sid: str, data: bytes, img: np.ndarray) -> dict:
     check = load(cid)
     spot = spot_of(check, sid)
-    data, img = await read_image(file=file)
     spot["after"] = put_photo(cid, f"{sid}-after", data, img)
     spot["followups"] = []
     state = SpotState()
@@ -220,12 +224,16 @@ async def add_after(cid: str, sid: str, file: UploadFile) -> dict:
 
 @app.post("/api/checks/{cid}/spots/{sid}/followup")
 async def add_followup(cid: str, sid: str, file: UploadFile) -> dict:
+    data, img = await read_image(file=file)
+    return run_followup(cid, sid, data, img)
+
+
+def run_followup(cid: str, sid: str, data: bytes, img: np.ndarray) -> dict:
     check = load(cid)
     spot = spot_of(check, sid)
     state = SpotState.from_dict(spot["state"])
     if state.pending is None:
         raise HTTPException(409, "no follow-up requested")
-    data, img = await read_image(file=file)
     kind = state.pending.kind
     spot["followups"].append({**put_photo(cid, f"{sid}-{state.pending.id}", data, img), "kind": kind})
     Agent(state).on_followup(before_frames(spot["before"]["key"])[0], img)
@@ -303,10 +311,52 @@ def sample(name: str) -> dict:
         check["spots"].append({"id": f"s{i}", "label": spot_meta["label"],
                                "before": {**put_photo(check["id"], f"s{i}-before", data, img), "quality": q.as_dict()},
                                "after": None, "followups": [], "state": SpotState().to_dict(),
-                               "sample_after": spot_meta.get("after"), "sample_followup": spot_meta.get("followup")})
+                               "sample": {k: spot_meta[k] for k in ("after", "parallax", "scene") if k in spot_meta}})
     seal(check, "before")
     save(check)
     return check
+
+
+def _simulated_closeup(folder: Path, spot: dict, margin: float, box: list[int]) -> bytes:
+    """Re-photograph the damaged scene up close around `box` (given in analysis-frame pixels)."""
+    scene = cv2.imread(str(folder / spot["sample"]["scene"]))
+    H, W = scene.shape[:2]
+    bh, bw = H - 2 * int(H * margin), W - 2 * int(W * margin)
+    s = vision.WORK_SIDE / max(bh, bw)
+    x, y, w, h = (v / s for v in box)
+    cx, cy = x + w / 2 + int(W * margin), y + h / 2 + int(H * margin)
+    side = max(w, h, 90) * 2.5
+    x0, y0 = int(max(0, cx - side / 2)), int(max(0, cy - side / 2))
+    patch = scene[y0:int(min(H, y0 + side)), x0:int(min(W, x0 + side))]
+    patch = cv2.resize(patch, None, fx=1200 / max(patch.shape[:2]), fy=1200 / max(patch.shape[:2]),
+                       interpolation=cv2.INTER_CUBIC)
+    rng = np.random.default_rng(len(spot["followups"]) + 7)
+    ph, pw = patch.shape[:2]
+    src = np.float32([[0, 0], [pw, 0], [pw, ph], [0, ph]])
+    patch = cv2.warpPerspective(patch, cv2.getPerspectiveTransform(src, src + rng.normal(0, 12, (4, 2)).astype(np.float32)),
+                                (pw, ph), borderMode=cv2.BORDER_REFLECT)
+    patch = np.clip(patch + rng.normal(0, 2.5, patch.shape), 0, 255).astype(np.uint8)
+    return cv2.imencode(".jpg", patch, [cv2.IMWRITE_JPEG_QUALITY, 90])[1].tobytes()
+
+
+@app.post("/api/checks/{cid}/spots/{sid}/sample-shot")
+def sample_shot(cid: str, sid: str) -> dict:
+    """Stand-in for the camera on sample checks: returns the scripted after photo or the requested follow-up."""
+    check = load(cid)
+    spot = spot_of(check, sid)
+    if "sample" not in check or "sample" not in spot:
+        raise HTTPException(409, "not a sample check")
+    folder = SAMPLES / check["sample"]
+    pending = SpotState.from_dict(spot["state"]).pending
+    if spot["after"] is None or pending is None:
+        data = (folder / spot["sample"]["after"]).read_bytes()
+        return run_after(cid, sid, data, vision.decode(data))
+    if pending.kind == "parallax" and "parallax" in spot["sample"]:
+        data = (folder / spot["sample"]["parallax"]).read_bytes()
+    else:
+        margin = json.loads((folder / "sample.json").read_text())["margin"]
+        data = _simulated_closeup(folder, spot, margin, pending.box)
+    return run_followup(cid, sid, data, vision.decode(data))
 
 
 @app.get("/api/samples/{name}/{file_name}")

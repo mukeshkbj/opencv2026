@@ -99,8 +99,9 @@ def main(src: Path):
     shadow(r, [(450, 0), (900, 0), (760, 1000), (300, 1000)], strength=0.3, soft=80)
     write("room-scene.jpg", r)
     write("room-after.jpg", shoot(r, light=(0.93, 0.97, 1.04), seed=1))
+    write("room-parallax.jpg", shoot(r, light=(0.93, 0.97, 1.04), offset=0.01, seed=11))
     spots.append({"label": "Living room, east wall", "before": "room-before.jpg", "after": "room-after.jpg",
-                  "scene": "room-scene.jpg", "truth": ["wall stain", "floor scuff", "lighting only: shadow"]})
+                  "scene": "room-scene.jpg", "parallax": "room-parallax.jpg", "truth": ["wall stain", "floor scuff", "lighting only: shadow"]})
 
     desk = cv2.imread(str(src / "desk.jpg"))
     write("desk-before.jpg", crop(desk))
@@ -110,8 +111,9 @@ def main(src: Path):
     shadow(d, [(0, 0), (700, 0), (420, 1280), (0, 1280)], strength=0.25, soft=90)
     write("desk-scene.jpg", d)
     write("desk-after.jpg", shoot(d, light=(1.02, 1.0, 0.96), seed=2))
+    write("desk-parallax.jpg", shoot(d, light=(1.02, 1.0, 0.96), offset=0.01, seed=12))
     spots.append({"label": "Desk top", "before": "desk-before.jpg", "after": "desk-after.jpg",
-                  "scene": "desk-scene.jpg", "truth": ["coffee ring", "missing item", "lighting only: shadow"]})
+                  "scene": "desk-scene.jpg", "parallax": "desk-parallax.jpg", "truth": ["coffee ring", "missing item", "lighting only: shadow"]})
 
     car = cv2.imread(str(src / "car.jpg"))
     write("car-before.jpg", crop(car))
