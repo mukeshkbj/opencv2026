@@ -5,6 +5,7 @@ from dataclasses import asdict, dataclass, field
 import cv2
 import numpy as np
 
+from . import objects
 from .vision import Comparison, Keyframe, Region, compare
 
 FOLLOWUP_BUDGET = 2
@@ -74,8 +75,34 @@ class Agent:
         self.s.findings = [self._finding(i, r) for i, r in enumerate(res.regions)]
         for f in self.s.findings:
             self._triage(f, res)
+        self._object_check(res)
         self._plan()
         return res
+
+    def _object_check(self, res: Comparison) -> None:
+        t0 = time.perf_counter()
+        before, after = objects.detect(res.before), objects.detect(res.after_aligned)
+        ms = round((time.perf_counter() - t0) * 1000)
+        self.log("object_check", f"NanoDet on the OpenCV 5 DNN engine: {len(before)} objects at move-in, {len(after)} at move-out ({ms} ms)")
+        for f in self.s.findings:
+            if f.verdict in ("lighting", "unchanged"):
+                continue
+            here = lambda ds, name=None: [d for d in ds if _covers(d.box, f.box) and name in (None, d.name)]
+            if here(after, "person") and not here(before, "person"):
+                f.verdict = "uncertain"
+                f.evidence.append("a person is in the move-out photo here: retake without people")
+                self.log("object_check", f"{f.id}: person in frame", "mark cannot judge")
+                continue
+            if f.verdict != "changed":
+                continue
+            gone = [d for d in here(before) if not here(after, d.name)]
+            new = [d for d in here(after) if not here(before, d.name)]
+            if gone or new:
+                d = (gone or new)[0]
+                f.kind = "object"
+                f.caption = f"{d.name.capitalize()} missing" if gone else f"New {d.name}"
+                f.evidence.append(f"detector saw a {d.name} ({d.conf:.2f}) only in the move-{'in' if gone else 'out'} photo")
+                self.log("object_check", f"{f.id}: {d.name} {'gone' if gone else 'added'}", "label the finding")
 
     def _finding(self, i: int, r: Region) -> Finding:
         return Finding(f"f{i + 1}", [r.x, r.y, r.w, r.h], r.as_dict())
@@ -184,6 +211,10 @@ def _counts(findings: list[Finding]) -> dict:
     for f in findings:
         out[f.verdict] = out.get(f.verdict, 0) + 1
     return out
+
+
+def _covers(det: tuple, box: list) -> bool:
+    return max(objects.overlap(det, box), objects.overlap(box, det)) > 0.5
 
 
 def _area_frac(f: Finding, shape: tuple) -> float:

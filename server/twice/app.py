@@ -86,7 +86,7 @@ def before_frames(key: str) -> tuple[vision.Keyframe, vision.Keyframe]:
 
 @app.get("/api/health")
 def health() -> dict:
-    return {"ok": True, "opencv": cv2.__version__, "signer": signer.algorithm, "captioner": captioner.source}
+    return {"ok": True, "opencv": cv2.__version__, "dnn": "ENGINE_NEW", "signer": signer.algorithm, "captioner": captioner.source}
 
 
 @app.post("/api/checks")
