@@ -663,3 +663,20 @@
     display: none;
   }
 }
+
+.finding-n {
+  display: inline-grid;
+  place-items: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 5px;
+  border-radius: 4px;
+  background: var(--frame);
+  color: #fff;
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.finding-n[data-v="changed"] {
+  background: var(--signal);
+}

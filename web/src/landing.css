@@ -133,6 +133,7 @@
   cursor: ew-resize;
   user-select: none;
   box-shadow: var(--shadow-lift);
+  container: wipe / inline-size;
 }
 
 .wipe > img,

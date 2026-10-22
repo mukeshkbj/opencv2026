@@ -1,0 +1,10 @@
+.git
+.venv
+.aws-sam
+data
+**/__pycache__
+**/node_modules
+web/dist
+deploy
+docs
+assets

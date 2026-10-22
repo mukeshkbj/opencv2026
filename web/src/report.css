@@ -51,8 +51,8 @@
 }
 
 .stamp[data-ok] {
-  color: #2f7d3a;
-  border-color: #2f7d3a;
+  color: var(--ok);
+  border-color: var(--ok);
 }
 
 .stamp[data-bad] {
@@ -186,7 +186,7 @@
 }
 
 [data-ok="true"] {
-  color: #2f7d3a;
+  color: var(--ok);
 }
 
 [data-ok="false"] {
@@ -274,9 +274,20 @@
 }
 
 @media print {
-  :root {
+  :root,
+  :root[data-theme="dark"] {
     --paper: #fff;
+    --paper-raised: #fff;
     --paper-sunk: #f4f2ee;
+    --ink: #17160f;
+    --ink-2: #3d3b33;
+    --muted: #6b675c;
+    --line: rgb(23 22 15 / 0.12);
+    --line-strong: rgb(23 22 15 / 0.28);
+    --signal: #e2401a;
+    --signal-ink: #b5300c;
+    --ok: #2f7d3a;
+    color-scheme: light;
   }
   .topbar,
   .report-actions,

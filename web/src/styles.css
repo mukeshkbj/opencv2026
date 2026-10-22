@@ -12,6 +12,7 @@
   --signal: #e2401a;
   --signal-ink: #b5300c;
   --signal-wash: rgb(226 64 26 / 0.1);
+  --ok: #2f7d3a;
   --ghost: #ffffff;
   --frame: #0e0d0b;
 
@@ -45,6 +46,7 @@
   --signal: #ff5a2e;
   --signal-ink: #ff7a55;
   --signal-wash: rgb(255 90 46 / 0.12);
+  --ok: #6cc37a;
   --frame: #000;
   --shadow-lift: 0 0 0 1px rgb(255 255 255 / 0.08);
   color-scheme: dark;
@@ -364,5 +366,19 @@ a {
     animation-iteration-count: 1 !important;
     transition-duration: 1ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+.mark-tag b {
+  font-weight: 600;
+  margin-right: 6px;
+}
+
+@container wipe (max-width: 560px) {
+  .mark-tag b {
+    margin-right: 0;
+  }
+  .mark-tag b + .mark-text {
+    display: none;
   }
 }

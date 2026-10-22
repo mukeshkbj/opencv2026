@@ -17,7 +17,7 @@ from .agent import Agent, SpotState
 from .caption import Captioner
 from .store import get_json, make_store, put_json
 
-MAX_UPLOAD = 15 * 1024 * 1024
+MAX_UPLOAD = 4 * 1024 * 1024
 MAX_SPOTS = 8
 SAMPLES = Path(__file__).resolve().parent.parent / "samples"
 WEB = Path(os.environ.get("TWICE_WEB", Path(__file__).resolve().parents[2] / "web" / "dist"))
@@ -64,7 +64,7 @@ def spot_of(check: dict, sid: str) -> dict:
 async def read_image(request: Request | None = None, file: UploadFile | None = None) -> tuple[bytes, np.ndarray]:
     data = await file.read(MAX_UPLOAD + 1) if file else await request.body()
     if len(data) > MAX_UPLOAD:
-        raise HTTPException(413, "image larger than 15 MB")
+        raise HTTPException(413, "image larger than 4 MB")
     try:
         return data, vision.decode(data)
     except ValueError:

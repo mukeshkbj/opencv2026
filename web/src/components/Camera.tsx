@@ -43,6 +43,17 @@ async function grab(video: HTMLVideoElement, maxSide: number, quality = 0.72): P
   return new Promise((res) => c.toBlob((b) => res(b!), "image/jpeg", quality));
 }
 
+async function shrink(file: Blob, maxSide = 2400): Promise<Blob> {
+  const bmp = await createImageBitmap(file, { imageOrientation: "from-image" });
+  const s = Math.min(1, maxSide / Math.max(bmp.width, bmp.height));
+  const c = document.createElement("canvas");
+  c.width = Math.round(bmp.width * s);
+  c.height = Math.round(bmp.height * s);
+  c.getContext("2d")!.drawImage(bmp, 0, 0, c.width, c.height);
+  bmp.close();
+  return new Promise((res) => c.toBlob((b) => res(b!), "image/jpeg", 0.92));
+}
+
 export default function Camera({ mode, ghost, prompt, busy, quality, guide, onCapture }: Props) {
   const video = useRef<HTMLVideoElement>(null);
   const stage = useRef<HTMLDivElement>(null);
@@ -142,7 +153,7 @@ export default function Camera({ mode, ghost, prompt, busy, quality, guide, onCa
 
   const onFile = (e: React.ChangeEvent<HTMLInputElement>) => {
     const f = e.target.files?.[0];
-    if (f) onCapture(f);
+    if (f) shrink(f).then(onCapture, () => onCapture(f));
     e.target.value = "";
   };
 

@@ -4,6 +4,7 @@ export interface Mark {
   box: [number, number, number, number];
   verdict: string;
   tag?: string;
+  n?: number;
 }
 
 const VERDICT_TEXT: Record<string, string> = {
@@ -34,7 +35,12 @@ export function Marks({ marks, active }: { marks: Mark[]; active?: number | null
             height: `${m.box[3] * 100}%`,
           }}
         >
-          {m.tag && <span className="mark-tag">{m.tag}</span>}
+          {m.tag && (
+            <span className="mark-tag">
+              {m.n && <b>{m.n}</b>}
+              <span className="mark-text">{m.tag}</span>
+            </span>
+          )}
         </div>
       ))}
     </>

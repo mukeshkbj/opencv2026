@@ -62,6 +62,7 @@ function Findings({ findings, active, setActive }: { findings: Finding[]; active
           tabIndex={0}
         >
           <div className="finding-head">
+            <span className="finding-n mono" data-v={f.verdict}>{i + 1}</span>
             <span className="chip" data-v={f.verdict}>{verdictText(f.verdict)}</span>
             <strong>{findingTitle(f)}</strong>
           </div>
@@ -308,7 +309,8 @@ interface ResultProps {
 function Result({ check, spot, busy, isSample, active, setActive, heat, setHeat, quality, onFollowup, next, onNext }: ResultProps) {
   const size = viewSize(spot);
   const pending = spot.state.pending;
-  const marks: Mark[] = spot.state.findings.map((f) => ({
+  const marks: Mark[] = spot.state.findings.map((f, i) => ({
+    n: i + 1,
     box: [f.box[0] / size.w, f.box[1] / size.h, f.box[2] / size.w, f.box[3] / size.h],
     verdict: f.verdict,
     tag:
