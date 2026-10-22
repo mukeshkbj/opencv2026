@@ -57,7 +57,7 @@ async function shrink(file: Blob, maxSide = 2400): Promise<Blob> {
 export default function Camera({ mode, ghost, prompt, busy, quality, guide, onCapture }: Props) {
   const video = useRef<HTMLVideoElement>(null);
   const stage = useRef<HTMLDivElement>(null);
-  const [state, setState] = useState<"starting" | "live" | "denied">("starting");
+  const [state, setState] = useState<"starting" | "live" | "denied">(() => (navigator.mediaDevices ? "starting" : "denied"));
   const [aspect, setAspect] = useState(4 / 3);
   const [q, setQ] = useState<Partial<Quality> | null>(null);
   const [g, setG] = useState<Guidance | null>(null);
@@ -82,7 +82,6 @@ export default function Camera({ mode, ghost, prompt, busy, quality, guide, onCa
         };
       })
       .catch(() => setState("denied"));
-    if (!navigator.mediaDevices) setState("denied");
     return () => {
       cancelled = true;
       stream?.getTracks().forEach((t) => t.stop());

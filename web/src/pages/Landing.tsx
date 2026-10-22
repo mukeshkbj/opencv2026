@@ -229,7 +229,7 @@ export default function Landing() {
             <li><span className="label">Register</span><code>SIFT · USAC MAGSAC homography</code><p>Matches thousands of points and warps the new photo onto the old one.</p></li>
             <li><span className="label">Refine</span><code>DIS optical flow, clamped</code><p>Corrects the last few pixels a handheld phone leaves behind.</p></li>
             <li><span className="label">Compare</span><code>Shift-tolerant structure + colour</code><p>Ignores blur, exposure and sub-pixel jitter. Keeps new texture.</p></li>
-            <li><span className="label">Decide</span><code>Agent with OpenCV tools</code><p>Rules out light, asks for a parallax shot or a close-up when unsure.</p></li>
+            <li><span className="label">Decide</span><code>Agent · NanoDet on dnn ENGINE_NEW</code><p>Rules out light, names missing objects, asks for a parallax shot or a close-up when unsure.</p></li>
             <li><span className="label">Sign</span><code>SHA-256 · AWS KMS</code><p>Seals the photos and the findings. Any edit breaks the signature.</p></li>
           </ol>
           <dl className="stats" data-reveal>

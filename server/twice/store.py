@@ -2,6 +2,8 @@ import json
 import os
 from pathlib import Path
 
+import boto3
+
 
 class LocalStore:
     def __init__(self, root: str):
@@ -21,8 +23,6 @@ class LocalStore:
 
 class S3Store:
     def __init__(self, bucket: str):
-        import boto3
-
         self.bucket = bucket
         self.s3 = boto3.client("s3")
 

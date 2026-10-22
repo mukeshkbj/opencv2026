@@ -5,6 +5,7 @@ import os
 
 import cv2
 import numpy as np
+from anthropic import AnthropicBedrockMantle
 
 SYSTEM = (
     "You label physical changes between two photos of the same spot, taken at move-in and at move-out. "
@@ -45,8 +46,6 @@ class Captioner:
         self.model = os.environ.get("TWICE_BEDROCK_MODEL", "anthropic.claude-opus-5-5")
         self.client = None
         if region:
-            from anthropic import AnthropicBedrockMantle
-
             self.client = AnthropicBedrockMantle(aws_region=region, max_retries=1, timeout=20.0)
 
     @property

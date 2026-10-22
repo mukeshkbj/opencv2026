@@ -114,9 +114,12 @@ export default function CheckPage({ id }: { id: string }) {
     return check.spots.find((s) => s.id === selected) ?? check.spots.find((s) => s.state.status !== "done") ?? check.spots[0];
   }, [check, sealed, selected]);
 
-  const replaceSpot = (s: Spot) => setCheck((c) => c && { ...c, spots: c.spots.map((x) => (x.id === s.id ? s : x)) });
+  const replaceSpot = useCallback(
+    (s: Spot) => setCheck((c) => c && { ...c, spots: c.spots.map((x) => (x.id === s.id ? s : x)) }),
+    [],
+  );
 
-  const run = async <T,>(fn: () => Promise<T>): Promise<T | undefined> => {
+  const run = useCallback(async <T,>(fn: () => Promise<T>): Promise<T | undefined> => {
     setBusy(true);
     setError("");
     try {
@@ -126,7 +129,7 @@ export default function CheckPage({ id }: { id: string }) {
     } finally {
       setBusy(false);
     }
-  };
+  }, []);
 
   const addBefore = useCallback(
     async (photo: Blob) => {
@@ -136,8 +139,7 @@ export default function CheckPage({ id }: { id: string }) {
         setLabel("");
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [id, label],
+    [id, label, run],
   );
 
   const shootAfter = useCallback(
@@ -152,8 +154,7 @@ export default function CheckPage({ id }: { id: string }) {
         setSelected(s.id);
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [id, spot, isSample],
+    [id, spot, isSample, run, replaceSpot],
   );
 
   const guide = useCallback((frame: Blob) => api.guide(id, spot!.id, frame), [id, spot]);

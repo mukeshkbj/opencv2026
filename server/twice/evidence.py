@@ -5,6 +5,12 @@ import json
 import os
 from pathlib import Path
 
+import boto3
+from cryptography.exceptions import InvalidSignature
+from cryptography.hazmat.primitives import hashes, serialization
+from cryptography.hazmat.primitives.asymmetric import ec
+from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+
 
 def sha256(data: bytes) -> str:
     return hashlib.sha256(data).hexdigest()
@@ -18,8 +24,6 @@ class KmsSigner:
     algorithm = "ECDSA_SHA_256"
 
     def __init__(self, key_id: str):
-        import boto3
-
         self.kms = boto3.client("kms")
         self.key_id = key_id
         self._public = None
@@ -41,9 +45,6 @@ class LocalSigner:
     algorithm = "Ed25519"
 
     def __init__(self, path: Path):
-        from cryptography.hazmat.primitives import serialization
-        from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
-
         if path.exists():
             self.key = serialization.load_pem_private_key(path.read_bytes(), None)
         else:
@@ -69,10 +70,6 @@ def make_signer():
 
 
 def verify(pem: str, algorithm: str, message: bytes, signature_b64: str) -> bool:
-    from cryptography.exceptions import InvalidSignature
-    from cryptography.hazmat.primitives import hashes, serialization
-    from cryptography.hazmat.primitives.asymmetric import ec
-
     key = serialization.load_pem_public_key(pem.encode())
     sig = base64.b64decode(signature_b64)
     try:
