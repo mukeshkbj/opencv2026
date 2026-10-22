@@ -50,6 +50,10 @@
   mix-blend-mode: difference;
 }
 
+.ghostlock[data-phase="seek"] .gl-diff {
+  mix-blend-mode: normal;
+}
+
 .gl-ghost {
   position: absolute;
   inset: 0;
