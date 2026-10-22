@@ -1,0 +1,45 @@
+{
+  "name": "Apartment 4B and rental car",
+  "margin": 0.06,
+  "spots": [
+    {
+      "label": "Living room, east wall",
+      "before": "room-before.jpg",
+      "after": "room-after.jpg",
+      "scene": "room-scene.jpg",
+      "truth": [
+        "wall stain",
+        "floor scuff",
+        "lighting only: shadow"
+      ]
+    },
+    {
+      "label": "Desk top",
+      "before": "desk-before.jpg",
+      "after": "desk-after.jpg",
+      "scene": "desk-scene.jpg",
+      "truth": [
+        "coffee ring",
+        "missing item",
+        "lighting only: shadow"
+      ]
+    },
+    {
+      "label": "Rental car, front quarter panel",
+      "before": "car-before.jpg",
+      "after": "car-after.jpg",
+      "scene": "car-scene.jpg",
+      "parallax": "car-parallax.jpg",
+      "truth": [
+        "door scratch",
+        "reflection on chrome (moves with the camera)"
+      ]
+    }
+  ],
+  "credits": [
+    "Sunny Room in old Apartment, Wikimedia Commons, CC BY 2.0",
+    "Top Workspace Office, Wikimedia Commons, CC0",
+    "1970 AMC Hornet SST 2-door sedan at 2024 AMO show, Wikimedia Commons, CC BY 4.0"
+  ],
+  "note": "Real photos. The damage, lighting, and camera moves are synthetic so the ground truth is known."
+}

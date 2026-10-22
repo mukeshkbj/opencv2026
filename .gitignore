@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+data/
+node_modules/
+web/dist/
+*.pyc
+.aws-sam/
