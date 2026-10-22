@@ -84,11 +84,13 @@ class Agent:
         m = f.metrics
         if m["lighting_only"]:
             f.verdict, f.kind = "lighting", "lighting"
-            f.evidence.append(f"smooth light field explains {m['illumination']:.0%} of the change, chroma shift z={m['chroma']:.1f}")
+            if m["structure"] == 0:
+                f.evidence.append(f"{abs(m['brightening']):.0%} {'brighter' if m['brightening'] > 0 else 'darker'}, texture unchanged: a shadow or a light")
+            else:
+                f.evidence.append(f"smooth light field explains {m['illumination']:.0%} of the change, chroma shift z={m['chroma']:.1f}")
             self.log("relight_check", f"{f.id}: lighting only", "rule out")
             return
-        x, y, w, h = f.box
-        area_frac = (w * h) / (res.before.shape[0] * res.before.shape[1])
+        area_frac = _area_frac(f, res.before.shape)
         if abs(m["brightening"]) > 0.05:
             f.kind = "glare?"
             f.evidence.append(f"{abs(m['brightening']):.0%} of the region {'turned' if m['brightening'] > 0 else 'stopped being'} near white: possible reflection")
@@ -98,8 +100,7 @@ class Agent:
             f.evidence.append(f"soft edges like a shadow, but colour shifted (z={m['chroma']:.1f})")
             self.log("relight_check", f"{f.id}: soft change with colour shift", "needs a close-up")
             return
-        if area_frac > 0.008 and m["structure"] > 6:
-            f.kind = "object"
+        f.kind = _kind(f, area_frac)
         f.verdict = "changed"
         f.evidence.append(f"structure z={m['structure']:.1f}, colour z={m['chroma']:.1f}, peak z={m['score']:.1f}")
         if area_frac < 0.0015 and m["score"] < 18:
@@ -147,9 +148,9 @@ class Agent:
                 f.evidence.append(f"parallax shot failed to register ({res.reason})")
                 self.log("compare_followup", f"{f.id}: parallax shot did not register", "mark cannot judge")
             elif _persists(f.box, res.regions):
-                f.verdict, f.kind = "changed", "surface"
+                f.verdict, f.kind = "changed", _kind(f, _area_frac(f, before.image.shape))
                 f.evidence.append("change stayed fixed to the surface when the camera moved")
-                self.log("compare_followup", f"{f.id}: persists under parallax", "report as surface change")
+                self.log("compare_followup", f"{f.id}: persists under parallax", f"report as {f.kind} change")
             else:
                 f.verdict, f.kind = "lighting", "glare"
                 f.evidence.append("change vanished when the camera moved: a reflection")
@@ -183,6 +184,14 @@ def _counts(findings: list[Finding]) -> dict:
     for f in findings:
         out[f.verdict] = out.get(f.verdict, 0) + 1
     return out
+
+
+def _area_frac(f: Finding, shape: tuple) -> float:
+    return f.box[2] * f.box[3] / (shape[0] * shape[1])
+
+
+def _kind(f: Finding, area_frac: float) -> str:
+    return "object" if area_frac > 0.008 and f.metrics["structure"] > 6 else "surface"
 
 
 def _persists(box: list[int], regions: list[Region]) -> bool:

@@ -176,7 +176,7 @@ async def guide(cid: str, sid: str, request: Request) -> dict:
 def _persist_views(cid: str, sid: str, res: vision.Comparison) -> None:
     store.put(f"checks/{cid}/{sid}-view-before.jpg", cv2.imencode(".jpg", res.before, [cv2.IMWRITE_JPEG_QUALITY, 88])[1].tobytes(), "image/jpeg")
     store.put(f"checks/{cid}/{sid}-view-after.jpg", cv2.imencode(".jpg", res.after_aligned, [cv2.IMWRITE_JPEG_QUALITY, 88])[1].tobytes(), "image/jpeg")
-    heat = (np.clip(res.heat, 0, 1) * 255).astype(np.uint8)
+    heat = (np.clip(res.heat, 0, 1)[..., None] * np.array([26, 64, 226], np.float32)).astype(np.uint8)
     store.put(f"checks/{cid}/{sid}-view-heat.png", cv2.imencode(".png", heat)[1].tobytes(), "image/png")
 
 

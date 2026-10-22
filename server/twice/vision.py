@@ -282,10 +282,57 @@ def compare(before: Keyframe, after: Keyframe, z_thresh: float = 9.0, min_area: 
             illumination=round(_illumination_likeness(lb, la, x, y, bw, bh), 3),
             brightening=round(_brightening(lb, la, x, y, bw, bh), 3),
         ))
+    regions = _merge_overlapping(regions, gap=group)
     regions.sort(key=lambda r: -r.score * np.sqrt(r.area))
+    regions = regions[:12] + _lighting_regions(lb, la, valid, mask)
     heat = np.clip(z / (z_thresh * 2), 0, 1)
-    return Comparison(True, None, inliers, overlap, regions[:12], before.image, cv2.remap(
+    return Comparison(True, None, inliers, overlap, regions, before.image, cv2.remap(
         warped, mx, my, cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE), heat)
+
+
+def _merge_overlapping(regions: list["Region"], gap: int) -> list["Region"]:
+    """Union regions whose boxes touch within `gap` pixels; one physical mark should be one finding."""
+    merged = True
+    while merged:
+        merged = False
+        for i, a in enumerate(regions):
+            for j in range(i + 1, len(regions)):
+                b = regions[j]
+                if a.x - gap < b.x + b.w and b.x - gap < a.x + a.w and a.y - gap < b.y + b.h and b.y - gap < a.y + a.h:
+                    x0, y0 = min(a.x, b.x), min(a.y, b.y)
+                    x1, y1 = max(a.x + a.w, b.x + b.w), max(a.y + a.h, b.y + b.h)
+                    wa, wb = a.area, b.area
+                    mix = lambda p, q: round((p * wa + q * wb) / (wa + wb), 3)
+                    regions[i] = Region(x0, y0, x1 - x0, y1 - y0, score=max(a.score, b.score), area=wa + wb,
+                                        structure=mix(a.structure, b.structure), chroma=mix(a.chroma, b.chroma),
+                                        illumination=min(a.illumination, b.illumination),
+                                        brightening=mix(a.brightening, b.brightening))
+                    del regions[j]
+                    merged = True
+                    break
+            if merged:
+                break
+    return regions
+
+
+def _lighting_regions(lb: np.ndarray, la: np.ndarray, valid: np.ndarray, changed: np.ndarray) -> list["Region"]:
+    """Large areas where only brightness moved (shadows, lamps, sun): reported so they can be shown as ignored."""
+    h, w = lb.shape
+    ratio = cv2.GaussianBlur(np.log(la + 8) - np.log(lb + 8), (0, 0), 8)
+    ratio -= np.median(ratio[valid > 0])
+    mask = ((np.abs(ratio) > np.log(1.15)) & (valid > 0) & (changed == 0)).astype(np.uint8) * 255
+    k = max(9, (min(h, w) // 40) | 1)
+    mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, np.ones((k, k), np.uint8))
+    n, labels, stats, _ = cv2.connectedComponentsWithStats(mask)
+    out = []
+    for i in range(1, n):
+        x, y, bw, bh, area = (int(v) for v in stats[i])
+        if area < 0.01 * h * w:
+            continue
+        mean = float(ratio[labels == i].mean())
+        out.append(Region(x, y, bw, bh, score=round(abs(mean) * 100, 1), area=area, structure=0, chroma=0,
+                          illumination=1.0, brightening=round(float(np.exp(mean) - 1), 3)))
+    return sorted(out, key=lambda r: -r.area)[:3]
 
 
 def _robust_z(m: np.ndarray, valid: np.ndarray) -> np.ndarray:

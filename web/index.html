@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Twice: take the same photo twice, see what really changed</title>
+    <meta name="description" content="Twice guides you back to the exact photo you took at move-in, finds what really changed with OpenCV 5, and signs the proof." />
+    <meta name="theme-color" content="#f1eee7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href="/fonts/gambetta-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/switzer-400.woff2" as="font" type="font/woff2" crossorigin />
+    <script>
+      document.documentElement.dataset.theme =
+        localStorage.getItem("twice-theme") ||
+        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -24,10 +24,14 @@ SCHEMA = {
 
 
 def rule_label(kind: str, before: np.ndarray, after: np.ndarray) -> str:
-    lb = cv2.cvtColor(before, cv2.COLOR_BGR2LAB).astype(np.float32)
-    la = cv2.cvtColor(after, cv2.COLOR_BGR2LAB).astype(np.float32)
-    dl = float(np.median(la[..., 0] - lb[..., 0]))
-    dc = float(np.median(np.linalg.norm(la[..., 1:] - lb[..., 1:], axis=2)))
+    h, w = before.shape[:2]
+    core = np.s_[h // 4 : h - h // 4, w // 4 : w - w // 4]
+    lb = cv2.cvtColor(before[core], cv2.COLOR_BGR2LAB).astype(np.float32)
+    la = cv2.cvtColor(after[core], cv2.COLOR_BGR2LAB).astype(np.float32)
+    d = (la[..., 0] - lb[..., 0]).ravel()
+    strong = np.abs(d) >= np.percentile(np.abs(d), 70)
+    dl = float(np.median(d[strong]))
+    dc = float(np.percentile(np.linalg.norm(la[..., 1:] - lb[..., 1:], axis=2), 70))
     if kind == "object":
         return "Object added, moved, or removed"
     tone = "Darker" if dl < -6 else "Lighter" if dl > 6 else "New"
