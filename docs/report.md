@@ -114,7 +114,7 @@ EVAL_SUMMARY
 - **Limits are printed.** The report states that it covers only the photographed spots, that times come from the server clock, and that a valid signature does not prove a photo shows what it claims.
 - **Data minimisation.** No accounts. Photos expire after 30 days by default. The bucket blocks public access and denies non-TLS requests.
 - **Least privilege.** The Lambda role can only read and write its bucket, sign with its key, and invoke the configured Claude model.
-- **Cost.** One analysis is one Lambda invocation of about one second at 3 GB, plus one short Bedrock call per confirmed change.
+- **Cost.** One analysis is one Lambda invocation of about one second at 3 GB, plus one short Bedrock call per confirmed change. Reserved concurrency of 10 caps the spend under abuse. If an alarm address is set, an AWS Budget emails at 80 % of 25 USD a month.
 
 ## 9. Limitations
 

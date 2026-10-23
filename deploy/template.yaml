@@ -110,6 +110,19 @@ Resources:
               Bool:
                 aws:SecureTransport: "false"
 
+  MonthlyBudget:
+    Type: AWS::Budgets::Budget
+    Condition: HasAlarmEmail
+    Properties:
+      Budget:
+        BudgetName: !Sub ${AWS::StackName}-monthly
+        BudgetType: COST
+        TimeUnit: MONTHLY
+        BudgetLimit: {Amount: 25, Unit: USD}
+      NotificationsWithSubscribers:
+        - Notification: {NotificationType: ACTUAL, ComparisonOperator: GREATER_THAN, Threshold: 80}
+          Subscribers: [{SubscriptionType: EMAIL, Address: !Ref AlarmEmail}]
+
   FunctionLogs:
     Type: AWS::Logs::LogGroup
     Properties:
@@ -122,6 +135,7 @@ Resources:
       Architectures: [arm64]
       MemorySize: 3008
       Timeout: 60
+      ReservedConcurrentExecutions: 10
       EphemeralStorage:
         Size: 1024
       LoggingConfig:

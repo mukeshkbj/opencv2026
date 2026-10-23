@@ -27,8 +27,7 @@ class S3Store:
         self.s3 = boto3.client("s3")
 
     def put(self, key: str, data: bytes, content_type: str = "application/octet-stream") -> None:
-        self.s3.put_object(Bucket=self.bucket, Key=key, Body=data, ContentType=content_type,
-                           ServerSideEncryption="aws:kms")
+        self.s3.put_object(Bucket=self.bucket, Key=key, Body=data, ContentType=content_type)
 
     def get(self, key: str) -> bytes:
         try:
