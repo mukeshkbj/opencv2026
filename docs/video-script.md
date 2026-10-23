@@ -54,9 +54,9 @@ Times are cumulative.
 
 ## 2:04 to 2:21 — The numbers
 
-**Screen:** one number at a time: 90%, 99%, then "2 of 22" with 22 squares, two of them red.
+**Screen:** one number at a time: 88%, 100%, then "0 of 22" with 22 squares.
 
-**Voice:** "On our synthetic benchmark, Twice finds ninety percent of the damage, and ninety-nine percent of its flags are real. On real photos of unchanged scenes, two of twenty-two judged pairs got a false alarm. Every failure case is in the report."
+**Voice:** "On our synthetic benchmark, Twice finds eighty-eight percent of the damage, and every flag is real. On real photos of unchanged scenes, it raised no false alarm in twenty-two judged pairs. Every failure case is in the report."
 
 ## 2:21 to 2:27 — Close
 

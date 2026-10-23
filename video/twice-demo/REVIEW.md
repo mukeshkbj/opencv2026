@@ -30,6 +30,11 @@ Scenes 3 to 5 zoom the main column 1.4× and scene 6 zooms the report 1.35×, so
 - S4 and S5 show the zoomed finding crops.
 - S9 shows "90%" at 1.2 s instead of 2.9 s, so the scene no longer opens on an empty frame.
 
+## Third pass, after the engine change
+
+- S9 has new numbers from the plain first-pass engine: 88%, 100% and 0 of 22. The voice line was regenerated (14.9 s, was 15.4 s). The beats keep their times.
+- The S4 car footage still shows the earlier wipe position and evidence text. It was not re-recorded.
+
 ## What was measured and what was only looked at
 
 - `npx hyperframes check` passes with no errors.
@@ -50,4 +55,4 @@ Scenes 3 to 5 zoom the main column 1.4× and scene 6 zooms the report 1.35×, so
 
 ## Weakest shot
 
-S9, the numbers. It is type on paper. With more time, each number would come out of the product: the 90% from the evaluation gallery, the 22 squares as the 22 real photo pairs.
+S9, the numbers. It is type on paper. With more time, each number would come out of the product: the 88% from the evaluation gallery, the 22 squares as the 22 real photo pairs.

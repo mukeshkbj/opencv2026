@@ -64,6 +64,13 @@ apartments and rental cars. Spec: docs/spec.md. Persona critique: docs/critique-
 - [x] 10c. Hybrid benchmark (server/eval/hybrid_bench.py, docs/evaluation.md 7.1): drawn defects on the 22 judged
       Oxford pairs. Recall 0.29, strict 0.18, precision 0.85, against 0.90 synthetic. README states 0.90 is an
       upper bound. Trees gives 0 of 71; tolerant vs plain difference is not settled.
+- [x] 10d. Judge round 5 (Sonnet 5.5, five personas, scores 6 to 7.5, "likely finalist"). Applied: plain difference
+      for the first comparison, tolerant (1 px) for follow-ups (3c25265). Agent recall 0.878, precision 1.00; real photos
+      0 of 22 false (was 2); hybrid recall 0.241, precision 0.957 (was 0.289, 0.849). Clipped-pixel glare fix (the sample
+      car verdict depended on the RANSAC seed). Wipe starts left of the first changed mark; $440 line in the hero;
+      findings lead with a plain sentence, steps behind "How it decided". Docs, landing tiles and film S9 updated.
+      Not done from round 5: Lambda RIE proof, "What is next" section, re-recording the S4 car footage.
+      Tried and rejected: tiled noise scale + brightness z + 2x2 opening (held-out false alarms tripled).
 - [ ] 11. Owner, optional: photograph 5 to 10 real move-in and move-out pairs with real marks, run them through the
       app, and add the results to docs/evaluation.md. Show the app to a few renters and note what they say.
 

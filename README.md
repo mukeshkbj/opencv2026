@@ -129,6 +129,12 @@ This builds an arm64 container for Lambda on Graviton behind a Function URL. The
 | `TWICE_BEDROCK_MODEL` | Bedrock model ID. Default `anthropic.claude-opus-5-5`. |
 | `TWICE_DATA` | Local storage folder when no bucket is set. |
 
+## What is next
+
+- **Real damage pairs.** The engine has not yet seen a real scratch. The first step is a small labelled set of real move-in and move-out pairs, photographed with the ghost guide, to replace the drawn defects in the hybrid benchmark.
+- **The bundle as the product.** The evidence bundle is one zip that a renter can attach to a dispute email. A landlord, a rental company or an insurer can check it with `verify.py`, without an account and without trusting Twice. The first users are renters who are about to hand back a car or an apartment.
+- **One more spot type.** The sample covers a car panel, a wall and a desk. A rental car has a fixed set of panels, so a car checklist (the four corners, the wheels and the windscreen) is the next guided flow. The Hertz bill above was for a wheel.
+
 ## Responsible use
 
 - Twice sorts differences into three answers and never hides one. "Can't judge" is a real answer, and the report asks a person to review every "Changed" and "Can't judge" item.

@@ -7,6 +7,6 @@
  "s6_report": "The report shows every change, every ruled-out shadow, and the measurements behind each one. Every photo is hashed on arrival, and the move-in set is signed before any move-out photo exists.",
  "s7_verify": "Anyone can download the evidence bundle and check it with the script inside, without trusting our server. Change one photo, and the check fails.",
  "s8_cloud": "Twice runs in one container on AWS Lambda. Photos go to S3 with Object Lock, and a KMS key signs every report. Claude on Bedrock names each change, but it can never delete one. Objects are checked with NanoDet on the new OpenCV 5 DNN engine, more than three times faster than the classic engine.",
- "s9_numbers": "On our synthetic benchmark, Twice finds ninety percent of the damage, and ninety-nine percent of its flags are real. On real photos of unchanged scenes, two of twenty-two judged pairs got a false alarm. Every failure case is in the report.",
+ "s9_numbers": "On our synthetic benchmark, Twice finds eighty-eight percent of the damage, and every flag is real. On real photos of unchanged scenes, it raised no false alarm in twenty-two judged pairs. Every failure case is in the report.",
  "s10_close": "Your next move-out starts with today's photos. Take them twice."
 }

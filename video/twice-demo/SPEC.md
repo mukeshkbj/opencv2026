@@ -15,7 +15,7 @@ SHOTS:
   S6  79.4-92.1  Signed report, 1.35x zoom, about 1.6x speed.
   S7  92.1-102.1 Terminal: real verify.py output, VALID, then one byte added to a photo, NOT VALID in red.
   S8 102.1-124.3 Architecture diagram tour: Lambda, S3, KMS, Bedrock, the DNN row; then measured bars, ENGINE_NEW 16.3 ms vs ENGINE_CLASSIC 56.5 ms.
-  S9 124.3-140.6 One number per beat on one stage: 90%, 99%, 2 of 22.
+  S9 124.3-140.6 One number per beat on one stage: 88%, 100%, 0 of 22.
   S10 140.6-147.0 "Take them twice."
 BANNED:  dark void grounds, glow, gradients, glass cards, three cards in a row, KPI grids, corner labels, everything fading up at once, text that moves while it is read, a logo end card, numbers that are not in docs/evaluation.md.
-QA:      t=5.8 receipt total visible; t=11.3 stamp on; t=37 ghost guide; t=57 car crop; t=70 change map; t=98 terminal VALID; t=101.6 NOT VALID; t=122 bars; t=134 "2 of 22"; t=146 end line.
+QA:      t=5.8 receipt total visible; t=11.3 stamp on; t=37 ghost guide; t=57 car crop; t=70 change map; t=98 terminal VALID; t=101.6 NOT VALID; t=122 bars; t=134 "0 of 22"; t=146 end line.
