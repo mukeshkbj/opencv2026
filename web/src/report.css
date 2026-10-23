@@ -46,6 +46,7 @@
 
 .stamp small {
   font-size: 0.6875rem;
+  white-space: nowrap;
   letter-spacing: 0.02em;
   text-transform: none;
 }

@@ -33,9 +33,9 @@ Voice-over is in plain sentences. Times are cumulative.
 
 ## 2:50 to 3:30 — The signed report
 
-**Screen:** press **Create the signed report**. Scroll: the green **Verified** stamp, summary counts, exhibit pairs with numbered marks, the findings table with evidence, the hash list, the signatures block. Open "What this report cannot prove".
+**Screen:** press **Create the signed report**. Scroll: the green **Verified** stamp, summary counts, exhibit pairs with numbered marks, the findings table with evidence, the hash list, the signatures block. Press **Download evidence bundle**, then cut to a terminal that runs `python verify.py` and prints VALID. Open "What this report cannot prove".
 
-**Voice:** "The report lists every change, every ruled-out shadow, and the evidence behind each one. Every photo is hashed when it arrives. The move-in set was signed before any move-out photo existed. On AWS the signature comes from a KMS key, and anyone can check it. The report also says what it cannot prove."
+**Voice:** "The report lists every change, every ruled-out shadow, and the evidence behind each one. Every photo is hashed when it arrives. The move-in set was signed before any move-out photo existed. On AWS the signature comes from a KMS key. The evidence bundle carries its own checker, so a landlord or a court can verify it without trusting us. The report also says what it cannot prove."
 
 ## 3:30 to 4:05 — Under the hood
 
