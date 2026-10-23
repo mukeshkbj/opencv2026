@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How Twice decides, spot by spot</title>
+  <style>
+    @font-face { font-family: 'Gambetta'; src: url('../../web/public/fonts/gambetta-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Gambetta'; src: url('../../web/public/fonts/gambetta-400i.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+    @font-face { font-family: 'Switzer'; src: url('../../web/public/fonts/switzer-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Switzer'; src: url('../../web/public/fonts/switzer-500.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Switzer'; src: url('../../web/public/fonts/switzer-600.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'JetBrains Mono'; src: url('../../web/public/fonts/jbmono-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'JetBrains Mono'; src: url('../../web/public/fonts/jbmono-500.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-paper:  #f1eee7;   /* paper */
+      --color-paper-2: #e9e5dc;
+      --color-ink:    #17160f;
+      --color-muted:  #6b675c;
+      --color-accent: #e2401a;   /* signal vermilion */
+      --font-sans:    'Switzer', system-ui, sans-serif;
+      --font-serif:   'Gambetta', Georgia, serif;
+      --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+    }
+    html { background: var(--color-paper); }
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-paper);
+      color: var(--color-ink);
+      padding: 40px;
+    }
+    .frame { max-width: 1280px; width: 100%; margin: 0 auto; }
+    header { height: 88px; }
+    /* min-width equals the viewBox width, so the type ramp is never scaled down;
+       the wrapper scrolls on its own on a narrow screen. */
+    .diagram-container { width: 100%; overflow-x: auto; }
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      height: 24px;
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 40px;
+      color: var(--color-ink);
+    }
+    svg { width: 100%; min-width: 1280px; display: block; }
+    @media print {
+      .diagram-container { overflow-x: visible; }
+      svg { min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <header>
+      <p class="eyebrow">Flowchart · Twice</p>
+      <h1>How Twice decides, spot by spot</h1>
+    </header>
+    <div class="diagram-container">
+      <svg viewBox="0 0 1280 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="agent-loop-title agent-loop-desc">
+        <title id="agent-loop-title">Twice agent decision loop</title>
+        <desc id="agent-loop-desc">Flowchart of the per-spot agent: register the after photo, build a change map, triage each region, ask for a parallax or close-up photo when unsure, check for objects and people, then caption and sign.</desc>
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#6b675c"/></marker>
+          <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#e2401a"/></marker>
+          <marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2b5fa8"/></marker>
+        </defs>
+        <rect width="100%" height="100%" fill="#f1eee7"/>
+<path d="M 520,88 V 128" fill="none" stroke="#6b675c" stroke-width="1.2" marker-end="url(#arrow)"/>
+<path d="M 380,188 H 308 Q 300,188 300,180 V 72 Q 300,64 308,64 H 420" fill="none" stroke="#6b675c" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#arrow)"/>
+<rect x="308" y="119" width="45" height="14" rx="2" fill="#f1eee7"/><text x="330.5" y="129.5" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">RETAKE</text>
+<path d="M 520,248 V 288" fill="none" stroke="#6b675c" stroke-width="1.2" marker-end="url(#arrow)"/>
+<rect x="528" y="261" width="50" height="14" rx="2" fill="#f1eee7"/><text x="553" y="271.5" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">MATCHED</text>
+<path d="M 520,368 V 408" fill="none" stroke="#6b675c" stroke-width="1.2" marker-end="url(#arrow)"/>
+<path d="M 380,468 H 248 Q 240,468 240,476 V 740" fill="none" stroke="#6b675c" stroke-width="1.2" marker-end="url(#arrow)"/>
+<rect x="248" y="590" width="61" height="14" rx="2" fill="#f1eee7"/><text x="278.5" y="600.5" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">RULED OUT</text>
+<path d="M 660,468 H 860" fill="none" stroke="#e2401a" stroke-width="1.4" marker-end="url(#arrow-accent)"/>
+<rect x="737.5" y="446" width="45" height="14" rx="2" fill="#f1eee7"/><text x="760" y="456.5" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">UNSURE</text>
+<path d="M 520,528 V 568" fill="none" stroke="#6b675c" stroke-width="1.2" marker-end="url(#arrow)"/>
+<rect x="528" y="541" width="39" height="14" rx="2" fill="#f1eee7"/><text x="547.5" y="551.5" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">SOLID</text>
+<path d="M 980,416 V 336 Q 980,328 972,328 H 640" fill="none" stroke="#e2401a" stroke-width="1.4" marker-end="url(#arrow-accent)"/>
+<rect x="779.5" y="306" width="61" height="14" rx="2" fill="#f1eee7"/><text x="810" y="316.5" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">NEW PHOTO</text>
+<path d="M 980,520 V 740" fill="none" stroke="#6b675c" stroke-width="1.2" marker-end="url(#arrow)"/>
+<rect x="988" y="622" width="72" height="14" rx="2" fill="#f1eee7"/><text x="1024" y="632.5" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">CAN'T JUDGE</text>
+<path d="M 520,688 V 740" fill="none" stroke="#6b675c" stroke-width="1.2" marker-end="url(#arrow)"/>
+<rect x="528" y="707" width="50" height="14" rx="2" fill="#f1eee7"/><text x="553" y="717.5" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">CHANGED</text>
+<path d="M 660,628 H 692 Q 700,628 700,636 V 740" fill="none" stroke="#6b675c" stroke-width="1.2" marker-end="url(#arrow)"/>
+<rect x="708" y="683" width="72" height="14" rx="2" fill="#f1eee7"/><text x="744" y="693.5" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">CAN'T JUDGE</text>
+<rect x="420" y="40" width="200" height="48" rx="20" fill="#f1eee7"/><rect x="420" y="40" width="200" height="48" rx="20" fill="#ffffff" stroke="#17160f" stroke-width="1"/>
+<text x="520.0" y="61" fill="#17160f" font-size="12" font-weight="600" font-family="'Switzer', system-ui, sans-serif" text-anchor="middle" >After photo</text>
+<text x="520.0" y="76" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >one spot, move-out shot</text>
+<polygon points="520,128 660,188 520,248 380,188" fill="#f1eee7"/>
+<polygon points="520,128 660,188 520,248 380,188" fill="#ffffff" stroke="#17160f" stroke-width="1"/>
+<text x="520" y="182" fill="#17160f" font-size="12" font-weight="600" font-family="'Switzer', system-ui, sans-serif" text-anchor="middle" >Registered?</text>
+<text x="520" y="198" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >SIFT · USAC MAGSAC</text>
+<text x="520" y="212" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >+ DIS flow</text>
+<rect x="400" y="288" width="240" height="80" rx="6" fill="#f1eee7"/><rect x="400" y="288" width="240" height="80" rx="6" fill="#ffffff" stroke="#17160f" stroke-width="1"/>
+<text x="520.0" y="320" fill="#17160f" font-size="12" font-weight="600" font-family="'Switzer', system-ui, sans-serif" text-anchor="middle" >Change map</text>
+<text x="520.0" y="338" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >shift-tolerant structure</text>
+<text x="520.0" y="352" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >+ colour z-score</text>
+<polygon points="520,408 660,468 520,528 380,468" fill="#f1eee7"/>
+<polygon points="520,408 660,468 520,528 380,468" fill="#ffffff" stroke="#17160f" stroke-width="1"/>
+<text x="520" y="462" fill="#17160f" font-size="12" font-weight="600" font-family="'Switzer', system-ui, sans-serif" text-anchor="middle" >Triage each region</text>
+<text x="520" y="478" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >relight · glare · size</text>
+<text x="520" y="492" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >lighting only: rule out</text>
+<polygon points="520,568 660,628 520,688 380,628" fill="#f1eee7"/>
+<polygon points="520,568 660,628 520,688 380,628" fill="#ffffff" stroke="#17160f" stroke-width="1"/>
+<text x="520" y="622" fill="#17160f" font-size="12" font-weight="600" font-family="'Switzer', system-ui, sans-serif" text-anchor="middle" >Object check</text>
+<text x="520" y="638" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >NanoDet · cv2.dnn ENGINE_NEW</text>
+<text x="520" y="652" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >person? object gone or new?</text>
+<rect x="860" y="416" width="240" height="104" rx="6" fill="#f1eee7"/><rect x="860" y="416" width="240" height="104" rx="6" fill="#fbe3da" stroke="#e2401a" stroke-width="1"/>
+<text x="980.0" y="446" fill="#17160f" font-size="12" font-weight="600" font-family="'Switzer', system-ui, sans-serif" text-anchor="middle" >Request follow-up photo</text>
+<text x="980.0" y="466" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >glare: step aside (parallax)</text>
+<text x="980.0" y="480" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >small or weak: close-up</text>
+<text x="980.0" y="494" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >max 2 per spot</text>
+<rect x="120" y="740" width="960" height="72" rx="20" fill="#f1eee7"/><rect x="120" y="740" width="960" height="72" rx="20" fill="#ffffff" stroke="#17160f" stroke-width="1"/>
+<text x="600.0" y="768" fill="#17160f" font-size="12" font-weight="600" font-family="'Switzer', system-ui, sans-serif" text-anchor="middle" >Caption, then sign</text>
+<text x="600.0" y="786" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >Claude on Bedrock (or rules) names each change · KMS signs the report</text>
+<text x="600.0" y="800" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >the report lists Changed · Ruled out · Can't judge</text>
+<text x="700" y="96" fill="#17160f" font-size="14" font-weight="400" font-family="'Gambetta', Georgia, serif" text-anchor="start" font-style="italic">The agentic step: what the vision tools</text>
+<text x="700" y="116" fill="#17160f" font-size="14" font-weight="400" font-family="'Gambetta', Georgia, serif" text-anchor="start" font-style="italic">measure decides which photo is asked for next.</text>
+<path d="M 960,134 Q 950,230 900,328" fill="none" stroke="rgba(23,22,15,0.40)" stroke-width="1" stroke-dasharray="4,3"/>
+<circle cx="900" cy="328" r="2" fill="#17160f"/>
+<text x="40" y="536" fill="#17160f" font-size="14" font-weight="400" font-family="'Gambetta', Georgia, serif" text-anchor="start" font-style="italic">Ruled-out regions still reach</text>
+<text x="40" y="556" fill="#17160f" font-size="14" font-weight="400" font-family="'Gambetta', Georgia, serif" text-anchor="start" font-style="italic">the report, marked as ignored.</text>
+<path d="M 214,562 Q 232,566 240,584" fill="none" stroke="rgba(23,22,15,0.40)" stroke-width="1" stroke-dasharray="4,3"/>
+<circle cx="240" cy="584" r="2" fill="#17160f"/>
+<line x1="40" y1="848" x2="1240" y2="848" stroke="rgba(23,22,15,0.14)" stroke-width="0.8"/>
+<text x="40" y="868" fill="#6b675c" font-size="8" font-weight="500" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.14em">LEGEND</text>
+<rect x="120" y="859" width="20" height="12" rx="6" fill="#ffffff" stroke="#17160f" stroke-width="1"/>
+<text x="148" y="868" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.08em">START / END</text>
+<rect x="241" y="859" width="20" height="12" rx="3" fill="#ffffff" stroke="#17160f" stroke-width="1"/>
+<text x="269" y="868" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.08em">STEP</text>
+<polygon points="336,858 346,865 336,872 326,865" fill="#ffffff" stroke="#17160f" stroke-width="1"/>
+<text x="354" y="868" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.08em">DECISION</text>
+<line x1="432" y1="865" x2="460" y2="865" stroke="#e2401a" stroke-width="1.2" marker-end="url(#arrow-accent)"/>
+<text x="468" y="868" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.08em">FOLLOW-UP PATH</text>
+<line x1="577" y1="865" x2="605" y2="865" stroke="#6b675c" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#arrow)"/>
+<text x="613" y="868" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.08em">RETRY</text>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>

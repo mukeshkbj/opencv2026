@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Twice architecture</title>
+  <style>
+    @font-face { font-family: 'Gambetta'; src: url('../../web/public/fonts/gambetta-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Gambetta'; src: url('../../web/public/fonts/gambetta-400i.woff2') format('woff2'); font-weight: 400; font-style: italic; font-display: swap; }
+    @font-face { font-family: 'Switzer'; src: url('../../web/public/fonts/switzer-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Switzer'; src: url('../../web/public/fonts/switzer-500.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'Switzer'; src: url('../../web/public/fonts/switzer-600.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'JetBrains Mono'; src: url('../../web/public/fonts/jbmono-400.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
+    @font-face { font-family: 'JetBrains Mono'; src: url('../../web/public/fonts/jbmono-500.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --color-paper:  #f1eee7;   /* paper */
+      --color-paper-2: #e9e5dc;
+      --color-ink:    #17160f;
+      --color-muted:  #6b675c;
+      --color-accent: #e2401a;   /* signal vermilion */
+      --font-sans:    'Switzer', system-ui, sans-serif;
+      --font-serif:   'Gambetta', Georgia, serif;
+      --font-mono:    'JetBrains Mono', ui-monospace, monospace;
+    }
+    html { background: var(--color-paper); }
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-paper);
+      color: var(--color-ink);
+      padding: 40px;
+    }
+    .frame { max-width: 1280px; width: 100%; margin: 0 auto; }
+    header { height: 88px; }
+    /* min-width equals the viewBox width, so the type ramp is never scaled down;
+       the wrapper scrolls on its own on a narrow screen. */
+    .diagram-container { width: 100%; overflow-x: auto; }
+    .eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.66rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+      height: 24px;
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      line-height: 40px;
+      color: var(--color-ink);
+    }
+    svg { width: 100%; min-width: 1280px; display: block; }
+    @media print {
+      .diagram-container { overflow-x: visible; }
+      svg { min-width: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <header>
+      <p class="eyebrow">Architecture · Twice</p>
+      <h1>Twice architecture</h1>
+    </header>
+    <div class="diagram-container">
+      <svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="architecture-title architecture-desc">
+        <title id="architecture-title">Twice architecture on AWS</title>
+        <desc id="architecture-desc">Architecture diagram: a phone browser uploads photos to a Lambda container running FastAPI and OpenCV 5, which writes evidence to S3, signs manifests with a KMS key, asks Claude on Bedrock to label findings, and emits metrics to CloudWatch, while a verifier checks the result.</desc>
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#6b675c"/></marker>
+          <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#e2401a"/></marker>
+          <marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto"><polygon points="0 0, 8 3, 0 6" fill="#2b5fa8"/></marker>
+        </defs>
+        <rect width="100%" height="100%" fill="#f1eee7"/>
+<rect x="336" y="40" width="904" height="580" rx="8" fill="rgba(23,22,15,0.02)" stroke="rgba(23,22,15,0.14)" stroke-width="0.8"/>
+<rect x="348" y="44" width="104" height="12" rx="2" fill="#f1eee7"/>
+<text x="400" y="53" fill="rgba(23,22,15,0.55)" font-size="7" font-weight="500" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.14em">AWS · ONE ACCOUNT</text>
+<path d="M 280,276 H 448" fill="none" stroke="#2b5fa8" stroke-width="1.2" marker-end="url(#arrow-link)"/>
+<rect x="356" y="254" width="72" height="14" rx="2" fill="#f1eee7"/><text x="392" y="264.5" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">JPEG UPLOAD</text>
+<path d="M 280,404 H 448" fill="none" stroke="#2b5fa8" stroke-width="1.2" marker-end="url(#arrow-link)"/>
+<rect x="369.5" y="382" width="45" height="14" rx="2" fill="#f1eee7"/><text x="392" y="392.5" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">VERIFY</text>
+<path d="M 768,276 H 968" fill="none" stroke="#6b675c" stroke-width="1.2" marker-end="url(#arrow)"/>
+<rect x="835" y="254" width="66" height="14" rx="2" fill="#f1eee7"/><text x="868" y="264.5" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">PUT + HASH</text>
+<path d="M 768,404 H 968" fill="none" stroke="#e2401a" stroke-width="1.4" marker-end="url(#arrow-accent)"/>
+<rect x="832" y="382" width="72" height="14" rx="2" fill="#f1eee7"/><text x="868" y="392.5" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">SIGN DIGEST</text>
+<path d="M 608,220 V 168" fill="none" stroke="#6b675c" stroke-width="1.2" marker-end="url(#arrow)"/>
+<rect x="616" y="187" width="66" height="14" rx="2" fill="#f1eee7"/><text x="649" y="197.5" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">LABEL CROP</text>
+<path d="M 608,460 V 512" fill="none" stroke="#6b675c" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#arrow)"/>
+<rect x="616" y="479" width="28" height="14" rx="2" fill="#f1eee7"/><text x="630" y="489.5" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.06em">EMF</text>
+<rect x="40" y="228" width="240" height="96" rx="6" fill="#f1eee7"/><rect x="40" y="228" width="240" height="96" rx="6" fill="rgba(23,22,15,0.06)" stroke="#6b675c" stroke-width="1"/>
+<rect x="48" y="236" width="41" height="12" rx="2" fill="transparent" stroke="#17160f" stroke-opacity="0.45" stroke-width="0.8"/><text x="68.5" y="245" fill="#17160f" font-size="7" font-weight="500" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" fill-opacity="0.85">CLIENT</text>
+<text x="160.0" y="272" fill="#17160f" font-size="12" font-weight="600" font-family="'Switzer', system-ui, sans-serif" text-anchor="middle" >Phone browser</text>
+<text x="160.0" y="290" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >React · ghost-overlay camera</text>
+<text x="160.0" y="304" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >quality gate before capture</text>
+<rect x="40" y="356" width="240" height="96" rx="6" fill="#f1eee7"/><rect x="40" y="356" width="240" height="96" rx="6" fill="rgba(23,22,15,0.03)" stroke="rgba(23,22,15,0.35)" stroke-width="1"/>
+<rect x="48" y="364" width="51" height="12" rx="2" fill="transparent" stroke="rgba(23,22,15,0.35)" stroke-opacity="0.45" stroke-width="0.8"/><text x="73.5" y="373" fill="rgba(23,22,15,0.35)" font-size="7" font-weight="500" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" fill-opacity="0.85">EXTERNAL</text>
+<text x="160.0" y="400" fill="#17160f" font-size="12" font-weight="600" font-family="'Switzer', system-ui, sans-serif" text-anchor="middle" >Verifier / counterparty</text>
+<text x="160.0" y="418" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >re-hash photos, check signature</text>
+<text x="160.0" y="432" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >GET /api/checks/{id}/verify</text>
+<rect x="488" y="72" width="240" height="96" rx="6" fill="#f1eee7"/><rect x="488" y="72" width="240" height="96" rx="6" fill="#ffffff" stroke="#17160f" stroke-width="1"/>
+<rect x="496" y="80" width="27" height="12" rx="2" fill="transparent" stroke="#17160f" stroke-opacity="0.45" stroke-width="0.8"/><text x="509.5" y="89" fill="#17160f" font-size="7" font-weight="500" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" fill-opacity="0.85">LLM</text>
+<text x="608.0" y="116" fill="#17160f" font-size="12" font-weight="600" font-family="'Switzer', system-ui, sans-serif" text-anchor="middle" >Claude on Amazon Bedrock</text>
+<text x="608.0" y="134" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >labels each confirmed change</text>
+<text x="608.0" y="148" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >sees crops only · rules fallback</text>
+<rect x="488" y="512" width="240" height="80" rx="6" fill="#f1eee7"/><rect x="488" y="512" width="240" height="80" rx="6" fill="rgba(23,22,15,0.02)" stroke="rgba(23,22,15,0.35)" stroke-width="1" stroke-dasharray="4,3"/>
+<rect x="496" y="520" width="46" height="12" rx="2" fill="transparent" stroke="rgba(23,22,15,0.35)" stroke-opacity="0.45" stroke-width="0.8"/><text x="519" y="529" fill="rgba(23,22,15,0.35)" font-size="7" font-weight="500" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" fill-opacity="0.85">OBSERVE</text>
+<text x="608.0" y="556" fill="#17160f" font-size="12" font-weight="600" font-family="'Switzer', system-ui, sans-serif" text-anchor="middle" >CloudWatch</text>
+<text x="608.0" y="574" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >EMF metrics · logs · error alarm</text>
+<rect x="968" y="228" width="240" height="96" rx="6" fill="#f1eee7"/><rect x="968" y="228" width="240" height="96" rx="6" fill="rgba(23,22,15,0.05)" stroke="#6b675c" stroke-width="1"/>
+<rect x="976" y="236" width="36" height="12" rx="2" fill="transparent" stroke="#17160f" stroke-opacity="0.45" stroke-width="0.8"/><text x="994" y="245" fill="#17160f" font-size="7" font-weight="500" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" fill-opacity="0.85">STORE</text>
+<text x="1088.0" y="272" fill="#17160f" font-size="12" font-weight="600" font-family="'Switzer', system-ui, sans-serif" text-anchor="middle" >S3 evidence bucket</text>
+<text x="1088.0" y="290" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >SSE-KMS · Object Lock · versioned</text>
+<text x="1088.0" y="304" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >photos, manifests, seals</text>
+<rect x="968" y="356" width="240" height="96" rx="6" fill="#f1eee7"/><rect x="968" y="356" width="240" height="96" rx="6" fill="#ffffff" stroke="#17160f" stroke-width="1"/>
+<rect x="976" y="364" width="27" height="12" rx="2" fill="transparent" stroke="#17160f" stroke-opacity="0.45" stroke-width="0.8"/><text x="989.5" y="373" fill="#17160f" font-size="7" font-weight="500" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" fill-opacity="0.85">KEY</text>
+<text x="1088.0" y="400" fill="#17160f" font-size="12" font-weight="600" font-family="'Switzer', system-ui, sans-serif" text-anchor="middle" >KMS signing key</text>
+<text x="1088.0" y="418" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >ECDSA P-256 · asymmetric</text>
+<text x="1088.0" y="432" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >GET /api/key publishes public half</text>
+<rect x="448" y="220" width="320" height="240" rx="6" fill="#f1eee7"/><rect x="448" y="220" width="320" height="240" rx="6" fill="#fbe3da" stroke="#e2401a" stroke-width="1"/>
+<rect x="456" y="228" width="46" height="12" rx="2" fill="transparent" stroke="#e2401a" stroke-opacity="0.45" stroke-width="0.8"/><text x="479" y="237" fill="#e2401a" font-size="7" font-weight="500" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" letter-spacing="0.08em" fill-opacity="0.85">COMPUTE</text>
+<text x="608.0" y="264" fill="#17160f" font-size="12" font-weight="600" font-family="'Switzer', system-ui, sans-serif" text-anchor="middle" >Twice engine on Lambda</text>
+<text x="608.0" y="282" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >arm64 Graviton container image</text>
+<text x="608.0" y="296" fill="#6b675c" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="middle" >behind a Function URL · FastAPI</text>
+<line x1="464" y1="314" x2="752" y2="314" stroke="rgba(226,64,26,0.35)" stroke-width="0.8"/>
+<text x="464" y="342" fill="#e2401a" font-size="7" font-weight="500" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.1em">REGISTER</text>
+<text x="536" y="342" fill="#17160f" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="start" >SIFT · USAC MAGSAC · DIS flow</text>
+<text x="464" y="370" fill="#e2401a" font-size="7" font-weight="500" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.1em">CHANGE MAP</text>
+<text x="536" y="370" fill="#17160f" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="start" >shift-tolerant structure + colour z</text>
+<text x="464" y="398" fill="#e2401a" font-size="7" font-weight="500" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.1em">AGENT</text>
+<text x="536" y="398" fill="#17160f" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="start" >rule planner · 2 follow-ups per spot</text>
+<text x="464" y="426" fill="#e2401a" font-size="7" font-weight="500" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.1em">DNN</text>
+<text x="536" y="426" fill="#17160f" font-size="9" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="start" >NanoDet · cv2.dnn ENGINE_NEW</text>
+<text x="760" y="106" fill="#17160f" font-size="14" font-weight="400" font-family="'Gambetta', Georgia, serif" text-anchor="start" font-style="italic">Claude names a change, or hands it to</text>
+<text x="760" y="126" fill="#17160f" font-size="14" font-weight="400" font-family="'Gambetta', Georgia, serif" text-anchor="start" font-style="italic">a human. It cannot delete one.</text>
+<path d="M 754,100 Q 738,100 728,124" fill="none" stroke="rgba(23,22,15,0.40)" stroke-width="1" stroke-dasharray="4,3"/>
+<circle cx="728" cy="124" r="2" fill="#17160f"/>
+<text x="968" y="490" fill="#17160f" font-size="14" font-weight="400" font-family="'Gambetta', Georgia, serif" text-anchor="start" font-style="italic">Only a SHA-256 digest reaches KMS;</text>
+<text x="968" y="510" fill="#17160f" font-size="14" font-weight="400" font-family="'Gambetta', Georgia, serif" text-anchor="start" font-style="italic">the private key never leaves it.</text>
+<path d="M 1000,476 Q 994,464 994,452" fill="none" stroke="rgba(23,22,15,0.40)" stroke-width="1" stroke-dasharray="4,3"/>
+<circle cx="994" cy="452" r="2" fill="#17160f"/>
+<line x1="40" y1="652" x2="1240" y2="652" stroke="rgba(23,22,15,0.14)" stroke-width="0.8"/>
+<text x="40" y="672" fill="#6b675c" font-size="8" font-weight="500" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.14em">LEGEND</text>
+<rect x="120" y="663" width="20" height="12" rx="3" fill="#fbe3da" stroke="#e2401a" stroke-width="1"/>
+<text x="148" y="672" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.08em">ENGINE</text>
+<line x1="215" y1="669" x2="243" y2="669" stroke="#2b5fa8" stroke-width="1.2" marker-end="url(#arrow-link)"/>
+<text x="251" y="672" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.08em">HTTPS</text>
+<line x1="313" y1="669" x2="341" y2="669" stroke="#6b675c" stroke-width="1.2" marker-end="url(#arrow)"/>
+<text x="349" y="672" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.08em">AWS SDK CALL</text>
+<line x1="447" y1="669" x2="475" y2="669" stroke="#e2401a" stroke-width="1.2" marker-end="url(#arrow-accent)"/>
+<text x="483" y="672" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.08em">SIGNING PATH</text>
+<line x1="581" y1="669" x2="609" y2="669" stroke="#6b675c" stroke-width="1.2" stroke-dasharray="5,4" marker-end="url(#arrow)"/>
+<text x="617" y="672" fill="#6b675c" font-size="8" font-weight="400" font-family="'JetBrains Mono', ui-monospace, monospace" text-anchor="start" letter-spacing="0.08em">ASYNC / PASSIVE</text>
+      </svg>
+    </div>
+  </div>
+</body>
+</html>
