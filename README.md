@@ -14,13 +14,18 @@ Rental companies now scan returned cars with AI. One Hertz renter received a $44
 
 ## What a judge can try in two minutes
 
-1. Open the app and press **Try the sample check**. It loads three move-in photos that were sealed earlier: a living room, a desk and a rental car.
+1. Open the app and press **Try the sample check**. It loads three move-in photos that were sealed earlier: a rental car, a living room and a desk.
 2. Press **Take the move-out photo** on each spot. The sample uses prepared photos instead of your camera.
 3. Watch the agent. On the car, a reflection looks like damage. The agent asks for a side-step photo, sees the reflection move, and rules it out. The scratch stays.
+
+   ![The agent asks for a side-step photo and rules out the reflection](docs/img/glare.gif)
+
 4. Press **Create the signed report**. The report shows every finding, every ruled-out shadow, the SHA-256 of every photo and two signatures. The stamp turns green only when the server re-hashes every stored photo and both signatures check out.
 5. Press **Download evidence bundle**, unzip it, and run `python verify.py`. It checks every photo and both signatures without the Twice server.
 
 ![The signed condition report](docs/img/report.png)
+
+A 46-second recording of the whole sample flow is in [docs/img/demo.mp4](docs/img/demo.mp4).
 
 With a phone, press **Start my own** to run the same flow on your own room.
 

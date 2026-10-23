@@ -43,7 +43,7 @@ apartments and rental cars. Spec: docs/spec.md. Persona critique: docs/critique-
       normalises for image size (tests/test_vision.py); bundle ships only signed photos; hash format checked.
 - [x] 6l. agent_bench runs 5 RANSAC seeds (it was not reproducible before: exposure pair 3 flipped between runs).
       Pooled: recall 0.901, precision 0.993, no-change 0.033, lighting 0.027 (0.017 to 0.033). Real: 22 judged, 2 false.
-- [ ] 6m. Engine bench re-run for the corner rule (/tmp/bench.log); then refresh section 5 tables in evaluation.md.
+- [x] 6m. Engine bench re-run for the corner rule; section 5 stress and latency tables refreshed.
 - [x] 6c. README, docs/report.md (eval section placeholder EVAL_SUMMARY), docs/video-script.md.
 - [x] 6d. Verification now checks photos against signed manifests; report seal links to move-in seal. 6 tests pass.
 - [ ] 7. Hill-climb: dark theme check, second persona critique on the built product, code-deslop pass.
