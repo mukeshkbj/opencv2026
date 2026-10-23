@@ -1,0 +1,8730 @@
+{
+ "seed": 20260,
+ "scenes": [
+  "aloeL.jpg",
+  "baboon.jpg",
+  "board.jpg",
+  "box_in_scene.png",
+  "building.jpg",
+  "fruits.jpg",
+  "graf1.png",
+  "home.jpg",
+  "lena.jpg",
+  "starry_night.jpg"
+ ],
+ "cv2": "5.0.0",
+ "cpu": "13th Gen Intel(R) Core(TM) i9-13900K",
+ "logical_cores": 32,
+ "python": "3.14.7",
+ "set_sizes": {
+  "damage": 80,
+  "nochange": 30,
+  "exposure": 15,
+  "colortemp": 15,
+  "shadow": 15,
+  "specular": 15
+ },
+ "iou_strict": 0.3,
+ "registration_tolerance_px": 3.0,
+ "latency": {
+  "bench_924px_threads32": {
+   "pairs": 30,
+   "build_ms_median": 126.0,
+   "compare_ms_median": 682.7,
+   "total_s_median": 0.915,
+   "total_s_p95": 1.253
+  },
+  "phone_4032px_threads32": {
+   "pairs": 12,
+   "build_ms_median": 135.9,
+   "compare_ms_median": 755.7,
+   "total_s_median": 1.036,
+   "total_s_p95": 1.238
+  },
+  "bench_924px_threads1": {
+   "pairs": 30,
+   "build_ms_median": 426.7,
+   "compare_ms_median": 847.7,
+   "total_s_median": 1.715,
+   "total_s_p95": 3.2
+  },
+  "phone_4032px_threads1": {
+   "pairs": 12,
+   "build_ms_median": 797.8,
+   "compare_ms_median": 1191.7,
+   "total_s_median": 2.834,
+   "total_s_p95": 3.962
+  }
+ },
+ "synth_reference": {
+  "trials": 40,
+  "registration_failures": 0,
+  "recall": 0.912,
+  "precision": 0.839,
+  "false_positives_per_pair": 0.35,
+  "false_positives_in_shadow_pairs": 3,
+  "recall_by_kind": {
+   "scratch": 0.909,
+   "stain": 0.889,
+   "chip": 1.0,
+   "crack": 0.864
+  }
+ },
+ "ablations": {
+  "full": {
+   "damage_pairs": 80,
+   "defects": 162,
+   "damage_registration_failures": 0,
+   "recall": 0.858,
+   "precision": 0.88,
+   "fp_per_pair": 0.24,
+   "fp_in_shadow_pairs": 4,
+   "shadow_pairs": 39,
+   "nochange_pairs": 30,
+   "nochange_false_alarm_rate": 0.167,
+   "nochange_flags_per_pair": 0.27,
+   "nochange_registration_failures": 0,
+   "lighting_pairs": 60,
+   "lighting_false_alarm_rate": 0.45,
+   "lighting_flags_per_pair": 0.95,
+   "lighting_registration_failures": 0,
+   "lighting_by_kind": {
+    "exposure": {
+     "pairs": 15,
+     "false_alarm_rate": 0.467,
+     "flags": 26
+    },
+    "colortemp": {
+     "pairs": 15,
+     "false_alarm_rate": 0.2,
+     "flags": 4
+    },
+    "shadow": {
+     "pairs": 15,
+     "false_alarm_rate": 0.133,
+     "flags": 2
+    },
+    "specular": {
+     "pairs": 15,
+     "false_alarm_rate": 1.0,
+     "flags": 25
+    }
+   },
+   "seconds": 701.3
+  },
+  "plain_abs_diff": {
+   "damage_pairs": 80,
+   "defects": 162,
+   "damage_registration_failures": 0,
+   "recall": 0.864,
+   "precision": 0.946,
+   "fp_per_pair": 0.1,
+   "fp_in_shadow_pairs": 2,
+   "shadow_pairs": 39,
+   "nochange_pairs": 30,
+   "nochange_false_alarm_rate": 0.1,
+   "nochange_flags_per_pair": 0.13,
+   "nochange_registration_failures": 0,
+   "lighting_pairs": 60,
+   "lighting_false_alarm_rate": 0.367,
+   "lighting_flags_per_pair": 0.73,
+   "lighting_registration_failures": 0,
+   "lighting_by_kind": {
+    "exposure": {
+     "pairs": 15,
+     "false_alarm_rate": 0.4,
+     "flags": 16
+    },
+    "colortemp": {
+     "pairs": 15,
+     "false_alarm_rate": 0.067,
+     "flags": 1
+    },
+    "shadow": {
+     "pairs": 15,
+     "false_alarm_rate": 0.0,
+     "flags": 0
+    },
+    "specular": {
+     "pairs": 15,
+     "false_alarm_rate": 1.0,
+     "flags": 27
+    }
+   },
+   "seconds": 678.8
+  },
+  "no_local_norm": {
+   "damage_pairs": 80,
+   "defects": 162,
+   "damage_registration_failures": 0,
+   "recall": 0.21,
+   "precision": 1.0,
+   "fp_per_pair": 0.0,
+   "fp_in_shadow_pairs": 0,
+   "shadow_pairs": 39,
+   "nochange_pairs": 30,
+   "nochange_false_alarm_rate": 0.0,
+   "nochange_flags_per_pair": 0.0,
+   "nochange_registration_failures": 0,
+   "lighting_pairs": 60,
+   "lighting_false_alarm_rate": 0.25,
+   "lighting_flags_per_pair": 0.4,
+   "lighting_registration_failures": 0,
+   "lighting_by_kind": {
+    "exposure": {
+     "pairs": 15,
+     "false_alarm_rate": 0.0,
+     "flags": 0
+    },
+    "colortemp": {
+     "pairs": 15,
+     "false_alarm_rate": 0.0,
+     "flags": 0
+    },
+    "shadow": {
+     "pairs": 15,
+     "false_alarm_rate": 0.067,
+     "flags": 1
+    },
+    "specular": {
+     "pairs": 15,
+     "false_alarm_rate": 0.933,
+     "flags": 23
+    }
+   },
+   "seconds": 637.1
+  },
+  "no_flow_refine": {
+   "damage_pairs": 80,
+   "defects": 162,
+   "damage_registration_failures": 0,
+   "recall": 0.864,
+   "precision": 0.886,
+   "fp_per_pair": 0.23,
+   "fp_in_shadow_pairs": 6,
+   "shadow_pairs": 39,
+   "nochange_pairs": 30,
+   "nochange_false_alarm_rate": 0.133,
+   "nochange_flags_per_pair": 0.23,
+   "nochange_registration_failures": 0,
+   "lighting_pairs": 60,
+   "lighting_false_alarm_rate": 0.45,
+   "lighting_flags_per_pair": 0.9,
+   "lighting_registration_failures": 0,
+   "lighting_by_kind": {
+    "exposure": {
+     "pairs": 15,
+     "false_alarm_rate": 0.467,
+     "flags": 22
+    },
+    "colortemp": {
+     "pairs": 15,
+     "false_alarm_rate": 0.267,
+     "flags": 6
+    },
+    "shadow": {
+     "pairs": 15,
+     "false_alarm_rate": 0.067,
+     "flags": 1
+    },
+    "specular": {
+     "pairs": 15,
+     "false_alarm_rate": 1.0,
+     "flags": 25
+    }
+   },
+   "seconds": 579.8,
+   "patched_calls": {
+    "cv2": 170
+   }
+  },
+  "no_clahe": {
+   "damage_pairs": 80,
+   "defects": 162,
+   "damage_registration_failures": 0,
+   "recall": 0.858,
+   "precision": 0.863,
+   "fp_per_pair": 0.28,
+   "fp_in_shadow_pairs": 6,
+   "shadow_pairs": 39,
+   "nochange_pairs": 30,
+   "nochange_false_alarm_rate": 0.167,
+   "nochange_flags_per_pair": 0.27,
+   "nochange_registration_failures": 0,
+   "lighting_pairs": 60,
+   "lighting_false_alarm_rate": 0.45,
+   "lighting_flags_per_pair": 0.95,
+   "lighting_registration_failures": 0,
+   "lighting_by_kind": {
+    "exposure": {
+     "pairs": 15,
+     "false_alarm_rate": 0.467,
+     "flags": 24
+    },
+    "colortemp": {
+     "pairs": 15,
+     "false_alarm_rate": 0.267,
+     "flags": 6
+    },
+    "shadow": {
+     "pairs": 15,
+     "false_alarm_rate": 0.067,
+     "flags": 1
+    },
+    "specular": {
+     "pairs": 15,
+     "false_alarm_rate": 1.0,
+     "flags": 26
+    }
+   },
+   "seconds": 652.6
+  },
+  "no_clipped_mask": {
+   "damage_pairs": 80,
+   "defects": 162,
+   "damage_registration_failures": 0,
+   "recall": 0.864,
+   "precision": 0.875,
+   "fp_per_pair": 0.25,
+   "fp_in_shadow_pairs": 5,
+   "shadow_pairs": 39,
+   "nochange_pairs": 30,
+   "nochange_false_alarm_rate": 0.167,
+   "nochange_flags_per_pair": 0.33,
+   "nochange_registration_failures": 0,
+   "lighting_pairs": 60,
+   "lighting_false_alarm_rate": 0.45,
+   "lighting_flags_per_pair": 0.93,
+   "lighting_registration_failures": 0,
+   "lighting_by_kind": {
+    "exposure": {
+     "pairs": 15,
+     "false_alarm_rate": 0.467,
+     "flags": 21
+    },
+    "colortemp": {
+     "pairs": 15,
+     "false_alarm_rate": 0.267,
+     "flags": 9
+    },
+    "shadow": {
+     "pairs": 15,
+     "false_alarm_rate": 0.067,
+     "flags": 1
+    },
+    "specular": {
+     "pairs": 15,
+     "false_alarm_rate": 1.0,
+     "flags": 25
+    }
+   },
+   "seconds": 700.4,
+   "patched_calls": {
+    "cv2": 170
+   }
+  },
+  "no_lighting_test": {
+   "damage_pairs": 80,
+   "defects": 162,
+   "damage_registration_failures": 0,
+   "recall": 0.907,
+   "precision": 0.812,
+   "fp_per_pair": 0.42,
+   "fp_in_shadow_pairs": 14,
+   "shadow_pairs": 39,
+   "nochange_pairs": 30,
+   "nochange_false_alarm_rate": 0.167,
+   "nochange_flags_per_pair": 0.37,
+   "nochange_registration_failures": 0,
+   "lighting_pairs": 60,
+   "lighting_false_alarm_rate": 0.5,
+   "lighting_flags_per_pair": 1.27,
+   "lighting_registration_failures": 0,
+   "lighting_by_kind": {
+    "exposure": {
+     "pairs": 15,
+     "false_alarm_rate": 0.533,
+     "flags": 40
+    },
+    "colortemp": {
+     "pairs": 15,
+     "false_alarm_rate": 0.267,
+     "flags": 8
+    },
+    "shadow": {
+     "pairs": 15,
+     "false_alarm_rate": 0.2,
+     "flags": 3
+    },
+    "specular": {
+     "pairs": 15,
+     "false_alarm_rate": 1.0,
+     "flags": 25
+    }
+   },
+   "seconds": 696.7
+  },
+  "threshold_z6": {
+   "damage_pairs": 80,
+   "defects": 162,
+   "damage_registration_failures": 0,
+   "recall": 0.901,
+   "precision": 0.568,
+   "fp_per_pair": 1.39,
+   "fp_in_shadow_pairs": 39,
+   "shadow_pairs": 39,
+   "nochange_pairs": 30,
+   "nochange_false_alarm_rate": 0.367,
+   "nochange_flags_per_pair": 1.03,
+   "nochange_registration_failures": 0,
+   "lighting_pairs": 60,
+   "lighting_false_alarm_rate": 0.733,
+   "lighting_flags_per_pair": 2.13,
+   "lighting_registration_failures": 0,
+   "lighting_by_kind": {
+    "exposure": {
+     "pairs": 15,
+     "false_alarm_rate": 0.667,
+     "flags": 35
+    },
+    "colortemp": {
+     "pairs": 15,
+     "false_alarm_rate": 0.8,
+     "flags": 37
+    },
+    "shadow": {
+     "pairs": 15,
+     "false_alarm_rate": 0.467,
+     "flags": 16
+    },
+    "specular": {
+     "pairs": 15,
+     "false_alarm_rate": 1.0,
+     "flags": 40
+    }
+   },
+   "seconds": 702.3
+  },
+  "threshold_z12": {
+   "damage_pairs": 80,
+   "defects": 162,
+   "damage_registration_failures": 0,
+   "recall": 0.821,
+   "precision": 0.964,
+   "fp_per_pair": 0.06,
+   "fp_in_shadow_pairs": 2,
+   "shadow_pairs": 39,
+   "nochange_pairs": 30,
+   "nochange_false_alarm_rate": 0.1,
+   "nochange_flags_per_pair": 0.2,
+   "nochange_registration_failures": 0,
+   "lighting_pairs": 60,
+   "lighting_false_alarm_rate": 0.383,
+   "lighting_flags_per_pair": 0.63,
+   "lighting_registration_failures": 0,
+   "lighting_by_kind": {
+    "exposure": {
+     "pairs": 15,
+     "false_alarm_rate": 0.4,
+     "flags": 11
+    },
+    "colortemp": {
+     "pairs": 15,
+     "false_alarm_rate": 0.133,
+     "flags": 2
+    },
+    "shadow": {
+     "pairs": 15,
+     "false_alarm_rate": 0.0,
+     "flags": 0
+    },
+    "specular": {
+     "pairs": 15,
+     "false_alarm_rate": 1.0,
+     "flags": 25
+    }
+   },
+   "seconds": 702.2
+  }
+ },
+ "registration": {
+  "rotation": [
+   {
+    "level": 0,
+    "pairs": 12,
+    "registered": 12,
+    "accurate": 12,
+    "usable": 12,
+    "registered_rate": 1.0,
+    "accurate_rate": 1.0,
+    "median_error_px": 0.03
+   },
+   {
+    "level": 1,
+    "pairs": 12,
+    "registered": 12,
+    "accurate": 12,
+    "usable": 12,
+    "registered_rate": 1.0,
+    "accurate_rate": 1.0,
+    "median_error_px": 0.09
+   },
+   {
+    "level": 2,
+    "pairs": 12,
+    "registered": 12,
+    "accurate": 12,
+    "usable": 12,
+    "registered_rate": 1.0,
+    "accurate_rate": 1.0,
+    "median_error_px": 0.17
+   },
+   {
+    "level": 3,
+    "pairs": 12,
+    "registered": 12,
+    "accurate": 12,
+    "usable": 12,
+    "registered_rate": 1.0,
+    "accurate_rate": 1.0,
+    "median_error_px": 0.33
+   },
+   {
+    "level": 4,
+    "pairs": 12,
+    "registered": 12,
+    "accurate": 12,
+    "usable": 12,
+    "registered_rate": 1.0,
+    "accurate_rate": 1.0,
+    "median_error_px": 0.47
+   },
+   {
+    "level": 5,
+    "pairs": 12,
+    "registered": 12,
+    "accurate": 12,
+    "usable": 12,
+    "registered_rate": 1.0,
+    "accurate_rate": 1.0,
+    "median_error_px": 0.65
+   }
+  ],
+  "scale": [
+   {
+    "level": 0,
+    "pairs": 12,
+    "registered": 12,
+    "accurate": 12,
+    "usable": 12,
+    "registered_rate": 1.0,
+    "accurate_rate": 1.0,
+    "median_error_px": 0.04
+   },
+   {
+    "level": 1,
+    "pairs": 12,
+    "registered": 12,
+    "accurate": 12,
+    "usable": 12,
+    "registered_rate": 1.0,
+    "accurate_rate": 1.0,
+    "median_error_px": 0.1
+   },
+   {
+    "level": 2,
+    "pairs": 12,
+    "registered": 12,
+    "accurate": 12,
+    "usable": 12,
+    "registered_rate": 1.0,
+    "accurate_rate": 1.0,
+    "median_error_px": 0.2
+   },
+   {
+    "level": 3,
+    "pairs": 12,
+    "registered": 12,
+    "accurate": 12,
+    "usable": 4,
+    "registered_rate": 1.0,
+    "accurate_rate": 1.0,
+    "median_error_px": 0.25
+   },
+   {
+    "level": 4,
+    "pairs": 12,
+    "registered": 0,
+    "accurate": 0,
+    "usable": 0,
+    "registered_rate": 0.0,
+    "accurate_rate": 0.0,
+    "median_error_px": null
+   },
+   {
+    "level": 5,
+    "pairs": 12,
+    "registered": 0,
+    "accurate": 0,
+    "usable": 0,
+    "registered_rate": 0.0,
+    "accurate_rate": 0.0,
+    "median_error_px": null
+   }
+  ],
+  "tilt": [
+   {
+    "level": 0,
+    "pairs": 12,
+    "registered": 12,
+    "accurate": 12,
+    "usable": 12,
+    "registered_rate": 1.0,
+    "accurate_rate": 1.0,
+    "median_error_px": 0.03
+   },
+   {
+    "level": 1,
+    "pairs": 12,
+    "registered": 12,
+    "accurate": 12,
+    "usable": 12,
+    "registered_rate": 1.0,
+    "accurate_rate": 1.0,
+    "median_error_px": 0.03
+   },
+   {
+    "level": 2,
+    "pairs": 12,
+    "registered": 12,
+    "accurate": 12,
+    "usable": 7,
+    "registered_rate": 1.0,
+    "accurate_rate": 1.0,
+    "median_error_px": 0.04
+   },
+   {
+    "level": 3,
+    "pairs": 12,
+    "registered": 7,
+    "accurate": 6,
+    "usable": 0,
+    "registered_rate": 0.583,
+    "accurate_rate": 0.5,
+    "median_error_px": 0.05
+   },
+   {
+    "level": 4,
+    "pairs": 12,
+    "registered": 2,
+    "accurate": 1,
+    "usable": 0,
+    "registered_rate": 0.167,
+    "accurate_rate": 0.083,
+    "median_error_px": 0.14
+   },
+   {
+    "level": 5,
+    "pairs": 12,
+    "registered": 0,
+    "accurate": 0,
+    "usable": 0,
+    "registered_rate": 0.0,
+    "accurate_rate": 0.0,
+    "median_error_px": null
+   }
+  ],
+  "combined": [
+   {
+    "level": 0,
+    "pairs": 12,
+    "registered": 12,
+    "accurate": 12,
+    "usable": 12,
+    "registered_rate": 1.0,
+    "accurate_rate": 1.0,
+    "median_error_px": 0.03
+   },
+   {
+    "level": 1,
+    "pairs": 12,
+    "registered": 12,
+    "accurate": 12,
+    "usable": 12,
+    "registered_rate": 1.0,
+    "accurate_rate": 1.0,
+    "median_error_px": 0.07
+   },
+   {
+    "level": 2,
+    "pairs": 12,
+    "registered": 12,
+    "accurate": 12,
+    "usable": 12,
+    "registered_rate": 1.0,
+    "accurate_rate": 1.0,
+    "median_error_px": 0.13
+   },
+   {
+    "level": 3,
+    "pairs": 12,
+    "registered": 12,
+    "accurate": 12,
+    "usable": 9,
+    "registered_rate": 1.0,
+    "accurate_rate": 1.0,
+    "median_error_px": 0.21
+   },
+   {
+    "level": 4,
+    "pairs": 12,
+    "registered": 10,
+    "accurate": 9,
+    "usable": 0,
+    "registered_rate": 0.833,
+    "accurate_rate": 0.75,
+    "median_error_px": 0.25
+   },
+   {
+    "level": 5,
+    "pairs": 12,
+    "registered": 5,
+    "accurate": 5,
+    "usable": 0,
+    "registered_rate": 0.417,
+    "accurate_rate": 0.417,
+    "median_error_px": 0.28
+   }
+  ]
+ },
+ "pairs": [
+  {
+   "set": "damage",
+   "idx": 0,
+   "scene": "aloeL.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1068,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 173,
+     "contrast": 48.8,
+     "hit": true,
+     "iou": 0.766,
+     "gt_box": [
+      718,
+      465,
+      51,
+      21
+     ]
+    },
+    {
+     "kind": "stain",
+     "area": 2822,
+     "contrast": 27.9,
+     "hit": true,
+     "iou": 0.683,
+     "gt_box": [
+      245,
+      433,
+      85,
+      45
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 159,
+     "contrast": 72.0,
+     "hit": true,
+     "iou": 0.95,
+     "gt_box": [
+      446,
+      178,
+      28,
+      62
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      253,
+      430,
+      71,
+      57
+     ],
+     "score": 31.86,
+     "structure": 13.85,
+     "chroma": -0.98,
+     "illumination": 0.555,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      718,
+      459,
+      50,
+      27
+     ],
+     "score": 31.54,
+     "structure": 17.3,
+     "chroma": -1.15,
+     "illumination": 0.284,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      446,
+      178,
+      29,
+      63
+     ],
+     "score": 32.55,
+     "structure": 18.62,
+     "chroma": -0.09,
+     "illumination": 0.223,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 1,
+   "scene": "baboon.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2003,
+   "defects": [
+    {
+     "kind": "chip",
+     "area": 436,
+     "contrast": 69.2,
+     "hit": true,
+     "iou": 0.21,
+     "gt_box": [
+      577,
+      745,
+      34,
+      19
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      560,
+      726,
+      58,
+      53
+     ],
+     "score": 89.72,
+     "structure": 29.55,
+     "chroma": 7.62,
+     "illumination": 0.708,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 2,
+   "scene": "board.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1563,
+   "defects": [
+    {
+     "kind": "chip",
+     "area": 524,
+     "contrast": 55.6,
+     "hit": true,
+     "iou": 0.633,
+     "gt_box": [
+      149,
+      359,
+      25,
+      36
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 574,
+     "contrast": 57.8,
+     "hit": true,
+     "iou": 0.115,
+     "gt_box": [
+      360,
+      221,
+      34,
+      136
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 130,
+     "contrast": 67.2,
+     "hit": true,
+     "iou": 0.505,
+     "gt_box": [
+      135,
+      443,
+      40,
+      37
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      154,
+      359,
+      19,
+      30
+     ],
+     "score": 88.66,
+     "structure": 40.06,
+     "chroma": 3.44,
+     "illumination": 0.557,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      380,
+      309,
+      10,
+      37
+     ],
+     "score": 43.35,
+     "structure": 26.88,
+     "chroma": -0.53,
+     "illumination": 0.571,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      138,
+      455,
+      34,
+      22
+     ],
+     "score": 37.36,
+     "structure": 22.5,
+     "chroma": -0.44,
+     "illumination": 0.174,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      360,
+      221,
+      13,
+      41
+     ],
+     "score": 32.42,
+     "structure": 17.28,
+     "chroma": 0.24,
+     "illumination": 0.343,
+     "brightening": 0.038
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 3,
+   "scene": "box_in_scene.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1816,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 141,
+     "contrast": 17.6,
+     "hit": true,
+     "iou": 0.133,
+     "gt_box": [
+      63,
+      62,
+      62,
+      17
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 606,
+     "contrast": 41.5,
+     "hit": true,
+     "iou": 0.708,
+     "gt_box": [
+      470,
+      107,
+      70,
+      138
+     ]
+    },
+    {
+     "kind": "chip",
+     "area": 457,
+     "contrast": 85.0,
+     "hit": true,
+     "iou": 0.842,
+     "gt_box": [
+      291,
+      423,
+      21,
+      43
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      291,
+      424,
+      20,
+      38
+     ],
+     "score": 52.53,
+     "structure": 24.43,
+     "chroma": 1.2,
+     "illumination": 0.469,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      473,
+      124,
+      59,
+      116
+     ],
+     "score": 38.58,
+     "structure": 14.84,
+     "chroma": -0.43,
+     "illumination": 0.183,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      92,
+      72,
+      20,
+      7
+     ],
+     "score": 21.59,
+     "structure": 14.64,
+     "chroma": -0.75,
+     "illumination": 0.378,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 4,
+   "scene": "building.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1772,
+   "defects": [
+    {
+     "kind": "stain",
+     "area": 1852,
+     "contrast": 37.2,
+     "hit": true,
+     "iou": 0.53,
+     "gt_box": [
+      192,
+      265,
+      47,
+      51
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      196,
+      260,
+      37,
+      42
+     ],
+     "score": 24.95,
+     "structure": 14.93,
+     "chroma": 0.19,
+     "illumination": 0.318,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      22,
+      293,
+      5,
+      18
+     ],
+     "score": 14.78,
+     "structure": 11.54,
+     "chroma": 0.66,
+     "illumination": 0.506,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      22,
+      94,
+      6,
+      18
+     ],
+     "score": 12.31,
+     "structure": 10.14,
+     "chroma": 0.44,
+     "illumination": 0.365,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      470,
+      358,
+      3,
+      27
+     ],
+     "score": 13.16,
+     "structure": 10.83,
+     "chroma": 0.66,
+     "illumination": 0.726,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": false,
+   "unmatched": 3
+  },
+  {
+   "set": "damage",
+   "idx": 5,
+   "scene": "fruits.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1869,
+   "defects": [
+    {
+     "kind": "chip",
+     "area": 1238,
+     "contrast": 79.6,
+     "hit": true,
+     "iou": 0.529,
+     "gt_box": [
+      282,
+      386,
+      33,
+      61
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      271,
+      381,
+      56,
+      68
+     ],
+     "score": 75.54,
+     "structure": 17.02,
+     "chroma": 2.97,
+     "illumination": 0.497,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 6,
+   "scene": "graf1.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1673,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 223,
+     "contrast": 50.2,
+     "hit": true,
+     "iou": 0.147,
+     "gt_box": [
+      582,
+      434,
+      48,
+      52
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      618,
+      434,
+      13,
+      31
+     ],
+     "score": 35.5,
+     "structure": 20.78,
+     "chroma": 0.1,
+     "illumination": 0.516,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      586,
+      477,
+      10,
+      8
+     ],
+     "score": 21.86,
+     "structure": 14.81,
+     "chroma": -0.88,
+     "illumination": 0.336,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 3,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 7,
+   "scene": "home.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1936,
+   "defects": [
+    {
+     "kind": "scratch",
+     "area": 544,
+     "contrast": 53.1,
+     "hit": true,
+     "iou": 0.197,
+     "gt_box": [
+      502,
+      367,
+      12,
+      130
+     ]
+    },
+    {
+     "kind": "chip",
+     "area": 252,
+     "contrast": 97.0,
+     "hit": true,
+     "iou": 0.579,
+     "gt_box": [
+      155,
+      324,
+      19,
+      24
+     ]
+    },
+    {
+     "kind": "chip",
+     "area": 590,
+     "contrast": 107.0,
+     "hit": true,
+     "iou": 0.723,
+     "gt_box": [
+      353,
+      485,
+      27,
+      39
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      151,
+      315,
+      23,
+      32
+     ],
+     "score": 102.19,
+     "structure": 27.84,
+     "chroma": 3.45,
+     "illumination": 0.496,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      348,
+      487,
+      31,
+      34
+     ],
+     "score": 46.75,
+     "structure": 27.49,
+     "chroma": -3.46,
+     "illumination": 0.539,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      507,
+      369,
+      7,
+      44
+     ],
+     "score": 27.78,
+     "structure": 17.18,
+     "chroma": -2.52,
+     "illumination": 0.549,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      502,
+      482,
+      5,
+      15
+     ],
+     "score": 32.69,
+     "structure": 20.5,
+     "chroma": -2.48,
+     "illumination": 0.569,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 8,
+   "scene": "lena.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1929,
+   "defects": [
+    {
+     "kind": "chip",
+     "area": 1412,
+     "contrast": 54.1,
+     "hit": true,
+     "iou": 0.708,
+     "gt_box": [
+      745,
+      582,
+      47,
+      58
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      745,
+      572,
+      52,
+      74
+     ],
+     "score": 42.67,
+     "structure": 15.22,
+     "chroma": 0.7,
+     "illumination": 0.527,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 9,
+   "scene": "starry_night.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1848,
+   "defects": [
+    {
+     "kind": "stain",
+     "area": 1510,
+     "contrast": 7.4,
+     "hit": true,
+     "iou": 0.456,
+     "gt_box": [
+      341,
+      574,
+      49,
+      43
+     ]
+    },
+    {
+     "kind": "stain",
+     "area": 2785,
+     "contrast": 23.0,
+     "hit": true,
+     "iou": 0.75,
+     "gt_box": [
+      218,
+      547,
+      61,
+      59
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      222,
+      553,
+      54,
+      50
+     ],
+     "score": 76.64,
+     "structure": 29.32,
+     "chroma": 2.66,
+     "illumination": 0.421,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      353,
+      582,
+      32,
+      30
+     ],
+     "score": 40.06,
+     "structure": 18.11,
+     "chroma": 2.22,
+     "illumination": 0.129,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 3,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 10,
+   "scene": "aloeL.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1132,
+   "defects": [
+    {
+     "kind": "stain",
+     "area": 3206,
+     "contrast": 26.6,
+     "hit": true,
+     "iou": 0.749,
+     "gt_box": [
+      194,
+      472,
+      61,
+      67
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 934,
+     "contrast": 85.8,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      217,
+      229,
+      76,
+      216
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      199,
+      476,
+      51,
+      60
+     ],
+     "score": 56.9,
+     "structure": 24.87,
+     "chroma": 1.87,
+     "illumination": 0.763,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 11,
+   "scene": "baboon.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1979,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 258,
+     "contrast": 69.8,
+     "hit": true,
+     "iou": 0.898,
+     "gt_box": [
+      432,
+      518,
+      44,
+      113
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      427,
+      518,
+      49,
+      113
+     ],
+     "score": 46.95,
+     "structure": 21.6,
+     "chroma": -0.19,
+     "illumination": 0.098,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 12,
+   "scene": "board.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1826,
+   "defects": [
+    {
+     "kind": "chip",
+     "area": 396,
+     "contrast": 102.2,
+     "hit": true,
+     "iou": 0.346,
+     "gt_box": [
+      271,
+      566,
+      29,
+      28
+     ]
+    },
+    {
+     "kind": "chip",
+     "area": 883,
+     "contrast": 57.0,
+     "hit": true,
+     "iou": 0.599,
+     "gt_box": [
+      117,
+      471,
+      40,
+      39
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      107,
+      462,
+      52,
+      46
+     ],
+     "score": 180.77,
+     "structure": 28.38,
+     "chroma": 7.67,
+     "illumination": 0.231,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      259,
+      555,
+      51,
+      46
+     ],
+     "score": 166.49,
+     "structure": 39.96,
+     "chroma": 3.91,
+     "illumination": 0.23,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 13,
+   "scene": "box_in_scene.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1935,
+   "defects": [
+    {
+     "kind": "chip",
+     "area": 216,
+     "contrast": 18.5,
+     "hit": true,
+     "iou": 0.657,
+     "gt_box": [
+      783,
+      588,
+      14,
+      25
+     ]
+    },
+    {
+     "kind": "stain",
+     "area": 1636,
+     "contrast": 56.3,
+     "hit": true,
+     "iou": 0.738,
+     "gt_box": [
+      531,
+      347,
+      43,
+      49
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      530,
+      345,
+      51,
+      56
+     ],
+     "score": 52.15,
+     "structure": 28.27,
+     "chroma": 1.43,
+     "illumination": 0.39,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      787,
+      588,
+      10,
+      23
+     ],
+     "score": 56.71,
+     "structure": 22.5,
+     "chroma": 1.11,
+     "illumination": 0.427,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 3,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 14,
+   "scene": "building.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1937,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 202,
+     "contrast": 114.0,
+     "hit": true,
+     "iou": 0.426,
+     "gt_box": [
+      727,
+      277,
+      90,
+      18
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 284,
+     "contrast": 103.5,
+     "hit": true,
+     "iou": 0.274,
+     "gt_box": [
+      568,
+      103,
+      110,
+      124
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      726,
+      265,
+      95,
+      40
+     ],
+     "score": 119.76,
+     "structure": 31.81,
+     "chroma": 0.51,
+     "illumination": 0.159,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      620,
+      162,
+      60,
+      65
+     ],
+     "score": 104.0,
+     "structure": 29.88,
+     "chroma": 0.59,
+     "illumination": 0.139,
+     "brightening": -0.006
+    },
+    {
+     "box": [
+      560,
+      99,
+      20,
+      17
+     ],
+     "score": 109.6,
+     "structure": 42.08,
+     "chroma": 0.53,
+     "illumination": 0.241,
+     "brightening": 0.009
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 15,
+   "scene": "fruits.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2118,
+   "defects": [
+    {
+     "kind": "scratch",
+     "area": 169,
+     "contrast": 66.4,
+     "hit": true,
+     "iou": 0.96,
+     "gt_box": [
+      141,
+      409,
+      74,
+      72
+     ]
+    },
+    {
+     "kind": "chip",
+     "area": 1186,
+     "contrast": 56.1,
+     "hit": true,
+     "iou": 0.429,
+     "gt_box": [
+      110,
+      112,
+      50,
+      45
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      92,
+      111,
+      76,
+      69
+     ],
+     "score": 93.52,
+     "structure": 30.52,
+     "chroma": 2.46,
+     "illumination": 0.341,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      140,
+      408,
+      74,
+      73
+     ],
+     "score": 63.21,
+     "structure": 23.21,
+     "chroma": 0.97,
+     "illumination": 0.043,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      30,
+      285,
+      4,
+      17
+     ],
+     "score": 15.38,
+     "structure": 12.04,
+     "chroma": 1.2,
+     "illumination": 0.313,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 1
+  },
+  {
+   "set": "damage",
+   "idx": 16,
+   "scene": "graf1.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1610,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 139,
+     "contrast": 85.2,
+     "hit": true,
+     "iou": 0.975,
+     "gt_box": [
+      506,
+      622,
+      40,
+      38
+     ]
+    },
+    {
+     "kind": "chip",
+     "area": 542,
+     "contrast": 11.1,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      655,
+      392,
+      33,
+      27
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 716,
+     "contrast": 59.2,
+     "hit": true,
+     "iou": 0.983,
+     "gt_box": [
+      390,
+      145,
+      160,
+      88
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      391,
+      145,
+      159,
+      89
+     ],
+     "score": 42.24,
+     "structure": 20.64,
+     "chroma": 0.45,
+     "illumination": 0.211,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      507,
+      622,
+      39,
+      38
+     ],
+     "score": 31.23,
+     "structure": 16.89,
+     "chroma": -0.27,
+     "illumination": 0.329,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 17,
+   "scene": "home.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2013,
+   "defects": [
+    {
+     "kind": "stain",
+     "area": 3637,
+     "contrast": 13.9,
+     "hit": true,
+     "iou": 0.74,
+     "gt_box": [
+      222,
+      172,
+      87,
+      53
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 412,
+     "contrast": 79.5,
+     "hit": true,
+     "iou": 0.471,
+     "gt_box": [
+      310,
+      502,
+      96,
+      46
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 183,
+     "contrast": 31.8,
+     "hit": true,
+     "iou": 0.497,
+     "gt_box": [
+      413,
+      226,
+      74,
+      30
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      338,
+      503,
+      65,
+      32
+     ],
+     "score": 40.8,
+     "structure": 20.8,
+     "chroma": 1.0,
+     "illumination": 0.182,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      232,
+      164,
+      74,
+      60
+     ],
+     "score": 18.44,
+     "structure": 12.1,
+     "chroma": -2.01,
+     "illumination": 0.647,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      413,
+      225,
+      38,
+      32
+     ],
+     "score": 39.82,
+     "structure": 21.24,
+     "chroma": -1.88,
+     "illumination": 0.14,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      474,
+      228,
+      13,
+      11
+     ],
+     "score": 25.95,
+     "structure": 16.71,
+     "chroma": -0.99,
+     "illumination": 0.44,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 18,
+   "scene": "lena.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1741,
+   "defects": [
+    {
+     "kind": "stain",
+     "area": 5334,
+     "contrast": 10.5,
+     "hit": true,
+     "iou": 0.054,
+     "gt_box": [
+      465,
+      742,
+      87,
+      85
+     ]
+    },
+    {
+     "kind": "stain",
+     "area": 2891,
+     "contrast": 15.4,
+     "hit": true,
+     "iou": 0.486,
+     "gt_box": [
+      644,
+      292,
+      71,
+      65
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      654,
+      284,
+      52,
+      55
+     ],
+     "score": 33.96,
+     "structure": 16.78,
+     "chroma": 1.25,
+     "illumination": 0.566,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      522,
+      784,
+      19,
+      21
+     ],
+     "score": 18.4,
+     "structure": 12.62,
+     "chroma": 1.92,
+     "illumination": 0.688,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      513,
+      745,
+      16,
+      9
+     ],
+     "score": 17.91,
+     "structure": 11.69,
+     "chroma": 1.6,
+     "illumination": 0.793,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 19,
+   "scene": "starry_night.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1889,
+   "defects": [
+    {
+     "kind": "stain",
+     "area": 3867,
+     "contrast": 6.8,
+     "hit": true,
+     "iou": 0.689,
+     "gt_box": [
+      249,
+      521,
+      81,
+      67
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 203,
+     "contrast": 51.7,
+     "hit": true,
+     "iou": 0.325,
+     "gt_box": [
+      555,
+      208,
+      50,
+      63
+     ]
+    },
+    {
+     "kind": "stain",
+     "area": 3740,
+     "contrast": 14.0,
+     "hit": true,
+     "iou": 0.795,
+     "gt_box": [
+      410,
+      33,
+      71,
+      67
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      413,
+      37,
+      63,
+      60
+     ],
+     "score": 68.98,
+     "structure": 21.39,
+     "chroma": 7.47,
+     "illumination": 0.186,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      257,
+      526,
+      68,
+      55
+     ],
+     "score": 38.36,
+     "structure": 16.601,
+     "chroma": 1.0,
+     "illumination": 0.168,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      555,
+      209,
+      31,
+      33
+     ],
+     "score": 51.07,
+     "structure": 22.0,
+     "chroma": 1.21,
+     "illumination": 0.137,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      599,
+      260,
+      7,
+      11
+     ],
+     "score": 35.39,
+     "structure": 21.32,
+     "chroma": 1.51,
+     "illumination": 0.354,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 20,
+   "scene": "aloeL.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1130,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 184,
+     "contrast": 80.1,
+     "hit": true,
+     "iou": 0.947,
+     "gt_box": [
+      533,
+      402,
+      23,
+      81
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 286,
+     "contrast": 37.2,
+     "hit": true,
+     "iou": 0.204,
+     "gt_box": [
+      761,
+      637,
+      132,
+      20
+     ]
+    },
+    {
+     "kind": "chip",
+     "area": 685,
+     "contrast": 149.9,
+     "hit": true,
+     "iou": 0.405,
+     "gt_box": [
+      114,
+      603,
+      33,
+      39
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      102,
+      593,
+      60,
+      53
+     ],
+     "score": 52.04,
+     "structure": 18.35,
+     "chroma": -0.58,
+     "illumination": 0.326,
+     "brightening": -0.0
+    },
+    {
+     "box": [
+      532,
+      403,
+      24,
+      80
+     ],
+     "score": 33.75,
+     "structure": 18.22,
+     "chroma": -1.58,
+     "illumination": 0.13,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      762,
+      636,
+      55,
+      11
+     ],
+     "score": 26.7,
+     "structure": 16.37,
+     "chroma": -0.7,
+     "illumination": 0.431,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      869,
+      652,
+      15,
+      5
+     ],
+     "score": 18.13,
+     "structure": 13.84,
+     "chroma": -1.08,
+     "illumination": 0.341,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 21,
+   "scene": "baboon.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1917,
+   "defects": [
+    {
+     "kind": "stain",
+     "area": 2949,
+     "contrast": 16.1,
+     "hit": true,
+     "iou": 0.528,
+     "gt_box": [
+      137,
+      349,
+      83,
+      45
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 189,
+     "contrast": 59.7,
+     "hit": true,
+     "iou": 0.963,
+     "gt_box": [
+      332,
+      770,
+      82,
+      76
+     ]
+    },
+    {
+     "kind": "stain",
+     "area": 6019,
+     "contrast": 22.2,
+     "hit": true,
+     "iou": 0.614,
+     "gt_box": [
+      524,
+      774,
+      97,
+      79
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      511,
+      762,
+      95,
+      85
+     ],
+     "score": 47.09,
+     "structure": 17.57,
+     "chroma": 4.68,
+     "illumination": 0.577,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      331,
+      769,
+      82,
+      77
+     ],
+     "score": 48.72,
+     "structure": 23.79,
+     "chroma": 2.03,
+     "illumination": 0.208,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      159,
+      354,
+      58,
+      34
+     ],
+     "score": 46.16,
+     "structure": 17.83,
+     "chroma": 0.79,
+     "illumination": 0.44,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 22,
+   "scene": "board.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1762,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 207,
+     "contrast": 52.6,
+     "hit": true,
+     "iou": 0.565,
+     "gt_box": [
+      350,
+      466,
+      55,
+      50
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 154,
+     "contrast": 51.5,
+     "hit": true,
+     "iou": 0.229,
+     "gt_box": [
+      297,
+      192,
+      72,
+      32
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      350,
+      470,
+      37,
+      42
+     ],
+     "score": 54.14,
+     "structure": 24.1,
+     "chroma": 1.34,
+     "illumination": 0.132,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      319,
+      201,
+      33,
+      16
+     ],
+     "score": 44.5,
+     "structure": 22.67,
+     "chroma": 1.0,
+     "illumination": 0.121,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 23,
+   "scene": "box_in_scene.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1960,
+   "defects": [
+    {
+     "kind": "scratch",
+     "area": 344,
+     "contrast": 63.7,
+     "hit": true,
+     "iou": 0.969,
+     "gt_box": [
+      489,
+      98,
+      64,
+      70
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 159,
+     "contrast": 56.0,
+     "hit": true,
+     "iou": 0.851,
+     "gt_box": [
+      510,
+      599,
+      74,
+      27
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      490,
+      98,
+      62,
+      70
+     ],
+     "score": 43.85,
+     "structure": 23.85,
+     "chroma": 0.61,
+     "illumination": 0.623,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      519,
+      599,
+      65,
+      28
+     ],
+     "score": 30.49,
+     "structure": 18.18,
+     "chroma": 0.5,
+     "illumination": 0.529,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      691,
+      661,
+      14,
+      8
+     ],
+     "score": 19.83,
+     "structure": 13.34,
+     "chroma": 1.94,
+     "illumination": 0.203,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 5,
+   "shadowed": true,
+   "unmatched": 1
+  },
+  {
+   "set": "damage",
+   "idx": 24,
+   "scene": "building.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1829,
+   "defects": [
+    {
+     "kind": "scratch",
+     "area": 146,
+     "contrast": 23.1,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      235,
+      205,
+      38,
+      66
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 666,
+     "contrast": 29.4,
+     "hit": true,
+     "iou": 0.032,
+     "gt_box": [
+      149,
+      261,
+      150,
+      78
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 450,
+     "contrast": 15.8,
+     "hit": true,
+     "iou": 0.021,
+     "gt_box": [
+      755,
+      16,
+      80,
+      92
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      218,
+      296,
+      25,
+      15
+     ],
+     "score": 74.92,
+     "structure": 28.43,
+     "chroma": 0.39,
+     "illumination": 0.454,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      148,
+      259,
+      9,
+      8
+     ],
+     "score": 99.14,
+     "structure": 42.33,
+     "chroma": -0.83,
+     "illumination": 0.566,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      789,
+      56,
+      12,
+      13
+     ],
+     "score": 63.69,
+     "structure": 27.74,
+     "chroma": -0.34,
+     "illumination": 0.513,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 3,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 25,
+   "scene": "fruits.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2153,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 202,
+     "contrast": 55.8,
+     "hit": true,
+     "iou": 0.769,
+     "gt_box": [
+      659,
+      732,
+      70,
+      42
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      657,
+      731,
+      78,
+      49
+     ],
+     "score": 69.22,
+     "structure": 22.68,
+     "chroma": 1.14,
+     "illumination": 0.078,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 26,
+   "scene": "graf1.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1596,
+   "defects": [
+    {
+     "kind": "stain",
+     "area": 2671,
+     "contrast": 8.2,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      100,
+      416,
+      63,
+      75
+     ]
+    },
+    {
+     "kind": "stain",
+     "area": 1572,
+     "contrast": 22.8,
+     "hit": true,
+     "iou": 0.631,
+     "gt_box": [
+      642,
+      345,
+      49,
+      41
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 253,
+     "contrast": 72.8,
+     "hit": true,
+     "iou": 0.197,
+     "gt_box": [
+      338,
+      217,
+      37,
+      103
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      337,
+      280,
+      20,
+      40
+     ],
+     "score": 67.31,
+     "structure": 27.65,
+     "chroma": 1.68,
+     "illumination": 0.22,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      647,
+      344,
+      38,
+      35
+     ],
+     "score": 20.86,
+     "structure": 14.75,
+     "chroma": -0.03,
+     "illumination": 0.536,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      366,
+      217,
+      9,
+      12
+     ],
+     "score": 23.14,
+     "structure": 15.86,
+     "chroma": 0.66,
+     "illumination": 0.414,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 4,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 27,
+   "scene": "home.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1772,
+   "defects": [
+    {
+     "kind": "scratch",
+     "area": 602,
+     "contrast": 79.2,
+     "hit": true,
+     "iou": 0.236,
+     "gt_box": [
+      543,
+      354,
+      14,
+      144
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 145,
+     "contrast": 69.9,
+     "hit": true,
+     "iou": 0.18,
+     "gt_box": [
+      363,
+      575,
+      33,
+      39
+     ]
+    },
+    {
+     "kind": "stain",
+     "area": 2295,
+     "contrast": 14.0,
+     "hit": true,
+     "iou": 0.024,
+     "gt_box": [
+      523,
+      131,
+      69,
+      43
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      549,
+      429,
+      7,
+      68
+     ],
+     "score": 35.14,
+     "structure": 19.02,
+     "chroma": -0.89,
+     "illumination": 0.64,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      544,
+      357,
+      5,
+      29
+     ],
+     "score": 22.14,
+     "structure": 15.65,
+     "chroma": -0.35,
+     "illumination": 0.547,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      362,
+      601,
+      19,
+      13
+     ],
+     "score": 22.31,
+     "structure": 14.64,
+     "chroma": -1.04,
+     "illumination": 0.296,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      30,
+      632,
+      6,
+      24
+     ],
+     "score": 12.7,
+     "structure": 10.5,
+     "chroma": 0.99,
+     "illumination": 0.689,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      531,
+      145,
+      7,
+      10
+     ],
+     "score": 10.68,
+     "structure": 9.72,
+     "chroma": 6.27,
+     "illumination": 0.901,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": true,
+   "unmatched": 1
+  },
+  {
+   "set": "damage",
+   "idx": 28,
+   "scene": "lena.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1878,
+   "defects": [
+    {
+     "kind": "scratch",
+     "area": 890,
+     "contrast": 67.7,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      615,
+      74,
+      72,
+      208
+     ]
+    }
+   ],
+   "flagged": [],
+   "lighting_regions": 2,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 29,
+   "scene": "starry_night.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1956,
+   "defects": [
+    {
+     "kind": "stain",
+     "area": 2851,
+     "contrast": 10.6,
+     "hit": true,
+     "iou": 0.505,
+     "gt_box": [
+      521,
+      528,
+      47,
+      77
+     ]
+    },
+    {
+     "kind": "stain",
+     "area": 2494,
+     "contrast": 12.5,
+     "hit": true,
+     "iou": 0.809,
+     "gt_box": [
+      216,
+      43,
+      69,
+      57
+     ]
+    },
+    {
+     "kind": "chip",
+     "area": 407,
+     "contrast": 90.4,
+     "hit": true,
+     "iou": 0.221,
+     "gt_box": [
+      709,
+      179,
+      35,
+      17
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      704,
+      164,
+      56,
+      48
+     ],
+     "score": 166.21,
+     "structure": 38.73,
+     "chroma": 2.01,
+     "illumination": 0.219,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      223,
+      46,
+      60,
+      53
+     ],
+     "score": 40.63,
+     "structure": 17.25,
+     "chroma": 5.68,
+     "illumination": 0.35,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      534,
+      535,
+      29,
+      63
+     ],
+     "score": 31.13,
+     "structure": 16.12,
+     "chroma": 3.45,
+     "illumination": 0.177,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 30,
+   "scene": "aloeL.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 896,
+   "defects": [
+    {
+     "kind": "chip",
+     "area": 305,
+     "contrast": 64.8,
+     "hit": true,
+     "iou": 0.478,
+     "gt_box": [
+      546,
+      694,
+      33,
+      19
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 215,
+     "contrast": 59.1,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      556,
+      272,
+      76,
+      29
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      547,
+      695,
+      33,
+      35
+     ],
+     "score": 63.07,
+     "structure": 22.08,
+     "chroma": 2.67,
+     "illumination": 0.48,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 31,
+   "scene": "baboon.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2003,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 174,
+     "contrast": 22.9,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      101,
+      434,
+      48,
+      40
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      612,
+      724,
+      5,
+      10
+     ],
+     "score": 12.36,
+     "structure": 10.47,
+     "chroma": -1.06,
+     "illumination": 0.77,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 3,
+   "shadowed": false,
+   "unmatched": 1
+  },
+  {
+   "set": "damage",
+   "idx": 32,
+   "scene": "board.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1842,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 138,
+     "contrast": 27.4,
+     "hit": true,
+     "iou": 0.108,
+     "gt_box": [
+      185,
+      196,
+      64,
+      27
+     ]
+    },
+    {
+     "kind": "stain",
+     "area": 2106,
+     "contrast": 18.2,
+     "hit": true,
+     "iou": 0.668,
+     "gt_box": [
+      385,
+      437,
+      53,
+      51
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 162,
+     "contrast": 24.7,
+     "hit": true,
+     "iou": 0.043,
+     "gt_box": [
+      483,
+      304,
+      15,
+      62
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      391,
+      442,
+      43,
+      42
+     ],
+     "score": 30.82,
+     "structure": 9.95,
+     "chroma": 15.34,
+     "illumination": 0.152,
+     "brightening": -0.001
+    },
+    {
+     "box": [
+      228,
+      214,
+      21,
+      10
+     ],
+     "score": 51.29,
+     "structure": 33.23,
+     "chroma": 3.49,
+     "illumination": 0.211,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      482,
+      338,
+      5,
+      10
+     ],
+     "score": 39.14,
+     "structure": 24.57,
+     "chroma": 6.56,
+     "illumination": 0.259,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 33,
+   "scene": "box_in_scene.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1979,
+   "defects": [
+    {
+     "kind": "stain",
+     "area": 4410,
+     "contrast": 49.5,
+     "hit": true,
+     "iou": 0.681,
+     "gt_box": [
+      205,
+      281,
+      73,
+      77
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 200,
+     "contrast": 20.6,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      350,
+      204,
+      78,
+      39
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 131,
+     "contrast": 19.8,
+     "hit": true,
+     "iou": 0.895,
+     "gt_box": [
+      168,
+      154,
+      28,
+      53
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      193,
+      290,
+      95,
+      66
+     ],
+     "score": 48.84,
+     "structure": 20.07,
+     "chroma": 0.23,
+     "illumination": 0.703,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      168,
+      154,
+      29,
+      49
+     ],
+     "score": 45.17,
+     "structure": 21.35,
+     "chroma": -0.69,
+     "illumination": 0.396,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      753,
+      37,
+      18,
+      7
+     ],
+     "score": 15.02,
+     "structure": 12.03,
+     "chroma": 0.46,
+     "illumination": 0.577,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      40,
+      24,
+      13,
+      5
+     ],
+     "score": 19.21,
+     "structure": 14.03,
+     "chroma": -0.79,
+     "illumination": 0.376,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      116,
+      25,
+      9,
+      7
+     ],
+     "score": 13.98,
+     "structure": 10.97,
+     "chroma": -0.74,
+     "illumination": 0.219,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 4,
+   "shadowed": false,
+   "unmatched": 3
+  },
+  {
+   "set": "damage",
+   "idx": 34,
+   "scene": "building.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1880,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 174,
+     "contrast": 26.8,
+     "hit": true,
+     "iou": 0.132,
+     "gt_box": [
+      659,
+      403,
+      34,
+      66
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 130,
+     "contrast": 105.2,
+     "hit": true,
+     "iou": 0.874,
+     "gt_box": [
+      334,
+      303,
+      33,
+      48
+     ]
+    },
+    {
+     "kind": "stain",
+     "area": 2118,
+     "contrast": 33.9,
+     "hit": true,
+     "iou": 0.703,
+     "gt_box": [
+      523,
+      244,
+      39,
+      69
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      331,
+      302,
+      37,
+      49
+     ],
+     "score": 81.14,
+     "structure": 30.76,
+     "chroma": -0.07,
+     "illumination": 0.161,
+     "brightening": -0.025
+    },
+    {
+     "box": [
+      529,
+      236,
+      32,
+      83
+     ],
+     "score": 39.69,
+     "structure": 17.78,
+     "chroma": 0.13,
+     "illumination": 0.337,
+     "brightening": 0.003
+    },
+    {
+     "box": [
+      678,
+      415,
+      11,
+      27
+     ],
+     "score": 24.96,
+     "structure": 15.84,
+     "chroma": -0.64,
+     "illumination": 0.426,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 35,
+   "scene": "fruits.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1648,
+   "defects": [
+    {
+     "kind": "stain",
+     "area": 1906,
+     "contrast": 7.4,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      229,
+      514,
+      53,
+      49
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 402,
+     "contrast": 38.9,
+     "hit": true,
+     "iou": 0.019,
+     "gt_box": [
+      281,
+      596,
+      180,
+      96
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 166,
+     "contrast": 56.3,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      794,
+      547,
+      27,
+      69
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      436,
+      678,
+      24,
+      14
+     ],
+     "score": 20.97,
+     "structure": 14.62,
+     "chroma": 0.32,
+     "illumination": 0.275,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 4,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 36,
+   "scene": "graf1.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1691,
+   "defects": [
+    {
+     "kind": "scratch",
+     "area": 426,
+     "contrast": 29.2,
+     "hit": true,
+     "iou": 0.044,
+     "gt_box": [
+      721,
+      486,
+      30,
+      196
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      743,
+      495,
+      8,
+      32
+     ],
+     "score": 19.23,
+     "structure": 14.12,
+     "chroma": -0.11,
+     "illumination": 0.384,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      732,
+      578,
+      6,
+      25
+     ],
+     "score": 18.63,
+     "structure": 14.03,
+     "chroma": -0.23,
+     "illumination": 0.324,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 37,
+   "scene": "home.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1765,
+   "defects": [
+    {
+     "kind": "chip",
+     "area": 629,
+     "contrast": 75.1,
+     "hit": true,
+     "iou": 0.501,
+     "gt_box": [
+      162,
+      578,
+      33,
+      30
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 142,
+     "contrast": 62.7,
+     "hit": true,
+     "iou": 0.561,
+     "gt_box": [
+      693,
+      625,
+      66,
+      12
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      154,
+      568,
+      46,
+      43
+     ],
+     "score": 57.31,
+     "structure": 19.16,
+     "chroma": -0.97,
+     "illumination": 0.411,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      693,
+      627,
+      50,
+      12
+     ],
+     "score": 43.68,
+     "structure": 20.35,
+     "chroma": 0.84,
+     "illumination": 0.526,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 38,
+   "scene": "lena.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1915,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 228,
+     "contrast": 45.4,
+     "hit": true,
+     "iou": 0.825,
+     "gt_box": [
+      381,
+      692,
+      98,
+      20
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      388,
+      693,
+      89,
+      20
+     ],
+     "score": 99.53,
+     "structure": 47.4,
+     "chroma": 1.26,
+     "illumination": 0.268,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 3,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 39,
+   "scene": "starry_night.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2092,
+   "defects": [
+    {
+     "kind": "scratch",
+     "area": 764,
+     "contrast": 71.5,
+     "hit": true,
+     "iou": 0.989,
+     "gt_box": [
+      698,
+      162,
+      32,
+      182
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 211,
+     "contrast": 11.1,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      327,
+      606,
+      40,
+      58
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      698,
+      160,
+      32,
+      184
+     ],
+     "score": 269.48,
+     "structure": 75.16,
+     "chroma": 4.5,
+     "illumination": 0.2,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 40,
+   "scene": "aloeL.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1328,
+   "defects": [
+    {
+     "kind": "chip",
+     "area": 487,
+     "contrast": 49.9,
+     "hit": true,
+     "iou": 0.053,
+     "gt_box": [
+      534,
+      159,
+      40,
+      23
+     ]
+    },
+    {
+     "kind": "chip",
+     "area": 403,
+     "contrast": 12.4,
+     "hit": true,
+     "iou": 0.657,
+     "gt_box": [
+      260,
+      144,
+      31,
+      22
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 828,
+     "contrast": 51.6,
+     "hit": true,
+     "iou": 0.979,
+     "gt_box": [
+      456,
+      96,
+      190,
+      94
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      457,
+      96,
+      188,
+      93
+     ],
+     "score": 155.58,
+     "structure": 38.17,
+     "chroma": 2.13,
+     "illumination": 0.095,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      263,
+      146,
+      28,
+      16
+     ],
+     "score": 55.98,
+     "structure": 21.82,
+     "chroma": 1.66,
+     "illumination": 0.124,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 41,
+   "scene": "baboon.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2037,
+   "defects": [
+    {
+     "kind": "stain",
+     "area": 4289,
+     "contrast": 15.7,
+     "hit": true,
+     "iou": 0.403,
+     "gt_box": [
+      665,
+      495,
+      71,
+      79
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 274,
+     "contrast": 68.7,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      392,
+      207,
+      68,
+      114
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      654,
+      494,
+      48,
+      71
+     ],
+     "score": 33.95,
+     "structure": 16.84,
+     "chroma": 1.13,
+     "illumination": 0.732,
+     "brightening": 0.002
+    }
+   ],
+   "lighting_regions": 3,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 42,
+   "scene": "board.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1720,
+   "defects": [
+    {
+     "kind": "scratch",
+     "area": 444,
+     "contrast": 68.1,
+     "hit": true,
+     "iou": 0.863,
+     "gt_box": [
+      212,
+      543,
+      48,
+      102
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      213,
+      544,
+      44,
+      96
+     ],
+     "score": 70.69,
+     "structure": 26.6,
+     "chroma": 2.48,
+     "illumination": 0.726,
+     "brightening": 0.004
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 43,
+   "scene": "box_in_scene.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1993,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 137,
+     "contrast": 89.5,
+     "hit": true,
+     "iou": 0.967,
+     "gt_box": [
+      235,
+      404,
+      32,
+      29
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 126,
+     "contrast": 8.4,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      168,
+      600,
+      55,
+      19
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 351,
+     "contrast": 4.8,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      676,
+      98,
+      54,
+      162
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      235,
+      404,
+      32,
+      30
+     ],
+     "score": 60.78,
+     "structure": 37.45,
+     "chroma": 0.0,
+     "illumination": 0.088,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 44,
+   "scene": "building.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1945,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 170,
+     "contrast": 100.1,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      147,
+      186,
+      34,
+      48
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      895,
+      63,
+      5,
+      29
+     ],
+     "score": 25.83,
+     "structure": 16.24,
+     "chroma": 0.53,
+     "illumination": 0.795,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      36,
+      275,
+      8,
+      7
+     ],
+     "score": 26.64,
+     "structure": 15.48,
+     "chroma": 0.94,
+     "illumination": 0.263,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      660,
+      22,
+      27,
+      5
+     ],
+     "score": 18.82,
+     "structure": 12.15,
+     "chroma": 0.67,
+     "illumination": 0.336,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 3
+  },
+  {
+   "set": "damage",
+   "idx": 45,
+   "scene": "fruits.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2095,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 171,
+     "contrast": 64.1,
+     "hit": true,
+     "iou": 0.791,
+     "gt_box": [
+      767,
+      693,
+      73,
+      26
+     ]
+    },
+    {
+     "kind": "stain",
+     "area": 5355,
+     "contrast": 15.6,
+     "hit": true,
+     "iou": 0.78,
+     "gt_box": [
+      460,
+      209,
+      87,
+      79
+     ]
+    },
+    {
+     "kind": "chip",
+     "area": 581,
+     "contrast": 125.4,
+     "hit": true,
+     "iou": 0.311,
+     "gt_box": [
+      729,
+      235,
+      43,
+      34
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      712,
+      222,
+      77,
+      61
+     ],
+     "score": 64.22,
+     "structure": 19.22,
+     "chroma": 0.32,
+     "illumination": 0.238,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      455,
+      215,
+      87,
+      78
+     ],
+     "score": 46.11,
+     "structure": 17.08,
+     "chroma": 1.25,
+     "illumination": 0.164,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      766,
+      688,
+      75,
+      32
+     ],
+     "score": 56.86,
+     "structure": 23.53,
+     "chroma": 0.48,
+     "illumination": 0.13,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 46,
+   "scene": "graf1.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1760,
+   "defects": [
+    {
+     "kind": "scratch",
+     "area": 357,
+     "contrast": 34.9,
+     "hit": true,
+     "iou": 0.817,
+     "gt_box": [
+      75,
+      132,
+      108,
+      160
+     ]
+    },
+    {
+     "kind": "chip",
+     "area": 549,
+     "contrast": 124.8,
+     "hit": true,
+     "iou": 0.526,
+     "gt_box": [
+      694,
+      139,
+      37,
+      29
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 199,
+     "contrast": 61.2,
+     "hit": true,
+     "iou": 0.939,
+     "gt_box": [
+      451,
+      550,
+      33,
+      62
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      692,
+      137,
+      51,
+      40
+     ],
+     "score": 330.02,
+     "structure": 99.08,
+     "chroma": 12.83,
+     "illumination": 0.42,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      451,
+      551,
+      32,
+      62
+     ],
+     "score": 139.12,
+     "structure": 76.29,
+     "chroma": -0.22,
+     "illumination": 0.143,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      85,
+      133,
+      98,
+      144
+     ],
+     "score": 71.64,
+     "structure": 40.3,
+     "chroma": 4.44,
+     "illumination": 0.279,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 47,
+   "scene": "home.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2011,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 187,
+     "contrast": 37.4,
+     "hit": true,
+     "iou": 0.89,
+     "gt_box": [
+      622,
+      167,
+      31,
+      81
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      620,
+      165,
+      34,
+      83
+     ],
+     "score": 43.69,
+     "structure": 22.86,
+     "chroma": 1.16,
+     "illumination": 0.235,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 48,
+   "scene": "lena.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2063,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 171,
+     "contrast": 47.9,
+     "hit": true,
+     "iou": 0.874,
+     "gt_box": [
+      685,
+      736,
+      60,
+      64
+     ]
+    },
+    {
+     "kind": "stain",
+     "area": 5433,
+     "contrast": 23.4,
+     "hit": true,
+     "iou": 0.766,
+     "gt_box": [
+      181,
+      388,
+      73,
+      105
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      183,
+      377,
+      67,
+      107
+     ],
+     "score": 97.44,
+     "structure": 16.33,
+     "chroma": 24.26,
+     "illumination": 0.545,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      690,
+      736,
+      55,
+      61
+     ],
+     "score": 81.69,
+     "structure": 45.32,
+     "chroma": 5.46,
+     "illumination": 0.113,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 49,
+   "scene": "starry_night.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1923,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 192,
+     "contrast": 68.6,
+     "hit": true,
+     "iou": 0.964,
+     "gt_box": [
+      375,
+      465,
+      83,
+      34
+     ]
+    },
+    {
+     "kind": "stain",
+     "area": 4764,
+     "contrast": 12.5,
+     "hit": true,
+     "iou": 0.749,
+     "gt_box": [
+      710,
+      279,
+      75,
+      87
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      714,
+      285,
+      66,
+      74
+     ],
+     "score": 42.19,
+     "structure": 17.83,
+     "chroma": 2.73,
+     "illumination": 0.428,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      376,
+      465,
+      80,
+      34
+     ],
+     "score": 64.19,
+     "structure": 29.95,
+     "chroma": 0.15,
+     "illumination": 0.574,
+     "brightening": -0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 50,
+   "scene": "aloeL.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1062,
+   "defects": [
+    {
+     "kind": "chip",
+     "area": 1120,
+     "contrast": 76.2,
+     "hit": true,
+     "iou": 0.413,
+     "gt_box": [
+      443,
+      81,
+      61,
+      36
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      436,
+      64,
+      77,
+      69
+     ],
+     "score": 122.21,
+     "structure": 35.55,
+     "chroma": -0.44,
+     "illumination": 0.33,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 51,
+   "scene": "baboon.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1692,
+   "defects": [
+    {
+     "kind": "stain",
+     "area": 2191,
+     "contrast": 17.8,
+     "hit": true,
+     "iou": 0.683,
+     "gt_box": [
+      267,
+      762,
+      49,
+      57
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      271,
+      758,
+      52,
+      55
+     ],
+     "score": 28.06,
+     "structure": 16.62,
+     "chroma": 4.75,
+     "illumination": 0.654,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      603,
+      723,
+      15,
+      22
+     ],
+     "score": 14.48,
+     "structure": 11.0,
+     "chroma": 0.06,
+     "illumination": 0.787,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": true,
+   "unmatched": 1
+  },
+  {
+   "set": "damage",
+   "idx": 52,
+   "scene": "board.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1677,
+   "defects": [
+    {
+     "kind": "chip",
+     "area": 510,
+     "contrast": 98.6,
+     "hit": true,
+     "iou": 0.632,
+     "gt_box": [
+      554,
+      438,
+      27,
+      33
+     ]
+    },
+    {
+     "kind": "chip",
+     "area": 573,
+     "contrast": 81.3,
+     "hit": true,
+     "iou": 0.96,
+     "gt_box": [
+      325,
+      168,
+      24,
+      41
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      545,
+      438,
+      40,
+      30
+     ],
+     "score": 105.36,
+     "structure": 34.52,
+     "chroma": 3.05,
+     "illumination": 0.353,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      325,
+      168,
+      25,
+      41
+     ],
+     "score": 96.44,
+     "structure": 42.74,
+     "chroma": 1.25,
+     "illumination": 0.488,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 53,
+   "scene": "box_in_scene.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1927,
+   "defects": [
+    {
+     "kind": "stain",
+     "area": 2808,
+     "contrast": 32.9,
+     "hit": true,
+     "iou": 0.631,
+     "gt_box": [
+      435,
+      347,
+      61,
+      63
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 241,
+     "contrast": 56.4,
+     "hit": true,
+     "iou": 0.083,
+     "gt_box": [
+      393,
+      491,
+      66,
+      56
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      449,
+      345,
+      56,
+      68
+     ],
+     "score": 42.75,
+     "structure": 19.55,
+     "chroma": 0.81,
+     "illumination": 0.473,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      438,
+      539,
+      20,
+      9
+     ],
+     "score": 41.11,
+     "structure": 25.07,
+     "chroma": 0.4,
+     "illumination": 0.363,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      395,
+      492,
+      11,
+      28
+     ],
+     "score": 29.35,
+     "structure": 17.23,
+     "chroma": 0.09,
+     "illumination": 0.465,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 54,
+   "scene": "building.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2081,
+   "defects": [
+    {
+     "kind": "scratch",
+     "area": 184,
+     "contrast": 62.6,
+     "hit": true,
+     "iou": 0.977,
+     "gt_box": [
+      86,
+      419,
+      10,
+      86
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      86,
+      420,
+      10,
+      86
+     ],
+     "score": 139.78,
+     "structure": 84.74,
+     "chroma": 2.08,
+     "illumination": 0.404,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 55,
+   "scene": "fruits.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2229,
+   "defects": [
+    {
+     "kind": "chip",
+     "area": 588,
+     "contrast": 56.7,
+     "hit": true,
+     "iou": 0.212,
+     "gt_box": [
+      520,
+      583,
+      38,
+      19
+     ]
+    },
+    {
+     "kind": "chip",
+     "area": 1374,
+     "contrast": 79.2,
+     "hit": true,
+     "iou": 0.332,
+     "gt_box": [
+      774,
+      561,
+      51,
+      46
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 225,
+     "contrast": 3.7,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      745,
+      158,
+      87,
+      48
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      506,
+      564,
+      62,
+      55
+     ],
+     "score": 191.99,
+     "structure": 27.51,
+     "chroma": 0.2,
+     "illumination": 0.268,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      760,
+      542,
+      84,
+      84
+     ],
+     "score": 75.35,
+     "structure": 28.36,
+     "chroma": 1.23,
+     "illumination": 0.293,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 56,
+   "scene": "graf1.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1619,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 252,
+     "contrast": 60.9,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      611,
+      152,
+      13,
+      109
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 223,
+     "contrast": 75.4,
+     "hit": true,
+     "iou": 0.801,
+     "gt_box": [
+      728,
+      191,
+      53,
+      44
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 243,
+     "contrast": 58.3,
+     "hit": true,
+     "iou": 0.597,
+     "gt_box": [
+      670,
+      283,
+      67,
+      74
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      727,
+      191,
+      56,
+      52
+     ],
+     "score": 63.31,
+     "structure": 27.11,
+     "chroma": -0.55,
+     "illumination": 0.417,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      691,
+      290,
+      49,
+      67
+     ],
+     "score": 46.82,
+     "structure": 24.57,
+     "chroma": -0.63,
+     "illumination": 0.562,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 4,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 57,
+   "scene": "home.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1885,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 223,
+     "contrast": 32.3,
+     "hit": true,
+     "iou": 0.978,
+     "gt_box": [
+      298,
+      115,
+      45,
+      86
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 151,
+     "contrast": 36.7,
+     "hit": true,
+     "iou": 0.432,
+     "gt_box": [
+      647,
+      194,
+      49,
+      29
+     ]
+    },
+    {
+     "kind": "chip",
+     "area": 211,
+     "contrast": 101.0,
+     "hit": true,
+     "iou": 0.969,
+     "gt_box": [
+      574,
+      165,
+      17,
+      32
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      574,
+      165,
+      17,
+      31
+     ],
+     "score": 46.4,
+     "structure": 27.14,
+     "chroma": 10.37,
+     "illumination": 0.566,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      298,
+      115,
+      46,
+      86
+     ],
+     "score": 30.26,
+     "structure": 17.44,
+     "chroma": 4.06,
+     "illumination": 0.833,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      647,
+      191,
+      23,
+      31
+     ],
+     "score": 28.5,
+     "structure": 16.1,
+     "chroma": 1.29,
+     "illumination": 0.204,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 58,
+   "scene": "lena.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1886,
+   "defects": [
+    {
+     "kind": "scratch",
+     "area": 582,
+     "contrast": 26.6,
+     "hit": true,
+     "iou": 0.859,
+     "gt_box": [
+      345,
+      300,
+      48,
+      136
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      344,
+      301,
+      46,
+      127
+     ],
+     "score": 131.33,
+     "structure": 33.48,
+     "chroma": 7.09,
+     "illumination": 0.288,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 59,
+   "scene": "starry_night.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2052,
+   "defects": [
+    {
+     "kind": "chip",
+     "area": 655,
+     "contrast": 48.0,
+     "hit": true,
+     "iou": 0.525,
+     "gt_box": [
+      608,
+      199,
+      25,
+      50
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 194,
+     "contrast": 65.8,
+     "hit": true,
+     "iou": 0.931,
+     "gt_box": [
+      402,
+      193,
+      41,
+      81
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      603,
+      194,
+      39,
+      61
+     ],
+     "score": 187.88,
+     "structure": 50.84,
+     "chroma": 0.8,
+     "illumination": 0.249,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      401,
+      192,
+      43,
+      83
+     ],
+     "score": 87.97,
+     "structure": 27.93,
+     "chroma": 0.78,
+     "illumination": 0.097,
+     "brightening": -0.001
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 60,
+   "scene": "aloeL.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 793,
+   "defects": [
+    {
+     "kind": "scratch",
+     "area": 426,
+     "contrast": 42.3,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      506,
+      78,
+      20,
+      196
+     ]
+    }
+   ],
+   "flagged": [],
+   "lighting_regions": 2,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 61,
+   "scene": "baboon.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1830,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 188,
+     "contrast": 29.5,
+     "hit": true,
+     "iou": 0.047,
+     "gt_box": [
+      704,
+      516,
+      26,
+      79
+     ]
+    },
+    {
+     "kind": "chip",
+     "area": 805,
+     "contrast": 47.8,
+     "hit": true,
+     "iou": 0.621,
+     "gt_box": [
+      442,
+      356,
+      42,
+      41
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      438,
+      342,
+      47,
+      59
+     ],
+     "score": 53.66,
+     "structure": 21.02,
+     "chroma": 0.68,
+     "illumination": 0.312,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      711,
+      577,
+      6,
+      16
+     ],
+     "score": 20.67,
+     "structure": 14.25,
+     "chroma": -0.27,
+     "illumination": 0.31,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 62,
+   "scene": "board.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1833,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 213,
+     "contrast": 50.4,
+     "hit": true,
+     "iou": 0.439,
+     "gt_box": [
+      422,
+      472,
+      83,
+      56
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      454,
+      473,
+      51,
+      40
+     ],
+     "score": 58.22,
+     "structure": 37.978,
+     "chroma": 5.967,
+     "illumination": 0.11,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 63,
+   "scene": "box_in_scene.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 2040,
+   "defects": [
+    {
+     "kind": "scratch",
+     "area": 290,
+     "contrast": 14.1,
+     "hit": true,
+     "iou": 0.789,
+     "gt_box": [
+      698,
+      570,
+      130,
+      88
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      684,
+      569,
+      145,
+      100
+     ],
+     "score": 42.21,
+     "structure": 14.633,
+     "chroma": 0.615,
+     "illumination": 0.157,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      24,
+      540,
+      28,
+      42
+     ],
+     "score": 35.0,
+     "structure": 16.9,
+     "chroma": 0.94,
+     "illumination": 0.35,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      24,
+      609,
+      9,
+      27
+     ],
+     "score": 16.65,
+     "structure": 11.67,
+     "chroma": 1.06,
+     "illumination": 0.765,
+     "brightening": -0.128
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": false,
+   "unmatched": 2
+  },
+  {
+   "set": "damage",
+   "idx": 64,
+   "scene": "building.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1747,
+   "defects": [
+    {
+     "kind": "scratch",
+     "area": 406,
+     "contrast": 104.1,
+     "hit": true,
+     "iou": 0.8,
+     "gt_box": [
+      208,
+      371,
+      54,
+      90
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 492,
+     "contrast": 86.6,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      427,
+      329,
+      6,
+      118
+     ]
+    },
+    {
+     "kind": "chip",
+     "area": 589,
+     "contrast": 28.8,
+     "hit": true,
+     "iou": 0.152,
+     "gt_box": [
+      227,
+      352,
+      28,
+      33
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      207,
+      354,
+      53,
+      107
+     ],
+     "score": 104.87,
+     "structure": 33.348,
+     "chroma": 0.741,
+     "illumination": 0.192,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 65,
+   "scene": "fruits.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2126,
+   "defects": [
+    {
+     "kind": "scratch",
+     "area": 417,
+     "contrast": 41.5,
+     "hit": true,
+     "iou": 0.978,
+     "gt_box": [
+      405,
+      367,
+      90,
+      192
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 386,
+     "contrast": 52.9,
+     "hit": true,
+     "iou": 0.844,
+     "gt_box": [
+      425,
+      139,
+      80,
+      78
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      419,
+      138,
+      85,
+      85
+     ],
+     "score": 82.49,
+     "structure": 26.52,
+     "chroma": 0.11,
+     "illumination": 0.328,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      404,
+      367,
+      92,
+      192
+     ],
+     "score": 52.19,
+     "structure": 21.68,
+     "chroma": 0.72,
+     "illumination": 0.334,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 3,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 66,
+   "scene": "graf1.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1682,
+   "defects": [
+    {
+     "kind": "chip",
+     "area": 341,
+     "contrast": 49.9,
+     "hit": true,
+     "iou": 0.698,
+     "gt_box": [
+      487,
+      229,
+      16,
+      31
+     ]
+    },
+    {
+     "kind": "chip",
+     "area": 744,
+     "contrast": 109.9,
+     "hit": true,
+     "iou": 0.442,
+     "gt_box": [
+      761,
+      383,
+      31,
+      43
+     ]
+    },
+    {
+     "kind": "stain",
+     "area": 2000,
+     "contrast": 6.2,
+     "hit": true,
+     "iou": 0.469,
+     "gt_box": [
+      795,
+      456,
+      49,
+      53
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      751,
+      368,
+      37,
+      52
+     ],
+     "score": 115.1,
+     "structure": 45.36,
+     "chroma": -0.17,
+     "illumination": 0.436,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      486,
+      224,
+      18,
+      33
+     ],
+     "score": 119.58,
+     "structure": 39.96,
+     "chroma": -0.63,
+     "illumination": 0.514,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      801,
+      461,
+      51,
+      31
+     ],
+     "score": 23.26,
+     "structure": 13.78,
+     "chroma": 2.001,
+     "illumination": 0.351,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      236,
+      33,
+      21,
+      3
+     ],
+     "score": 14.82,
+     "structure": 11.59,
+     "chroma": -0.5,
+     "illumination": 0.433,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 3,
+   "shadowed": true,
+   "unmatched": 1
+  },
+  {
+   "set": "damage",
+   "idx": 67,
+   "scene": "home.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1824,
+   "defects": [
+    {
+     "kind": "chip",
+     "area": 562,
+     "contrast": 27.1,
+     "hit": true,
+     "iou": 0.865,
+     "gt_box": [
+      124,
+      466,
+      35,
+      33
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      124,
+      464,
+      33,
+      34
+     ],
+     "score": 31.46,
+     "structure": 12.6,
+     "chroma": 2.02,
+     "illumination": 0.45,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 68,
+   "scene": "lena.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1817,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 211,
+     "contrast": 24.1,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      254,
+      433,
+      95,
+      31
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 199,
+     "contrast": 18.7,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      806,
+      109,
+      42,
+      60
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 719,
+     "contrast": 52.1,
+     "hit": true,
+     "iou": 0.465,
+     "gt_box": [
+      372,
+      224,
+      96,
+      158
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      402,
+      223,
+      65,
+      110
+     ],
+     "score": 116.67,
+     "structure": 42.92,
+     "chroma": 1.26,
+     "illumination": 0.101,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      373,
+      356,
+      17,
+      25
+     ],
+     "score": 40.98,
+     "structure": 22.65,
+     "chroma": 1.57,
+     "illumination": 0.289,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 69,
+   "scene": "starry_night.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2055,
+   "defects": [
+    {
+     "kind": "chip",
+     "area": 183,
+     "contrast": 27.9,
+     "hit": true,
+     "iou": 0.569,
+     "gt_box": [
+      455,
+      58,
+      16,
+      18
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      449,
+      53,
+      22,
+      23
+     ],
+     "score": 199.47,
+     "structure": 51.43,
+     "chroma": 0.09,
+     "illumination": 0.247,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 70,
+   "scene": "aloeL.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1094,
+   "defects": [
+    {
+     "kind": "stain",
+     "area": 3623,
+     "contrast": 30.5,
+     "hit": true,
+     "iou": 0.744,
+     "gt_box": [
+      345,
+      411,
+      71,
+      67
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 500,
+     "contrast": 92.1,
+     "hit": true,
+     "iou": 0.979,
+     "gt_box": [
+      47,
+      503,
+      82,
+      106
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      349,
+      417,
+      61,
+      58
+     ],
+     "score": 47.69,
+     "structure": 21.92,
+     "chroma": 4.89,
+     "illumination": 0.672,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      47,
+      503,
+      81,
+      107
+     ],
+     "score": 83.68,
+     "structure": 40.71,
+     "chroma": 0.55,
+     "illumination": 0.055,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 71,
+   "scene": "baboon.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2080,
+   "defects": [
+    {
+     "kind": "stain",
+     "area": 4637,
+     "contrast": 14.4,
+     "hit": true,
+     "iou": 0.809,
+     "gt_box": [
+      409,
+      193,
+      71,
+      95
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      412,
+      199,
+      73,
+      93
+     ],
+     "score": 26.24,
+     "structure": 13.62,
+     "chroma": 3.48,
+     "illumination": 0.483,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 72,
+   "scene": "board.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1853,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 185,
+     "contrast": 51.5,
+     "hit": true,
+     "iou": 0.395,
+     "gt_box": [
+      339,
+      72,
+      44,
+      60
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      350,
+      100,
+      33,
+      33
+     ],
+     "score": 44.21,
+     "structure": 24.58,
+     "chroma": -0.83,
+     "illumination": 0.181,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 73,
+   "scene": "box_in_scene.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 2070,
+   "defects": [
+    {
+     "kind": "chip",
+     "area": 154,
+     "contrast": 13.3,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      827,
+      584,
+      16,
+      27
+     ]
+    },
+    {
+     "kind": "stain",
+     "area": 2423,
+     "contrast": 18.2,
+     "hit": true,
+     "iou": 0.601,
+     "gt_box": [
+      304,
+      498,
+      51,
+      63
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      313,
+      512,
+      42,
+      46
+     ],
+     "score": 19.62,
+     "structure": 12.63,
+     "chroma": 0.98,
+     "illumination": 0.433,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      128,
+      24,
+      13,
+      7
+     ],
+     "score": 28.13,
+     "structure": 15.93,
+     "chroma": -0.81,
+     "illumination": 0.546,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      172,
+      24,
+      22,
+      8
+     ],
+     "score": 18.86,
+     "structure": 13.05,
+     "chroma": -0.72,
+     "illumination": 0.492,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 3,
+   "shadowed": false,
+   "unmatched": 2
+  },
+  {
+   "set": "damage",
+   "idx": 74,
+   "scene": "building.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1840,
+   "defects": [
+    {
+     "kind": "chip",
+     "area": 427,
+     "contrast": 36.4,
+     "hit": true,
+     "iou": 0.701,
+     "gt_box": [
+      553,
+      532,
+      39,
+      23
+     ]
+    },
+    {
+     "kind": "stain",
+     "area": 1442,
+     "contrast": 16.9,
+     "hit": true,
+     "iou": 0.216,
+     "gt_box": [
+      687,
+      351,
+      59,
+      37
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 642,
+     "contrast": 73.3,
+     "hit": true,
+     "iou": 0.551,
+     "gt_box": [
+      248,
+      490,
+      150,
+      62
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      278,
+      502,
+      109,
+      47
+     ],
+     "score": 50.77,
+     "structure": 24.07,
+     "chroma": -0.9,
+     "illumination": 0.279,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      555,
+      536,
+      37,
+      17
+     ],
+     "score": 76.3,
+     "structure": 28.71,
+     "chroma": 0.51,
+     "illumination": 0.383,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      689,
+      347,
+      26,
+      23
+     ],
+     "score": 43.9,
+     "structure": 22.6,
+     "chroma": -0.47,
+     "illumination": 0.738,
+     "brightening": 0.023
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 75,
+   "scene": "fruits.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2079,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 198,
+     "contrast": 26.4,
+     "hit": true,
+     "iou": 0.91,
+     "gt_box": [
+      725,
+      472,
+      63,
+      67
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      725,
+      477,
+      63,
+      61
+     ],
+     "score": 44.6,
+     "structure": 27.44,
+     "chroma": 5.57,
+     "illumination": 0.135,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 76,
+   "scene": "graf1.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1784,
+   "defects": [
+    {
+     "kind": "chip",
+     "area": 464,
+     "contrast": 38.7,
+     "hit": true,
+     "iou": 0.397,
+     "gt_box": [
+      502,
+      115,
+      25,
+      26
+     ]
+    },
+    {
+     "kind": "scratch",
+     "area": 164,
+     "contrast": 71.0,
+     "hit": true,
+     "iou": 0.395,
+     "gt_box": [
+      289,
+      453,
+      78,
+      12
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      497,
+      113,
+      39,
+      42
+     ],
+     "score": 50.83,
+     "structure": 21.08,
+     "chroma": 0.87,
+     "illumination": 0.332,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      321,
+      451,
+      45,
+      11
+     ],
+     "score": 39.35,
+     "structure": 21.36,
+     "chroma": 1.04,
+     "illumination": 0.497,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 3,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 77,
+   "scene": "home.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1999,
+   "defects": [
+    {
+     "kind": "scratch",
+     "area": 290,
+     "contrast": 36.7,
+     "hit": true,
+     "iou": 0.907,
+     "gt_box": [
+      170,
+      301,
+      134,
+      46
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      170,
+      299,
+      132,
+      50
+     ],
+     "score": 36.63,
+     "structure": 25.81,
+     "chroma": 5.45,
+     "illumination": 0.108,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": false,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 78,
+   "scene": "lena.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1807,
+   "defects": [
+    {
+     "kind": "crack",
+     "area": 311,
+     "contrast": 36.7,
+     "hit": true,
+     "iou": 0.266,
+     "gt_box": [
+      665,
+      514,
+      131,
+      36
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 161,
+     "contrast": 32.6,
+     "hit": false,
+     "iou": 0.0,
+     "gt_box": [
+      179,
+      603,
+      55,
+      50
+     ]
+    },
+    {
+     "kind": "stain",
+     "area": 4407,
+     "contrast": 13.3,
+     "hit": true,
+     "iou": 0.471,
+     "gt_box": [
+      661,
+      514,
+      79,
+      75
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      766,
+      537,
+      30,
+      14
+     ],
+     "score": 77.75,
+     "structure": 44.99,
+     "chroma": 0.57,
+     "illumination": 0.462,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      683,
+      515,
+      45,
+      62
+     ],
+     "score": 37.96,
+     "structure": 16.336,
+     "chroma": 2.466,
+     "illumination": 0.591,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "damage",
+   "idx": 79,
+   "scene": "starry_night.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1917,
+   "defects": [
+    {
+     "kind": "stain",
+     "area": 3809,
+     "contrast": 12.4,
+     "hit": true,
+     "iou": 0.725,
+     "gt_box": [
+      645,
+      610,
+      59,
+      87
+     ]
+    },
+    {
+     "kind": "crack",
+     "area": 204,
+     "contrast": 38.4,
+     "hit": true,
+     "iou": 0.155,
+     "gt_box": [
+      518,
+      382,
+      63,
+      35
+     ]
+    }
+   ],
+   "flagged": [
+    {
+     "box": [
+      649,
+      620,
+      51,
+      73
+     ],
+     "score": 55.63,
+     "structure": 24.21,
+     "chroma": 1.87,
+     "illumination": 0.298,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      521,
+      402,
+      23,
+      16
+     ],
+     "score": 50.18,
+     "structure": 29.26,
+     "chroma": 1.46,
+     "illumination": 0.218,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": true,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 0,
+   "scene": "aloeL.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1216,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 1,
+   "scene": "baboon.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1775,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 2,
+   "scene": "board.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1718,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 3,
+   "scene": "box_in_scene.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 2061,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      709,
+      639,
+      38,
+      30
+     ],
+     "score": 25.38,
+     "structure": 14.74,
+     "chroma": 1.1,
+     "illumination": 0.517,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      666,
+      658,
+      14,
+      11
+     ],
+     "score": 25.52,
+     "structure": 13.78,
+     "chroma": 1.06,
+     "illumination": 0.504,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      895,
+      543,
+      5,
+      12
+     ],
+     "score": 17.97,
+     "structure": 12.69,
+     "chroma": 0.34,
+     "illumination": 0.126,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 3
+  },
+  {
+   "set": "nochange",
+   "idx": 4,
+   "scene": "building.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1961,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      895,
+      34,
+      7,
+      31
+     ],
+     "score": 29.27,
+     "structure": 18.01,
+     "chroma": 0.34,
+     "illumination": 0.444,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 1
+  },
+  {
+   "set": "nochange",
+   "idx": 5,
+   "scene": "fruits.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2123,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 2,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 6,
+   "scene": "graf1.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1803,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 7,
+   "scene": "home.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1971,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 8,
+   "scene": "lena.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2017,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 9,
+   "scene": "starry_night.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1899,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 10,
+   "scene": "aloeL.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1097,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 11,
+   "scene": "baboon.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2060,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      602,
+      730,
+      13,
+      9
+     ],
+     "score": 13.05,
+     "structure": 10.54,
+     "chroma": 0.49,
+     "illumination": 0.642,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 1
+  },
+  {
+   "set": "nochange",
+   "idx": 12,
+   "scene": "board.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1818,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 13,
+   "scene": "box_in_scene.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1959,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      682,
+      603,
+      81,
+      66
+     ],
+     "score": 34.4,
+     "structure": 14.19,
+     "chroma": 0.81,
+     "illumination": 0.633,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      43,
+      542,
+      8,
+      20
+     ],
+     "score": 28.51,
+     "structure": 17.3,
+     "chroma": 0.9,
+     "illumination": 0.786,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 5,
+   "shadowed": null,
+   "unmatched": 2
+  },
+  {
+   "set": "nochange",
+   "idx": 14,
+   "scene": "building.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1931,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 2,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 15,
+   "scene": "fruits.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2084,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 16,
+   "scene": "graf1.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1704,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 17,
+   "scene": "home.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1868,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 18,
+   "scene": "lena.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1907,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 19,
+   "scene": "starry_night.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2018,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 20,
+   "scene": "aloeL.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1196,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 21,
+   "scene": "baboon.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2005,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 22,
+   "scene": "board.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1798,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      24,
+      591,
+      6,
+      14
+     ],
+     "score": 15.81,
+     "structure": 12.36,
+     "chroma": 1.14,
+     "illumination": 0.335,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 1
+  },
+  {
+   "set": "nochange",
+   "idx": 23,
+   "scene": "box_in_scene.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 2040,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 3,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 24,
+   "scene": "building.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1899,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 25,
+   "scene": "fruits.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2154,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 2,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 26,
+   "scene": "graf1.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1859,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 27,
+   "scene": "home.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2086,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 28,
+   "scene": "lena.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1875,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 3,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "nochange",
+   "idx": 29,
+   "scene": "starry_night.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1916,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 0,
+   "scene": "aloeL.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1143,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      133,
+      28,
+      34,
+      9
+     ],
+     "score": 23.99,
+     "structure": 14.8,
+     "chroma": 0.89,
+     "illumination": 0.779,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      28,
+      34,
+      23,
+      9
+     ],
+     "score": 18.78,
+     "structure": 13.67,
+     "chroma": 0.66,
+     "illumination": 0.46,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      81,
+      31,
+      13,
+      9
+     ],
+     "score": 18.63,
+     "structure": 13.62,
+     "chroma": 0.65,
+     "illumination": 0.287,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 3
+  },
+  {
+   "set": "exposure",
+   "idx": 1,
+   "scene": "baboon.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1870,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 2,
+   "scene": "board.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1696,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 3,
+   "scene": "box_in_scene.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1731,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      24,
+      503,
+      84,
+      55
+     ],
+     "score": 15.77,
+     "structure": 11.014,
+     "chroma": -0.212,
+     "illumination": 0.501,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      742,
+      551,
+      16,
+      23
+     ],
+     "score": 18.48,
+     "structure": 13.97,
+     "chroma": 0.03,
+     "illumination": 0.756,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      723,
+      462,
+      35,
+      13
+     ],
+     "score": 12.24,
+     "structure": 10.13,
+     "chroma": -0.44,
+     "illumination": 0.626,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      511,
+      394,
+      10,
+      6
+     ],
+     "score": 11.51,
+     "structure": 10.17,
+     "chroma": 0.15,
+     "illumination": 0.36,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": null,
+   "unmatched": 4
+  },
+  {
+   "set": "exposure",
+   "idx": 4,
+   "scene": "building.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1954,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      22,
+      43,
+      18,
+      336
+     ],
+     "score": 43.26,
+     "structure": 16.27,
+     "chroma": 0.58,
+     "illumination": 0.717,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      23,
+      607,
+      7,
+      11
+     ],
+     "score": 22.22,
+     "structure": 15.78,
+     "chroma": 2.87,
+     "illumination": 0.351,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      470,
+      22,
+      23,
+      5
+     ],
+     "score": 15.74,
+     "structure": 12.09,
+     "chroma": -0.2,
+     "illumination": 0.228,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      22,
+      445,
+      6,
+      10
+     ],
+     "score": 17.76,
+     "structure": 13.22,
+     "chroma": 2.6,
+     "illumination": 0.216,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": null,
+   "unmatched": 4
+  },
+  {
+   "set": "exposure",
+   "idx": 5,
+   "scene": "fruits.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1937,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 6,
+   "scene": "graf1.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1473,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 3,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 7,
+   "scene": "home.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1709,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 8,
+   "scene": "lena.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1455,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      874,
+      420,
+      10,
+      20
+     ],
+     "score": 18.86,
+     "structure": 12.52,
+     "chroma": -1.0,
+     "illumination": 0.225,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      875,
+      368,
+      9,
+      24
+     ],
+     "score": 18.0,
+     "structure": 11.99,
+     "chroma": -1.04,
+     "illumination": 0.455,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 3,
+   "shadowed": null,
+   "unmatched": 2
+  },
+  {
+   "set": "exposure",
+   "idx": 9,
+   "scene": "starry_night.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1826,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 10,
+   "scene": "aloeL.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1003,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      28,
+      761,
+      9,
+      11
+     ],
+     "score": 27.56,
+     "structure": 17.47,
+     "chroma": -0.48,
+     "illumination": 0.161,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      28,
+      436,
+      8,
+      33
+     ],
+     "score": 23.44,
+     "structure": 13.8,
+     "chroma": -1.4,
+     "illumination": 0.133,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      28,
+      693,
+      5,
+      14
+     ],
+     "score": 24.08,
+     "structure": 14.26,
+     "chroma": -1.01,
+     "illumination": 0.33,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      28,
+      626,
+      8,
+      11
+     ],
+     "score": 25.97,
+     "structure": 16.63,
+     "chroma": -1.2,
+     "illumination": 0.053,
+     "brightening": 0.011
+    },
+    {
+     "box": [
+      28,
+      306,
+      7,
+      31
+     ],
+     "score": 21.07,
+     "structure": 14.33,
+     "chroma": -1.35,
+     "illumination": 0.132,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      28,
+      654,
+      7,
+      9
+     ],
+     "score": 22.62,
+     "structure": 15.69,
+     "chroma": -1.39,
+     "illumination": 0.101,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      28,
+      271,
+      6,
+      17
+     ],
+     "score": 20.98,
+     "structure": 14.43,
+     "chroma": -0.77,
+     "illumination": 0.165,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": null,
+   "unmatched": 7
+  },
+  {
+   "set": "exposure",
+   "idx": 11,
+   "scene": "baboon.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1883,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 12,
+   "scene": "board.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1668,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      493,
+      656,
+      33,
+      8
+     ],
+     "score": 19.91,
+     "structure": 12.93,
+     "chroma": 1.3,
+     "illumination": 0.73,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      763,
+      656,
+      19,
+      8
+     ],
+     "score": 16.43,
+     "structure": 12.58,
+     "chroma": 1.1,
+     "illumination": 0.373,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      825,
+      657,
+      7,
+      7
+     ],
+     "score": 18.2,
+     "structure": 13.07,
+     "chroma": 0.64,
+     "illumination": 0.169,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 3,
+   "shadowed": null,
+   "unmatched": 3
+  },
+  {
+   "set": "exposure",
+   "idx": 13,
+   "scene": "box_in_scene.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1832,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      892,
+      408,
+      8,
+      19
+     ],
+     "score": 15.73,
+     "structure": 11.46,
+     "chroma": 0.1,
+     "illumination": 0.276,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      878,
+      648,
+      6,
+      21
+     ],
+     "score": 13.18,
+     "structure": 10.9,
+     "chroma": -0.67,
+     "illumination": 0.771,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      241,
+      24,
+      8,
+      6
+     ],
+     "score": 15.68,
+     "structure": 11.66,
+     "chroma": -0.64,
+     "illumination": 0.723,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 7,
+   "shadowed": null,
+   "unmatched": 3
+  },
+  {
+   "set": "exposure",
+   "idx": 14,
+   "scene": "building.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1392,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 3,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 0,
+   "scene": "aloeL.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 839,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 1,
+   "scene": "baboon.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1927,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      453,
+      249,
+      10,
+      5
+     ],
+     "score": 17.06,
+     "structure": 12.17,
+     "chroma": -0.33,
+     "illumination": 0.559,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      270,
+      704,
+      12,
+      7
+     ],
+     "score": 11.81,
+     "structure": 10.41,
+     "chroma": -0.71,
+     "illumination": 0.657,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": null,
+   "unmatched": 2
+  },
+  {
+   "set": "colortemp",
+   "idx": 2,
+   "scene": "board.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1832,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      273,
+      24,
+      20,
+      7
+     ],
+     "score": 20.55,
+     "structure": 13.53,
+     "chroma": 0.55,
+     "illumination": 0.398,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 1
+  },
+  {
+   "set": "colortemp",
+   "idx": 3,
+   "scene": "box_in_scene.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1996,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 4,
+   "scene": "building.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1965,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      22,
+      239,
+      39,
+      13
+     ],
+     "score": 17.31,
+     "structure": 12.12,
+     "chroma": 0.55,
+     "illumination": 0.235,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 1
+  },
+  {
+   "set": "colortemp",
+   "idx": 5,
+   "scene": "fruits.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2162,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 6,
+   "scene": "graf1.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1717,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 3,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 7,
+   "scene": "home.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1858,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 8,
+   "scene": "lena.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1827,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 9,
+   "scene": "starry_night.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2058,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 10,
+   "scene": "aloeL.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 965,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 11,
+   "scene": "baboon.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1965,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 12,
+   "scene": "board.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1742,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 13,
+   "scene": "box_in_scene.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 2092,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 3,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 14,
+   "scene": "building.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1988,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 2,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 0,
+   "scene": "aloeL.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 943,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 1,
+   "scene": "baboon.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1818,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 2,
+   "scene": "board.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1718,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 3,
+   "scene": "box_in_scene.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 2041,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 3,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 4,
+   "scene": "building.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1778,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 5,
+   "scene": "fruits.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2060,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 6,
+   "scene": "graf1.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1704,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 7,
+   "scene": "home.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1910,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 8,
+   "scene": "lena.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1536,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 4,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 9,
+   "scene": "starry_night.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1898,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 10,
+   "scene": "aloeL.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 970,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 11,
+   "scene": "baboon.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1809,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 12,
+   "scene": "board.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1813,
+   "defects": [],
+   "flagged": [],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 13,
+   "scene": "box_in_scene.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1907,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      26,
+      285,
+      6,
+      13
+     ],
+     "score": 14.51,
+     "structure": 11.29,
+     "chroma": -0.09,
+     "illumination": 0.278,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": null,
+   "unmatched": 1
+  },
+  {
+   "set": "shadow",
+   "idx": 14,
+   "scene": "building.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1734,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      324,
+      383,
+      25,
+      22
+     ],
+     "score": 14.77,
+     "structure": 10.89,
+     "chroma": 0.28,
+     "illumination": 0.701,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 1
+  },
+  {
+   "set": "specular",
+   "idx": 0,
+   "scene": "aloeL.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1197,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      523,
+      348,
+      130,
+      164
+     ],
+     "score": 67.69,
+     "structure": 20.96,
+     "chroma": 13.88,
+     "illumination": 0.786,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 1
+  },
+  {
+   "set": "specular",
+   "idx": 1,
+   "scene": "baboon.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1915,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      590,
+      647,
+      38,
+      88
+     ],
+     "score": 17.62,
+     "structure": 11.81,
+     "chroma": 0.68,
+     "illumination": 0.451,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 1
+  },
+  {
+   "set": "specular",
+   "idx": 2,
+   "scene": "board.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1628,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      447,
+      174,
+      67,
+      57
+     ],
+     "score": 24.82,
+     "structure": 14.91,
+     "chroma": 1.6,
+     "illumination": 0.282,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": null,
+   "unmatched": 1
+  },
+  {
+   "set": "specular",
+   "idx": 3,
+   "scene": "box_in_scene.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1921,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      466,
+      98,
+      88,
+      97
+     ],
+     "score": 69.01,
+     "structure": 25.95,
+     "chroma": 1.62,
+     "illumination": 0.426,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": null,
+   "unmatched": 1
+  },
+  {
+   "set": "specular",
+   "idx": 4,
+   "scene": "building.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1830,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      137,
+      219,
+      58,
+      47
+     ],
+     "score": 19.14,
+     "structure": 11.68,
+     "chroma": 0.76,
+     "illumination": 0.659,
+     "brightening": -0.013
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 1
+  },
+  {
+   "set": "specular",
+   "idx": 5,
+   "scene": "fruits.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1989,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      402,
+      201,
+      103,
+      122
+     ],
+     "score": 59.23,
+     "structure": 14.4,
+     "chroma": 0.89,
+     "illumination": 0.72,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 1
+  },
+  {
+   "set": "specular",
+   "idx": 6,
+   "scene": "graf1.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1625,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      246,
+      433,
+      44,
+      42
+     ],
+     "score": 16.86,
+     "structure": 11.43,
+     "chroma": 0.92,
+     "illumination": 0.435,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 3,
+   "shadowed": null,
+   "unmatched": 1
+  },
+  {
+   "set": "specular",
+   "idx": 7,
+   "scene": "home.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1911,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      198,
+      539,
+      54,
+      53
+     ],
+     "score": 32.46,
+     "structure": 7.23,
+     "chroma": 10.26,
+     "illumination": 0.37,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 1
+  },
+  {
+   "set": "specular",
+   "idx": 8,
+   "scene": "lena.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1835,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      209,
+      460,
+      144,
+      150
+     ],
+     "score": 71.0,
+     "structure": 23.31,
+     "chroma": 5.91,
+     "illumination": 0.598,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 1
+  },
+  {
+   "set": "specular",
+   "idx": 9,
+   "scene": "starry_night.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 2028,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      714,
+      285,
+      105,
+      109
+     ],
+     "score": 81.72,
+     "structure": 24.83,
+     "chroma": 4.67,
+     "illumination": 0.592,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": null,
+   "unmatched": 1
+  },
+  {
+   "set": "specular",
+   "idx": 10,
+   "scene": "aloeL.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1261,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      240,
+      397,
+      76,
+      65
+     ],
+     "score": 78.71,
+     "structure": 25.66,
+     "chroma": 14.58,
+     "illumination": 0.713,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 0,
+   "shadowed": null,
+   "unmatched": 1
+  },
+  {
+   "set": "specular",
+   "idx": 11,
+   "scene": "baboon.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1953,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      639,
+      286,
+      143,
+      171
+     ],
+     "score": 124.35,
+     "structure": 27.69,
+     "chroma": 7.85,
+     "illumination": 0.649,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 1
+  },
+  {
+   "set": "specular",
+   "idx": 12,
+   "scene": "board.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1730,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      622,
+      352,
+      59,
+      66
+     ],
+     "score": 53.29,
+     "structure": 20.48,
+     "chroma": 1.68,
+     "illumination": 0.288,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 1
+  },
+  {
+   "set": "specular",
+   "idx": 13,
+   "scene": "box_in_scene.png",
+   "ok": true,
+   "reason": null,
+   "inliers": 1927,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      410,
+      460,
+      82,
+      113
+     ],
+     "score": 135.54,
+     "structure": 15.57,
+     "chroma": 18.3,
+     "illumination": 0.449,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      207,
+      636,
+      28,
+      33
+     ],
+     "score": 262.69,
+     "structure": 0.4,
+     "chroma": 144.77,
+     "illumination": 0.775,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      790,
+      259,
+      21,
+      24
+     ],
+     "score": 234.39,
+     "structure": 0.09,
+     "chroma": 173.81,
+     "illumination": 0.504,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      556,
+      81,
+      15,
+      17
+     ],
+     "score": 240.76,
+     "structure": 0.98,
+     "chroma": 199.41,
+     "illumination": 0.277,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      861,
+      608,
+      22,
+      12
+     ],
+     "score": 165.54,
+     "structure": 0.11,
+     "chroma": 98.04,
+     "illumination": 0.687,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      842,
+      77,
+      20,
+      19
+     ],
+     "score": 213.93,
+     "structure": 0.4,
+     "chroma": 154.83,
+     "illumination": 0.253,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      497,
+      252,
+      21,
+      20
+     ],
+     "score": 124.99,
+     "structure": -0.05,
+     "chroma": 75.23,
+     "illumination": 0.454,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      365,
+      468,
+      19,
+      23
+     ],
+     "score": 149.56,
+     "structure": 0.39,
+     "chroma": 88.45,
+     "illumination": 0.653,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      441,
+      216,
+      14,
+      12
+     ],
+     "score": 204.66,
+     "structure": 0.21,
+     "chroma": 120.76,
+     "illumination": 0.131,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      407,
+      184,
+      14,
+      13
+     ],
+     "score": 140.11,
+     "structure": -0.04,
+     "chroma": 78.08,
+     "illumination": 0.127,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      598,
+      159,
+      9,
+      9
+     ],
+     "score": 146.97,
+     "structure": 0.64,
+     "chroma": 122.39,
+     "illumination": 0.552,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 2,
+   "shadowed": null,
+   "unmatched": 11
+  },
+  {
+   "set": "specular",
+   "idx": 14,
+   "scene": "building.jpg",
+   "ok": true,
+   "reason": null,
+   "inliers": 1976,
+   "defects": [],
+   "flagged": [
+    {
+     "box": [
+      691,
+      101,
+      42,
+      64
+     ],
+     "score": 32.14,
+     "structure": 17.36,
+     "chroma": 5.39,
+     "illumination": 0.569,
+     "brightening": 0.004
+    }
+   ],
+   "lighting_regions": 1,
+   "shadowed": null,
+   "unmatched": 1
+  }
+ ],
+ "summary": {
+  "damage_pairs": 80,
+  "defects": 162,
+  "damage_registration_failures": 0,
+  "recall": 0.858,
+  "precision": 0.88,
+  "fp_per_pair": 0.24,
+  "fp_in_shadow_pairs": 4,
+  "shadow_pairs": 39,
+  "nochange_pairs": 30,
+  "nochange_false_alarm_rate": 0.167,
+  "nochange_flags_per_pair": 0.27,
+  "nochange_registration_failures": 0,
+  "lighting_pairs": 60,
+  "lighting_false_alarm_rate": 0.45,
+  "lighting_flags_per_pair": 0.95,
+  "lighting_registration_failures": 0,
+  "lighting_by_kind": {
+   "exposure": {
+    "pairs": 15,
+    "false_alarm_rate": 0.467,
+    "flags": 26
+   },
+   "colortemp": {
+    "pairs": 15,
+    "false_alarm_rate": 0.2,
+    "flags": 4
+   },
+   "shadow": {
+    "pairs": 15,
+    "false_alarm_rate": 0.133,
+    "flags": 2
+   },
+   "specular": {
+    "pairs": 15,
+    "false_alarm_rate": 1.0,
+    "flags": 25
+   }
+  }
+ },
+ "breakdown": {
+  "by_kind": {
+   "scratch": {
+    "n": 38,
+    "recall": 0.842,
+    "recall_iou": 0.579
+   },
+   "stain": {
+    "n": 35,
+    "recall": 0.943,
+    "recall_iou": 0.857
+   },
+   "chip": {
+    "n": 36,
+    "recall": 0.944,
+    "recall_iou": 0.806
+   },
+   "crack": {
+    "n": 53,
+    "recall": 0.755,
+    "recall_iou": 0.547
+   }
+  },
+  "by_size": {
+   "small <150 px": {
+    "n": 11,
+    "recall": 0.818,
+    "recall_iou": 0.545
+   },
+   "medium 150-600 px": {
+    "n": 95,
+    "recall": 0.821,
+    "recall_iou": 0.6
+   },
+   "large >600 px": {
+    "n": 56,
+    "recall": 0.929,
+    "recall_iou": 0.839
+   }
+  },
+  "by_kind_size": {
+   "scratch": {
+    "small <150 px": {
+     "n": 2,
+     "recall": 0.5,
+     "recall_iou": 0.5
+    },
+    "medium 150-600 px": {
+     "n": 26,
+     "recall": 0.885,
+     "recall_iou": 0.577
+    },
+    "large >600 px": {
+     "n": 10,
+     "recall": 0.8,
+     "recall_iou": 0.6
+    }
+   },
+   "stain": {
+    "small <150 px": {
+     "n": 0,
+     "recall": 0.0,
+     "recall_iou": 0.0
+    },
+    "medium 150-600 px": {
+     "n": 0,
+     "recall": 0.0,
+     "recall_iou": 0.0
+    },
+    "large >600 px": {
+     "n": 35,
+     "recall": 0.943,
+     "recall_iou": 0.857
+    }
+   },
+   "chip": {
+    "small <150 px": {
+     "n": 0,
+     "recall": 0.0,
+     "recall_iou": 0.0
+    },
+    "medium 150-600 px": {
+     "n": 25,
+     "recall": 0.92,
+     "recall_iou": 0.72
+    },
+    "large >600 px": {
+     "n": 11,
+     "recall": 1.0,
+     "recall_iou": 1.0
+    }
+   },
+   "crack": {
+    "small <150 px": {
+     "n": 9,
+     "recall": 0.889,
+     "recall_iou": 0.556
+    },
+    "medium 150-600 px": {
+     "n": 44,
+     "recall": 0.727,
+     "recall_iou": 0.545
+    },
+    "large >600 px": {
+     "n": 0,
+     "recall": 0.0,
+     "recall_iou": 0.0
+    }
+   }
+  },
+  "median_iou_of_hits": 0.621,
+  "median_contrast_hit": 49.9,
+  "median_contrast_miss": 23.1
+ },
+ "gallery": [
+  {
+   "file": "failures/01_damage30_missed-crack.jpg",
+   "type": "missed crack",
+   "set": "damage",
+   "idx": 30,
+   "scene": "aloeL.jpg",
+   "defect": {
+    "kind": "crack",
+    "area": 215,
+    "contrast": 59.1,
+    "hit": false,
+    "iou": 0.0,
+    "gt_box": [
+     556,
+     272,
+     76,
+     29
+    ]
+   },
+   "flagged": [
+    {
+     "box": [
+      547,
+      695,
+      33,
+      35
+     ],
+     "score": 63.07,
+     "structure": 22.08,
+     "chroma": 2.67,
+     "illumination": 0.48,
+     "brightening": 0.0
+    }
+   ]
+  },
+  {
+   "file": "failures/02_damage16_missed-chip.jpg",
+   "type": "missed chip",
+   "set": "damage",
+   "idx": 16,
+   "scene": "graf1.png",
+   "defect": {
+    "kind": "chip",
+    "area": 542,
+    "contrast": 11.1,
+    "hit": false,
+    "iou": 0.0,
+    "gt_box": [
+     655,
+     392,
+     33,
+     27
+    ]
+   },
+   "flagged": [
+    {
+     "box": [
+      391,
+      145,
+      159,
+      89
+     ],
+     "score": 42.24,
+     "structure": 20.64,
+     "chroma": 0.45,
+     "illumination": 0.211,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      507,
+      622,
+      39,
+      38
+     ],
+     "score": 31.23,
+     "structure": 16.89,
+     "chroma": -0.27,
+     "illumination": 0.329,
+     "brightening": 0.0
+    }
+   ]
+  },
+  {
+   "file": "failures/03_damage10_missed-scratch.jpg",
+   "type": "missed scratch",
+   "set": "damage",
+   "idx": 10,
+   "scene": "aloeL.jpg",
+   "defect": {
+    "kind": "scratch",
+    "area": 934,
+    "contrast": 85.8,
+    "hit": false,
+    "iou": 0.0,
+    "gt_box": [
+     217,
+     229,
+     76,
+     216
+    ]
+   },
+   "flagged": [
+    {
+     "box": [
+      199,
+      476,
+      51,
+      60
+     ],
+     "score": 56.9,
+     "structure": 24.87,
+     "chroma": 1.87,
+     "illumination": 0.763,
+     "brightening": 0.0
+    }
+   ]
+  },
+  {
+   "file": "failures/04_damage26_missed-stain.jpg",
+   "type": "missed stain",
+   "set": "damage",
+   "idx": 26,
+   "scene": "graf1.png",
+   "defect": {
+    "kind": "stain",
+    "area": 2671,
+    "contrast": 8.2,
+    "hit": false,
+    "iou": 0.0,
+    "gt_box": [
+     100,
+     416,
+     63,
+     75
+    ]
+   },
+   "flagged": [
+    {
+     "box": [
+      337,
+      280,
+      20,
+      40
+     ],
+     "score": 67.31,
+     "structure": 27.65,
+     "chroma": 1.68,
+     "illumination": 0.22,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      647,
+      344,
+      38,
+      35
+     ],
+     "score": 20.86,
+     "structure": 14.75,
+     "chroma": -0.03,
+     "illumination": 0.536,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      366,
+      217,
+      9,
+      12
+     ],
+     "score": 23.14,
+     "structure": 15.86,
+     "chroma": 0.66,
+     "illumination": 0.414,
+     "brightening": 0.0
+    }
+   ]
+  },
+  {
+   "file": "failures/05_specular0_false-alarm.jpg",
+   "type": "false alarm (specular)",
+   "set": "specular",
+   "idx": 0,
+   "scene": "aloeL.jpg",
+   "defect": null,
+   "flagged": [
+    {
+     "box": [
+      523,
+      348,
+      130,
+      164
+     ],
+     "score": 67.69,
+     "structure": 20.96,
+     "chroma": 13.88,
+     "illumination": 0.786,
+     "brightening": 0.0
+    }
+   ]
+  },
+  {
+   "file": "failures/06_shadow13_false-alarm.jpg",
+   "type": "false alarm (shadow)",
+   "set": "shadow",
+   "idx": 13,
+   "scene": "box_in_scene.png",
+   "defect": null,
+   "flagged": [
+    {
+     "box": [
+      26,
+      285,
+      6,
+      13
+     ],
+     "score": 14.51,
+     "structure": 11.29,
+     "chroma": -0.09,
+     "illumination": 0.278,
+     "brightening": 0.0
+    }
+   ]
+  },
+  {
+   "file": "failures/07_colortemp1_false-alarm.jpg",
+   "type": "false alarm (colortemp)",
+   "set": "colortemp",
+   "idx": 1,
+   "scene": "baboon.jpg",
+   "defect": null,
+   "flagged": [
+    {
+     "box": [
+      453,
+      249,
+      10,
+      5
+     ],
+     "score": 17.06,
+     "structure": 12.17,
+     "chroma": -0.33,
+     "illumination": 0.559,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      270,
+      704,
+      12,
+      7
+     ],
+     "score": 11.81,
+     "structure": 10.41,
+     "chroma": -0.71,
+     "illumination": 0.657,
+     "brightening": 0.0
+    }
+   ]
+  },
+  {
+   "file": "failures/08_exposure0_false-alarm.jpg",
+   "type": "false alarm (exposure)",
+   "set": "exposure",
+   "idx": 0,
+   "scene": "aloeL.jpg",
+   "defect": null,
+   "flagged": [
+    {
+     "box": [
+      133,
+      28,
+      34,
+      9
+     ],
+     "score": 23.99,
+     "structure": 14.8,
+     "chroma": 0.89,
+     "illumination": 0.779,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      28,
+      34,
+      23,
+      9
+     ],
+     "score": 18.78,
+     "structure": 13.67,
+     "chroma": 0.66,
+     "illumination": 0.46,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      81,
+      31,
+      13,
+      9
+     ],
+     "score": 18.63,
+     "structure": 13.62,
+     "chroma": 0.65,
+     "illumination": 0.287,
+     "brightening": 0.0
+    }
+   ]
+  }
+ ],
+ "runtime_s": 907.5
+}

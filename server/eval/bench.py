@@ -198,23 +198,32 @@ def breakdowns(recs: list[dict]) -> dict:
 
 # ---------------------------------------------------------------- registration stress
 
+STRESS_LEVELS = 6
+# per-axis magnitudes for levels 0..5; "combined" applies all three at the smaller magnitudes below
+_ROT, _ZOOM, _TILT = (5, 15, 30, 60, 90, 150), (1.1, 1.3, 1.7, 2.2, 3.0, 4.5), (10, 20, 30, 40, 50, 60)
+_C_ROT, _C_ZOOM, _C_TILT = (3, 8, 15, 25, 40, 60), (1.05, 1.15, 1.3, 1.5, 1.8, 2.2), (3, 8, 15, 25, 35, 45)
+AXES = ("rotation", "scale", "tilt", "combined")
+
+
 def _stress_transform(axis: str, level: int, rng: np.random.Generator, w: int, h: int) -> np.ndarray:
-    rot = (3, 8, 15, 25, 40)[level]
-    zoom = (1.08, 1.2, 1.4, 1.7, 2.1)[level]
-    persp = (0.01, 0.025, 0.045, 0.07, 0.10)[level]
-    angle = rng.choice([-1, 1]) * rot * rng.uniform(0.8, 1.0) if axis in ("rotation", "combined") else 0.0
-    scale = float(zoom ** rng.choice([-1, 1]) if axis in ("scale", "combined") else 1.0)
+    """Rotation (degrees in the image plane), scale (zoom in or out) and tilt (camera pitch or yaw, focal = image width)."""
+    comb = axis == "combined"
+    rot, zoom, tilt = (_C_ROT, _C_ZOOM, _C_TILT) if comb else (_ROT, _ZOOM, _TILT)
+    angle = rng.choice([-1, 1]) * rot[level] * rng.uniform(0.8, 1.0) if axis in ("rotation", "combined") else 0.0
+    scale = float(zoom[level] ** rng.choice([-1, 1])) if axis in ("scale", "combined") else 1.0
     M = np.eye(3)
     M[:2] = cv2.getRotationMatrix2D((w / 2, h / 2), float(angle), scale)
-    if axis in ("perspective", "combined"):
-        src = np.float32([[0, 0], [w, 0], [w, h], [0, h]])
-        jitter = np.clip(rng.normal(0, persp * min(h, w), (4, 2)), -0.15 * h, 0.15 * h).astype(np.float32)
-        M = cv2.getPerspectiveTransform(src, src + jitter) @ M
+    if axis in ("tilt", "combined"):
+        theta = np.radians(tilt[level] * rng.uniform(0.8, 1.0) * rng.choice([-1, 1]))
+        rvec = np.array([theta, 0, 0]) if rng.random() < 0.5 else np.array([0, theta, 0])
+        R, _ = cv2.Rodrigues(rvec)
+        K = np.array([[w, 0, w / 2], [0, w, h / 2], [0, 0, 1]], float)
+        M = K @ R @ np.linalg.inv(K) @ M
     return M
 
 
 def stress_pair(axis: str, level: int, idx: int, scenes: list) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-    rng = np.random.default_rng([SEED, SET_ID["stress"], ("rotation", "scale", "perspective", "combined").index(axis),
+    rng = np.random.default_rng([SEED, SET_ID["stress"], AXES.index(axis),
                                  level, idx])
     _, scene = scenes[idx % len(scenes)]
     h, w = scene.shape[:2]
@@ -239,28 +248,26 @@ def registration_error(H_est: np.ndarray, H_gt: np.ndarray, shape: tuple) -> flo
     return float(np.median(np.linalg.norm(est - truth, axis=1)[inside]))
 
 
-def registration_stress(scenes: list, n: int) -> dict:
-    out = {}
-    for axis in ("rotation", "scale", "perspective", "combined"):
-        out[axis] = []
-        for level in range(5):
-            reg = acc = usable = 0
-            errs = []
-            for i in range(n):
-                before, after, H_gt = stress_pair(axis, level, i, scenes)
-                bkf, akf = Keyframe.build(before, SIDE), Keyframe.build(after, SIDE)
-                s = bkf.image.shape[1] / before.shape[1]
-                S = np.diag([s, s, 1.0])
-                H, _ = vision.match(akf, bkf)
-                if H is not None:
-                    reg += 1
-                    e = registration_error(H, S @ H_gt @ np.linalg.inv(S), bkf.gray.shape)
-                    errs.append(e)
-                    acc += e <= REG_TOL_PX
-                    usable += compare(bkf, akf).ok
-            out[axis].append({"level": level, "pairs": n, "registered": reg, "accurate": acc, "usable": usable,
-                              "registered_rate": round(reg / n, 3), "accurate_rate": round(acc / n, 3),
-                              "median_error_px": round(float(np.nanmedian(errs)), 2) if errs else None})
+def registration_stress(scenes: list, n: int, axis: str) -> list[dict]:
+    out = []
+    for level in range(STRESS_LEVELS):
+        reg = acc = usable = 0
+        errs = []
+        for i in range(n):
+            before, after, H_gt = stress_pair(axis, level, i, scenes)
+            bkf, akf = Keyframe.build(before, SIDE), Keyframe.build(after, SIDE)
+            s = bkf.image.shape[1] / before.shape[1]
+            S = np.diag([s, s, 1.0])
+            H, _ = vision.match(akf, bkf)
+            if H is not None:
+                reg += 1
+                e = registration_error(H, S @ H_gt @ np.linalg.inv(S), bkf.gray.shape)
+                errs.append(e)
+                acc += e <= REG_TOL_PX
+                usable += compare(bkf, akf).ok
+        out.append({"level": level, "pairs": n, "registered": reg, "accurate": acc, "usable": usable,
+                    "registered_rate": round(reg / n, 3), "accurate_rate": round(acc / n, 3),
+                    "median_error_px": round(float(np.nanmedian(errs)), 2) if errs else None})
     return out
 
 
@@ -275,10 +282,11 @@ class _Cv2Proxy:
     """Stands in for `cv2` inside twice.vision only; the engine file is untouched."""
 
     def __init__(self, drop_flow=False, drop_clip=False):
-        self.drop_flow, self.drop_clip, self.clip_calls = drop_flow, drop_clip, 0
+        self.drop_flow, self.drop_clip, self.calls = drop_flow, drop_clip, 0
 
     def __getattr__(self, name):
         if name == "DISOpticalFlow_create" and self.drop_flow:
+            self.calls += 1
             return lambda preset: _ZeroFlow()
         if name == "dilate" and self.drop_clip:
             return self._dilate
@@ -286,7 +294,7 @@ class _Cv2Proxy:
 
     def _dilate(self, src, kernel, *a, **k):
         if src.dtype == np.uint8 and kernel.shape == (7, 7):  # the only 7x7 uint8 dilate is the clipped-pixel mask
-            self.clip_calls += 1
+            self.calls += 1
             return np.zeros_like(src)
         return cv2.dilate(src, kernel, *a, **k)
 
@@ -424,7 +432,37 @@ def pick_failures(recs: list[dict]) -> list[dict]:
 
 # ---------------------------------------------------------------- main
 
+WORKERS, WORKER_THREADS = 12, 2
+
+
+def _job(args: tuple):
+    """One independent unit of work; runs in a worker process so ablations never share patched state."""
+    kind, imgdir, name, quick = args
+    cv2.setNumThreads(WORKER_THREADS)
+    scenes = load_scenes(Path(imgdir))
+    sets = {k: (2 if quick else v) for k, v in MAIN_SETS.items()}
+    if kind == "synth":
+        return synth.run([Path(imgdir) / n for n, _ in scenes], 4 if quick else 40)
+    if kind == "stress":
+        return registration_stress(scenes, 2 if quick else N_STRESS, name)
+    t0 = time.time()
+    if name.startswith("threshold_z"):
+        recs = run_set(sets, scenes, z=float(name[len("threshold_z"):]))
+    else:
+        changes = ABLATIONS[name]
+        with patched(changes):
+            recs = run_set(sets, scenes)
+        calls = {k: v.calls for k, v in changes.items() if hasattr(v, "calls")}
+    summary = summarize(recs)
+    summary["seconds"] = round(time.time() - t0, 1)
+    if not name.startswith("threshold_z") and calls:
+        summary["patched_calls"] = calls
+    return summary, recs
+
+
 def main() -> None:
+    from concurrent.futures import ProcessPoolExecutor
+
     ap = argparse.ArgumentParser()
     ap.add_argument("imgdir")
     ap.add_argument("--out", default=str(Path(__file__).resolve().parents[2] / "docs" / "eval"))
@@ -435,47 +473,34 @@ def main() -> None:
     scenes = load_scenes(Path(args.imgdir))
     t_start = time.time()
     sets = {k: (2 if args.quick else v) for k, v in MAIN_SETS.items()}
-    n_stress = 2 if args.quick else N_STRESS
     result = {"seed": SEED, "scenes": [n for n, _ in scenes], "cv2": cv2.__version__, "cpu": cpu_name(),
-              "cv2_threads": cv2.getNumThreads(), "python": platform.python_version(), "set_sizes": sets,
+              "logical_cores": cv2.getNumThreads(), "python": platform.python_version(), "set_sizes": sets,
               "iou_strict": IOU_STRICT, "registration_tolerance_px": REG_TOL_PX}
 
-    print("synth.py reference run (40 trials, seed 7) ...", flush=True)
-    result["synth_reference"] = synth.run([Path(args.imgdir) / n for n, _ in scenes], 4 if args.quick else 40)
-    print(result["synth_reference"], flush=True)
+    print("latency (machine otherwise idle) ...", flush=True)
+    result["latency"] = latency(scenes, 6 if args.quick else 30)
+    print(json.dumps(result["latency"], indent=1), flush=True)
 
-    print("main sets ...", flush=True)
-    recs = run_set(sets, scenes)
+    print("parallel jobs: reference, ablations, registration stress ...", flush=True)
+    configs = list(ABLATIONS) + ["threshold_z6", "threshold_z12"]
+    axes = AXES
+    jobs = [("synth", args.imgdir, "", args.quick)] + [("config", args.imgdir, c, args.quick) for c in configs]         + [("stress", args.imgdir, a, args.quick) for a in axes]
+    with ProcessPoolExecutor(WORKERS) as pool:
+        done = list(pool.map(_job, jobs))
+    result["synth_reference"] = done[0]
+    abl, recs = {}, None
+    for name, (summary, r) in zip(configs, done[1:1 + len(configs)]):
+        abl[name] = summary
+        if name == "full":
+            recs = r
+        print(f"  {name}: recall {summary['recall']} precision {summary['precision']} fp/pair {summary['fp_per_pair']} "
+              f"nochange {summary['nochange_false_alarm_rate']} lighting {summary['lighting_false_alarm_rate']}", flush=True)
+    result["ablations"] = abl
+    result["registration"] = dict(zip(axes, done[1 + len(configs):]))
     result["pairs"] = recs
     result["summary"] = summarize(recs)
     result["breakdown"] = breakdowns(recs)
     print(json.dumps(result["summary"], indent=1), flush=True)
-
-    print("registration stress ...", flush=True)
-    result["registration"] = registration_stress(scenes, n_stress)
-
-    print("latency ...", flush=True)
-    result["latency"] = latency(scenes, 6 if args.quick else 30)
-
-    print("ablations ...", flush=True)
-    abl = {}
-    configs = {**ABLATIONS, "threshold_z6": ("z", 6.0), "threshold_z12": ("z", 12.0)}
-    for name, spec in configs.items():
-        t0 = time.time()
-        if isinstance(spec, tuple):
-            r = run_set(sets, scenes, z=spec[1])
-        else:
-            with patched(spec):
-                r = run_set(sets, scenes)
-        s = summarize(r)
-        if isinstance(spec, dict) and "cv2" in spec:
-            s["patched_calls"] = spec["cv2"].clip_calls
-        s["seconds"] = round(time.time() - t0, 1)
-        abl[name] = s
-        print(f"  {name}: recall {s['recall']} precision {s['precision']} fp/pair {s['fp_per_pair']} "
-              f"nochange {s['nochange_false_alarm_rate']} lighting {s['lighting_false_alarm_rate']} "
-              f"({s['seconds']}s)", flush=True)
-    result["ablations"] = abl
 
     print("failure gallery ...", flush=True)
     gallery = []
