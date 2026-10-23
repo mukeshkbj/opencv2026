@@ -10,10 +10,10 @@
 About 15 entries are "agent inspects a part and escalates to a human". ClaimLens (insurance photo evidence) is the nearest neighbour to Twice. No entry found for guided re-photography or renter-side evidence.
 
 ## Past OpenCV competition winners
-- 2021 OAK: 1st Cortic Tigers (education kit), 2nd NeoCam (preterm baby breathing via depth), 3rd Cerebros (EEG wheelchair). Pattern: a human-relatable cause plus sensing that justifies the hardware.
+- 2021 OAK: 1st Cortic Tigers ("Democratizing A.I. using the OAK-D"), 2nd Caleta ("NeoCam: real-time telemonitoring of preterm neonates"), 3rd Cerebros ("Next-Generation Electric Wheelchair"). Pattern: a human-relatable cause plus sensing that justifies the hardware. Sourced detail and 2023 to 2025 winners: `docs/winners-research.md`.
 - 2022 Core track: 1st autonomous duckweed collection in Lake Titicaca, 2nd laser 3D scanner, 3rd point-to-read learning system.
 
-## Winning advice (7 sources, see the research agent report)
+## Winning advice (sources with links: `docs/winners-research.md`)
 A problem a non-expert grasps in 10 seconds. A specific person. A live endpoint that works on first click. Real data with failure cases. A video that stands alone, with the pitch in the first seconds.
 
 ## OpenCV 5.0.0 facts verified on this machine
