@@ -10,7 +10,7 @@ SHOTS:
   S1   0.0-16.8  The receipt prints as the voice reads the total. "No human review" stamps onto it at "without human review". Two lines replace the text: the company has an AI scanner; the renter has a phone.
   S2  16.8-29.3  Landing page: the hero locks the move-out photo onto the move-in photo.
   S3  29.3-43.7  Landing steps section, push onto the quality chips. Cut at 6.4 s to the sample check: the ghost glides into lock and the shutter fires.
-  S4  43.7-62.3  Sample check, car, 1.4x: side-step request, reflection ruled out, scratch kept, scroll to the zoomed crop.
+  S4  43.7-62.3  Sample check, car, 1.4x: side-step request, reflection ruled out, pan down to the kept scratch, scroll to the zoomed crop.
   S5  62.3-79.4  Sample check, living room, 1.4x: change map on and off, scroll to the stain and scuff crops.
   S6  79.4-92.1  Signed report, 1.35x zoom, about 1.6x speed.
   S7  92.1-102.1 Terminal: real verify.py output, VALID, then one byte added to a photo, NOT VALID in red.

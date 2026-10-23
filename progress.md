@@ -69,7 +69,7 @@ apartments and rental cars. Spec: docs/spec.md. Persona critique: docs/critique-
       0 of 22 false (was 2); hybrid recall 0.241, precision 0.957 (was 0.289, 0.849). Clipped-pixel glare fix (the sample
       car verdict depended on the RANSAC seed). Wipe starts left of the first changed mark; $440 line in the hero;
       findings lead with a plain sentence, steps behind "How it decided". Docs, landing tiles and film S9 updated.
-      Not done from round 5: Lambda RIE proof, "What is next" section, re-recording the S4 car footage.
+      Film S3 to S6 re-recorded (take r5_flow); S4 pans down to the scratch. "What is next" section added. Not done: Lambda RIE proof.
       Tried and rejected: tiled noise scale + brightness z + 2x2 opening (held-out false alarms tripled).
 - [ ] 11. Owner, optional: photograph 5 to 10 real move-in and move-out pairs with real marks, run them through the
       app, and add the results to docs/evaluation.md. Show the app to a few renters and note what they say.

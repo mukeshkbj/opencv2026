@@ -9,17 +9,17 @@
 
 ## Footage cuts
 
-All clips come from the local app at 1440 × 810, converted to constant 30 fps (`video/footage/*_cfr.mp4`), then cut. `r4_flow` is the second take, recorded after judge round 4 (ghost guide in the sample, named findings, zoomed crops).
+All clips come from the local app at 1440 × 810, converted to constant 30 fps (`video/footage/*_cfr.mp4`), then cut. `r5_flow` is the third take, recorded after judge round 5 (wipe starts left of the first changed mark, plain evidence sentences, plain first-pass engine).
 
 | Clip | Source | In (s) | Length (s) | Speed |
 |---|---|---|---|---|
 | hero | r1_landing | 0.5 | 13 | 1× |
 | steps | r3_steps | 6.5 | 6.4 | 1× |
-| guide | r4_flow | 12.0 | 8.0 | 1× |
-| car_a | r4_flow | 20.0 | 2.0 | 0.29× (the side-step request holds still) |
-| car_b | r4_flow | 22.0 | 10.6 | 0.91× |
-| room | r4_flow | 32.6 | 18.9 | 1.11× |
-| report | r4_flow | 61.9 | 20 | 1.57× |
+| guide | r5_flow | 11.1 | 8.0 | 1× |
+| car_a | r5_flow | 19.2 | 2.0 | 0.29× (the side-step request holds still) |
+| car_b | r5_flow | 21.6 | 10.6 | 0.91× |
+| room | r5_flow | 32.2 | 18.2 | 1.06× |
+| report | r5_flow | 61.5 | 19.2 | 1.51× |
 
 Scenes 3 to 5 zoom the main column 1.4× and scene 6 zooms the report 1.35×, so the UI text reads at 1080p.
 
@@ -33,7 +33,7 @@ Scenes 3 to 5 zoom the main column 1.4× and scene 6 zooms the report 1.35×, so
 ## Third pass, after the engine change
 
 - S9 has new numbers from the plain first-pass engine: 88%, 100% and 0 of 22. The voice line was regenerated (14.9 s, was 15.4 s). The beats keep their times.
-- The S4 car footage still shows the earlier wipe position and evidence text. It was not re-recorded.
+- S3 to S6 use a new take (`r5_flow`): the car scratch now sits on the move-out side of the wipe, and the findings and report show the plain evidence sentences.
 
 ## What was measured and what was only looked at
 
