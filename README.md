@@ -8,7 +8,7 @@ Built for the OpenCV AI Competition 2026. OpenCV 5 does all the image analysis. 
 
 **Live demo:** _the Function URL goes here after `deploy/deploy.sh` runs (see [deploy/README.md](deploy/README.md), "Before you submit")._
 
-**Video (2 min 30 s):** [docs/video/twice-demo.mp4](docs/video/twice-demo.mp4). The source is a HyperFrames project in [video/twice-demo](video/twice-demo).
+**Video (2 min 27 s):** [docs/video/twice-demo.mp4](docs/video/twice-demo.mp4). The source is a HyperFrames project in [video/twice-demo](video/twice-demo).
 
 ![Twice landing page](docs/img/landing.png)
 
@@ -64,10 +64,11 @@ Every photo is hashed with SHA-256 on arrival. The move-in set is sealed with a 
 
 The full method, ablations, latency and a failure gallery are in [docs/evaluation.md](docs/evaluation.md).
 
-Two benchmarks cover the engine.
+Three benchmarks cover the engine.
 
 - **Synthetic, full agent loop** (`server/eval/agent_bench.py`, 170 pairs with known damage, camera moves, exposure, colour, shadow and glare, plus the follow-up shots the agent asks for): recall 0.90, precision 0.99, 0.01 false "changed" findings per damage pair. Recall counts a defect as found when a flagged box touches it; at engine level, recall drops from 0.91 to 0.74 when the box must also overlap the defect with an IoU of 0.3. Lighting-only pairs got a false alarm in 3% of cases. Every pair runs under 5 RANSAC seeds.
 - **Real photos, nothing changed** (`server/eval/real_bench.py`, the Oxford affine sequences): of 40 pairs, 22 were judged. The agent asked for a retake on the other 18: 10 because the camera stood too far from the first spot, 8 because the photos could not be matched. Each sequence gets harder on purpose; the later viewpoint and zoom images go far beyond what the ghost guide lets through. Two judged pairs got a false alarm: trees and a harbour, where leaves and water may really move.
+- **Hybrid, drawn defects on real photos** (`server/eval/hybrid_bench.py`, the 22 judged Oxford pairs, 370 defects from the synthetic generator drawn onto the move-out photo): recall 0.29, strict recall 0.18, precision 0.85. This is far below the 0.90 of the synthetic set, so treat 0.90 as an upper bound. Drawn defects are not real damage.
 
 All three bundled samples resolve to their ground truth, including the reflection on the car. There is no set of real move-in and move-out pairs with labelled damage yet. That is the most important limit of this evaluation.
 

@@ -1,14 +1,15 @@
 # Evaluation
 
-This document reports how well Twice separates real damage from camera and lighting changes. Three benchmarks measure three levels:
+This document reports how well Twice separates real damage from camera and lighting changes. Four benchmarks measure four levels:
 
 - **Agent level** (`server/eval/agent_bench.py`): the full agent loop on 170 synthetic pairs, including the follow-up photos that the agent asks for. This is what a user gets.
 - **Engine level** (`server/eval/bench.py`): the `compare` step alone on the same 170 pairs, plus registration stress, ablations, latency and the failure gallery.
 - **Real photos** (`server/eval/real_bench.py`): 40 pairs of real photos from the Oxford affine sequences. Nothing in these scenes changes, so every "changed" verdict is a false alarm.
+- **Hybrid** (`server/eval/hybrid_bench.py`): the 22 judged Oxford pairs again, with defects from the synthetic generator drawn onto the move-out photo. This measures recall on real texture. Section 7.1 gives the method.
 
 There is no set of real move-in and move-out pairs with labelled damage. Section 11 lists what that means for the numbers.
 
-The raw results are in `docs/eval/agent.json`, `docs/eval/results.json` and `docs/eval/real.json`. The failure images are in `docs/eval/failures/`.
+The raw results are in `docs/eval/agent.json`, `docs/eval/results.json`, `docs/eval/real.json` and `docs/eval/hybrid.json`. The failure images are in `docs/eval/failures/`.
 
 ## 1. Summary
 
@@ -20,11 +21,14 @@ The raw results are in `docs/eval/agent.json`, `docs/eval/results.json` and `doc
 | Agent level, lighting-only controls (60 pairs): pairs with a false "changed" | Mean 0.027 over 5 seeds (1 or 2 of 60 per seed). For 2 of 60 the interval is 0.009 to 0.114 |
 | Agent level, follow-up photos asked for | 0.24 per pair (side-step shots and close-ups) |
 | Real photos, nothing changed (40 pairs) | 22 judged, 18 sent back for a retake. 2 of 22 judged pairs got a false "changed" (0.091, interval 0.025 to 0.278) |
+| Hybrid, drawn defects on 22 real photo pairs (176 damage runs, 370 defects) | Recall 0.289 (107 of 370), strict recall 0.178, precision 0.849. With the plain difference: 0.238, 0.159 and 0.957. See section 7.1 |
 | Engine level, damage pairs: recall and precision | 0.914 and 0.931. Strict recall (box IoU of at least 0.3): 0.735 |
 | Registration under rotation, scale, tilt | Accurate to 150 degrees of rotation, a 2.2 times scale change and 30 degrees of tilt. See section 5.4 |
 | Latency, one before and after pair | Median 0.87 s, 95th percentile 1.09 s on a 32-thread CPU. Median 1.56 s on one thread |
 
 The agent loop is the main result. The engine flags glare and some exposure changes. The agent then rules most of them out with a side-step photo or a veil test (section 6). On real photos, the remaining false alarms are in a tree scene and a harbour scene, where leaves and water may really move.
+
+The hybrid benchmark puts the same drawn defects on real photos. The agent finds 0.289 of them, against 0.901 on the synthetic pairs. The synthetic recall is therefore an upper bound for real texture.
 
 The evaluation also drove engine changes. Section 9 lists each change with its before and after numbers.
 
@@ -40,6 +44,7 @@ Run them from `server/`:
 python eval/bench.py          # engine level, about 9 minutes
 python eval/agent_bench.py    # agent level, 5 seeds, about 3 minutes
 python eval/real_bench.py     # real photos, downloads the Oxford sequences on first run
+python eval/hybrid_bench.py   # drawn defects on the real photos, about 3 minutes
 ```
 
 The ten scenes are committed in `server/eval/scenes/`. A different folder can be passed to `bench.py` as the first argument. The engine benchmark runs the ablations in 12 parallel worker processes. The latency test runs first, while the machine is otherwise idle. The last full run took 504 s on the machine in section 5.5.
@@ -189,7 +194,7 @@ Test machine: Intel Core i9-13900K, 32 logical threads, Windows 11, Python 3.14.
 | 924 px wide benchmark pairs (30) | 1 | 372 ms | 785 ms | 1.56 s | 1.95 s |
 | 4032 px wide pairs (12) | 1 | 524 ms | 1033 ms | 2.12 s | 2.50 s |
 
-The 4032 px inputs are the benchmark images enlarged with cubic interpolation. They test the cost of the resize, not the cost of real phone detail. The object check adds NanoDet on `cv2.dnn.ENGINE_NEW`: a median of 16.3 ms per frame, against 56.5 ms on `ENGINE_CLASSIC` (`python -m eval.engines`).
+The 4032 px inputs are the benchmark images enlarged with cubic interpolation. They test the cost of the resize, not the cost of real phone detail. The object check adds NanoDet on `cv2.dnn.ENGINE_NEW`: a median of 16.3 ms per frame, against 56.5 ms on `ENGINE_CLASSIC` (`python -m eval.engines`). A second run gave 17.7 ms against 56.4 ms. The new engine is 3.2 to 3.5 times faster.
 
 ## 6. Agent level
 
@@ -237,6 +242,69 @@ Before the retake rule, 32 pairs were judged and 7 got a false "changed": trees 
 
 The engine raised no false flag under the light change (leuven), the JPEG series (ubc) or the blur series (bikes). These are the three stresses that a re-photographed apartment meets most often.
 
+### 7.1 Hybrid: drawn defects on real photos
+
+The benchmark above has no damage, so it measures false alarms only. The hybrid benchmark (`server/eval/hybrid_bench.py`) adds damage to the same photos. It answers one question: how many drawn defects does the agent find when the texture, blur, noise and light of the photo are real?
+
+**Method**
+
+- **Pairs.** The 22 pairs that section 7 judged. The 18 retake pairs are left out.
+- **Defects.** The generator in `synth.py` (`add_defect` for scratch, stain, chip and crack, and `add_shadow`) draws in the frame of image 1. The benchmark draws 1 to 3 defects per run and a cast shadow in half of the runs, as in the synthetic damage set. It projects the drawn layer into the move-out photo with the ground-truth homography of the sequence (the `H1to*p` files). A defect must lie fully inside the move-out photo, so the benchmark redraws the position until it does. The mask in the frame of image 1 is the ground truth.
+- **Nothing else is simulated.** The move-out photo keeps its own blur, noise, compression, light and viewpoint. The synthetic camera model is not applied.
+- **Runs.** Each pair gets 8 damage draws (176 runs, 370 defects). It also gets 3 shadow-only draws, 3 glare-only draws and 3 runs with nothing drawn (66 runs of each). Each run sets `cv2.setRNGSeed` to its draw number.
+- **Follow-up photos.** The side-step shot is another real photo of the same sequence: the nearest judged one, or the nearest one if no other was judged. The same layers are projected into it. For a glare run, a new glare patch is drawn at a new place, as in `agent_bench.py`. The close-up is a crop of the real move-out photo around the box, enlarged two times, with the jitter, gain, noise and JPEG step of `agent_bench.py`. A side-step photo that does not register leaves the finding as "Can't judge".
+- **Scoring.** The agent-level rules of section 4. A defect is found when a "changed" box touches it. Strict recall also needs an IoU of at least 0.3 between the tight box of the defect and the best box that touches it. Precision is found defects divided by found defects plus "changed" boxes that touch no defect.
+- **Ablation.** The plain-difference configuration of section 8 (`_tolerant_diff` replaced by `abs(a - b)`) runs the same jobs under the same seeds, through the full agent.
+
+The run takes 154 s on the machine in section 5.5, with 12 worker processes.
+
+**Result**
+
+| Measure | Full engine | Plain difference |
+| --- | --- | --- |
+| Damage runs, defects | 176, 370 | 176, 370 |
+| Recall (a box touches the defect) | 0.289 (107 of 370) | 0.238 (88 of 370) |
+| Strict recall (IoU at least 0.3) | 0.178 (66 of 370) | 0.159 (59 of 370) |
+| Precision | 0.849 (107 of 126) | 0.957 (88 of 92) |
+| False "changed" findings per damage run | 0.11 (19) | 0.02 (4) |
+| Runs with a false "changed", nothing drawn | 0.136 (9 of 66) | 0.045 (3 of 66) |
+| Runs with a false "changed", shadow only | 0.076 (5 of 66) | 0.015 (1 of 66) |
+| Runs with a false "changed", glare only | 0.091 (6 of 66) | 0.030 (2 of 66) |
+| "Can't judge" findings per run, all sets | 0.45 | 0.33 |
+| Follow-up photos per run, all sets | 0.68 | 0.60 |
+| Runs that ended in a retake request | 0 | 0 |
+
+Recall by defect type for the full engine: scratch 0.367 (40 of 109), stain 0.242 (24 of 99), chip 0.425 (31 of 73), crack 0.135 (12 of 89).
+
+| Sequence | Stress | Pairs | Defects | Found | Found, strict | False "changed" findings |
+| --- | --- | --- | --- | --- | --- | --- |
+| leuven | light | 5 | 74 | 19 | 13 | 0 |
+| bikes | blur | 5 | 93 | 46 | 32 | 0 |
+| trees | blur | 4 | 71 | 0 | 0 | 8 |
+| ubc | JPEG | 5 | 85 | 23 | 10 | 0 |
+| wall | viewpoint | 1 | 13 | 10 | 7 | 0 |
+| boat | zoom and rotation | 1 | 19 | 6 | 3 | 11 |
+| bark | zoom and rotation | 1 | 15 | 3 | 1 | 0 |
+| All | | 22 | 370 | 107 | 66 | 19 |
+
+**What it shows**
+
+- **Recall on real texture is far lower than on the synthetic set.** The full agent finds 0.289 of the drawn defects, against 0.901 on the synthetic pairs. Strict recall is 0.178. The 95% interval for recall is 0.245 to 0.337 if the defects were independent. They are not: the 370 defects come from 22 pairs, so the true interval is wider.
+- **Recall falls as the stress grows inside a sequence.** In bikes, the agent finds 18 of 19 defects in pair 1-2 and 4 of 18 in pair 1-6. In ubc it finds 10 of 16 in pair 1-2 and none of 17 in pair 1-6. The wall pair (13 defects) gives 10 of 13.
+- **Trees is the worst case.** The agent finds none of the 71 defects in the four trees pairs, and it adds 8 false "changed" findings. The leaf texture probably raises the noise level of the change map above thin defects. This was not tested.
+- **Registration error is not the main cause.** In a one-off check on pair 1-2 of leuven, bikes, ubc and trees, the estimated homography differed from the ground truth by 0.03 to 0.55 px at the median. Flagged boxes that overlap a defect lie at its drawn position.
+- **Many findings end as "Can't judge".** The damage runs have 94 such findings, 0.53 per run. They count as misses.
+- **The control rates match section 7.** The runs with nothing drawn give a false "changed" in 9 of 66 runs, all in trees (6) and boat (3). Shadow-only runs fail in the same two sequences (trees 2, boat 3). Glare-only runs fail in boat (3) and once each in bikes, ubc and wall. Glare-only runs asked for 39 side-step photos in 66 runs.
+- **The plain difference is less sensitive and more precise here.** It finds 88 defects against 107 and adds 4 false "changed" findings against 19. Boat gives 11 false findings with the tolerant difference and none with the plain one. On the synthetic set, the two differences had nearly the same recall. The result does not support the reason for keeping the tolerant difference: the Oxford scenes are mostly flat or far away, so they have little parallax. The tolerant difference finds more defects on real texture and costs false alarms. This set does not settle which one to ship.
+
+**Limits**
+
+- **Drawn defects are not real damage.** They have fixed tones and sharp edges. They are not blurred or compressed with the photo, so they look cleaner than real damage in the blur and JPEG sequences. A real scratch has depth and a real stain has texture.
+- **The scenes are not rooms.** The set is 7 sequences of buildings, trees, a harbour and bark. The 22 pairs share 7 scenes, and the 8 draws of one pair share a background.
+- **The mix follows what registers.** Bikes, leuven and ubc supply 15 of the 22 pairs. Wall, boat and bark have one pair each. The 18 retake pairs are excluded, so the figures describe only the pairs the agent agrees to judge.
+- **Follow-up photos are partly simulated.** The side-step photo is real, but the close-up is a crop of the move-out photo. A glare patch moves by construction.
+- **No threshold was tuned on this benchmark.**
+
 ## 8. Ablations
 
 Each row switches off one engine step by replacing a function or object in the `twice.vision` module at run time. The engine files are not edited. Every row runs the same 170 pairs at engine level.
@@ -257,7 +325,7 @@ The default threshold is z 9. One defect is 0.006 of recall. One false positive 
 
 - **Local normalisation is essential.** Without it, recall falls to 0.216.
 - **The lighting test no longer costs recall.** In the first evaluation, switching it off recovered 8 thin defects inside shadows. With the sharp-edge test from section 9, recall is the same with and without it (0.914). The test still removes 5 false positives in shadowed pairs.
-- **The plain difference beats the tolerant difference on this synthetic data.** It has nearly the same recall and far fewer false positives. The synthetic warps are exact homographies with almost no residual misalignment, so the tolerance has little to absorb. The tolerant difference is kept because real handheld photos have parallax. The real-photo benchmark has no damage, so it cannot settle the question. A labelled real set can.
+- **The plain difference beats the tolerant difference on this synthetic data.** It has nearly the same recall and far fewer false positives. The synthetic warps are exact homographies with almost no residual misalignment, so the tolerance has little to absorb. The tolerant difference is kept because real handheld photos have parallax. The real-photo benchmark has no damage, so it cannot settle the question. The hybrid benchmark (section 7.1) gives a split result: the plain difference finds fewer drawn defects on real photos and raises fewer false alarms. A labelled real set can settle it.
 - **Flow refinement, CLAHE and the clipped-pixel mask show no clear effect.** The differences are within noise. These steps address problems that this dataset barely contains.
 - **The threshold trades recall for precision smoothly.** Moving from z 12 to z 6 raises recall from 0.883 to 0.951 and cuts precision from 1.000 to 0.644.
 
@@ -333,13 +401,13 @@ Each image shows the before frame on the left and the aligned after frame on the
 
 ## 11. Limitations
 
-- **There is no labelled real damage.** The synthetic defects are drawn shapes with fixed tones. Real scratches, stains and chips have texture, depth and soft edges. The real-photo benchmark measures false alarms only.
+- **There is no labelled real damage.** The synthetic defects are drawn shapes with fixed tones. Real scratches, stains and chips have texture, depth and soft edges. The real-photo benchmark measures false alarms only. The hybrid benchmark draws the same defects on real photos, and drawn defects are not real damage either.
 - **The synthetic follow-up photos are simple.** The side-step shot is a larger warp of the same flat image, and glare moves by construction. A real reflection moves with surface shape and camera position. The agent results for glare are therefore optimistic.
 - **The real set is small and not a room.** The Oxford sequences are 8 scenes and 40 pairs. They include blur, JPEG, light and viewpoint stress, but no wall, floor or car panel.
 - **The scenes are few and small.** There are 10 synthetic source images, several enlarged from 512 px or less. Each one appears in 8 damage pairs.
 - **The matching rule is lenient.** One overlapping pixel counts as a hit. Strict recall at engine level is 0.735 against 0.914. A report that says where the damage is should quote the strict figure.
 - **Statistical power is low in places.** The small-defect bucket has 11 defects. The control sets have 15 or 30 pairs, so a rate of 0.033 has an interval up to 0.167.
-- **The engine was tuned on this generator.** The fixes in section 9 were measured on these pairs. Treat the synthetic numbers as a development benchmark, not a clean held-out test. The real-photo numbers were not used to tune any threshold except the retake rule, which uses the guide's own limits.
+- **The engine was tuned on this generator.** The fixes in section 9 were measured on these pairs. Treat the synthetic numbers as a development benchmark, not a clean held-out test. The real-photo numbers, hybrid included, were not used to tune any threshold except the retake rule, which uses the guide's own limits.
 - **Latency is for a desktop CPU.** A phone or a small server will be slower.
 - **No human evaluation.** The benchmark does not measure whether the reported regions, captions or signed report help a person.
 

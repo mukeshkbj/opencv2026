@@ -39,7 +39,7 @@ The browser shrinks every photo to at most 2400 px before upload, which keeps re
 
 All image analysis uses OpenCV 5.0.0 (`opencv-contrib-python-headless`). The engine is `server/twice/vision.py`.
 
-**What is specific to OpenCV 5.** Most calls here (SIFT, USAC MAGSAC, DIS optical flow, CLAHE) also exist in OpenCV 4. The part that needs OpenCV 5 is the new DNN engine: the object check loads NanoDet-Plus with `engine=cv2.dnn.ENGINE_NEW` and runs it about 3.3 times faster than the classic engine on the same CPU (section 4.6). The rest of the pipeline is ordinary, well-tested OpenCV, combined in a new way: guided re-capture, a lighting-aware change map and an agent that decides which photo to take next.
+**What is specific to OpenCV 5.** Most calls here (SIFT, USAC MAGSAC, DIS optical flow, CLAHE) also exist in OpenCV 4. The part that needs OpenCV 5 is the new DNN engine: the object check loads NanoDet-Plus with `engine=cv2.dnn.ENGINE_NEW` and runs it 3.2 to 3.5 times faster than the classic engine on the same CPU (section 4.6). The rest of the pipeline is ordinary, well-tested OpenCV, combined in a new way: guided re-capture, a lighting-aware change map and an agent that decides which photo to take next.
 
 ### 4.1 Capture quality gate
 
@@ -73,7 +73,7 @@ For every region, two measurements separate light from damage:
 
 ### 4.6 Objects on the new DNN engine
 
-NanoDet-Plus (416 × 416, from opencv_zoo) runs on both aligned photos with `cv2.dnn.readNetFromONNX(path, engine=cv2.dnn.ENGINE_NEW)`. On the development CPU, the new engine runs the model in a median of 16.3 ms per frame against 56.5 ms on `ENGINE_CLASSIC` (100 runs after 10 warm-up runs, 32 threads on an i9-13900K, `python -m eval.engines`). A later rerun gave 17.7 ms against 56.4 ms, with 90th percentiles of 19.0 ms and 59.4 ms. The two engines return the six output tensors in different orders, so the decoder pairs them by shape instead of by index.
+NanoDet-Plus (416 × 416, from opencv_zoo) runs on both aligned photos with `cv2.dnn.readNetFromONNX(path, engine=cv2.dnn.ENGINE_NEW)`. On the development CPU, the new engine runs the model in a median of 16.3 ms per frame against 56.5 ms on `ENGINE_CLASSIC` (100 runs after 10 warm-up runs, 32 threads on an i9-13900K, `python -m eval.engines`). A later rerun gave 17.7 ms against 56.4 ms, with 90th percentiles of 19.0 ms and 59.4 ms. That is 3.2 to 3.5 times faster. The two engines return the six output tensors in different orders, so the decoder pairs them by shape instead of by index.
 
 ## 5. Agent
 
@@ -108,13 +108,14 @@ The language model is deliberately weak. It receives the crops of a finding and 
 
 Summary here; full tables, ablations, latency and the failure gallery are in [evaluation.md](evaluation.md).
 
-Three benchmarks measure three levels. All numbers come from scripts in `server/eval/` with fixed seeds.
+Four benchmarks measure four levels. All numbers come from scripts in `server/eval/` with fixed seeds.
 
 | Benchmark | Data | Result |
 | --- | --- | --- |
 | Agent level (`agent_bench.py`) | 170 synthetic pairs: 80 with 162 drawn defects, 30 with no change, 60 with only an exposure, colour, shadow or glare change. The agent's follow-up photos are generated too | Recall 0.901, precision 0.993 under each of 5 RANSAC seeds. A false "changed" in 1 of 30 no-change pairs and in 1 or 2 of 60 lighting-only pairs. 0.24 follow-up photos per pair |
 | Engine level (`bench.py`) | The same 170 pairs through `compare` alone, plus 288 registration stress pairs | Recall 0.914, precision 0.931, strict recall (IoU of at least 0.3) 0.735. Every glare pair is flagged at this level and resolved by the agent |
 | Real photos (`real_bench.py`) | 40 pairs from the Oxford affine sequences, where nothing changes | 22 pairs judged, 18 sent back for a retake. 2 judged pairs got a false "changed", in a tree scene and a harbour scene |
+| Hybrid (`hybrid_bench.py`) | The 22 judged Oxford pairs with synthetic defects drawn onto the move-out photo: 176 damage runs, 370 defects | Recall 0.289, strict recall 0.178, precision 0.849, against 0.901 recall on the synthetic pairs. With the plain difference: 0.238, 0.159 and 0.957. Drawn defects are not real damage |
 
 Registration stays accurate to 150 degrees of rotation, a 2.2 times zoom and 30 degrees of tilt. The agent asks for a retake when the local scale at the centre or a corner differs by more than 1.25 times, or the view is strongly tilted, because a photo from another distance shows the surface at another resolution. This rule cut the real-photo false alarms from 7 pairs to 2. A full compare takes a median of 0.87 s on a desktop CPU.
 
@@ -122,7 +123,7 @@ The evaluation drove five engine changes: an exposure-matched border fill, a sha
 
 The ablations show that local normalisation is essential (recall 0.216 without it). On synthetic data, a plain difference beats the shift-tolerant difference. The tolerant difference stays because real handheld photos have parallax, which the synthetic warps do not. The failure gallery shows faint stains and chips (contrast below 15 grey levels), a crack inside a colour-shifted region, and a clipped white surface after a large exposure change.
 
-The main limit: there is no set of real move-in and move-out photos with labelled damage. The real-photo benchmark measures false alarms only.
+The main limit: there is no set of real move-in and move-out photos with labelled damage. The real-photo benchmark measures false alarms only, and the hybrid benchmark uses drawn defects.
 
 ## 8. Responsible operation
 
