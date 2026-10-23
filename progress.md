@@ -56,7 +56,10 @@ apartments and rental cars. Spec: docs/spec.md. Persona critique: docs/critique-
       project video/twice-demo (SPEC.md, REVIEW.md). Kokoro voice, no music (needs HeyGen sign-in). Check passes;
       review sheets read and fixed. docs/video-script.md matches the film. Linked from the README.
       Owner: upload the MP4 to YouTube or Vimeo for Devpost. Raw footage (video/footage) is gitignored.
-- [~] 10. docs/winners-research.md: sourced winner advice and a checklist, written by a Sonnet 5.5 subagent.
+- [x] 10. docs/winners-research.md: 8 fetched winner write-ups, OpenCV winners 2021 to 2025 with sources, and a
+      checklist against Twice. Open gaps it names: live endpoint (owner), no labelled real damage pairs, no real users.
+- [ ] 11. Owner, optional: photograph 5 to 10 real move-in and move-out pairs with real marks, run them through the
+      app, and add the results to docs/evaluation.md. Show the app to a few renters and note what they say.
 
 ## How to run locally
 - API: `cd server && ../.venv/Scripts/python.exe -m uvicorn twice.app:app --reload --port 8000` (TWICE_DATA defaults to local store).
