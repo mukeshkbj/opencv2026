@@ -83,7 +83,7 @@ class Agent:
         t0 = time.perf_counter()
         before, after = objects.detect(res.before), objects.detect(res.after_aligned)
         ms = round((time.perf_counter() - t0) * 1000)
-        self.log("object_check", f"NanoDet on the OpenCV 5 DNN engine: {len(before)} objects at move-in, {len(after)} at move-out ({ms} ms)")
+        self.log("object_check", f"NanoDet on the OpenCV 5 DNN engine, objects found: {len(before)} at move-in, {len(after)} at move-out ({ms} ms)")
         for f in self.s.findings:
             if f.verdict in ("lighting", "unchanged"):
                 continue
