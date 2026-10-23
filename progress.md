@@ -44,9 +44,15 @@ apartments and rental cars. Spec: docs/spec.md. Persona critique: docs/critique-
 - [x] 6l. agent_bench runs 5 RANSAC seeds (it was not reproducible before: exposure pair 3 flipped between runs).
       Pooled: recall 0.901, precision 0.993, no-change 0.033, lighting 0.027 (0.017 to 0.033). Real: 22 judged, 2 false.
 - [x] 6m. Engine bench re-run for the corner rule; section 5 stress and latency tables refreshed.
+- [x] 6n. Demo recording docs/img/demo.mp4 (46 s) and docs/img/glare.gif in the README; fresh docs/img/report.png.
+- [x] 6o. Critique round 3 (docs/critique-round3.md): Hertz claims checked against The Drive and the subcommittee
+      letter, OpenCV 5 scope stated, numbers labelled, Can't-judge next step, mobile overflow and duplicate-key fixes,
+      deploy-day checklist in deploy/README.md. Docker image builds.
 - [x] 6c. README, docs/report.md (eval section placeholder EVAL_SUMMARY), docs/video-script.md.
 - [x] 6d. Verification now checks photos against signed manifests; report seal links to move-in seal. 6 tests pass.
-- [ ] 7. Hill-climb: dark theme check, second persona critique on the built product, code-deslop pass.
+- [x] 7. Hill-climb: dark theme checked on the report, persona critique rounds 2 and 3, deslop pass on the diff.
+- [ ] 8. Owner: run deploy/deploy.sh with AWS credentials, then follow "Before you submit" in deploy/README.md.
+- [ ] 9. Owner: record the video from docs/video-script.md (docs/img/demo.mp4 can serve as screen footage).
 
 ## How to run locally
 - API: `cd server && ../.venv/Scripts/python.exe -m uvicorn twice.app:app --reload --port 8000` (TWICE_DATA defaults to local store).
