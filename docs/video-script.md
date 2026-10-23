@@ -7,7 +7,7 @@ Voice-over is in plain sentences. Times are cumulative.
 
 **Screen:** the landing page `$440` section. Slow scroll over the itemised bill.
 
-**Voice:** "This is a real rental car bill. Two hundred and fifty dollars for a one-inch scuff, plus one hundred and ninety in fees. An AI scanner found the scuff. Nobody looked at it. The company has detailed photos. The renter has a phone."
+**Voice:** "This is the bill one Hertz renter received, line by line. Two hundred and fifty dollars for a one-inch scuff, plus one hundred and ninety in fees. An AI scanner found the scuff. Nobody looked at it. The company has detailed photos. The renter has a phone."
 
 ## 0:25 to 0:50 — The idea
 
@@ -41,7 +41,7 @@ Voice-over is in plain sentences. Times are cumulative.
 
 **Screen:** the architecture diagram, then the agent loop diagram. Then the README evaluation section.
 
-**Voice:** "Everything runs in one container on Lambda on Graviton. Photos go to S3 with Object Lock. Claude on Bedrock names each change, but it cannot delete one. The object check runs NanoDet on the new OpenCV 5 DNN engine, five times faster than the classic engine on the same CPU. On our synthetic benchmark Twice finds ninety-one percent of the damage, with a third of a false alarm per photo pair. The failure cases are in the report."
+**Voice:** "Everything runs in one container on Lambda on Graviton. Photos go to S3 with Object Lock. Claude on Bedrock names each change, but it cannot delete one. The object check runs NanoDet on the new OpenCV 5 DNN engine, three and a half times faster than the classic engine on the same CPU. On our synthetic benchmark Twice finds ninety-one percent of the damage, with a third of a false alarm per photo pair. The failure cases are in the report."
 
 ## 4:05 to 4:30 — Close
 

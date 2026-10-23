@@ -197,8 +197,7 @@ def _caption(cid: str, sid: str, state: SpotState) -> None:
         label, needs_human = captioner(f.kind, before[y0:y1, x0:x1], after[y0:y1, x0:x1])
         f.caption = label
         if needs_human:
-            f.verdict = "uncertain"
-            f.evidence.append("the language model could not name the change: left for a human")
+            f.evidence.append("the language model could not name the change: a person should look")
     state.trace.append({"t": round(time.time(), 3), "tool": "caption", "result": f"{len(pending)} labelled by {captioner.source}", "decision": ""})
 
 
@@ -208,8 +207,18 @@ async def add_after(cid: str, sid: str, file: UploadFile) -> dict:
     return run_after(cid, sid, data, img)
 
 
-def run_after(cid: str, sid: str, data: bytes, img: np.ndarray) -> dict:
+def move_out(cid: str) -> dict:
     check = load(cid)
+    phases = {s["phase"] for s in check["seals"]}
+    if "before" not in phases:
+        raise HTTPException(409, "seal the move-in set first")
+    if "report" in phases:
+        raise HTTPException(409, "the report is signed: start a new check")
+    return check
+
+
+def run_after(cid: str, sid: str, data: bytes, img: np.ndarray) -> dict:
+    check = move_out(cid)
     spot = spot_of(check, sid)
     spot["after"] = put_photo(cid, f"{sid}-after", data, img)
     spot["followups"] = []
@@ -233,7 +242,7 @@ async def add_followup(cid: str, sid: str, file: UploadFile) -> dict:
 
 
 def run_followup(cid: str, sid: str, data: bytes, img: np.ndarray) -> dict:
-    check = load(cid)
+    check = move_out(cid)
     spot = spot_of(check, sid)
     state = SpotState.from_dict(spot["state"])
     if state.pending is None:
@@ -251,11 +260,12 @@ def run_followup(cid: str, sid: str, data: bytes, img: np.ndarray) -> dict:
 @app.post("/api/checks/{cid}/report")
 def report(cid: str) -> dict:
     check = load(cid)
+    if any(s["phase"] == "report" for s in check["seals"]):
+        return check
     if not any(s["after"] for s in check["spots"]):
         raise HTTPException(409, "no after photos yet")
     if any(s["after"] and s["state"]["status"] != "done" for s in check["spots"]):
         raise HTTPException(409, "some spots still need a follow-up photo")
-    check["seals"] = [s for s in check["seals"] if s["phase"] != "report"]
     seal(check, "report")
     save(check)
     return check
@@ -305,7 +315,9 @@ def verify(cid: str) -> dict:
     seals = []
     for entry in check["seals"]:
         body = evidence.canonical(entry["manifest"])
+        current = {**manifest(check, entry["phase"]), "signed_at": entry["manifest"]["signed_at"]}
         linked = entry["phase"] != "report" or entry["manifest"].get("move_in_seal") == move_in
+        linked = linked and evidence.canonical(current) == body
         seals.append({"phase": entry["phase"], "digest": entry["digest"],
                       "digest_ok": evidence.sha256(body) == entry["digest"] and linked,
                       "signature_ok": evidence.verify(pem, entry["algorithm"], body, entry["signature"])})

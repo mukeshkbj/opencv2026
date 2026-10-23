@@ -368,9 +368,14 @@ p {
   max-width: 58ch;
 }
 
-.source {
+.hook-copy .source {
   font: 500 0.8125rem var(--f-mono);
   color: var(--muted);
+}
+
+.source a {
+  color: inherit;
+  margin-left: 8px;
   text-underline-offset: 3px;
 }
 

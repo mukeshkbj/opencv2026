@@ -10,7 +10,7 @@ Built for the OpenCV AI Competition 2026. OpenCV 5 does all the image analysis. 
 
 ## Why
 
-Rental companies now scan returned cars with AI. One Hertz renter received a $440 bill for a one-inch scuff: $250 damage, $125 processing and $65 administration ([source](https://san.com/cc/car-rental-companys-ai-dent-detection-met-with-customer-frustration/)). Landlords keep detailed move-out photos too. Most renters keep a few blurry phone shots that nobody can compare. Twice gives the renter the same quality of evidence as the company.
+Rental companies now scan returned cars with AI. One Hertz renter received a $440 bill for a one-inch scuff: $250 damage, $125 processing and $65 administration ([The Drive](https://www.thedrive.com/news/this-is-what-happens-when-hertzs-ai-scanner-finds-damage-on-your-rental)). A House subcommittee chair has asked Hertz to explain the system ([House Oversight](https://oversight.house.gov/release/mace-investigates-use-of-artificial-intelligence-for-car-rental-damage-assessments)). Landlords keep detailed move-out photos too. Most renters keep a few blurry phone shots that nobody can compare. Twice gives the renter the same quality of evidence as the company.
 
 ## What a judge can try in two minutes
 
@@ -54,7 +54,7 @@ The full method, ablations, latency and a failure gallery are in [docs/evaluatio
 
 On the synthetic benchmark (real photos with synthetic scratches, stains, chips and cracks, random camera moves, exposure changes and cast shadows), Twice reaches recall 0.91 and precision 0.84, with 0.35 false alarms per pair. All three bundled samples resolve to their ground truth, including the reflection on the car. There is no set of real move-in and move-out pairs yet. That is the most important limit of this evaluation.
 
-NanoDet-Plus runs in 10.8 ms per frame on `ENGINE_NEW` against 55.5 ms on `ENGINE_CLASSIC` on the same CPU.
+NanoDet-Plus runs in a median of 16.3 ms per frame on `ENGINE_NEW` against 56.5 ms on `ENGINE_CLASSIC` on the same CPU. Reproduce with `cd server && python -m eval.engines`.
 
 ## Run it locally
 

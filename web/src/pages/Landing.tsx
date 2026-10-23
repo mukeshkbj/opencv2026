@@ -128,14 +128,15 @@ export default function Landing() {
             <h2>Rental companies scan with AI. Renters have a phone.</h2>
             <p>
               Hertz uses AI scanners at airport returns. One renter received a $440 bill for a scuff about one inch long. Nobody looked
-              at it before the bill went out. A member of Congress has asked how the system works.
+              at it before the bill went out. A House subcommittee chair has asked Hertz to explain the system.
             </p>
             <p>
               Apartments work the same way. The landlord keeps detailed move-out photos. Most renters keep a few blurry ones and hope.
             </p>
-            <a className="source" href="https://san.com/cc/car-rental-companys-ai-dent-detection-met-with-customer-frustration/" target="_blank" rel="noreferrer">
-              Source: Straight Arrow News ↗
-            </a>
+            <p className="source">
+              Sources: <a href="https://www.thedrive.com/news/this-is-what-happens-when-hertzs-ai-scanner-finds-damage-on-your-rental" target="_blank" rel="noreferrer">The Drive ↗</a> 
+              <a href="https://oversight.house.gov/release/mace-investigates-use-of-artificial-intelligence-for-car-rental-damage-assessments" target="_blank" rel="noreferrer">House Oversight ↗</a>
+            </p>
           </div>
           <div className="receipt" data-reveal aria-label="The $440 bill, itemised">
             <div className="receipt-row"><span>Damage</span><span>$250.00</span></div>

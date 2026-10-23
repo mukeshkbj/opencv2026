@@ -59,7 +59,7 @@ class Captioner:
             return self._claude(before, after)
         except Exception as e:  # noqa: BLE001 - a label failure must never lose a finding
             print(json.dumps({"event": "caption_error", "error": type(e).__name__}))
-            return rule_label(kind, before, after), True
+            return rule_label(kind, before, after), False
 
     def _claude(self, before: np.ndarray, after: np.ndarray) -> tuple[str, bool]:
         def img(a: np.ndarray) -> dict:

@@ -23,7 +23,7 @@ apartments and rental cars. Spec: docs/spec.md. Persona critique: docs/critique-
 - [x] 3. CV pipeline + agent (server/twice). Synthetic benchmark: recall 0.91, precision 0.84, 0.35 FP/pair.
 - [x] 4. Web app (web/). Sample flow verified in the browser at 1440 px and 390 px: landing, three spots,
       parallax follow-ups, signed report, verification stamp.
-- [x] 4b. OpenCV 5 DNN: NanoDet on ENGINE_NEW as agent `object_check` (10.8 ms vs 55.5 ms classic).
+- [x] 4b. OpenCV 5 DNN: NanoDet on ENGINE_NEW as agent `object_check` (median 16.3 ms vs 56.5 ms classic, server/eval/engines.py).
 - [x] 5. AWS deploy kit: Dockerfile, deploy/template.yaml (cfn-lint clean), deploy.sh. Docker build and run verified locally. Not deployed (no credentials).
 - [ ] 6. Evaluation — subagent `twice-eval-1` running (server/eval/bench.py, docs/evaluation.md).
 - [ ] 6b. Diagrams — subagent `twice-diagrams-1` running (docs/diagrams/).

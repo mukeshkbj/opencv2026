@@ -4,7 +4,7 @@ OpenCV AI Competition 2026. Repository: this repo. Live endpoint: see README.
 
 ## 1. Problem
 
-Rental companies and landlords document the condition of a car or an apartment with detailed photos and, increasingly, with AI scanners. Renters rarely have comparable evidence. A Hertz renter received a $440 bill for a one-inch scuff found by an airport scanner, with no human review before the bill went out ([Straight Arrow News](https://san.com/cc/car-rental-companys-ai-dent-detection-met-with-customer-frustration/)). In apartments, deposit disputes follow the same pattern: the landlord has move-out photos, and the tenant has a few unmatched phone shots.
+Rental companies and landlords document the condition of a car or an apartment with detailed photos and, increasingly, with AI scanners. Renters rarely have comparable evidence. A Hertz renter received a $440 bill for a one-inch scuff found by an airport scanner, with no human review before the bill went out ([The Drive](https://www.thedrive.com/news/this-is-what-happens-when-hertzs-ai-scanner-finds-damage-on-your-rental)). A House subcommittee chair has asked Hertz for a briefing on the system ([House Oversight](https://oversight.house.gov/release/mace-investigates-use-of-artificial-intelligence-for-car-rental-damage-assessments)). In apartments, deposit disputes follow the same pattern: the landlord has move-out photos, and the tenant has a few unmatched phone shots.
 
 Unmatched photos fail as evidence for three reasons:
 
@@ -71,7 +71,7 @@ For every region, two measurements separate light from damage:
 
 ### 4.6 Objects on the new DNN engine
 
-NanoDet-Plus (416 × 416, from opencv_zoo) runs on both aligned photos with `cv2.dnn.readNetFromONNX(path, engine=cv2.dnn.ENGINE_NEW)`. On the development CPU, the new engine runs the model in 10.8 ms per frame against 55.5 ms on `ENGINE_CLASSIC`. The two engines return the six output tensors in different orders, so the decoder pairs them by shape instead of by index.
+NanoDet-Plus (416 × 416, from opencv_zoo) runs on both aligned photos with `cv2.dnn.readNetFromONNX(path, engine=cv2.dnn.ENGINE_NEW)`. On the development CPU, the new engine runs the model in a median of 16.3 ms per frame against 56.5 ms on `ENGINE_CLASSIC` (100 runs, `python -m eval.engines`). The two engines return the six output tensors in different orders, so the decoder pairs them by shape instead of by index.
 
 ## 5. Agent
 
@@ -92,7 +92,7 @@ The agent (`server/twice/agent.py`) is a rule planner. Its tools are OpenCV meas
 
 This satisfies the Agentic Vision criterion directly: a vision measurement (the brightening share, the region size, the soft-edge test) decides whether the agent asks for another photo, and which kind.
 
-The language model is deliberately weak. It receives the crops of a finding and returns a short label and a `needs_human` flag. It can downgrade a finding to "can't judge". It cannot delete a finding or change a verdict to "no change". Geometry and measurement own every verdict.
+The language model is deliberately weak. It receives the crops of a finding and returns a short label and a `needs_human` flag. If it cannot name the change, the finding gets a note for a human reviewer. It cannot add, delete or change a finding's verdict. If Bedrock fails, the rule label is used. Geometry and measurement own every verdict.
 
 ## 6. Evidence and verification
 

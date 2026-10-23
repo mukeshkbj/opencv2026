@@ -71,3 +71,27 @@ def test_swapped_photo_with_rewritten_record_fails_verification():
     save(record)
     v = client.get(f"/api/checks/{check['id']}/verify").json()
     assert not v["ok"]
+
+
+def test_signed_photo_moved_to_another_role_fails_verification():
+    from twice.app import load, save
+
+    check = run_sample()
+    record = load(check["id"])
+    spot = record["spots"][0]
+    spot["after"] = {**spot["after"], "sha256": spot["before"]["sha256"], "key": spot["before"]["key"]}
+    save(record)
+    v = client.get(f"/api/checks/{check['id']}/verify").json()
+    assert not v["ok"]
+
+
+def test_photos_rejected_after_report_and_before_seal():
+    check = run_sample()
+    url = f"/api/checks/{check['id']}/spots/{check['spots'][0]['id']}/sample-shot"
+    assert client.post(url).status_code == 409
+    cid = client.post("/api/checks", json={"name": "x"}).json()["id"]
+    with open("../web/public/hero/room-a.jpg", "rb") as f:
+        sid = client.post(f"/api/checks/{cid}/spots", files={"file": ("a.jpg", f.read(), "image/jpeg")}).json()["id"]
+    with open("../web/public/hero/room-b.jpg", "rb") as f:
+        r = client.post(f"/api/checks/{cid}/spots/{sid}/after", files={"file": ("b.jpg", f.read(), "image/jpeg")})
+    assert r.status_code == 409
