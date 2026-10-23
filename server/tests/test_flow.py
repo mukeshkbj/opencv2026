@@ -35,6 +35,8 @@ def test_sample_flow_finds_damage_and_rules_out_glare():
     assert sum(v == "changed" for v, _ in car) == 1, car
     room = verdicts["Living room, east wall"]
     assert sum(v == "changed" for v, _ in room) >= 2, room
+    desk = verdicts["Desk top"]
+    assert sorted(k for v, k in desk if v == "changed") == ["object", "surface"], desk
     assert [s["phase"] for s in check["seals"]] == ["before", "report"]
 
     v = client.get(f"/api/checks/{check['id']}/verify").json()

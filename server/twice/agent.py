@@ -222,7 +222,8 @@ def _area_frac(f: Finding, shape: tuple) -> float:
 
 
 def _kind(f: Finding, area_frac: float) -> str:
-    return "object" if area_frac > 0.008 and f.metrics["structure"] > 6 else "surface"
+    fill = f.metrics["area"] / (f.box[2] * f.box[3])
+    return "object" if area_frac > 0.008 and fill > 0.3 and f.metrics["structure"] > 6 else "surface"
 
 
 def _persists(box: list[int], regions: list[Region]) -> bool:

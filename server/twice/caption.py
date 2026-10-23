@@ -36,7 +36,7 @@ def rule_label(kind: str, before: np.ndarray, after: np.ndarray) -> str:
     if kind == "object":
         return "Object added, moved, or removed"
     tone = "Darker" if dl < -6 else "Lighter" if dl > 6 else "New"
-    what = "discoloured patch" if dc > 8 else "mark or scratch"
+    what = "stain or discoloured patch" if dc > 8 else "mark or scratch"
     return f"{tone} {what} on the surface"
 
 
