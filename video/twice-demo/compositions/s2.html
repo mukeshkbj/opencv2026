@@ -1,0 +1,17 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #f1eee7; overflow: hidden; }
+    #s2-cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+    #s2-video { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+  </style>
+  <div data-hf-id="hf-u16y" id="root" data-composition-id="s2" data-width="1920" data-height="1080">
+    <div data-hf-id="hf-69oc" id="s2-cam">
+      <video data-hf-id="hf-mtpy" id="s2-video" class="clip" src="assets/clips/hero.mp4" data-start="0" data-duration="12.5" data-track-index="0" muted playsinline></video>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s2-cam", { scale: 1.06, x: -58, y: -32, filter: "blur(8px)" }, { scale: 1, x: 0, y: 0, filter: "blur(0px)", duration: 0.8, ease: "expo.out" }, 0);
+    window.__timelines["s2"] = tl;
+  </script>
+</template>

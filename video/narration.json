@@ -1,0 +1,12 @@
+{
+ "s1_bill": "This is the bill one Hertz renter got, minutes after returning a car. Two hundred and fifty dollars for a one-inch scuff on a wheel, plus one hundred and ninety in fees. A House subcommittee chair says Hertz bills from these scans without human review. The company has an AI scanner. The renter has a phone.",
+ "s2_idea": "Twice gives the renter the same evidence. Take the same photo twice: when you move in, and when you move out. Twice lines the two photos up, finds what really changed, and signs the proof.",
+ "s3_capture": "At move-in, the shutter waits until each photo is sharp and detailed enough to match months later. At move-out, a ghost of the first photo guides you back to the same angle, and the camera fires when OpenCV locks on.",
+ "s4_car": "Here is a sample check. On the car, a reflection looks like damage. One photo cannot tell them apart, so the agent asks for one more, from a step to the side. A reflection moves with the camera. A scratch stays on the paint. So the reflection is ruled out, and the scratch is reported.",
+ "s5_room": "In the living room, a plain image difference would also flag the new shadow. Twice compares structure and colour, ignores exposure and small shifts, and tests whether a smooth change of light explains the difference. The shadow is ruled out. The stain and the scuff stay.",
+ "s6_report": "The report shows every change, every ruled-out shadow, and the measurements behind each one. Every photo is hashed on arrival, and the move-in set is signed before any move-out photo exists.",
+ "s7_verify": "Anyone can download the evidence bundle and check it with the script inside, without trusting our server. Change one photo, and the check fails.",
+ "s8_cloud": "Twice runs in one container on AWS Lambda. Photos go to S3 with Object Lock, and a KMS key signs every report. Claude on Bedrock names each change, but it can never delete one. Objects are checked with NanoDet on the new OpenCV 5 DNN engine, more than three times faster than the classic engine.",
+ "s9_numbers": "On our synthetic benchmark, Twice finds ninety percent of the damage, and ninety-nine percent of its flags are real. On real photos of unchanged scenes, two of twenty-two judged pairs got a false alarm. Every failure case is in the report.",
+ "s10_close": "Your next move-out starts with today's photos. Take them twice."
+}

@@ -1,0 +1,19 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #f1eee7; overflow: hidden; }
+    #s3-cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+    #s3-video { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+  </style>
+  <div data-hf-id="hf-3xc5" id="root" data-composition-id="s3" data-width="1920" data-height="1080">
+    <div data-hf-id="hf-756d" id="s3-cam">
+      <video data-hf-id="hf-dt4b" id="s3-video" class="clip" src="assets/clips/steps.mp4" data-start="0" data-duration="14.4" data-track-index="0" muted playsinline></video>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s3-cam", { scale: 1, x: 0, y: 0 }, { scale: 1.55, x: 0, y: -467, duration: 1.1, ease: "power2.inOut" }, 0.6);
+    tl.to("#s3-cam", { x: -657, duration: 1.1, ease: "power2.inOut" }, 7.2);
+    tl.to("#s3-cam", { scale: 1, x: 0, y: 0, duration: 1.0, ease: "power2.inOut" }, 12.9);
+    window.__timelines["s3"] = tl;
+  </script>
+</template>

@@ -6,3 +6,7 @@ web/dist/
 *.pyc
 .aws-sam/
 server/eval/oxford/
+video/footage/
+video/vo/
+video/twice-demo/.hyperframes/
+video/twice-demo/renders/

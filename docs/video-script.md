@@ -1,59 +1,75 @@
 # Twice: demo video script
 
-Target length: 4 min 30 s. Screen recording of the deployed app at 1440 × 900, plus one phone clip.
-Voice-over is in plain sentences. Times are cumulative.
+The final film is 2 min 30 s at 1920 × 1080 and 30 fps. It is a HyperFrames project in `video/twice-demo`. The voice is Kokoro (af_heart), generated on this machine. The film has no music. App footage is a screen recording of the local app at 1440 × 810. The terminal output is real `verify.py` output from a downloaded bundle.
 
-## 0:00 to 0:25 — The bill
+Times are cumulative.
 
-**Screen:** the landing page `$440` section. Slow scroll over the itemised bill.
+## 0:00 to 0:20 — The bill
 
-**Voice:** "This is the bill one Hertz renter received, line by line. Two hundred and fifty dollars for a one-inch scuff, plus one hundred and ninety in fees. An AI scanner found the scuff, and the bill arrived minutes later. A House subcommittee chair says Hertz bills from these scans without human review. The company has detailed photos. The renter has a phone."
+**Screen:** a printed receipt. Each charge prints as the voice reads it. A red "No human review" stamp lands on it. Then two lines replace the text on the right.
 
-## 0:25 to 0:50 — The idea
+**Voice:** "This is the bill one Hertz renter got, minutes after returning a car. Two hundred and fifty dollars for a one-inch scuff on a wheel, plus one hundred and ninety in fees. A House subcommittee chair says Hertz bills from these scans without human review. The company has an AI scanner. The renter has a phone."
 
-**Screen:** scroll up to the hero. Let the ghost-lock animation run once: the ghost slides into place, the frame goes dark, two marks appear, the shadow is tagged "ignored".
+## 0:20 to 0:32 — The idea
 
-**Voice:** "Twice gives the renter the same evidence. Take the same photo twice: once when you move in, once when you move out. Twice lines the two up, finds what really changed, and signs the result."
+**Screen:** the landing page. The hero locks the move-out photo onto the move-in photo and marks the two changes.
 
-## 0:50 to 1:40 — Move in, move out, on a phone
+**Voice:** "Twice gives the renter the same evidence. Take the same photo twice: when you move in, and when you move out. Twice lines the two photos up, finds what really changed, and signs the proof."
 
-**Screen:** phone clip. Press **Start my own**. Shoot one spot; the quality chips turn green and the shutter enables. Seal the set. Then the move-out step: the ghost of the first photo floats over the live camera, the instruction says "Pan left", then "Hold still", and the camera fires on its own.
+## 0:32 to 0:46 — Move in, move out
 
-**Voice:** "At move-in, the shutter waits until the photo is sharp and detailed enough to match later. At move-out, a ghost of the first photo guides you back to the same angle. OpenCV matches every frame to the original with SIFT and a MAGSAC homography, and shoots when it locks."
+**Screen:** the landing page steps. The camera pushes onto the quality chips, then pans to the ghost card.
 
-## 1:40 to 2:50 — The agent at work (sample check)
+**Voice:** "At move-in, the shutter waits until each photo is sharp and detailed enough to match months later. At move-out, a ghost of the first photo guides you back to the same angle, and the camera fires when OpenCV locks on."
 
-**Screen:** desktop. Press **Try the sample check**. The car spot opens first. Take the move-out photo. The card above the photo says "The agent needs one more photo. Take one step to the side." Press the button. The dashed box changes to "Reflection · ruled out", and the trace adds `compare_followup: vanished under parallax, rule out as glare`.
+## 0:46 to 1:05 — The car
 
-**Voice:** "Here is a sealed sample. On the car, a reflection looks like damage. The agent cannot tell from one photo, so it asks for a second one from a step to the side. Reflections move with the camera. Damage stays on the paint. The reflection moved, so it is ruled out. The scratch stayed, so it is reported. A vision result decided the next action."
+**Screen:** the sample check, car spot. The agent asks for a side-step photo. The reflection is ruled out and the scratch stays. The camera pushes onto the two labels.
 
-**Screen:** living room spot. Show the wipe slider, the two "Changed" marks and the dashed "Light change · ruled out" box. Toggle the change map once.
+**Voice:** "Here is a sample check. On the car, a reflection looks like damage. One photo cannot tell them apart, so the agent asks for one more, from a step to the side. A reflection moves with the camera. A scratch stays on the paint. So the reflection is ruled out, and the scratch is reported."
 
-**Voice:** "The living room has a new wall stain and a floor scuff. It also has a shadow that was not there before. A plain image difference flags all three. Twice compares structure and colour in a way that ignores exposure and small shifts, and it checks whether a smooth light field explains the change. The shadow is ruled out."
+## 1:05 to 1:22 — The living room
 
-## 2:50 to 3:30 — The signed report
+**Screen:** the living room spot. The change map turns on, then off.
 
-**Screen:** press **Create the signed report**. Scroll: the green **Verified** stamp, summary counts, exhibit pairs with numbered marks, the findings table with evidence, the hash list, the signatures block. Press **Download evidence bundle**, then cut to a terminal that runs `python verify.py` and prints VALID. Open "What this report cannot prove".
+**Voice:** "In the living room, a plain image difference would also flag the new shadow. Twice compares structure and colour, ignores exposure and small shifts, and tests whether a smooth change of light explains the difference. The shadow is ruled out. The stain and the scuff stay."
 
-**Voice:** "The report lists every change, every ruled-out shadow, and the evidence behind each one. Every photo is hashed when it arrives. The move-in set was signed before any move-out photo existed. On AWS the signature comes from a KMS key. The evidence bundle carries its own checker, so a landlord or a court can verify it without trusting us. The report also says what it cannot prove."
+## 1:22 to 1:35 — The report
 
-## 3:30 to 4:05 — Under the hood
+**Screen:** the signed report, scrolled at 1.5× speed.
 
-**Screen:** the architecture diagram, then the agent loop diagram. Then the README evaluation section.
+**Voice:** "The report shows every change, every ruled-out shadow, and the measurements behind each one. Every photo is hashed on arrival, and the move-in set is signed before any move-out photo exists."
 
-**Voice:** "Everything runs in one container on Lambda on Graviton. Photos go to S3 with Object Lock. Claude on Bedrock names each change, but it cannot delete one. The object check runs NanoDet on the new OpenCV 5 DNN engine, three and a half times faster than the classic engine on the same CPU. On our synthetic benchmark Twice finds ninety percent of the damage, and ninety-nine percent of its flags are real. On real photos of unchanged scenes, two of twenty-two pairs got a false alarm. The failure cases are in the report."
+## 1:35 to 1:45 — Anyone can check it
 
-## 4:05 to 4:30 — Close
+**Screen:** a terminal. `python verify.py` prints VALID. One byte is added to a photo, and the next run prints NOT VALID.
 
-**Screen:** back to the hero, final "read" frame with the marks.
+**Voice:** "Anyone can download the evidence bundle and check it with the script inside, without trusting our server. Change one photo, and the check fails."
+
+## 1:45 to 2:07 — How it runs
+
+**Screen:** the architecture diagram. The camera visits Lambda, S3, KMS, Bedrock and the DNN row. Two bars show the measured NanoDet time: 16.3 ms on `ENGINE_NEW`, 56.5 ms on `ENGINE_CLASSIC`.
+
+**Voice:** "Twice runs in one container on AWS Lambda. Photos go to S3 with Object Lock, and a KMS key signs every report. Claude on Bedrock names each change, but it can never delete one. Objects are checked with NanoDet on the new OpenCV 5 DNN engine, more than three times faster than the classic engine."
+
+## 2:07 to 2:23 — The numbers
+
+**Screen:** one number at a time: 90%, 99%, then "2 of 22" with 22 squares, two of them red.
+
+**Voice:** "On our synthetic benchmark, Twice finds ninety percent of the damage, and ninety-nine percent of its flags are real. On real photos of unchanged scenes, two of twenty-two judged pairs got a false alarm. Every failure case is in the report."
+
+## 2:23 to 2:30 — Close
+
+**Screen:** "Take them twice."
 
 **Voice:** "Your next move-out starts with today's photos. Take them twice."
 
-## Shot list
+## Rebuild
 
-- Landing hero (animation, one full loop) and the `$440` section.
-- Phone clip: before capture with quality chips, guided after capture with auto-shutter.
-- Sample check: car follow-up and trace, then room result and change map toggle.
-- Report: stamp, exhibits, hashes, signatures, limits.
-- Diagrams: `docs/diagrams/architecture.png`, `docs/diagrams/agent-loop.png`.
-- Terminal, after the AWS deploy: `curl <url>/api/health` showing OpenCV 5.0.0, ENGINE_NEW, the KMS signer (`ECDSA_SHA_256`) and the Bedrock captioner. Locally it shows `Ed25519` and `rules`.
+```bash
+cd video/twice-demo
+npx hyperframes check
+npx hyperframes render -o renders/twice-demo.mp4
+```
+
+The voice lines are in `video/narration.json`. The footage cuts and their source times are in `video/twice-demo/REVIEW.md`.

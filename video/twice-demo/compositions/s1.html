@@ -1,0 +1,73 @@
+<template>
+  <style>
+    @font-face { font-family: 'Gambetta'; src: url('assets/fonts/gambetta-400.woff2') format('woff2'); font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Gambetta'; src: url('assets/fonts/gambetta-400i.woff2') format('woff2'); font-weight: 400; font-style: italic; }
+    @font-face { font-family: 'Switzer'; src: url('assets/fonts/switzer-500.woff2') format('woff2'); font-weight: 500; }
+    @font-face { font-family: 'JetBrains Mono'; src: url('assets/fonts/jbmono-400.woff2') format('woff2'); font-weight: 400; }
+    #root { position: absolute; inset: 0; background: #f1eee7; color: #17160f; overflow: hidden; }
+    #s1-receipt { position: absolute; left: 200px; top: 130px; width: 720px; height: 800px; }
+    #s1-paper {
+      position: absolute; inset: 0; background: #fff; padding: 64px 60px;
+      box-shadow: 0 0 0 1px rgb(23 22 15 / 0.08), 0 18px 40px rgb(23 22 15 / 0.12);
+      clip-path: polygon(0 0, 100% 0, 100% 97%, 95% 100%, 90% 97%, 85% 100%, 80% 97%, 75% 100%, 70% 97%, 65% 100%, 60% 97%, 55% 100%, 50% 97%, 45% 100%, 40% 97%, 35% 100%, 30% 97%, 25% 100%, 20% 97%, 15% 100%, 10% 97%, 5% 100%, 0 97%);
+      font-family: 'JetBrains Mono', monospace; font-size: 28px;
+    }
+    .s1-head { letter-spacing: 0.08em; font-size: 28px; color: #6b675c; }
+    .s1-item { font-family: 'Switzer', sans-serif; font-size: 34px; margin-top: 18px; display: inline-block; background: linear-gradient(#e2401a, #e2401a) 0 100% / 0% 4px no-repeat; padding-bottom: 6px; }
+    .s1-rule { border-top: 2px dashed rgb(23 22 15 / 0.28); margin: 40px 0 30px; }
+    .s1-row { display: flex; justify-content: space-between; padding: 16px 0; font-size: 32px; }
+    .s1-total { font-size: 44px; border-top: 2px solid #17160f; margin-top: 18px; padding-top: 26px; }
+    #s1-stamp {
+      position: absolute; left: 150px; top: 640px; padding: 16px 30px; white-space: nowrap; border: 6px solid #e2401a; color: #e2401a;
+      font-family: 'Switzer', sans-serif; font-size: 46px; letter-spacing: 0.04em; text-transform: uppercase; border-radius: 10px;
+    }
+    #s1-right { position: absolute; left: 1060px; top: 0; width: 760px; height: 1080px; }
+    #s1-lede { position: absolute; top: 250px; font-family: 'Gambetta', serif; font-size: 84px; line-height: 1.08; letter-spacing: -0.02em; }
+    #s1-quote { position: absolute; top: 640px; font-family: 'Switzer', sans-serif; font-size: 38px; line-height: 1.4; color: #3d3b33; }
+    #s1-src { position: absolute; top: 860px; font-family: 'JetBrains Mono', monospace; font-size: 28px; color: #6b675c; }
+    .s1-big { position: absolute; font-family: 'Gambetta', serif; font-size: 104px; line-height: 1.04; letter-spacing: -0.02em; }
+    #s1-co { top: 200px; }
+    #s1-me { top: 620px; }
+    #s1-me em { color: #e2401a; white-space: nowrap; }
+  </style>
+  <div data-hf-id="hf-3pu3" id="root" data-composition-id="s1" data-width="1920" data-height="1080">
+    <div data-hf-id="hf-t516" id="s1-receipt">
+      <div data-hf-id="hf-xmu8" id="s1-paper">
+        <div data-hf-id="hf-oto8" class="s1-head">DAMAGE ASSESSMENT</div>
+        <div data-hf-id="hf-zqyz" class="s1-item">1-inch scuff, driver's side rear wheel</div>
+        <div data-hf-id="hf-5la3" class="s1-rule"></div>
+        <div data-hf-id="hf-77ax" class="s1-row" id="s1-r1"><span data-hf-id="hf-btfs">Repair</span><span data-hf-id="hf-u2x0">$250.00</span></div>
+        <div data-hf-id="hf-dd0q" class="s1-row" id="s1-r2"><span data-hf-id="hf-6282">Processing</span><span data-hf-id="hf-x03n">$125.00</span></div>
+        <div data-hf-id="hf-hb4r" class="s1-row" id="s1-r3"><span data-hf-id="hf-fjc7">Administrative fee</span><span data-hf-id="hf-xvh8">$65.00</span></div>
+        <div data-hf-id="hf-g7ul" class="s1-row s1-total" id="s1-r4"><span data-hf-id="hf-7qep">Total</span><span data-hf-id="hf-9bw1">$440.00</span></div>
+      </div>
+      <div data-hf-id="hf-fvxr" id="s1-stamp">No human review</div>
+    </div>
+    <div data-hf-id="hf-4dss" id="s1-right">
+      <div data-hf-id="hf-h1j3" id="s1-lede">One renter's bill, minutes after the return.</div>
+      <div data-hf-id="hf-cxpe" id="s1-quote">A House subcommittee chair says Hertz bills from these scans without human review.</div>
+      <div data-hf-id="hf-msrb" id="s1-src">The Drive · House Oversight · Repairer Driven News</div>
+      <div data-hf-id="hf-4fyv" class="s1-big" id="s1-co">The company has an AI scanner.</div>
+      <div data-hf-id="hf-bg87" class="s1-big" id="s1-me">The renter has <em data-hf-id="hf-nzag">a phone.</em></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s1-receipt", { y: 40 }, { y: 0, duration: 0.9, ease: "expo.out" }, 0);
+    tl.fromTo(".s1-item", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 2.6);
+    tl.fromTo(".s1-item", { backgroundSize: "0% 4px" }, { backgroundSize: "100% 4px", duration: 0.5, ease: "expo.out" }, 6.4);
+    tl.fromTo("#s1-lede", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power4.out" }, 0.6);
+    [["#s1-r1", 4.7], ["#s1-r2", 8.5], ["#s1-r3", 8.9], ["#s1-r4", 9.8]].forEach(([id, t]) => {
+      tl.fromTo(id, { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, t);
+    });
+    tl.fromTo("#s1-quote", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power4.out" }, 10.5);
+    tl.fromTo("#s1-src", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 10.9);
+    tl.fromTo("#s1-stamp", { opacity: 0, scale: 1.6, rotation: -12 }, { opacity: 1, scale: 1, rotation: -7, duration: 0.18, ease: "power4.out" }, 13.9);
+    tl.fromTo("#s1-receipt", { x: 0 }, { x: -10, duration: 0.06, yoyo: true, repeat: 1, ease: "power1.inOut" }, 14.06);
+    tl.to(["#s1-lede", "#s1-quote", "#s1-src"], { opacity: 0, filter: "blur(8px)", duration: 0.22, ease: "power3.in" }, 15.1);
+    tl.fromTo("#s1-co", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power4.out" }, 15.5);
+    tl.fromTo("#s1-me", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power4.out" }, 17.8);
+    tl.to("#root", { opacity: 0, duration: 0.25, ease: "power3.in" }, 19.3);
+    window.__timelines["s1"] = tl;
+  </script>
+</template>

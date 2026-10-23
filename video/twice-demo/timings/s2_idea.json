@@ -1,0 +1,206 @@
+[
+  {
+    "id": "w0",
+    "text": "Twice",
+    "start": 0,
+    "end": 0.48
+  },
+  {
+    "id": "w1",
+    "text": "gives",
+    "start": 0.48,
+    "end": 0.72
+  },
+  {
+    "id": "w2",
+    "text": "the",
+    "start": 0.72,
+    "end": 0.8
+  },
+  {
+    "id": "w3",
+    "text": "renter",
+    "start": 0.8,
+    "end": 1.12
+  },
+  {
+    "id": "w4",
+    "text": "the",
+    "start": 1.28,
+    "end": 1.36
+  },
+  {
+    "id": "w5",
+    "text": "same",
+    "start": 1.36,
+    "end": 1.68
+  },
+  {
+    "id": "w6",
+    "text": "evidence.",
+    "start": 1.68,
+    "end": 2.56
+  },
+  {
+    "id": "w7",
+    "text": "Take",
+    "start": 2.56,
+    "end": 2.96
+  },
+  {
+    "id": "w8",
+    "text": "the",
+    "start": 2.96,
+    "end": 3.12
+  },
+  {
+    "id": "w9",
+    "text": "same",
+    "start": 3.12,
+    "end": 3.36
+  },
+  {
+    "id": "w10",
+    "text": "photo",
+    "start": 3.36,
+    "end": 3.84
+  },
+  {
+    "id": "w11",
+    "text": "twice,",
+    "start": 3.84,
+    "end": 4.48
+  },
+  {
+    "id": "w12",
+    "text": "when",
+    "start": 4.48,
+    "end": 4.64
+  },
+  {
+    "id": "w13",
+    "text": "you",
+    "start": 4.64,
+    "end": 4.8
+  },
+  {
+    "id": "w14",
+    "text": "move",
+    "start": 4.8,
+    "end": 5.12
+  },
+  {
+    "id": "w15",
+    "text": "in",
+    "start": 5.12,
+    "end": 5.28
+  },
+  {
+    "id": "w16",
+    "text": "and",
+    "start": 5.36,
+    "end": 5.6
+  },
+  {
+    "id": "w17",
+    "text": "when",
+    "start": 5.6,
+    "end": 5.76
+  },
+  {
+    "id": "w18",
+    "text": "you",
+    "start": 5.76,
+    "end": 5.92
+  },
+  {
+    "id": "w19",
+    "text": "move",
+    "start": 5.92,
+    "end": 6.32
+  },
+  {
+    "id": "w20",
+    "text": "out.",
+    "start": 6.32,
+    "end": 6.8
+  },
+  {
+    "id": "w21",
+    "text": "Twice",
+    "start": 6.8,
+    "end": 7.36
+  },
+  {
+    "id": "w22",
+    "text": "lines",
+    "start": 7.36,
+    "end": 7.84
+  },
+  {
+    "id": "w23",
+    "text": "the",
+    "start": 7.84,
+    "end": 7.92
+  },
+  {
+    "id": "w24",
+    "text": "two",
+    "start": 7.92,
+    "end": 8.08
+  },
+  {
+    "id": "w25",
+    "text": "photos,",
+    "start": 8.08,
+    "end": 8.88
+  },
+  {
+    "id": "w26",
+    "text": "find",
+    "start": 8.88,
+    "end": 9.36
+  },
+  {
+    "id": "w27",
+    "text": "what",
+    "start": 9.36,
+    "end": 9.6
+  },
+  {
+    "id": "w28",
+    "text": "really",
+    "start": 9.6,
+    "end": 9.84
+  },
+  {
+    "id": "w29",
+    "text": "changed,",
+    "start": 9.84,
+    "end": 10.4
+  },
+  {
+    "id": "w30",
+    "text": "and",
+    "start": 10.4,
+    "end": 10.64
+  },
+  {
+    "id": "w31",
+    "text": "signs",
+    "start": 10.64,
+    "end": 10.96
+  },
+  {
+    "id": "w32",
+    "text": "the",
+    "start": 10.96,
+    "end": 11.12
+  },
+  {
+    "id": "w33",
+    "text": "proof.",
+    "start": 11.12,
+    "end": 11.52
+  }
+]

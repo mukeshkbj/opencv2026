@@ -1,0 +1,260 @@
+[
+  {
+    "id": "w0",
+    "text": "At",
+    "start": 0,
+    "end": 0.16
+  },
+  {
+    "id": "w1",
+    "text": "move",
+    "start": 0.16,
+    "end": 0.4
+  },
+  {
+    "id": "w2",
+    "text": "in,",
+    "start": 0.48,
+    "end": 0.72
+  },
+  {
+    "id": "w3",
+    "text": "the",
+    "start": 0.72,
+    "end": 0.88
+  },
+  {
+    "id": "w4",
+    "text": "shutter",
+    "start": 0.88,
+    "end": 1.36
+  },
+  {
+    "id": "w5",
+    "text": "waits",
+    "start": 1.36,
+    "end": 1.68
+  },
+  {
+    "id": "w6",
+    "text": "until",
+    "start": 1.68,
+    "end": 2
+  },
+  {
+    "id": "w7",
+    "text": "each",
+    "start": 2,
+    "end": 2.32
+  },
+  {
+    "id": "w8",
+    "text": "photo",
+    "start": 2.32,
+    "end": 2.64
+  },
+  {
+    "id": "w9",
+    "text": "is",
+    "start": 2.64,
+    "end": 2.88
+  },
+  {
+    "id": "w10",
+    "text": "sharp",
+    "start": 2.88,
+    "end": 3.36
+  },
+  {
+    "id": "w11",
+    "text": "and",
+    "start": 3.36,
+    "end": 3.6
+  },
+  {
+    "id": "w12",
+    "text": "detailed",
+    "start": 3.6,
+    "end": 4.08
+  },
+  {
+    "id": "w13",
+    "text": "enough",
+    "start": 4.08,
+    "end": 4.4
+  },
+  {
+    "id": "w14",
+    "text": "to",
+    "start": 4.4,
+    "end": 4.48
+  },
+  {
+    "id": "w15",
+    "text": "match",
+    "start": 4.48,
+    "end": 4.88
+  },
+  {
+    "id": "w16",
+    "text": "months",
+    "start": 4.88,
+    "end": 5.28
+  },
+  {
+    "id": "w17",
+    "text": "later.",
+    "start": 5.28,
+    "end": 5.92
+  },
+  {
+    "id": "w18",
+    "text": "At",
+    "start": 5.92,
+    "end": 6.16
+  },
+  {
+    "id": "w19",
+    "text": "move",
+    "start": 6.16,
+    "end": 6.56
+  },
+  {
+    "id": "w20",
+    "text": "out,",
+    "start": 6.56,
+    "end": 7.04
+  },
+  {
+    "id": "w21",
+    "text": "a",
+    "start": 7.04,
+    "end": 7.2
+  },
+  {
+    "id": "w22",
+    "text": "ghost",
+    "start": 7.2,
+    "end": 7.68
+  },
+  {
+    "id": "w23",
+    "text": "of",
+    "start": 7.68,
+    "end": 7.76
+  },
+  {
+    "id": "w24",
+    "text": "the",
+    "start": 7.76,
+    "end": 7.92
+  },
+  {
+    "id": "w25",
+    "text": "first",
+    "start": 7.92,
+    "end": 8.16
+  },
+  {
+    "id": "w26",
+    "text": "photo",
+    "start": 8.16,
+    "end": 8.64
+  },
+  {
+    "id": "w27",
+    "text": "guides",
+    "start": 8.64,
+    "end": 9.04
+  },
+  {
+    "id": "w28",
+    "text": "you",
+    "start": 9.04,
+    "end": 9.2
+  },
+  {
+    "id": "w29",
+    "text": "back",
+    "start": 9.2,
+    "end": 9.44
+  },
+  {
+    "id": "w30",
+    "text": "to",
+    "start": 9.44,
+    "end": 9.6
+  },
+  {
+    "id": "w31",
+    "text": "the",
+    "start": 9.6,
+    "end": 9.68
+  },
+  {
+    "id": "w32",
+    "text": "same",
+    "start": 9.68,
+    "end": 9.92
+  },
+  {
+    "id": "w33",
+    "text": "angle,",
+    "start": 9.92,
+    "end": 10.48
+  },
+  {
+    "id": "w34",
+    "text": "and",
+    "start": 10.48,
+    "end": 10.72
+  },
+  {
+    "id": "w35",
+    "text": "the",
+    "start": 10.72,
+    "end": 10.8
+  },
+  {
+    "id": "w36",
+    "text": "camera",
+    "start": 10.8,
+    "end": 11.2
+  },
+  {
+    "id": "w37",
+    "text": "fires",
+    "start": 11.2,
+    "end": 11.68
+  },
+  {
+    "id": "w38",
+    "text": "when",
+    "start": 11.68,
+    "end": 11.92
+  },
+  {
+    "id": "w39",
+    "text": "open",
+    "start": 11.92,
+    "end": 12.24
+  },
+  {
+    "id": "w40",
+    "text": "CV",
+    "start": 12.4,
+    "end": 12.88
+  },
+  {
+    "id": "w41",
+    "text": "locks",
+    "start": 12.88,
+    "end": 13.2
+  },
+  {
+    "id": "w42",
+    "text": "on.",
+    "start": 13.28,
+    "end": 13.52
+  }
+]

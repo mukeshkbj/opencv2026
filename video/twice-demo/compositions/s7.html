@@ -1,0 +1,39 @@
+<template>
+  <style>
+    @font-face { font-family: 'JetBrains Mono'; src: url('assets/fonts/jbmono-400.woff2') format('woff2'); font-weight: 400; }
+    @font-face { font-family: 'Switzer'; src: url('assets/fonts/switzer-500.woff2') format('woff2'); font-weight: 500; }
+    #root { position: absolute; inset: 0; background: #f1eee7; overflow: hidden; }
+    #s7-win {
+      position: absolute; left: 150px; top: 120px; width: 1620px; height: 840px; background: #17160f; border-radius: 18px;
+      box-shadow: 0 0 0 1px rgb(23 22 15 / 0.2), 0 24px 60px rgb(23 22 15 / 0.22); overflow: hidden;
+    }
+    #s7-bar { height: 56px; background: #26241e; display: flex; align-items: center; gap: 12px; padding-left: 24px; }
+    .s7-dot { width: 16px; height: 16px; border-radius: 50%; background: #4a473e; }
+    #s7-title { margin-left: 24px; font-family: 'Switzer', sans-serif; font-size: 28px; color: #9a958a; }
+    #s7-body { padding: 40px 48px; font-family: 'JetBrains Mono', monospace; font-size: 32px; line-height: 1.6; color: #c9c4b8; white-space: pre; }
+    .s7-cmd { color: #ede9e0; }
+    .s7-cmd b { color: #9a958a; font-weight: 400; }
+    .s7-ok { color: #6cc37a; }
+    .s7-bad { color: #ff5a2e; }
+    .s7-type { display: inline-block; overflow: hidden; vertical-align: bottom; }
+  </style>
+  <div data-hf-id="hf-6yl5" id="root" data-composition-id="s7" data-width="1920" data-height="1080">
+    <div data-hf-id="hf-w63i" id="s7-win">
+      <div data-hf-id="hf-zqb7" id="s7-bar"><span data-hf-id="hf-u3ip" class="s7-dot"></span><span data-hf-id="hf-to05" class="s7-dot"></span><span data-hf-id="hf-uux8" class="s7-dot"></span><span data-hf-id="hf-ukka" id="s7-title">twice-evidence-541da5a1</span></div>
+      <div data-hf-id="hf-cj48" id="s7-body"><div data-hf-id="hf-ugru" class="s7-cmd" id="s7-c1"><b data-hf-id="hf-0ogj">$ </b><span data-hf-id="hf-q4w0" class="s7-type" id="s7-t1">python verify.py</span></div><div data-hf-id="hf-5hsq" id="s7-o1">public key fingerprint  sha256:adc4be1a58414531eb627a2d4063898d…</div><div data-hf-id="hf-ziq6" id="s7-o2">before  seal  534e0863292428e43396…  signed 2026-10-23T03:54:46</div><div data-hf-id="hf-litu" id="s7-o3">report  seal  cb86c4580fdfe97a5eb4…  signed 2026-10-23T03:55:21</div><div data-hf-id="hf-i8o3" id="s7-o4">8 signed photos checked</div><div data-hf-id="hf-mcyc" class="s7-ok" id="s7-o5">VALID: every signed photo and record matches its signature.</div><div data-hf-id="hf-yeow"> </div><div data-hf-id="hf-qint" class="s7-cmd" id="s7-c2"><b data-hf-id="hf-9k4z">$ </b><span data-hf-id="hf-ovg4" class="s7-type" id="s7-t2">printf x &gt;&gt; photos/015250293acc450f*.jpg &amp;&amp; python verify.py</span></div><div data-hf-id="hf-ebs9" class="s7-bad" id="s7-o6">NOT VALID:</div><div data-hf-id="hf-2b58" class="s7-bad" id="s7-o7">photo 015250293acc450f was altered</div></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s7-win", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "expo.out" }, 0);
+    tl.fromTo("#s7-c1", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 1.4);
+    tl.fromTo("#s7-t1", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.7, ease: "steps(16)" }, 1.4);
+    ["#s7-o1", "#s7-o2", "#s7-o3", "#s7-o4"].forEach((id, i) => tl.fromTo(id, { opacity: 0 }, { opacity: 1, duration: 0.01 }, 2.4 + i * 0.15));
+    tl.fromTo("#s7-o5", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 3.2);
+    tl.fromTo("#s7-c2", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 6.3);
+    tl.fromTo("#s7-t2", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 1.2, ease: "steps(48)" }, 6.3);
+    tl.fromTo("#s7-o6", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 8.3);
+    tl.fromTo("#s7-o7", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 8.35);
+    window.__timelines["s7"] = tl;
+  </script>
+</template>

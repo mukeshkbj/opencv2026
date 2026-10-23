@@ -1,0 +1,236 @@
+[
+  {
+    "id": "w0",
+    "text": "On",
+    "start": 0,
+    "end": 0.16
+  },
+  {
+    "id": "w1",
+    "text": "our",
+    "start": 0.16,
+    "end": 0.32
+  },
+  {
+    "id": "w2",
+    "text": "synthetic",
+    "start": 0.32,
+    "end": 0.8
+  },
+  {
+    "id": "w3",
+    "text": "benchmark,",
+    "start": 0.8,
+    "end": 1.6
+  },
+  {
+    "id": "w4",
+    "text": "twice",
+    "start": 1.6,
+    "end": 2
+  },
+  {
+    "id": "w5",
+    "text": "finds",
+    "start": 2.16,
+    "end": 2.64
+  },
+  {
+    "id": "w6",
+    "text": "90%",
+    "start": 2.64,
+    "end": 3.2
+  },
+  {
+    "id": "w7",
+    "text": "of",
+    "start": 3.2,
+    "end": 3.36
+  },
+  {
+    "id": "w8",
+    "text": "the",
+    "start": 3.36,
+    "end": 3.44
+  },
+  {
+    "id": "w9",
+    "text": "damage,",
+    "start": 3.44,
+    "end": 4.16
+  },
+  {
+    "id": "w10",
+    "text": "and",
+    "start": 4.16,
+    "end": 4.4
+  },
+  {
+    "id": "w11",
+    "text": "99%",
+    "start": 4.4,
+    "end": 5.28
+  },
+  {
+    "id": "w12",
+    "text": "of",
+    "start": 5.28,
+    "end": 5.44
+  },
+  {
+    "id": "w13",
+    "text": "its",
+    "start": 5.44,
+    "end": 5.6
+  },
+  {
+    "id": "w14",
+    "text": "flags",
+    "start": 5.6,
+    "end": 6.16
+  },
+  {
+    "id": "w15",
+    "text": "are",
+    "start": 6.16,
+    "end": 6.32
+  },
+  {
+    "id": "w16",
+    "text": "real.",
+    "start": 6.32,
+    "end": 7.04
+  },
+  {
+    "id": "w17",
+    "text": "On",
+    "start": 7.04,
+    "end": 7.36
+  },
+  {
+    "id": "w18",
+    "text": "real",
+    "start": 7.36,
+    "end": 7.68
+  },
+  {
+    "id": "w19",
+    "text": "photos",
+    "start": 7.68,
+    "end": 8.16
+  },
+  {
+    "id": "w20",
+    "text": "of",
+    "start": 8.16,
+    "end": 8.4
+  },
+  {
+    "id": "w21",
+    "text": "unchanged",
+    "start": 8.4,
+    "end": 9.04
+  },
+  {
+    "id": "w22",
+    "text": "scenes,",
+    "start": 9.04,
+    "end": 9.76
+  },
+  {
+    "id": "w23",
+    "text": "two",
+    "start": 9.76,
+    "end": 9.92
+  },
+  {
+    "id": "w24",
+    "text": "of",
+    "start": 10,
+    "end": 10.24
+  },
+  {
+    "id": "w25",
+    "text": "22",
+    "start": 10.24,
+    "end": 10.8
+  },
+  {
+    "id": "w26",
+    "text": "judged",
+    "start": 10.8,
+    "end": 11.28
+  },
+  {
+    "id": "w27",
+    "text": "pairs",
+    "start": 11.28,
+    "end": 11.76
+  },
+  {
+    "id": "w28",
+    "text": "got",
+    "start": 11.76,
+    "end": 11.92
+  },
+  {
+    "id": "w29",
+    "text": "a",
+    "start": 11.92,
+    "end": 12
+  },
+  {
+    "id": "w30",
+    "text": "false",
+    "start": 12,
+    "end": 12.4
+  },
+  {
+    "id": "w31",
+    "text": "alarm.",
+    "start": 12.4,
+    "end": 13.2
+  },
+  {
+    "id": "w32",
+    "text": "Every",
+    "start": 13.2,
+    "end": 13.52
+  },
+  {
+    "id": "w33",
+    "text": "failure",
+    "start": 13.52,
+    "end": 14.08
+  },
+  {
+    "id": "w34",
+    "text": "case",
+    "start": 14.08,
+    "end": 14.4
+  },
+  {
+    "id": "w35",
+    "text": "is",
+    "start": 14.4,
+    "end": 14.56
+  },
+  {
+    "id": "w36",
+    "text": "in",
+    "start": 14.56,
+    "end": 14.64
+  },
+  {
+    "id": "w37",
+    "text": "the",
+    "start": 14.64,
+    "end": 14.8
+  },
+  {
+    "id": "w38",
+    "text": "report.",
+    "start": 14.8,
+    "end": 15.28
+  }
+]

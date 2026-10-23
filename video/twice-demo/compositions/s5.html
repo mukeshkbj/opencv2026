@@ -1,0 +1,17 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #f1eee7; overflow: hidden; }
+    #s5-cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+    #s5-video { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+  </style>
+  <div data-hf-id="hf-4473" id="root" data-composition-id="s5" data-width="1920" data-height="1080">
+    <div data-hf-id="hf-057f" id="s5-cam">
+      <video data-hf-id="hf-6rfl" id="s5-video" class="clip" src="assets/clips/room.mp4" data-start="0" data-duration="17.1" data-track-index="0" muted playsinline></video>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    window.__timelines["s5"] = tl;
+  </script>
+</template>

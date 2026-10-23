@@ -1,0 +1,21 @@
+<template>
+  <style>
+    @font-face { font-family: 'Gambetta'; src: url('assets/fonts/gambetta-400.woff2') format('woff2'); font-weight: 400; font-style: normal; }
+    @font-face { font-family: 'Gambetta'; src: url('assets/fonts/gambetta-400i.woff2') format('woff2'); font-weight: 400; font-style: italic; }
+    @font-face { font-family: 'Switzer'; src: url('assets/fonts/switzer-500.woff2') format('woff2'); font-weight: 500; }
+    #root { position: absolute; inset: 0; background: #f1eee7; color: #17160f; overflow: hidden; }
+    #s10-pre { position: absolute; left: 200px; top: 300px; font-family: 'Switzer', sans-serif; font-size: 52px; color: #3d3b33; }
+    #s10-main { position: absolute; left: 190px; top: 400px; font-family: 'Gambetta', serif; font-size: 260px; line-height: 1; letter-spacing: -0.03em; }
+    #s10-main em { color: #e2401a; }
+  </style>
+  <div data-hf-id="hf-8k65" id="root" data-composition-id="s10" data-width="1920" data-height="1080">
+    <div data-hf-id="hf-rl8q" id="s10-pre">Your next move-out starts with today's photos.</div>
+    <div data-hf-id="hf-53um" id="s10-main">Take them <em data-hf-id="hf-4zn1">twice.</em></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#s10-pre", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.4);
+    tl.fromTo("#s10-main", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power4.out" }, 2.6);
+    window.__timelines["s10"] = tl;
+  </script>
+</template>

@@ -1,0 +1,332 @@
+[
+  {
+    "id": "w0",
+    "text": "Here",
+    "start": 0,
+    "end": 0.24
+  },
+  {
+    "id": "w1",
+    "text": "is",
+    "start": 0.24,
+    "end": 0.4
+  },
+  {
+    "id": "w2",
+    "text": "a",
+    "start": 0.4,
+    "end": 0.48
+  },
+  {
+    "id": "w3",
+    "text": "sample",
+    "start": 0.48,
+    "end": 0.96
+  },
+  {
+    "id": "w4",
+    "text": "check.",
+    "start": 0.96,
+    "end": 1.6
+  },
+  {
+    "id": "w5",
+    "text": "On",
+    "start": 1.6,
+    "end": 1.76
+  },
+  {
+    "id": "w6",
+    "text": "the",
+    "start": 1.76,
+    "end": 2
+  },
+  {
+    "id": "w7",
+    "text": "car,",
+    "start": 2,
+    "end": 2.4
+  },
+  {
+    "id": "w8",
+    "text": "a",
+    "start": 2.4,
+    "end": 2.56
+  },
+  {
+    "id": "w9",
+    "text": "reflection",
+    "start": 2.56,
+    "end": 3.12
+  },
+  {
+    "id": "w10",
+    "text": "looks",
+    "start": 3.12,
+    "end": 3.44
+  },
+  {
+    "id": "w11",
+    "text": "like",
+    "start": 3.44,
+    "end": 3.68
+  },
+  {
+    "id": "w12",
+    "text": "damage.",
+    "start": 3.68,
+    "end": 4.48
+  },
+  {
+    "id": "w13",
+    "text": "One",
+    "start": 4.48,
+    "end": 4.8
+  },
+  {
+    "id": "w14",
+    "text": "photo",
+    "start": 4.8,
+    "end": 5.28
+  },
+  {
+    "id": "w15",
+    "text": "cannot",
+    "start": 5.28,
+    "end": 5.6
+  },
+  {
+    "id": "w16",
+    "text": "tell",
+    "start": 5.6,
+    "end": 5.84
+  },
+  {
+    "id": "w17",
+    "text": "them",
+    "start": 5.84,
+    "end": 6.08
+  },
+  {
+    "id": "w18",
+    "text": "apart,",
+    "start": 6.08,
+    "end": 6.56
+  },
+  {
+    "id": "w19",
+    "text": "so",
+    "start": 6.56,
+    "end": 6.8
+  },
+  {
+    "id": "w20",
+    "text": "the",
+    "start": 6.8,
+    "end": 6.96
+  },
+  {
+    "id": "w21",
+    "text": "agent",
+    "start": 6.96,
+    "end": 7.36
+  },
+  {
+    "id": "w22",
+    "text": "asks",
+    "start": 7.36,
+    "end": 7.68
+  },
+  {
+    "id": "w23",
+    "text": "for",
+    "start": 7.68,
+    "end": 7.84
+  },
+  {
+    "id": "w24",
+    "text": "one",
+    "start": 7.84,
+    "end": 8.08
+  },
+  {
+    "id": "w25",
+    "text": "more,",
+    "start": 8.08,
+    "end": 8.48
+  },
+  {
+    "id": "w26",
+    "text": "from",
+    "start": 8.48,
+    "end": 8.72
+  },
+  {
+    "id": "w27",
+    "text": "a",
+    "start": 8.72,
+    "end": 8.8
+  },
+  {
+    "id": "w28",
+    "text": "step",
+    "start": 8.8,
+    "end": 9.12
+  },
+  {
+    "id": "w29",
+    "text": "to",
+    "start": 9.12,
+    "end": 9.28
+  },
+  {
+    "id": "w30",
+    "text": "the",
+    "start": 9.28,
+    "end": 9.44
+  },
+  {
+    "id": "w31",
+    "text": "side.",
+    "start": 9.44,
+    "end": 10.08
+  },
+  {
+    "id": "w32",
+    "text": "A",
+    "start": 10.08,
+    "end": 10.24
+  },
+  {
+    "id": "w33",
+    "text": "reflection",
+    "start": 10.24,
+    "end": 10.96
+  },
+  {
+    "id": "w34",
+    "text": "moves",
+    "start": 10.96,
+    "end": 11.36
+  },
+  {
+    "id": "w35",
+    "text": "with",
+    "start": 11.36,
+    "end": 11.52
+  },
+  {
+    "id": "w36",
+    "text": "the",
+    "start": 11.52,
+    "end": 11.68
+  },
+  {
+    "id": "w37",
+    "text": "camera.",
+    "start": 11.68,
+    "end": 12.32
+  },
+  {
+    "id": "w38",
+    "text": "A",
+    "start": 12.32,
+    "end": 12.56
+  },
+  {
+    "id": "w39",
+    "text": "scratch",
+    "start": 12.56,
+    "end": 13.12
+  },
+  {
+    "id": "w40",
+    "text": "stays",
+    "start": 13.12,
+    "end": 13.52
+  },
+  {
+    "id": "w41",
+    "text": "on",
+    "start": 13.52,
+    "end": 13.68
+  },
+  {
+    "id": "w42",
+    "text": "the",
+    "start": 13.68,
+    "end": 13.76
+  },
+  {
+    "id": "w43",
+    "text": "paint,",
+    "start": 13.76,
+    "end": 14.4
+  },
+  {
+    "id": "w44",
+    "text": "so",
+    "start": 14.4,
+    "end": 14.64
+  },
+  {
+    "id": "w45",
+    "text": "the",
+    "start": 14.64,
+    "end": 14.8
+  },
+  {
+    "id": "w46",
+    "text": "reflection",
+    "start": 14.8,
+    "end": 15.28
+  },
+  {
+    "id": "w47",
+    "text": "is",
+    "start": 15.28,
+    "end": 15.44
+  },
+  {
+    "id": "w48",
+    "text": "ruled",
+    "start": 15.44,
+    "end": 16
+  },
+  {
+    "id": "w49",
+    "text": "out",
+    "start": 16,
+    "end": 16.16
+  },
+  {
+    "id": "w50",
+    "text": "and",
+    "start": 16.16,
+    "end": 16.32
+  },
+  {
+    "id": "w51",
+    "text": "the",
+    "start": 16.32,
+    "end": 16.48
+  },
+  {
+    "id": "w52",
+    "text": "scratch",
+    "start": 16.48,
+    "end": 16.88
+  },
+  {
+    "id": "w53",
+    "text": "is",
+    "start": 16.88,
+    "end": 17.04
+  },
+  {
+    "id": "w54",
+    "text": "reported.",
+    "start": 17.04,
+    "end": 17.6
+  }
+]

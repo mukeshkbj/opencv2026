@@ -52,7 +52,11 @@ apartments and rental cars. Spec: docs/spec.md. Persona critique: docs/critique-
 - [x] 6d. Verification now checks photos against signed manifests; report seal links to move-in seal. 6 tests pass.
 - [x] 7. Hill-climb: dark theme checked on the report, persona critique rounds 2 and 3, deslop pass on the diff.
 - [ ] 8. Owner: run deploy/deploy.sh with AWS credentials, then follow "Before you submit" in deploy/README.md.
-- [ ] 9. Owner: record the video from docs/video-script.md (docs/img/demo.mp4 can serve as screen footage).
+- [x] 9. Submission film: docs/video/twice-demo.mp4 (149.8 s, 1920x1080, 30 fps, -16 LUFS). Source: HyperFrames
+      project video/twice-demo (SPEC.md, REVIEW.md). Kokoro voice, no music (needs HeyGen sign-in). Check passes;
+      review sheets read and fixed. docs/video-script.md matches the film. Linked from the README.
+      Owner: upload the MP4 to YouTube or Vimeo for Devpost. Raw footage (video/footage) is gitignored.
+- [~] 10. docs/winners-research.md: sourced winner advice and a checklist, written by a Sonnet 5.5 subagent.
 
 ## How to run locally
 - API: `cd server && ../.venv/Scripts/python.exe -m uvicorn twice.app:app --reload --port 8000` (TWICE_DATA defaults to local store).
