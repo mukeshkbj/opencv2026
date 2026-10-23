@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import gsap from "gsap";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { api, fileUrl, photoUrl, type Check, type Finding, type Spot, type TraceStep } from "../api";
 import { navigate, TopBar } from "../App";
 import Camera from "../components/Camera";
@@ -79,17 +80,49 @@ function Findings({ findings, active, setActive, view }: { findings: Finding[]; 
   );
 }
 
-function SampleShooter({ ghost, label, busy, onShoot }: { ghost: string; label: string; busy: boolean; onShoot: () => void }) {
+function SampleShooter({ live, ghost, label, busy, onShoot }: { live: string; ghost: string; label: string; busy: boolean; onShoot: () => void }) {
+  const frame = useRef<HTMLDivElement>(null);
+  const [cue, setCue] = useState("Line up the ghost of the move-in photo");
+  const [locked, setLocked] = useState(false);
+  const [guiding, setGuiding] = useState(false);
+  const [flash, setFlash] = useState(false);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => gsap.set(".sample-ghost", { xPercent: 6, yPercent: -4, rotation: -2.5, scale: 0.93 }), frame);
+    return () => ctx.revert();
+  }, []);
+
+  const shoot = () => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return onShoot();
+    setGuiding(true);
+    gsap
+      .timeline({ defaults: { ease: "power2.inOut" }, onComplete: () => (setFlash(true), onShoot()) })
+      .call(() => setCue("Pan left"))
+      .to(".sample-ghost", { xPercent: 2, yPercent: -2, rotation: -1.2, scale: 0.97, duration: 0.8 })
+      .call(() => setCue("Move closer"))
+      .to(".sample-ghost", { xPercent: 0.5, yPercent: -0.4, rotation: -0.3, scale: 0.99, duration: 0.7 })
+      .call(() => setCue("Hold still"))
+      .to(".sample-ghost", { xPercent: 0, yPercent: 0, rotation: 0, scale: 1, duration: 0.4, ease: "expo.out" })
+      .call(() => (setCue("Locked. Same spot."), setLocked(true)))
+      .to({}, { duration: 0.5 });
+  };
+
   return (
     <div className="sample-shooter">
-      <div className="sample-frame" data-busy={busy || undefined}>
-        <img src={ghost} alt="Move-in photo of this spot" />
+      <div ref={frame} className="sample-frame" data-busy={busy || undefined}>
+        <img src={live} alt="Prepared move-out photo of this spot" />
+        <img className="sample-ghost" src={ghost} alt="" />
+        <div className="cam-hud" aria-live="polite">
+          <span className="cam-dot" data-ok={locked || undefined} />
+          {busy ? "Analysing…" : cue}
+        </div>
+        {flash && <div className="cam-flash" />}
         <div className="scanline" aria-hidden="true" />
       </div>
       <div className="cam-bar">
-        <span className="cam-note">Sample check: Twice uses a prepared photo instead of your camera.</span>
-        <button className="btn btn-signal" onClick={onShoot} disabled={busy}>
-          {busy ? "Analysing…" : label}
+        <span className="cam-note">Sample check: a prepared photo stands in for your camera.</span>
+        <button className="btn btn-signal" onClick={shoot} disabled={busy || guiding}>
+          {busy ? "Analysing…" : guiding ? "Guiding…" : label}
         </button>
       </div>
     </div>
@@ -266,7 +299,14 @@ export default function CheckPage({ id }: { id: string }) {
                 </p>
               </header>
               {isSample ? (
-                <SampleShooter ghost={photoUrl(check.id, spot.before)} label="Take the move-out photo" busy={busy} onShoot={() => shootAfter()} />
+                <SampleShooter
+                  key={spot.id}
+                  live={`/api/samples/${check.sample}/${spot.sample?.after}`}
+                  ghost={photoUrl(check.id, spot.before)}
+                  label="Take the move-out photo"
+                  busy={busy}
+                  onShoot={() => shootAfter()}
+                />
               ) : (
                 <Camera mode="guide" ghost={photoUrl(check.id, spot.before)} busy={busy} quality={quality} guide={guide} onCapture={shootAfter} />
               )}

@@ -486,9 +486,19 @@
 }
 
 .sample-frame img {
+  display: block;
   max-width: 100%;
   max-height: calc(100svh - 300px);
-  opacity: 0.55;
+}
+
+.sample-frame .sample-ghost {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.45;
+  transform-origin: 50% 50%;
+  will-change: transform;
 }
 
 .scanline {

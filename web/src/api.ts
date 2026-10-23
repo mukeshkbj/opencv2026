@@ -58,7 +58,7 @@ export interface Spot {
   after: Photo | null;
   followups: (Photo & { kind: string })[];
   state: SpotState;
-  sample?: Record<string, string>;
+  sample?: { after: string; parallax?: string; scene?: string };
 }
 
 export interface Seal {
