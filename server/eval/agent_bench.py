@@ -1,8 +1,9 @@
 """Agent-level benchmark: runs the full agent loop, including the follow-up photos it asks for.
 
 Run from server/:  python eval/agent_bench.py [eval/scenes] [--out ../docs/eval]
-Uses the same pairs as bench.py, once per RANSAC seed, so the summary pools all seeds and per_seed gives the spread. A side-step request gets a new camera position of the same scene; a glare
-patch moves to a new place on the surface, damage stays. A close-up request gets a tighter shot of the area.
+Uses the same pairs as bench.py, once per RANSAC seed: the summary pools all seeds and per_seed gives the spread.
+A side-step request gets a new camera position of the same scene; a glare patch moves to a new place on the surface,
+damage stays. A close-up request gets a tighter shot of the area.
 """
 import argparse
 import json

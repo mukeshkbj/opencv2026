@@ -45,9 +45,9 @@ def main() -> None:
             state = SpotState()
             res = Agent(state).on_after(ref, Keyframe.build(img))
             verdicts = [f.verdict for f in state.findings]
-            rows.append({"sequence": seq, "stress": stress, "pair": f"1-{k}", "registered": res.ok, "retake_reason": None if res.ok else res.reason,
-                         "changed": verdicts.count("changed"), "followup_asked": state.status == "needs_followup",
-                         "ruled_out": verdicts.count("lighting")})
+            rows.append({"sequence": seq, "stress": stress, "pair": f"1-{k}", "registered": res.ok,
+                         "retake_reason": None if res.ok else res.reason, "changed": verdicts.count("changed"),
+                         "followup_asked": state.status == "needs_followup", "ruled_out": verdicts.count("lighting")})
             print(rows[-1], flush=True)
     reg = [r for r in rows if r["registered"]]
     summary = {
