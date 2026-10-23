@@ -232,6 +232,7 @@
   cursor: pointer;
   font-size: 0.875rem;
   color: var(--ink-2);
+  overflow-wrap: anywhere;
 }
 
 .pubkey pre {
