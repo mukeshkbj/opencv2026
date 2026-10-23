@@ -40,6 +40,13 @@ If the captioner shows `rules`, the Bedrock region variable is missing. If the s
 
 Open the Function URL in a browser to use the web app. Look for the `Twice` metrics in CloudWatch under the `Twice` namespace.
 
+## Before you submit
+
+1. Put the Function URL on the **Live demo** line at the top of the main README.
+2. Open the URL in a browser and run **Try the sample check** to the signed report. The stamp must turn green.
+3. Paste the `/api/health` reply under the Live demo line.
+4. In CloudWatch, read the `CompareLatency` metric in the `Twice` namespace. Put its median in `docs/report.md`, section 8, in place of the line that says the Lambda time is not measured.
+
 ## Upload size limit
 
 A Function URL accepts request bodies up to 6 MB. Binary bodies are base64 encoded first, so photos above about 4.5 MB fail.

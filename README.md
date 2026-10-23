@@ -6,6 +6,8 @@ Twice is renter-side evidence for apartments and rental cars. You photograph a f
 
 Built for the OpenCV AI Competition 2026. OpenCV 5 does all the image analysis. The evidence store, signing key, captioning model and metrics run on AWS.
 
+**Live demo:** _the Function URL goes here after `deploy/deploy.sh` runs (see [deploy/README.md](deploy/README.md), "Before you submit")._
+
 ![Twice landing page](docs/img/landing.png)
 
 ## Why
