@@ -23,13 +23,13 @@ Voice-over is in plain sentences. Times are cumulative.
 
 ## 1:40 to 2:50 — The agent at work (sample check)
 
-**Screen:** desktop. Press **Try the sample check**. Living room: take the move-out photo. Show the wipe slider, the two "Changed" marks and the dashed "Light change, ruled out" box. Toggle the change map once.
+**Screen:** desktop. Press **Try the sample check**. The car spot opens first. Take the move-out photo. The card above the photo says "The agent needs one more photo. Take one step to the side." Press the button. The dashed box changes to "Reflection · ruled out", and the trace adds `compare_followup: vanished under parallax, rule out as glare`.
 
-**Voice:** "Here is a sealed sample. The living room has a new wall stain and a floor scuff. It also has a shadow that was not there before. A plain image difference flags all three. Twice compares structure and colour in a way that ignores exposure and small shifts, and it checks whether a smooth light field explains the change. The shadow is ruled out."
+**Voice:** "Here is a sealed sample. On the car, a reflection looks like damage. The agent cannot tell from one photo, so it asks for a second one from a step to the side. Reflections move with the camera. Damage stays on the paint. The reflection moved, so it is ruled out. The scratch stayed, so it is reported. A vision result decided the next action."
 
-**Screen:** car spot. The agent card says "The agent needs one more photo. Take one step to the side." Press the button. The trace adds `compare_followup: vanished under parallax, rule out as glare`.
+**Screen:** living room spot. Show the wipe slider, the two "Changed" marks and the dashed "Light change · ruled out" box. Toggle the change map once.
 
-**Voice:** "On the car, a reflection looks like damage. The agent cannot tell from one photo, so it asks for a second one from a step to the side. Reflections move with the camera. Damage stays on the paint. The reflection moved, so it is ruled out. The scratch stayed, so it is reported. A vision result decided the next action."
+**Voice:** "The living room has a new wall stain and a floor scuff. It also has a shadow that was not there before. A plain image difference flags all three. Twice compares structure and colour in a way that ignores exposure and small shifts, and it checks whether a smooth light field explains the change. The shadow is ruled out."
 
 ## 2:50 to 3:30 — The signed report
 
@@ -53,7 +53,7 @@ Voice-over is in plain sentences. Times are cumulative.
 
 - Landing hero (animation, one full loop) and the `$440` section.
 - Phone clip: before capture with quality chips, guided after capture with auto-shutter.
-- Sample check: room result, change map toggle, car follow-up and trace.
+- Sample check: car follow-up and trace, then room result and change map toggle.
 - Report: stamp, exhibits, hashes, signatures, limits.
 - Diagrams: `docs/diagrams/architecture.png`, `docs/diagrams/agent-loop.png`.
 - Terminal: `curl <url>/api/health` showing OpenCV 5.0.0, ENGINE_NEW, the KMS signer and the Bedrock captioner.
