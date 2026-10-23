@@ -52,12 +52,18 @@ apartments and rental cars. Spec: docs/spec.md. Persona critique: docs/critique-
 - [x] 6d. Verification now checks photos against signed manifests; report seal links to move-in seal. 6 tests pass.
 - [x] 7. Hill-climb: dark theme checked on the report, persona critique rounds 2 and 3, deslop pass on the diff.
 - [ ] 8. Owner: run deploy/deploy.sh with AWS credentials, then follow "Before you submit" in deploy/README.md.
-- [x] 9. Submission film: docs/video/twice-demo.mp4 (149.8 s, 1920x1080, 30 fps, -16 LUFS). Source: HyperFrames
+- [x] 9. Submission film: docs/video/twice-demo.mp4 (147 s, second pass after judge round 4, 1920x1080, 30 fps, -16 LUFS). Source: HyperFrames
       project video/twice-demo (SPEC.md, REVIEW.md). Kokoro voice, no music (needs HeyGen sign-in). Check passes;
       review sheets read and fixed. docs/video-script.md matches the film. Linked from the README.
       Owner: upload the MP4 to YouTube or Vimeo for Devpost. Raw footage (video/footage) is gitignored.
 - [x] 10. docs/winners-research.md: 8 fetched winner write-ups, OpenCV winners 2021 to 2025 with sources, and a
       checklist against Twice. Open gaps it names: live endpoint (owner), no labelled real damage pairs, no real users.
+- [x] 10b. Judge round 4 fixes (de0d9fb, 5ae1795, 17e1889): sample findings named from ground truth, zoomed
+      move-in/move-out crops in the check and the report, ghost guide in the sample check, contrast token
+      --on-signal, phone layout. Skipped: "Play all three spots" button.
+- [x] 10c. Hybrid benchmark (server/eval/hybrid_bench.py, docs/evaluation.md 7.1): drawn defects on the 22 judged
+      Oxford pairs. Recall 0.29, strict 0.18, precision 0.85, against 0.90 synthetic. README states 0.90 is an
+      upper bound. Trees gives 0 of 71; tolerant vs plain difference is not settled.
 - [ ] 11. Owner, optional: photograph 5 to 10 real move-in and move-out pairs with real marks, run them through the
       app, and add the results to docs/evaluation.md. Show the app to a few renters and note what they say.
 
