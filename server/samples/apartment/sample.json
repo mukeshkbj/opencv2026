@@ -1,7 +1,18 @@
 {
-  "name": "Apartment 4B and rental car",
+  "name": "Rental car and apartment 4B",
   "margin": 0.06,
   "spots": [
+    {
+      "label": "Rental car, front quarter panel",
+      "before": "car-before.jpg",
+      "after": "car-after.jpg",
+      "scene": "car-scene.jpg",
+      "parallax": "car-parallax.jpg",
+      "truth": [
+        "door scratch",
+        "reflection on chrome (moves with the camera)"
+      ]
+    },
     {
       "label": "Living room, east wall",
       "before": "room-before.jpg",
@@ -24,17 +35,6 @@
         "coffee ring",
         "missing item",
         "lighting only: shadow"
-      ]
-    },
-    {
-      "label": "Rental car, front quarter panel",
-      "before": "car-before.jpg",
-      "after": "car-after.jpg",
-      "scene": "car-scene.jpg",
-      "parallax": "car-parallax.jpg",
-      "truth": [
-        "door scratch",
-        "reflection on chrome (moves with the camera)"
       ]
     }
   ],

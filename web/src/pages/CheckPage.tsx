@@ -348,17 +348,6 @@ function Result({ check, spot, busy, isSample, active, setActive, heat, setHeat,
         </div>
       </header>
 
-      <Wipe
-        before={fileUrl(check.id, `${spot.id}-view-before.jpg`)}
-        after={fileUrl(check.id, `${spot.id}-view-after.jpg`)}
-        heat={fileUrl(check.id, `${spot.id}-view-heat.png`)}
-        showHeat={heat}
-        ratio={size.w / size.h}
-        marks={marks}
-        active={active ?? pendingIndex}
-        labels={["Move-in", "Move-out"]}
-      />
-
       {pending && (
         <div className="followup">
           <div className="followup-copy">
@@ -375,6 +364,17 @@ function Result({ check, spot, busy, isSample, active, setActive, heat, setHeat,
           )}
         </div>
       )}
+
+      <Wipe
+        before={fileUrl(check.id, `${spot.id}-view-before.jpg`)}
+        after={fileUrl(check.id, `${spot.id}-view-after.jpg`)}
+        heat={fileUrl(check.id, `${spot.id}-view-heat.png`)}
+        showHeat={heat}
+        ratio={size.w / size.h}
+        marks={marks}
+        active={active ?? pendingIndex}
+        labels={["Move-in", "Move-out"]}
+      />
 
       <div className="result-grid">
         <div>
