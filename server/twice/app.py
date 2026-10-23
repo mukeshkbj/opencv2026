@@ -186,10 +186,23 @@ def _persist_views(cid: str, sid: str, res: vision.Comparison) -> None:
     store.put(f"checks/{cid}/{sid}-view-heat.png", cv2.imencode(".png", heat)[1].tobytes(), "image/png")
 
 
-def _caption(cid: str, sid: str, state: SpotState) -> None:
+def _overlaps(a: list, b: list) -> bool:
+    return a[0] < b[0] + b[2] and b[0] < a[0] + a[2] and a[1] < b[1] + b[3] and b[1] < a[1] + a[3]
+
+
+def _caption(cid: str, sid: str, state: SpotState, truth: list[dict]) -> None:
     pending = [f for f in state.findings if f.verdict == "changed" and not f.caption]
     if not pending:
         return
+    if truth and captioner.client is None:
+        for f in pending:
+            f.caption = next((t["name"] for t in truth if _overlaps(f.box, t["box"])), "")
+        named = [f for f in pending if f.caption]
+        state.trace.append({"t": round(time.time(), 3), "tool": "caption",
+                            "result": f"{len(named)} named from the sample's ground truth", "decision": ""})
+        pending = [f for f in pending if not f.caption]
+        if not pending:
+            return
     before = vision.decode(store.get(f"checks/{cid}/{sid}-view-before.jpg"))
     after = vision.decode(store.get(f"checks/{cid}/{sid}-view-after.jpg"))
     for f in pending:
@@ -231,7 +244,7 @@ def run_after(cid: str, sid: str, data: bytes, img: np.ndarray) -> dict:
     if res.ok:
         _persist_views(cid, sid, res)
     if state.status == "done":
-        _caption(cid, sid, state)
+        _caption(cid, sid, state, spot.get("sample", {}).get("labels", []))
     spot["state"] = state.to_dict()
     save(check)
     return spot
@@ -253,7 +266,7 @@ def run_followup(cid: str, sid: str, data: bytes, img: np.ndarray) -> dict:
     spot["followups"].append({**put_photo(cid, f"{sid}-{state.pending.id}", data, img), "kind": kind})
     Agent(state).on_followup(before_frames(spot["before"]["key"])[0], img)
     if state.status == "done":
-        _caption(cid, sid, state)
+        _caption(cid, sid, state, spot.get("sample", {}).get("labels", []))
     spot["state"] = state.to_dict()
     save(check)
     return spot
@@ -349,10 +362,15 @@ def sample(name: str) -> dict:
         data = (folder / spot_meta["before"]).read_bytes()
         img = vision.decode(data)
         q = vision.quick_quality(img)
+        s = vision.WORK_SIDE / max(img.shape[:2])
+        labels = [{"name": t["name"], "box": [round(t["box"][0] * s), round(t["box"][1] * s),
+                                              round((t["box"][2] - t["box"][0]) * s), round((t["box"][3] - t["box"][1]) * s)]}
+                  for t in spot_meta.get("labels", [])]
         check["spots"].append({"id": f"s{i}", "label": spot_meta["label"],
                                "before": {**put_photo(check["id"], f"s{i}-before", data, img), "quality": q.as_dict()},
                                "after": None, "followups": [], "state": SpotState().to_dict(),
-                               "sample": {k: spot_meta[k] for k in ("after", "parallax", "scene") if k in spot_meta}})
+                               "sample": {**{k: spot_meta[k] for k in ("after", "parallax", "scene") if k in spot_meta},
+                                          "labels": labels}})
     seal(check, "before")
     save(check)
     return check

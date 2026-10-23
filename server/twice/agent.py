@@ -133,7 +133,10 @@ class Agent:
             return
         f.kind = _kind(f, area_frac)
         f.verdict = "changed"
-        f.evidence.append(f"structure z={m['structure']:.1f}, colour z={m['chroma']:.1f}, peak z={m['score']:.1f}")
+        strength = "strong" if m["score"] >= 40 else "clear" if m["score"] >= 18 else "weak"
+        what = "texture and colour" if min(m["structure"], m["chroma"]) >= 4 else "colour" if m["chroma"] > m["structure"] else "texture"
+        f.evidence.append(f"{strength} change in {what} "
+                          f"(structure z={m['structure']:.1f}, colour z={m['chroma']:.1f}, peak z={m['score']:.1f})")
         if area_frac < 0.0015 and m["score"] < 18:
             f.verdict = "pending"
             f.evidence.append("small and weak: a close-up will confirm it")

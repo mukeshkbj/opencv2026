@@ -233,19 +233,20 @@ export default function Landing() {
             <li><span className="label">Refine</span><code>DIS optical flow, clamped</code><p>Corrects the last few pixels a handheld phone leaves behind.</p></li>
             <li><span className="label">Compare</span><code>Shift-tolerant structure + colour</code><p>Ignores blur, exposure and sub-pixel jitter. Keeps new texture.</p></li>
             <li><span className="label">Decide</span><code>Agent · NanoDet on dnn ENGINE_NEW</code><p>Rules out light, names missing objects, asks for a parallax shot or a close-up when unsure.</p></li>
-            <li><span className="label">Sign</span><code>SHA-256 · AWS KMS</code><p>Seals the photos and the findings. Any edit breaks the signature.</p></li>
+            <li><span className="label">Sign</span><code>SHA-256 · AWS KMS (Ed25519 when run locally)</code><p>Seals the photos and the findings. Any edit breaks the signature.</p></li>
           </ol>
           <dl className="stats" data-reveal>
-            <div><dt>Damage found</dt><dd>90%</dd></div>
-            <div><dt>Flags that are real</dt><dd>99%</dd></div>
-            <div><dt>Lighting false alarms</dt><dd>3%</dd></div>
-            <div><dt>Time to compare</dt><dd>0.9 s</dd></div>
+            <div><dt>Damage found</dt><dd>90%</dd><small>170 synthetic pairs</small></div>
+            <div><dt>Flags that are real</dt><dd>99%</dd><small>170 synthetic pairs</small></div>
+            <div><dt>Lighting false alarms</dt><dd>3%</dd><small>shadow and lamp pairs</small></div>
+            <div><dt>Real photos, false alarms</dt><dd>2 of 22</dd><small>18 more sent back for a retake</small></div>
+            <div><dt>Time to compare</dt><dd>0.9 s</dd><small>median, desktop CPU</small></div>
           </dl>
-          <p className="stats-note">Synthetic benchmark: the full agent loop on 170 photo pairs with known damage, camera moves, exposure, colour, shadow and glare, including the follow-up shots it asks for. On 40 real photo pairs of unchanged scenes, 2 of the 22 judged pairs got a false alarm. The other 18 got a retake request. Compare time is on a desktop CPU. Method and failure cases are in the technical report.</p>
+          <p className="stats-note">The synthetic benchmark runs the full agent loop on photo pairs with known damage, camera moves, exposure, colour, shadow and glare, including the follow-up shots it asks for. The real photos are the Oxford affine sequences: unchanged scenes, so they measure false alarms only. Method and failure cases are in the technical report.</p>
         </section>
 
         <section className="closer" data-reveal>
-          <h2>Your next move-out starts with today's photos.</h2>
+          <h2>Your next move‑out starts with today's photos.</h2>
           <div className="hero-cta">
             <button className="btn btn-signal" onClick={sample.start} disabled={sample.busy}>
               Try the sample check <span className="arrow" aria-hidden="true">→</span>
@@ -258,7 +259,7 @@ export default function Landing() {
       </main>
 
       <footer className="footer">
-        <span>Built with OpenCV 5 on AWS for the OpenCV AI Competition 2026.</span>
+        <span>Built with OpenCV 5 for AWS, for the OpenCV AI Competition 2026.</span>
         <span>
           Sample photos: Sunny Room in old Apartment (CC BY 2.0), Top Workspace Office (CC0), 1970 AMC Hornet SST (CC BY 4.0), via Wikimedia Commons. Damage in the samples is synthetic.
         </span>

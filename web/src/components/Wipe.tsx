@@ -17,7 +17,10 @@ const VERDICT_TEXT: Record<string, string> = {
 
 export const verdictText = (v: string) => VERDICT_TEXT[v] ?? v;
 
-export function Marks({ marks, active }: { marks: Mark[]; active?: number | null }) {
+const rightAligned = (center: number, split?: number) =>
+  split === undefined ? center > 0.6 : center < split || center > 0.85;
+
+export function Marks({ marks, active, split }: { marks: Mark[]; active?: number | null; split?: number }) {
   return (
     <>
       {marks.map((m, i) => (
@@ -26,7 +29,7 @@ export function Marks({ marks, active }: { marks: Mark[]; active?: number | null
           className="mark"
           data-v={m.verdict}
           data-active={active === i || undefined}
-          data-right={m.box[0] + m.box[2] / 2 > 0.6 || undefined}
+          data-right={rightAligned(m.box[0] + m.box[2] / 2, split) || undefined}
           data-inside={m.box[1] < 0.08 || undefined}
           style={{
             left: `${m.box[0] * 100}%`,
@@ -84,51 +87,55 @@ export default function Wipe({ before, after, ratio, marks = [], heat, showHeat,
 
   const zoom = 2.6;
   return (
-    <div
-      ref={ref}
-      className="wipe"
-      style={{ aspectRatio: ratio }}
-      onPointerDown={(e) => {
-        (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
-        setPos(fromEvent(e.clientX, e.clientY).x);
-      }}
-      onPointerMove={onPointer}
-      onPointerLeave={() => setLoupe(null)}
-    >
-      <img src={after} alt={`${labels[1]} photo`} draggable={false} />
-      <div className="wipe-before" style={{ clipPath: `inset(0 ${(1 - pos) * 100}% 0 0)` }}>
-        <img src={before} alt={`${labels[0]} photo`} draggable={false} />
+    <div className="wipe-wrap">
+      <div className="wipe-labels" aria-hidden="true">
+        <span>{labels[0]}</span>
+        <span>{labels[1]}</span>
       </div>
-      {heat && <img className="wipe-heat" src={heat} alt="" data-on={showHeat || undefined} draggable={false} />}
-      <Marks marks={marks} active={active} />
-      <span className="wipe-label" data-side="l">{labels[0]}</span>
-      <span className="wipe-label" data-side="r">{labels[1]}</span>
       <div
-        className="wipe-handle"
-        style={{ left: `${pos * 100}%` }}
-        role="slider"
-        tabIndex={0}
-        aria-label="Compare before and after"
-        aria-valuemin={0}
-        aria-valuemax={100}
-        aria-valuenow={Math.round(pos * 100)}
-        onKeyDown={onKey}
+        ref={ref}
+        className="wipe"
+        style={{ aspectRatio: ratio }}
+        onPointerDown={(e) => {
+          (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+          setPos(fromEvent(e.clientX, e.clientY).x);
+        }}
+        onPointerMove={onPointer}
+        onPointerLeave={() => setLoupe(null)}
       >
-        <span />
-      </div>
-      {loupe && (
+        <img src={after} alt={`${labels[1]} photo`} draggable={false} />
+        <div className="wipe-before" style={{ clipPath: `inset(0 ${(1 - pos) * 100}% 0 0)` }}>
+          <img src={before} alt={`${labels[0]} photo`} draggable={false} />
+        </div>
+        {heat && <img className="wipe-heat" src={heat} alt="" data-on={showHeat || undefined} draggable={false} />}
+        <Marks marks={marks} active={active} split={pos} />
         <div
-          className="loupe"
-          aria-hidden="true"
-          style={{
-            left: `${loupe.x * 100}%`,
-            top: `${loupe.y * 100}%`,
-            backgroundImage: `url(${loupe.x < pos ? before : after})`,
-            backgroundSize: `${zoom * 100}% auto`,
-            backgroundPosition: `${loupe.x * 100}% ${loupe.y * 100}%`,
-          }}
-        />
-      )}
+          className="wipe-handle"
+          style={{ left: `${pos * 100}%` }}
+          role="slider"
+          tabIndex={0}
+          aria-label="Compare before and after"
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-valuenow={Math.round(pos * 100)}
+          onKeyDown={onKey}
+        >
+          <span />
+        </div>
+        {loupe && (
+          <div
+            className="loupe"
+            aria-hidden="true"
+            style={{
+              left: `${loupe.x * 100}%`,
+              top: `${loupe.y * 100}%`,
+              backgroundImage: `url(${loupe.x < pos ? before : after})`,
+              backgroundSize: `${zoom * 100}% auto`,
+              backgroundPosition: `${loupe.x * 100}% ${loupe.y * 100}%`,
+            }}
+          />
+        )}
+      </div>
     </div>
   );
 }

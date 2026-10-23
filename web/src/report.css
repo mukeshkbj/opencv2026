@@ -158,6 +158,10 @@
   vertical-align: top;
 }
 
+.ftable td:nth-child(3) {
+  min-width: 300px;
+}
+
 .ftable .ev {
   color: var(--muted);
   font-size: 0.8125rem;
@@ -285,6 +289,27 @@
   }
   .report-head {
     flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .ftable thead {
+    display: none;
+  }
+  .ftable tr {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 6px 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .ftable td {
+    padding: 0;
+    border: 0;
+    min-width: 0;
+  }
+  .ftable td:nth-child(n + 3) {
+    grid-column: 1 / -1;
   }
 }
 

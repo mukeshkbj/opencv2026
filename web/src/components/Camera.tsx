@@ -163,7 +163,7 @@ export default function Camera({ mode, ghost, prompt, busy, quality, guide, onCa
 
   return (
     <div className="camera" data-mode={mode}>
-      <div ref={stage} className="cam-stage" style={{ aspectRatio: aspect }} data-ok={ok || undefined}>
+      <div ref={stage} className="cam-stage" style={{ aspectRatio: aspect, ["--aspect" as string]: aspect }} data-ok={ok || undefined}>
         <video ref={video} playsInline muted autoPlay aria-label="Live camera" />
         {state === "starting" && <div className="cam-msg">Starting the camera…</div>}
         {state === "denied" && (

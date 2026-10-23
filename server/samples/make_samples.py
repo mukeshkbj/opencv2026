@@ -88,6 +88,7 @@ def write(name, img):
 
 
 def main(src: Path):
+    """Label boxes are in move-in photo pixels: scene coordinates minus the crop margin."""
     OUT.mkdir(parents=True, exist_ok=True)
     spots = []
 
@@ -101,7 +102,9 @@ def main(src: Path):
     write("room-after.jpg", shoot(r, light=(0.93, 0.97, 1.04), seed=1))
     write("room-parallax.jpg", shoot(r, light=(0.93, 0.97, 1.04), offset=0.01, seed=11))
     spots.append({"label": "Living room, east wall", "before": "room-before.jpg", "after": "room-after.jpg",
-                  "scene": "room-scene.jpg", "parallax": "room-parallax.jpg", "truth": ["wall stain", "floor scuff", "lighting only: shadow"]})
+                  "scene": "room-scene.jpg", "parallax": "room-parallax.jpg", "truth": ["wall stain", "floor scuff", "lighting only: shadow"],
+                  "labels": [{"name": "Stain on the wall", "box": [1244, 380, 1334, 440]},
+                             {"name": "Scuff on the floor", "box": [894, 635, 1024, 665]}]})
 
     desk = cv2.imread(str(src / "desk.jpg"))
     write("desk-before.jpg", crop(desk))
@@ -113,7 +116,9 @@ def main(src: Path):
     write("desk-after.jpg", shoot(d, light=(1.02, 1.0, 0.96), seed=2))
     write("desk-parallax.jpg", shoot(d, light=(1.02, 1.0, 0.96), offset=0.01, seed=12))
     spots.append({"label": "Desk top", "before": "desk-before.jpg", "after": "desk-after.jpg",
-                  "scene": "desk-scene.jpg", "parallax": "desk-parallax.jpg", "truth": ["coffee ring", "missing item", "lighting only: shadow"]})
+                  "scene": "desk-scene.jpg", "parallax": "desk-parallax.jpg", "truth": ["coffee ring", "missing item", "lighting only: shadow"],
+                  "labels": [{"name": "Lipstick missing from the desk", "box": [340, 469, 545, 669]},
+                             {"name": "Ring mark on the camera lens", "box": [995, 184, 1135, 324]}]})
 
     car = cv2.imread(str(src / "car.jpg"))
     write("car-before.jpg", crop(car))
@@ -127,7 +132,8 @@ def main(src: Path):
     write("car-parallax.jpg", shoot(g2, offset=0.01, seed=4))
     spots.append({"label": "Rental car, front quarter panel", "before": "car-before.jpg", "after": "car-after.jpg",
                   "scene": "car-scene.jpg", "parallax": "car-parallax.jpg",
-                  "truth": ["door scratch", "reflection on chrome (moves with the camera)"]})
+                  "truth": ["door scratch", "reflection on chrome (moves with the camera)"],
+                  "labels": [{"name": "Scratch on the front panel", "box": [255, 776, 535, 829]}]})
 
     meta = {"name": "Apartment 4B and rental car", "margin": MARGIN, "spots": spots,
             "credits": [

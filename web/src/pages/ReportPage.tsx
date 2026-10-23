@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { api, fileUrl, type Check, type Spot, type Verification } from "../api";
 import { TopBar } from "../App";
+import CropPair from "../components/Crop";
 import { Marks, verdictText, type Mark } from "../components/Wipe";
 
 const WORK_SIDE = 1024;
@@ -8,11 +9,13 @@ const WORK_SIDE = 1024;
 const when = (iso: string) =>
   new Date(iso).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
 
-function marksOf(spot: Spot): { marks: Mark[]; ratio: number } {
+function marksOf(spot: Spot): { marks: Mark[]; ratio: number; w: number; h: number } {
   const s = Math.min(1, WORK_SIDE / Math.max(spot.before.w, spot.before.h));
   const w = Math.round(spot.before.w * s);
   const h = Math.round(spot.before.h * s);
   return {
+    w,
+    h,
     ratio: w / h,
     marks: spot.state.findings
       .filter((f) => f.verdict !== "unchanged")
@@ -92,7 +95,8 @@ export default function ReportPage({ id }: { id: string }) {
         )}
 
         {check.spots.map((spot, n) => {
-          const { marks, ratio } = marksOf(spot);
+          const { marks, ratio, w, h } = marksOf(spot);
+          const view = { before: fileUrl(check.id, `${spot.id}-view-before.jpg`), after: fileUrl(check.id, `${spot.id}-view-after.jpg`), w, h };
           const shown = spot.state.findings.filter((f) => f.verdict !== "unchanged");
           const photos = [
             { role: "Move-in", p: spot.before },
@@ -134,7 +138,10 @@ export default function ReportPage({ id }: { id: string }) {
                       <tr key={f.id}>
                         <td className="mono">{i + 1}</td>
                         <td><span className="chip" data-v={f.verdict}>{verdictText(f.verdict)}</span></td>
-                        <td>{f.caption || (f.verdict === "lighting" ? (f.kind === "glare" ? "Reflection" : "Shadow or light change") : f.kind === "object" ? "Object added, moved or removed" : "Surface change")}</td>
+                        <td>
+                          {f.caption || (f.verdict === "lighting" ? (f.kind === "glare" ? "Reflection" : "Shadow or light change") : f.kind === "object" ? "Object added, moved or removed" : "Surface change")}
+                          {(f.verdict === "changed" || f.verdict === "uncertain") && <CropPair box={f.box} view={view} />}
+                        </td>
                         <td className="ev">{f.evidence.join(". ")}</td>
                       </tr>
                     ))}

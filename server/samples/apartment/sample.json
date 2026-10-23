@@ -11,6 +11,17 @@
       "truth": [
         "door scratch",
         "reflection on chrome (moves with the camera)"
+      ],
+      "labels": [
+        {
+          "name": "Scratch on the front panel",
+          "box": [
+            255,
+            776,
+            535,
+            829
+          ]
+        }
       ]
     },
     {
@@ -23,6 +34,26 @@
         "wall stain",
         "floor scuff",
         "lighting only: shadow"
+      ],
+      "labels": [
+        {
+          "name": "Stain on the wall",
+          "box": [
+            1244,
+            380,
+            1334,
+            440
+          ]
+        },
+        {
+          "name": "Scuff on the floor",
+          "box": [
+            894,
+            635,
+            1024,
+            665
+          ]
+        }
       ]
     },
     {
@@ -35,6 +66,26 @@
         "coffee ring",
         "missing item",
         "lighting only: shadow"
+      ],
+      "labels": [
+        {
+          "name": "Lipstick missing from the desk",
+          "box": [
+            340,
+            469,
+            545,
+            669
+          ]
+        },
+        {
+          "name": "Ring mark on the camera lens",
+          "box": [
+            995,
+            184,
+            1135,
+            324
+          ]
+        }
       ]
     }
   ],

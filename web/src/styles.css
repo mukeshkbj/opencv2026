@@ -9,9 +9,10 @@
   --muted: #6b675c;
   --line: rgb(23 22 15 / 0.12);
   --line-strong: rgb(23 22 15 / 0.28);
-  --signal: #e2401a;
+  --signal: #d23c17;
   --signal-ink: #b5300c;
-  --signal-wash: rgb(226 64 26 / 0.1);
+  --signal-wash: rgb(210 60 23 / 0.1);
+  --on-signal: #fff;
   --ok: #2f7d3a;
   --ghost: #ffffff;
   --frame: #0e0d0b;
@@ -46,6 +47,7 @@
   --signal: #ff5a2e;
   --signal-ink: #ff7a55;
   --signal-wash: rgb(255 90 46 / 0.12);
+  --on-signal: #1a0f0b;
   --ok: #6cc37a;
   --frame: #000;
   --shadow-lift: 0 0 0 1px rgb(255 255 255 / 0.08);
@@ -95,7 +97,7 @@ a {
 
 ::selection {
   background: var(--signal);
-  color: #fff;
+  color: var(--on-signal);
 }
 
 .mono {
@@ -157,7 +159,7 @@ a {
 
 .btn-signal {
   --bg: var(--signal);
-  --fg: #fff;
+  --fg: var(--on-signal);
   border-color: var(--signal);
 }
 
@@ -226,6 +228,7 @@ a {
 
 .topbar[data-scrolled="true"] {
   border-color: var(--line);
+  background: var(--paper);
 }
 
 .wordmark {
@@ -235,6 +238,7 @@ a {
   font-family: var(--f-display);
   font-size: 1.5rem;
   line-height: 1;
+  min-height: 44px;
   text-decoration: none;
   letter-spacing: -0.01em;
 }
@@ -309,6 +313,7 @@ a {
 
 .mark[data-v="changed"] .mark-tag {
   background: var(--signal);
+  color: var(--on-signal);
 }
 
 .chip {
@@ -375,6 +380,11 @@ a {
 }
 
 @container wipe (max-width: 560px) {
+  .mark-tag {
+    white-space: normal;
+    width: max-content;
+    max-width: 34cqw;
+  }
   .mark-tag b {
     margin-right: 0;
   }

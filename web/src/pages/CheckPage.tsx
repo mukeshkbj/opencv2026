@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { api, fileUrl, photoUrl, type Check, type Finding, type Spot, type TraceStep } from "../api";
 import { navigate, TopBar } from "../App";
 import Camera from "../components/Camera";
+import CropPair, { type View } from "../components/Crop";
 import Wipe, { verdictText, type Mark } from "../components/Wipe";
 
 const WORK_SIDE = 1024;
@@ -45,7 +46,7 @@ function Trace({ steps }: { steps: TraceStep[] }) {
   );
 }
 
-function Findings({ findings, active, setActive }: { findings: Finding[]; active: number | null; setActive: (i: number | null) => void }) {
+function Findings({ findings, active, setActive, view }: { findings: Finding[]; active: number | null; setActive: (i: number | null) => void; view: View }) {
   if (!findings.length) return <p className="empty">No differences above the noise floor. This spot matches the move-in photo.</p>;
   const order = ["changed", "uncertain", "pending", "lighting", "unchanged"];
   const sorted = findings.map((f, i) => ({ f, i })).sort((a, b) => order.indexOf(a.f.verdict) - order.indexOf(b.f.verdict));
@@ -66,6 +67,7 @@ function Findings({ findings, active, setActive }: { findings: Finding[]; active
             <span className="chip" data-v={f.verdict}>{verdictText(f.verdict)}</span>
             <strong>{findingTitle(f)}</strong>
           </div>
+          {(f.verdict === "changed" || f.verdict === "uncertain") && <CropPair box={f.box} view={view} />}
           <ul className="evidence">
             {f.evidence.map((e, k) => (
               <li key={k}>{e}</li>
@@ -346,6 +348,11 @@ function Result({ check, spot, busy, isSample, active, setActive, heat, setHeat,
   const pendingIndex = pending ? spot.state.findings.findIndex((f) => f.id === pending.finding) : null;
   const counts = spot.state.findings.reduce<Record<string, number>>((m, f) => ((m[f.verdict] = (m[f.verdict] ?? 0) + 1), m), {});
   const reg = spot.state.registration;
+  const view = {
+    before: fileUrl(check.id, `${spot.id}-view-before.jpg`),
+    after: fileUrl(check.id, `${spot.id}-view-after.jpg`),
+    ...size,
+  };
 
   return (
     <div className="result">
@@ -353,8 +360,14 @@ function Result({ check, spot, busy, isSample, active, setActive, heat, setHeat,
         <div>
           <h1>{spot.label}</h1>
           <p className="summary">
-            {counts.changed ? <><b>{counts.changed} changed</b> · </> : <><b>No changes</b> · </>}
-            {counts.lighting ?? 0} ruled out · {counts.uncertain ?? 0} can't judge
+            {pending ? (
+              <><b>Checking one more photo</b> · {spot.state.findings.length} {spot.state.findings.length === 1 ? "difference" : "differences"} found so far</>
+            ) : (
+              <>
+                {counts.changed ? <><b>{counts.changed} changed</b> · </> : <><b>No changes</b> · </>}
+                {counts.lighting ?? 0} ruled out · {counts.uncertain ?? 0} can't judge
+              </>
+            )}
           </p>
         </div>
         <div className="head-actions">
@@ -388,8 +401,8 @@ function Result({ check, spot, busy, isSample, active, setActive, heat, setHeat,
       )}
 
       <Wipe
-        before={fileUrl(check.id, `${spot.id}-view-before.jpg`)}
-        after={fileUrl(check.id, `${spot.id}-view-after.jpg`)}
+        before={view.before}
+        after={view.after}
         heat={fileUrl(check.id, `${spot.id}-view-heat.png`)}
         showHeat={heat}
         ratio={size.w / size.h}
@@ -401,7 +414,7 @@ function Result({ check, spot, busy, isSample, active, setActive, heat, setHeat,
       <div className="result-grid">
         <div>
           <h3 className="col-title">Findings</h3>
-          <Findings findings={spot.state.findings} active={active} setActive={setActive} />
+          <Findings findings={spot.state.findings} active={active} setActive={setActive} view={view} />
         </div>
         <div>
           <h3 className="col-title">What the agent did</h3>

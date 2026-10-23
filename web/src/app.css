@@ -266,8 +266,7 @@
 .cam-stage {
   position: relative;
   overflow: hidden;
-  width: 100%;
-  max-height: 68svh;
+  width: min(100%, calc((100svh - 260px) * var(--aspect, 1.333)));
   margin-inline: auto;
   border-radius: var(--r-m);
   background: var(--frame);
@@ -406,6 +405,17 @@
   align-items: center;
   gap: 14px;
   margin-left: auto;
+}
+
+@media (max-width: 700px) {
+  .cam-bar {
+    position: sticky;
+    bottom: 0;
+    z-index: 5;
+    padding: 12px 0 calc(12px + env(safe-area-inset-bottom));
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+  }
 }
 
 .qc-row {
@@ -710,4 +720,42 @@
 
 .finding-n[data-v="changed"] {
   background: var(--signal);
+  color: var(--on-signal);
+}
+
+/* ---------- finding crops ---------- */
+
+.crop-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 12px 0 4px;
+  max-width: 360px;
+}
+
+.crop {
+  margin: 0;
+}
+
+.crop-frame {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 1;
+  border-radius: var(--r-s);
+  background: var(--frame);
+}
+
+.crop-frame img {
+  position: absolute;
+  max-width: none;
+}
+
+.crop-box {
+  position: absolute;
+  border: 2px solid var(--signal);
+  border-radius: 3px;
+}
+
+.crop figcaption {
+  padding-top: 4px;
 }
