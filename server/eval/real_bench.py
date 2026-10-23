@@ -53,7 +53,7 @@ def main() -> None:
     summary = {
         "pairs": len(rows),
         "registered": len(reg),
-        "retakes": {k: sum(r["retake_reason"] == k for r in rows) for k in ("different_view", "no_registration")},
+        "retakes": {k: sum(r["retake_reason"] == k for r in rows) for k in {r["retake_reason"] for r in rows} - {None}},
         "pairs_with_false_changed": sum(r["changed"] > 0 for r in reg),
         "false_changed_per_pair": round(sum(r["changed"] for r in reg) / max(1, len(reg)), 2),
         "pairs_with_followup_request": sum(r["followup_asked"] for r in reg),

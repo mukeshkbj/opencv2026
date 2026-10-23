@@ -1,11 +1,13 @@
 """Checks a Twice evidence bundle without the Twice server.
 
 Needs Python 3.10 or later and `pip install cryptography`. Run it in the unzipped bundle:  python verify.py
-Compare the printed key fingerprint with the key the issuer publishes; a forger could swap both.
+A forger controls everything in the bundle. Compare the printed key fingerprint with the key the issuer publishes,
+and take this script from the Twice repository rather than from the bundle when the stakes are high.
 """
 import base64
 import hashlib
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -65,16 +67,21 @@ def check(root: Path) -> list[str]:
             problems.append("the report uses different move-in photos from the move-in seal")
     signed = set().union(*(photo_hashes(s["manifest"]) for s in seals.values()))
     for sha in sorted(signed):
+        if not re.fullmatch(r"[0-9a-f]{64}", sha):
+            problems.append(f"{sha[:16]!r} is not a SHA-256 hash")
+            continue
         photo = root / "photos" / f"{sha}.jpg"
         if not photo.exists():
             problems.append(f"photo {sha[:16]} is missing")
         elif hashlib.sha256(photo.read_bytes()).hexdigest() != sha:
             problems.append(f"photo {sha[:16]} was altered")
     print(f"{len(signed)} signed photos checked")
+    if "report" not in seals:
+        print("this bundle holds only the move-in set: there is no signed report")
     return problems
 
 
 if __name__ == "__main__":
     found = check(Path(sys.argv[1] if len(sys.argv) > 1 else Path(__file__).parent))
-    print("\n".join(["", "NOT VALID:", *found] if found else ["", "VALID: every photo and finding matches its signature."]))
+    print("\n".join(["", "NOT VALID:", *found] if found else ["", "VALID: every signed photo and record matches its signature."]))
     sys.exit(1 if found else 0)

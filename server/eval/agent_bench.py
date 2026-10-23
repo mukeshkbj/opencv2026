@@ -1,7 +1,7 @@
 """Agent-level benchmark: runs the full agent loop, including the follow-up photos it asks for.
 
 Run from server/:  python eval/agent_bench.py [eval/scenes] [--out ../docs/eval]
-Uses the same pairs as bench.py. A side-step request gets a new camera position of the same scene; a glare
+Uses the same pairs as bench.py, once per RANSAC seed, so the summary pools all seeds and per_seed gives the spread. A side-step request gets a new camera position of the same scene; a glare
 patch moves to a new place on the surface, damage stays. A close-up request gets a tighter shot of the area.
 """
 import argparse
@@ -49,8 +49,9 @@ def closeup_shot(pair: dict, box: list[int], rng: np.random.Generator) -> np.nda
 
 
 def run_pair(job: tuple) -> dict:
-    kind, idx = job
+    kind, idx, seed = job
     cv2.setNumThreads(2)
+    cv2.setRNGSeed(seed)
     pair = bench.make_pair(kind, idx, bench.load_scenes(SCENES))
     rng = np.random.default_rng([bench.SEED, 99, bench.SET_ID[kind], idx])
     before = Keyframe.build(pair["before"], bench.SIDE)
@@ -64,7 +65,7 @@ def run_pair(job: tuple) -> dict:
         img = parallax_shot(pair, rng) if req.kind == "parallax" else closeup_shot(pair, req.box, rng)
         agent.on_followup(before, img)
     changed = [f for f in state.findings if f.verdict == "changed"]
-    rec = {"set": kind, "idx": idx, "status": state.status, "followups": asked,
+    rec = {"set": kind, "idx": idx, "seed": seed, "status": state.status, "followups": asked,
            "changed": len(changed), "uncertain": sum(f.verdict == "uncertain" for f in state.findings), "defects": []}
     hit = [False] * len(changed)
     for d in pair["defects"]:
@@ -101,13 +102,19 @@ def summarize(recs: list[dict]) -> dict:
 def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=str(Path(__file__).resolve().parents[2] / "docs" / "eval"))
+    ap.add_argument("--seeds", type=int, default=5, help="RANSAC seeds; each runs all 170 pairs")
     args = ap.parse_args()
-    jobs = [(k, i) for k, n in bench.MAIN_SETS.items() for i in range(n)]
+    jobs = [(k, i, seed) for seed in range(args.seeds) for k, n in bench.MAIN_SETS.items() for i in range(n)]
     t0 = time.time()
     with ProcessPoolExecutor(12) as pool:
         recs = list(pool.map(run_pair, jobs, chunksize=2))
-    result = {"summary": summarize(recs), "seconds": round(time.time() - t0, 1), "pairs": recs}
-    print(json.dumps(result["summary"], indent=1), f"{result['seconds']} s")
+    runs = [summarize([r for r in recs if r["seed"] == seed]) for seed in range(args.seeds)]
+    spread = {k: {"mean": round(float(np.mean([s[k] for s in runs])), 3), "min": min(s[k] for s in runs),
+                  "max": max(s[k] for s in runs)}
+              for k, v in runs[0].items() if isinstance(v, float)}
+    result = {"summary": summarize(recs), "per_seed": spread, "seeds": args.seeds,
+              "seconds": round(time.time() - t0, 1), "pairs": recs}
+    print(json.dumps({"summary": result["summary"], "per_seed": spread}, indent=1), f"{result['seconds']} s")
     Path(args.out, "agent.json").write_text(json.dumps(result, indent=1))
 
 

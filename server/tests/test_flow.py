@@ -103,7 +103,7 @@ def test_photos_rejected_after_report_and_before_seal():
     assert r.status_code == 409
 
 
-def test_offline_bundle_verifies_and_catches_edits(tmp_path):
+def test_offline_bundle_verifies_and_catches_edits(tmp_path, capsys):
     cid = run_sample()["id"]
     res = client.get(f"/api/checks/{cid}/bundle")
     assert res.status_code == 200
@@ -117,3 +117,9 @@ def test_offline_bundle_verifies_and_catches_edits(tmp_path):
     problems = offline_verify.check(tmp_path)
     assert any("was altered" in p for p in problems), problems
     assert any("report seal: the digest" in p for p in problems), problems
+    (tmp_path / "seals.json").write_text(json.dumps(seals[1:]), encoding="utf-8")
+    assert offline_verify.check(tmp_path) == ["the move-in seal is missing"]
+    (tmp_path / "seals.json").write_text(json.dumps(seals[:1]), encoding="utf-8")
+    capsys.readouterr()
+    offline_verify.check(tmp_path)
+    assert "there is no signed report" in capsys.readouterr().out

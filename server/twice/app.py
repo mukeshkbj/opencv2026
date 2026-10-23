@@ -14,7 +14,7 @@ from fastapi import FastAPI, HTTPException, Request, UploadFile
 from fastapi.responses import FileResponse, JSONResponse, Response
 from fastapi.staticfiles import StaticFiles
 
-from . import evidence, vision
+from . import evidence, offline_verify, vision
 from .agent import Agent, SpotState
 from .caption import Captioner
 from .store import get_json, make_store, put_json
@@ -291,20 +291,10 @@ def key() -> dict:
     return {"algorithm": signer.algorithm, "public_key": signer.public_pem()}
 
 
-def _signed_hashes(m: dict) -> set[str]:
-    out = set()
-    for s in m["spots"]:
-        out.add(s["before"]["sha256"])
-        if "after" in s:
-            out.add(s["after"]["sha256"])
-            out.update(f["sha256"] for f in s["followups"])
-    return out
-
-
 @app.get("/api/checks/{cid}/verify")
 def verify(cid: str) -> dict:
     check = load(cid)
-    signed = set().union(*(_signed_hashes(e["manifest"]) for e in check["seals"]))
+    signed = set().union(*(offline_verify.photo_hashes(e["manifest"]) for e in check["seals"]))
     files = []
     for s in check["spots"]:
         photos = [("before", s["before"])] + ([("after", s["after"])] if s["after"] else [])
@@ -333,14 +323,16 @@ def bundle(cid: str) -> Response:
     check = load(cid)
     if not check["seals"]:
         raise HTTPException(409, "seal the move-in set first")
+    keys = {p["sha256"]: p["key"] for s in check["spots"]
+            for p in [s["before"], *([s["after"]] if s["after"] else []), *s["followups"]]}
+    signed = set().union(*(offline_verify.photo_hashes(e["manifest"]) for e in check["seals"]))
     buf = io.BytesIO()
     with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
         z.writestr("seals.json", json.dumps(check["seals"], indent=1, ensure_ascii=False))
         z.writestr("public_key.pem", signer.public_pem())
-        z.write(Path(__file__).with_name("offline_verify.py"), "verify.py")
-        for s in check["spots"]:
-            for p in [s["before"], *([s["after"]] if s["after"] else []), *s["followups"]]:
-                z.writestr(f"photos/{p['sha256']}.jpg", store.get(p["key"]))
+        z.write(Path(offline_verify.__file__), "verify.py")
+        for sha in sorted(signed):
+            z.writestr(f"photos/{sha}.jpg", store.get(keys[sha]))
     return Response(buf.getvalue(), media_type="application/zip",
                     headers={"Content-Disposition": f'attachment; filename="twice-{cid}.zip"'})
 

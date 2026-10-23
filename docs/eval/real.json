@@ -1,14 +1,14 @@
 {
  "summary": {
   "pairs": 40,
-  "registered": 23,
+  "registered": 22,
   "retakes": {
-   "different_view": 9,
-   "no_registration": 8
+   "no_registration": 8,
+   "different_view": 10
   },
   "pairs_with_false_changed": 2,
-  "false_changed_per_pair": 0.17,
-  "pairs_with_followup_request": 10,
+  "false_changed_per_pair": 0.18,
+  "pairs_with_followup_request": 9,
   "by_sequence": {
    "leuven": {
     "registered": 5,
@@ -27,7 +27,7 @@
     "with_false_changed": 0
    },
    "graf": {
-    "registered": 1,
+    "registered": 0,
     "with_false_changed": 0
    },
    "wall": {
@@ -249,11 +249,11 @@
    "sequence": "graf",
    "stress": "viewpoint",
    "pair": "1-2",
-   "registered": true,
-   "retake_reason": null,
+   "registered": false,
+   "retake_reason": "different_view",
    "changed": 0,
-   "followup_asked": true,
-   "ruled_out": 1
+   "followup_asked": false,
+   "ruled_out": 0
   },
   {
    "sequence": "graf",

@@ -14,15 +14,15 @@ The raw results are in `docs/eval/agent.json`, `docs/eval/results.json` and `doc
 
 | Question | Result |
 | --- | --- |
-| Agent level, damage pairs (80 pairs, 162 defects): recall | 0.901 (146 of 162), 95% interval 0.846 to 0.938 |
-| Agent level, damage pairs: precision | 0.993 (146 of 147 "changed" findings), interval 0.962 to 0.999 |
-| Agent level, no-change controls (30 pairs): pairs with a false "changed" | 1 of 30 (0.033), interval 0.006 to 0.167 |
-| Agent level, lighting-only controls (60 pairs): pairs with a false "changed" | 2 of 60 (0.033), interval 0.009 to 0.114 |
-| Agent level, follow-up photos asked for | 0.22 per pair (24 side-step shots, 14 close-ups) |
-| Real photos, nothing changed (40 pairs) | 23 judged, 17 sent back for a retake. 2 of 23 judged pairs got a false "changed" (0.087, interval 0.024 to 0.268) |
+| Agent level, damage pairs (80 pairs, 162 defects): recall | 0.901 (146 of 162) for every seed, 95% interval 0.846 to 0.938 |
+| Agent level, damage pairs: precision | 0.993 (146 of 147 "changed" findings) for every seed, interval 0.962 to 0.999 |
+| Agent level, no-change controls (30 pairs): pairs with a false "changed" | 1 of 30 (0.033) for every seed, interval 0.006 to 0.167 |
+| Agent level, lighting-only controls (60 pairs): pairs with a false "changed" | Mean 0.027 over 5 seeds (1 or 2 of 60 per seed). For 2 of 60 the interval is 0.009 to 0.114 |
+| Agent level, follow-up photos asked for | 0.24 per pair (side-step shots and close-ups) |
+| Real photos, nothing changed (40 pairs) | 22 judged, 18 sent back for a retake. 2 of 22 judged pairs got a false "changed" (0.091, interval 0.025 to 0.278) |
 | Engine level, damage pairs: recall and precision | 0.914 and 0.931. Strict recall (box IoU of at least 0.3): 0.735 |
 | Registration under rotation, scale, tilt | Accurate to 150 degrees of rotation, a 2.2 times scale change and 30 degrees of tilt. See section 5.4 |
-| Latency, one before and after pair | Median 0.86 s, 95th percentile 1.06 s on a 32-thread CPU. Median 1.60 s on one thread |
+| Latency, one before and after pair | Median 0.87 s, 95th percentile 1.09 s on a 32-thread CPU. Median 1.56 s on one thread |
 
 The agent loop is the main result. The engine flags glare and some exposure changes. The agent then rules most of them out with a side-step photo or a veil test (section 6). On real photos, the remaining false alarms are in a tree scene and a harbour scene, where leaves and water may really move.
 
@@ -32,17 +32,17 @@ The evaluation also drove engine changes. Section 9 lists each change with its b
 
 The synthetic benchmarks generate a "move-in" image and a "move-out" image from the same source photo. The engine benchmark compares them with `Keyframe.build` and `compare` from `server/twice/vision.py`. The agent benchmark runs `Agent.on_after` and then answers every follow-up request with a new synthetic photo (section 6). The code reuses the generators in `server/eval/synth.py` by import.
 
-Every pair derives from the seed `[20260, set id, pair index]`. Any pair can be rebuilt from its index, so the failure gallery, the ablations and the agent benchmark see identical pairs. All ablations run on the same 170 pairs as the full engine, so differences between rows are paired differences.
+Every pair derives from the seed `[20260, set id, pair index]`. Any pair can be rebuilt from its index, so the failure gallery, the ablations and the agent benchmark see identical pairs. RANSAC draws random samples, so the agent benchmark runs every pair under 5 RANSAC seeds (`cv2.setRNGSeed` 0 to 4) and reports the pooled rate and the spread. All ablations run on the same 170 pairs as the full engine, so differences between rows are paired differences.
 
 Run them from `server/`:
 
 ```
 python eval/bench.py          # engine level, about 9 minutes
-python eval/agent_bench.py    # agent level, about 1 minute
+python eval/agent_bench.py    # agent level, 5 seeds, about 3 minutes
 python eval/real_bench.py     # real photos, downloads the Oxford sequences on first run
 ```
 
-The ten scenes are committed in `server/eval/scenes/`. A different folder can be passed to `bench.py` as the first argument. The engine benchmark runs the ablations in 12 parallel worker processes. The latency test runs first, while the machine is otherwise idle. The last full run took 513 s on the machine in section 5.5.
+The ten scenes are committed in `server/eval/scenes/`. A different folder can be passed to `bench.py` as the first argument. The engine benchmark runs the ablations in 12 parallel worker processes. The latency test runs first, while the machine is otherwise idle. The last full run took 504 s on the machine in section 5.5.
 
 ## 3. Dataset construction
 
@@ -134,7 +134,7 @@ At engine level, every glare patch still raises a flag. The engine marks it with
 
 ### 5.4 Registration stress
 
-The stress transform acts on the clean source image with only noise and JPEG added. The benchmark knows the true homography, so it can check accuracy. "Registered" means `vision.match` returned a homography. "Accurate" means the median error over a 7 by 7 grid of points is at most 3 px at 960 px width. "Usable" means `compare` judged the pair. It needs at least 30% overlap and, since the retake rule in section 9, a view close to the first one: a scale change between 0.8 and 1.25 and an anisotropy below 1.3. Each cell uses 12 pairs.
+The stress transform acts on the clean source image with only noise and JPEG added. The benchmark knows the true homography, so it can check accuracy. "Registered" means `vision.match` returned a homography. "Accurate" means the median error over a 7 by 7 grid of points is at most 3 px at 960 px width. "Usable" means `compare` judged the pair. It needs at least 30% overlap and, since the retake rule in section 9, a view close to the first one: at the centre and each corner, a local scale change between 0.8 and 1.25 and a stretch below 1.3. Each cell uses 12 pairs.
 
 Tilt is a camera pitch or yaw with a focal length equal to the image width. Scale zooms in or out with equal probability.
 
@@ -162,7 +162,7 @@ Tilt is a camera pitch or yaw with a focal length equal to the image width. Scal
 | --- | --- | --- | --- | --- | --- | --- |
 | Registered | 12/12 | 12/12 | 12/12 | 7/12 | 2/12 | 0/12 |
 | Accurate | 12/12 | 12/12 | 12/12 | 6/12 | 1/12 | 0/12 |
-| Usable | 12/12 | 7/12 | 0/12 | 0/12 | 0/12 | 0/12 |
+| Usable | 12/12 | 1/12 | 0/12 | 0/12 | 0/12 | 0/12 |
 | Median error (px) | 0.03 | 0.04 | 0.04 | 0.04 | 0.14 | none |
 
 **Combined** (rotation 3 to 60 degrees, zoom 1.05 to 2.2, tilt 3 to 45 degrees, rising together)
@@ -171,10 +171,10 @@ Tilt is a camera pitch or yaw with a focal length equal to the image width. Scal
 | --- | --- | --- | --- | --- | --- | --- |
 | Registered | 12/12 | 12/12 | 12/12 | 12/12 | 10/12 | 5/12 |
 | Accurate | 12/12 | 12/12 | 12/12 | 12/12 | 9/12 | 5/12 |
-| Usable | 12/12 | 10/12 | 8/12 | 2/12 | 0/12 | 0/12 |
+| Usable | 12/12 | 6/12 | 0/12 | 0/12 | 0/12 | 0/12 |
 | Median error (px) | 0.03 | 0.07 | 0.14 | 0.20 | 0.24 | 0.28 |
 
-The matcher is not the limit. It registers a 2.2 times zoom accurately. The retake rule refuses to judge that pair on purpose, because a photo from a different distance shows the surface at a different resolution. On real photos this difference caused false alarms (section 7). The ghost guide in the app locks to a far tighter view, within about 1.1 times scale, so a guided photo passes the rule. The rule also covers photos that were uploaded without the guide.
+The matcher is not the limit. It registers a 2.2 times zoom accurately. The retake rule refuses to judge that pair on purpose, because a photo from a different distance shows the surface at a different resolution. On real photos this difference caused false alarms (section 7). The rule also refuses a tilt of 20 degrees and the combined level 2 (15 degrees of rotation, 1.3 times zoom, 15 degrees of tilt). The ghost guide in the app locks to a far tighter view, within about 1.1 times scale, so a guided photo passes the rule. The rule also covers photos that were uploaded without the guide.
 
 The sub-pixel errors are optimistic, because the transform is an exact homography on a flat image. A real room has parallax.
 
@@ -184,10 +184,10 @@ Test machine: Intel Core i9-13900K, 32 logical threads, Windows 11, Python 3.14.
 
 | Input | Threads | Build, one image (median) | Compare (median) | Total median | Total 95th percentile |
 | --- | --- | --- | --- | --- | --- |
-| 924 px wide benchmark pairs (30) | 32 | 96 ms | 679 ms | 0.86 s | 1.06 s |
-| 4032 px wide pairs (12) | 32 | 123 ms | 879 ms | 1.11 s | 1.29 s |
-| 924 px wide benchmark pairs (30) | 1 | 363 ms | 790 ms | 1.60 s | 1.95 s |
-| 4032 px wide pairs (12) | 1 | 504 ms | 1066 ms | 2.26 s | 2.47 s |
+| 924 px wide benchmark pairs (30) | 32 | 98 ms | 679 ms | 0.87 s | 1.09 s |
+| 4032 px wide pairs (12) | 32 | 128 ms | 887 ms | 1.13 s | 1.32 s |
+| 924 px wide benchmark pairs (30) | 1 | 372 ms | 785 ms | 1.56 s | 1.95 s |
+| 4032 px wide pairs (12) | 1 | 524 ms | 1033 ms | 2.12 s | 2.50 s |
 
 The 4032 px inputs are the benchmark images enlarged with cubic interpolation. They test the cost of the resize, not the cost of real phone detail. The object check adds NanoDet on `cv2.dnn.ENGINE_NEW`: a median of 16.3 ms per frame, against 56.5 ms on `ENGINE_CLASSIC` (`python -m eval.engines`).
 
@@ -198,21 +198,22 @@ The agent benchmark runs the same 170 pairs through `Agent.on_after`. When the a
 - **Side-step shot.** A new camera position of the same scene with a larger warp (3.5% of the short side). In a glare pair, the glare patch moves to a new place on the surface, as a reflection does when the camera moves. Damage stays where it is.
 - **Close-up.** A crop around the requested box, enlarged two times, with a small perspective jitter, a gain change, noise and JPEG.
 
-| Set | Pairs | Pairs with a false "changed" | Side-step shots | Close-ups |
-| --- | --- | --- | --- | --- |
-| Damage | 80 | 1 false finding in total | 8 | 7 |
-| No change | 30 | 1 (0.033) | 0 | 3 |
-| Exposure | 15 | 1 (0.067) | 1 | 1 |
-| Colour temperature | 15 | 1 (0.067) | 0 | 2 |
-| Cast shadow | 15 | 0 | 0 | 1 |
-| Specular highlight | 15 | 0 | 15 | 0 |
-| All | 170 | | 24 | 14 |
+The table pools the 5 seeds, so each set has 5 runs per pair.
 
-Recall is 0.901 and precision is 0.993. The agent ends 11 findings in all 170 pairs as "Can't judge" (0.06 per pair). They count as misses in the recall figure.
+| Set | Pair runs | Runs with a false "changed" | Side-step shots | Close-ups | "Can't judge" findings |
+| --- | --- | --- | --- | --- | --- |
+| Damage | 400 | 5 (1 per seed) | 45 | 34 | 35 |
+| No change | 150 | 5 (1 per seed) | 0 | 21 | 10 |
+| Exposure | 75 | 1 | 9 | 1 | 9 |
+| Colour temperature | 75 | 4 | 0 | 11 | 6 |
+| Cast shadow | 75 | 0 | 0 | 8 | 2 |
+| Specular highlight | 75 | 3 | 72 | 0 | 0 |
 
-The agent loses two defects against the engine (146 against 148 found) and removes nearly all false alarms (1 false "changed" finding in 80 damage pairs, against 11 flags at engine level). All 15 glare pairs end without a false "changed": the agent asks for a side-step shot, sees the bright patch move or vanish, and labels the finding "Lighting only". The veil test (section 9) sends lightened regions to the same follow-up.
+Recall is 0.901 and precision is 0.993 under every seed. The agent ends 0.07 findings per pair as "Can't judge". They count as misses in the recall figure. Only the lighting-only rate moves between seeds: from 1 to 2 of 60 pairs.
 
-The agent missed 16 defects: 8 cracks, 3 stains, 3 scratches and 2 chips. 14 of the 16 have a contrast below 25 grey levels.
+The agent loses two defects against the engine (146 against 148 found) and removes nearly all false alarms (1 false "changed" finding in 80 damage pairs, against 11 flags at engine level). Glare is the clearest case. The engine flags all 15 glare pairs, and the agent asks for a side-step shot in 72 of 75 runs. The bright patch moves or vanishes, and the finding becomes "Lighting only". In 3 of 75 runs the glare still ends as a false "changed". The veil test (section 9) sends lightened regions to the same follow-up.
+
+The agent missed the same 16 defects under every seed: 8 cracks, 3 stains, 3 scratches and 2 chips. 14 of the 16 have a contrast below 25 grey levels.
 
 ## 7. Real photos
 
@@ -224,15 +225,15 @@ The Oxford affine sequences (Mikolajczyk et al.) photograph one scene six times 
 | bikes | blur | 5 | 0 |
 | trees | blur | 4 | 1 (pair 1-5) |
 | ubc | JPEG | 5 | 0 |
-| graf | viewpoint | 1 | 0 |
+| graf | viewpoint | 0 | 0 |
 | wall | viewpoint | 1 | 0 |
 | boat | zoom and rotation | 1 | 1 (pair 1-2) |
 | bark | zoom and rotation | 1 | 0 |
-| All | | 23 of 40 | 2 (0.087) |
+| All | | 22 of 40 | 2 (0.091) |
 
-The agent asked for a retake on 17 pairs. In 9, the camera stood too far from the first position for a fair comparison (the retake rule). In 8, the photos could not be matched at all. The agent asked for a follow-up photo on 10 judged pairs, mostly in the blur sequences.
+The agent asked for a retake on 18 pairs. In 10, the camera stood too far from the first position for a fair comparison (the retake rule). In 8, the photos could not be matched at all. The agent asked for a follow-up photo on 9 judged pairs, mostly in the blur sequences.
 
-Before the retake rule, 32 pairs were judged and 7 got a false "changed": trees 1-5, graf 1-4, wall 1-3, 1-4 and 1-5, and boat 1-2 and 1-3. The wall and graf pairs had a scale change of 1.2 to 1.7 and a strong tilt. The rule removed 5 of the 7. The remaining two may not be errors at all: the trees sequence shows leaves, and the boat sequence shows a harbour with water and moored boats.
+Before the retake rule, 32 pairs were judged and 7 got a false "changed": trees 1-5, graf 1-4, wall 1-3, 1-4 and 1-5, and boat 1-2 and 1-3. The wall and graf pairs had a scale change of 1.2 to 1.7 and a strong tilt. The rule removed 5 of the 7. It also refuses graf 1-2, a viewpoint change of about 20 degrees. The remaining two may not be errors at all: the trees sequence shows leaves, and the boat sequence shows a harbour with water and moored boats.
 
 The engine raised no false flag under the light change (leuven), the JPEG series (ubc) or the blur series (bikes). These are the three stresses that a re-photographed apartment meets most often.
 
@@ -270,7 +271,7 @@ The first evaluation exposed faults in the engine. The changes below fix them. T
 | Sharp-edge test for lighting | The lighting test hid thin dark lines inside shadows. A shadow changes brightness smoothly and a scratch has a sharp edge, so a region with a sharp residual no longer counts as lighting |
 | Chroma noise floor | Near-grey regions had a tiny chroma spread, so a small colour change scored very high |
 | Veil test | Glare lifts a surface towards white in proportion to its distance from white. The test fits this model and sends a good fit to the side-step follow-up |
-| Retake rule (`_same_view`) | A move-out photo from a different distance or angle shows the surface at a different resolution, and texture then reads as change |
+| Retake rule (`_same_view`) | A move-out photo from a different distance or angle shows the surface at a different resolution, and texture then reads as change. The rule checks the local scale and stretch at the centre and the four corners, so a strong tilt fails too |
 
 The first four changes were measured together on the same pairs:
 
@@ -284,7 +285,9 @@ The first four changes were measured together on the same pairs:
 | Agent | Precision | 0.972 | 0.993 |
 | Agent | Lighting-only pairs with a false "changed" | 0.30 | 0.033 |
 
-The retake rule was measured alone. It cut the real-photo pairs with a false "changed" from 7 to 2 and left every synthetic agent result unchanged.
+These before and after numbers use one RANSAC seed per pair, from before the seeded runs.
+
+The retake rule was measured alone. It cut the real-photo pairs with a false "changed" from 7 to 2. On the synthetic agent benchmark, recall, precision and the no-change rate stayed the same.
 
 One experiment failed. Matching the sharpness of the two photos before the difference gave 8 false pairs on real photos and broke the glare check on the car sample. It was reverted.
 

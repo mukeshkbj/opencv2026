@@ -240,7 +240,7 @@ export default function Landing() {
             <div><dt>Lighting false alarms</dt><dd>3%</dd></div>
             <div><dt>Time to compare</dt><dd>0.9 s</dd></div>
           </dl>
-          <p className="stats-note">Full agent loop on 170 synthetic photo pairs with known damage, camera moves, exposure, colour, shadow and glare, including the follow-up shots it asks for. On 40 real photo pairs of unchanged scenes, 2 of the 23 judged pairs got a false alarm. The other 17 got a retake request. Method and failure cases are in the technical report.</p>
+          <p className="stats-note">Full agent loop on 170 synthetic photo pairs with known damage, camera moves, exposure, colour, shadow and glare, including the follow-up shots it asks for. On 40 real photo pairs of unchanged scenes, 2 of the 22 judged pairs got a false alarm. The other 18 got a retake request. Method and failure cases are in the technical report.</p>
         </section>
 
         <section className="closer" data-reveal>

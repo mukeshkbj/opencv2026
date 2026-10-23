@@ -114,11 +114,20 @@ def _plausible(H: np.ndarray, shape: tuple) -> bool:
     return 0.15 < ratio < 6
 
 
-def _same_view(H: np.ndarray) -> bool:
-    """A comparison is fair only from roughly the same spot: scale within 0.8 to 1.25 and little tilt.
-    The live guide locks far tighter; this bound also covers photos uploaded without it."""
-    sv = np.linalg.svd(H[:2, :2], compute_uv=False)
-    return 0.8 < float(np.sqrt(sv[0] * sv[1])) < 1.25 and sv[0] / sv[1] < 1.3
+def _same_view(H: np.ndarray, after_shape: tuple, before_shape: tuple) -> bool:
+    """A comparison is fair only from roughly the same spot. At the centre and at each corner of the photo, the
+    local scale must stay within 0.8 to 1.25 and the stretch below 1.3, with no mirror image. Scale is measured
+    relative to the image sizes, so two resolutions of one view pass. The live guide locks far tighter; this
+    bound also covers photos uploaded without it."""
+    h, w = after_shape[:2]
+    norm = np.sqrt(before_shape[0] * before_shape[1] / (h * w))
+    for x, y in ((w / 2, h / 2), (0, 0), (w, 0), (0, h), (w, h)):
+        d = H[2] @ (x, y, 1)
+        J = (H[:2, :2] - np.outer(H[:2] @ (x, y, 1) / d, H[2, :2])) / d
+        sv = np.linalg.svd(J, compute_uv=False)
+        if np.linalg.det(J) <= 0 or not 0.8 < np.sqrt(sv[0] * sv[1]) / norm < 1.25 or sv[0] / sv[1] >= 1.3:
+            return False
+    return True
 
 
 @dataclass
@@ -225,7 +234,7 @@ def compare(before: Keyframe, after: Keyframe, z_thresh: float = 9.0, min_area: 
     H, inliers = match(after, before)
     if H is None:
         return Comparison(False, "no_registration", inliers)
-    if not _same_view(H):
+    if not _same_view(H, after.gray.shape, before.gray.shape):
         return Comparison(False, "different_view", inliers)
     h, w = before.gray.shape
     warped = cv2.warpPerspective(after.image, H, (w, h), flags=cv2.INTER_LINEAR)

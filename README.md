@@ -57,8 +57,8 @@ The full method, ablations, latency and a failure gallery are in [docs/evaluatio
 
 Two benchmarks cover the engine.
 
-- **Synthetic, full agent loop** (`server/eval/agent_bench.py`, 170 pairs with known damage, camera moves, exposure, colour, shadow and glare, plus the follow-up shots the agent asks for): recall 0.90, precision 0.99, 0.01 false "changed" findings per damage pair. Lighting-only pairs got a false alarm in 3% of cases.
-- **Real photos, nothing changed** (`server/eval/real_bench.py`, the Oxford affine sequences): of 40 pairs, 23 were judged. The agent asked for a retake on the other 17: 9 because the camera stood too far from the first spot, 8 because the photos could not be matched. Two judged pairs got a false alarm: trees and a harbour, where leaves and water may really move.
+- **Synthetic, full agent loop** (`server/eval/agent_bench.py`, 170 pairs with known damage, camera moves, exposure, colour, shadow and glare, plus the follow-up shots the agent asks for): recall 0.90, precision 0.99, 0.01 false "changed" findings per damage pair. Lighting-only pairs got a false alarm in 3% of cases. Every pair runs under 5 RANSAC seeds.
+- **Real photos, nothing changed** (`server/eval/real_bench.py`, the Oxford affine sequences): of 40 pairs, 22 were judged. The agent asked for a retake on the other 18: 10 because the camera stood too far from the first spot, 8 because the photos could not be matched. Two judged pairs got a false alarm: trees and a harbour, where leaves and water may really move.
 
 All three bundled samples resolve to their ground truth, including the reflection on the car. There is no set of real move-in and move-out pairs with labelled damage yet. That is the most important limit of this evaluation.
 

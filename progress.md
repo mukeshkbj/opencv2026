@@ -36,7 +36,14 @@ apartments and rental cars. Spec: docs/spec.md. Persona critique: docs/critique-
       `_same_view` in vision.compare (scale 0.8 to 1.25, anisotropy below 1.3): pairs with a false "changed" 7 -> 2 of
       the judged pairs; 9 pairs now get a retake. Agent bench unchanged (recall 0.901, precision 0.993).
 - [x] 6i. README evaluation paragraph, landing stats, video-script numbers refreshed with agent-level numbers.
-- [ ] 6g. Full bench re-run (task bej1llv9q, /tmp/bench.log); then refresh docs/evaluation.md and report section 7.
+- [x] 6g. docs/evaluation.md rewritten for three levels (agent, engine, real photos) and report section 7 filled.
+- [x] 6j. Offline evidence bundle: GET /api/checks/{id}/bundle (photos, seals, key, verify.py = twice/offline_verify.py).
+      Report button + key fingerprint. Test covers photo edit, finding edit, missing move-in seal, missing report.
+- [x] 6k. Sonnet 5.5 review applied: _same_view checks the Jacobian at centre and corners, rejects mirror images,
+      normalises for image size (tests/test_vision.py); bundle ships only signed photos; hash format checked.
+- [x] 6l. agent_bench runs 5 RANSAC seeds (it was not reproducible before: exposure pair 3 flipped between runs).
+      Pooled: recall 0.901, precision 0.993, no-change 0.033, lighting 0.027 (0.017 to 0.033). Real: 22 judged, 2 false.
+- [ ] 6m. Engine bench re-run for the corner rule (/tmp/bench.log); then refresh section 5 tables in evaluation.md.
 - [x] 6c. README, docs/report.md (eval section placeholder EVAL_SUMMARY), docs/video-script.md.
 - [x] 6d. Verification now checks photos against signed manifests; report seal links to move-in seal. 6 tests pass.
 - [ ] 7. Hill-climb: dark theme check, second persona critique on the built product, code-deslop pass.
@@ -44,13 +51,15 @@ apartments and rental cars. Spec: docs/spec.md. Persona critique: docs/critique-
 ## How to run locally
 - API: `cd server && ../.venv/Scripts/python.exe -m uvicorn twice.app:app --reload --port 8000` (TWICE_DATA defaults to local store).
 - Web: `cd web && npx vite --port 5288` (proxies /api to 8000). Port 5173 is used by another app.
-- Tests: `cd server && ../.venv/Scripts/python.exe -m pytest -q tests` (8 pass).
-- Bench: `cd server && python eval/bench.py` (about 15 min), then `python eval/agent_bench.py` (about 1 min).
+- Tests: `cd server && ../.venv/Scripts/python.exe -m pytest -q tests` (10 pass).
+- Bench: `cd server && python eval/bench.py` (about 15 min), then `python eval/agent_bench.py` (about 3 min, 5 seeds), `python eval/real_bench.py`.
 
 ## Surprises
 - Vite can serve a module caught between two quick file writes; the browser then keeps that stale `?t=` URL. Touch the file to rebuild.
 - The uvicorn `--reload` worker served old code for a while. The API now runs without `--reload`; restart it after server edits.
 - On Windows, killing the uvicorn `--reload` parent left its worker holding port 8000 and serving stale code. Check `netstat -ano | grep :8000` after restarts.
+
+- RANSAC (USAC MAGSAC) uses OpenCV's global RNG, so a result can depend on what ran earlier in the same process. Benchmarks seed it with cv2.setRNGSeed.
 
 ## Environment notes
 - No AWS CLI or credentials on this machine. `envsync` is not installed at ~/.local/bin.
