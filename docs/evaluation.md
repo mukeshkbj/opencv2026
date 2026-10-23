@@ -26,7 +26,7 @@ The raw results are in `docs/eval/agent.json`, `docs/eval/results.json`, `docs/e
 | Hybrid, drawn defects on 22 real photo pairs (176 damage runs, 370 defects) | Recall 0.241 (89 of 370), strict recall 0.159, precision 0.957. With the tolerant difference in the first pass: 0.289, 0.178 and 0.849. See section 7.1 |
 | Engine level, damage pairs: recall and precision | 0.907 and 0.993. Strict recall (box IoU of at least 0.3): 0.704 |
 | Registration under rotation, scale, tilt | Accurate to 150 degrees of rotation, a 2.2 times scale change and 30 degrees of tilt. See section 5.4 |
-| Latency, one before and after pair | Median 1.50 s, 95th percentile 2.02 s on a 32-thread CPU. Median 3.22 s on one thread |
+| Latency, one before and after pair | Median 1.07 s, 95th percentile 1.25 s on a 32-thread CPU. Median 2.49 s on one thread. Upper bounds: other processes ran during the test |
 
 The agent loop is the main result. The engine flags every glare patch. The agent then rules most of them out with a side-step photo or a veil test (section 6). On real photos, no judged pair got a false "changed". In the synthetic control sets, the agent still gives a false "changed" in one no-change pair, in one shadow pair under 2 seeds and in one glare pair under every seed.
 
@@ -191,12 +191,12 @@ Test machine: Intel Core i9-13900K, 32 logical threads, Windows 11, Python 3.14.
 
 | Input | Threads | Build, one image (median) | Compare (median) | Total median | Total 95th percentile |
 | --- | --- | --- | --- | --- | --- |
-| 924 px wide benchmark pairs (30) | 32 | 144 ms | 1207 ms | 1.50 s | 2.02 s |
-| 4032 px wide pairs (12) | 32 | 184 ms | 1429 ms | 1.77 s | 2.53 s |
-| 924 px wide benchmark pairs (30) | 1 | 759 ms | 1524 ms | 3.22 s | 3.97 s |
-| 4032 px wide pairs (12) | 1 | 733 ms | 1506 ms | 2.92 s | 4.94 s |
+| 924 px wide benchmark pairs (30) | 32 | 117 ms | 840 ms | 1.07 s | 1.25 s |
+| 4032 px wide pairs (12) | 32 | 156 ms | 1233 ms | 1.53 s | 2.31 s |
+| 924 px wide benchmark pairs (30) | 1 | 556 ms | 1199 ms | 2.49 s | 3.76 s |
+| 4032 px wide pairs (12) | 1 | 611 ms | 1190 ms | 2.55 s | 3.29 s |
 
-The 4032 px inputs are the benchmark images enlarged with cubic interpolation. They test the cost of the resize, not the cost of real phone detail. On one thread, the 4032 px pairs ran faster than the 924 px pairs (2.92 s against 3.22 s). This points to load from other processes during the run, so read these latencies as upper bounds. The object check adds NanoDet on `cv2.dnn.ENGINE_NEW`: a median of 16.3 ms per frame, against 56.5 ms on `ENGINE_CLASSIC` (`python -m eval.engines`). A second run gave 17.7 ms against 56.4 ms. The new engine is 3.2 to 3.5 times faster.
+The 4032 px inputs are the benchmark images enlarged with cubic interpolation. They test the cost of the resize, not the cost of real phone detail. The run inside `bench.py` overlapped with other work on the machine and gave a median of 1.50 s, so these figures come from a separate run of the latency step alone. The local dev server and a documentation agent still ran during it, so read them as upper bounds. The previous engine measured 0.87 s on an idle machine; the plain first pass does less work, so the change itself does not explain the difference. The object check adds NanoDet on `cv2.dnn.ENGINE_NEW`: a median of 16.3 ms per frame, against 56.5 ms on `ENGINE_CLASSIC` (`python -m eval.engines`). A second run gave 17.7 ms against 56.4 ms. The new engine is 3.2 to 3.5 times faster.
 
 ## 6. Agent level
 

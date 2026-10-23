@@ -29,31 +29,31 @@
  "latency": {
   "bench_924px_threads32": {
    "pairs": 30,
-   "build_ms_median": 143.6,
-   "compare_ms_median": 1207.1,
-   "total_s_median": 1.503,
-   "total_s_p95": 2.015
+   "build_ms_median": 116.8,
+   "compare_ms_median": 839.9,
+   "total_s_median": 1.071,
+   "total_s_p95": 1.247
   },
   "phone_4032px_threads32": {
    "pairs": 12,
-   "build_ms_median": 184.4,
-   "compare_ms_median": 1429.4,
-   "total_s_median": 1.769,
-   "total_s_p95": 2.527
+   "build_ms_median": 156.4,
+   "compare_ms_median": 1232.9,
+   "total_s_median": 1.531,
+   "total_s_p95": 2.307
   },
   "bench_924px_threads1": {
    "pairs": 30,
-   "build_ms_median": 759.4,
-   "compare_ms_median": 1524.1,
-   "total_s_median": 3.224,
-   "total_s_p95": 3.973
+   "build_ms_median": 555.7,
+   "compare_ms_median": 1199.0,
+   "total_s_median": 2.487,
+   "total_s_p95": 3.759
   },
   "phone_4032px_threads1": {
    "pairs": 12,
-   "build_ms_median": 732.9,
-   "compare_ms_median": 1505.5,
-   "total_s_median": 2.923,
-   "total_s_p95": 4.939
+   "build_ms_median": 610.5,
+   "compare_ms_median": 1189.7,
+   "total_s_median": 2.552,
+   "total_s_p95": 3.288
   }
  },
  "synth_reference": {

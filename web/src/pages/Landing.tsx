@@ -234,18 +234,18 @@ export default function Landing() {
           <ol className="pipeline" data-reveal>
             <li><span className="label">Register</span><code>SIFT · USAC MAGSAC homography</code><p>Matches thousands of points and warps the new photo onto the old one.</p></li>
             <li><span className="label">Refine</span><code>DIS optical flow, clamped</code><p>Corrects the last few pixels a handheld phone leaves behind.</p></li>
-            <li><span className="label">Compare</span><code>Shift-tolerant structure + colour</code><p>Ignores blur, exposure and sub-pixel jitter. Keeps new texture.</p></li>
+            <li><span className="label">Compare</span><code>Structure + colour, robust z-score</code><p>Ignores blur and exposure. Keeps new texture. Follow-up shots tolerate a 1 px shift.</p></li>
             <li><span className="label">Decide</span><code>Agent · NanoDet on dnn ENGINE_NEW</code><p>Rules out light, names missing objects, asks for a parallax shot or a close-up when unsure.</p></li>
-            <li><span className="label">Sign</span><code>SHA-256 · AWS KMS, ECDSA P-256 (Ed25519 when run locally)</code><p>Seals the photos and the findings. Any edit breaks the signature.</p></li>
+            <li><span className="label">Sign</span><code>SHA-256 · AWS KMS, ECDSA P‑256 (Ed25519 when run locally)</code><p>Seals the photos and the findings. Any edit breaks the signature.</p></li>
           </ol>
           <dl className="stats" data-reveal>
-            <div><dt>Damage found</dt><dd>90%</dd><small>170 synthetic pairs</small></div>
-            <div><dt>Flags that are real</dt><dd>99%</dd><small>170 synthetic pairs</small></div>
-            <div><dt>Lighting false alarms</dt><dd>3%</dd><small>shadow and lamp pairs</small></div>
-            <div><dt>Real photos, false alarms</dt><dd>2 of 22</dd><small>18 more sent back for a retake</small></div>
-            <div><dt>Time to compare</dt><dd>0.9 s</dd><small>median, desktop CPU</small></div>
+            <div><dt>Damage found</dt><dd>88%</dd><small>synthetic pairs; 24% on real texture</small></div>
+            <div><dt>Flags that are real</dt><dd>100%</dd><small>synthetic; 96% on real texture</small></div>
+            <div><dt>Lighting false alarms</dt><dd>2%</dd><small>shadow, lamp and glare pairs</small></div>
+            <div><dt>Real photos, false alarms</dt><dd>0 of 22</dd><small>18 more sent back for a retake</small></div>
+            <div><dt>Time to compare</dt><dd>1.1 s</dd><small>median, desktop CPU</small></div>
           </dl>
-          <p className="stats-note">The synthetic benchmark runs the full agent loop on photo pairs with known damage, camera moves, exposure, colour, shadow and glare, including the follow-up shots it asks for. The real photos are the Oxford affine sequences: unchanged scenes, so they measure false alarms only. Method and failure cases are in the technical report.</p>
+          <p className="stats-note">The synthetic benchmark runs the full agent loop on photo pairs with known damage, camera moves, exposure, colour, shadow and glare, including the follow-up shots it asks for. The real photos are the Oxford affine sequences: unchanged scenes, so they measure false alarms only. "Real texture" draws the same synthetic defects onto those real photos. Method and failure cases are in the technical report.</p>
         </section>
 
         <section className="closer" data-reveal>
