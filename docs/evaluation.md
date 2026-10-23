@@ -303,7 +303,23 @@ Recall by defect type for the full engine: scratch 0.367 (40 of 109), stain 0.24
 - **The scenes are not rooms.** The set is 7 sequences of buildings, trees, a harbour and bark. The 22 pairs share 7 scenes, and the 8 draws of one pair share a background.
 - **The mix follows what registers.** Bikes, leuven and ubc supply 15 of the 22 pairs. Wall, boat and bark have one pair each. The 18 retake pairs are excluded, so the figures describe only the pairs the agent agrees to judge.
 - **Follow-up photos are partly simulated.** The side-step photo is real, but the close-up is a crop of the move-out photo. A glare patch moves by construction.
-- **No threshold was tuned on this benchmark.**
+- **No threshold was changed because of this benchmark.** One tuning attempt is described below.
+
+**A tuning attempt that was rejected**
+
+A diagnosis of the 261 missed defects in the full-engine runs found three causes:
+
+- In 164 of the misses, the z-score inside the defect stays under 9. The noise scale of the photo is high, or the defect is dark on a dark surface (leuven 1-6).
+- In 43 of the misses, the 3 × 3 opening or the speck filter erases a thin line.
+- The other misses are lost later or lie outside the valid area.
+
+Three changes were tuned on leuven, bikes, wall and bark:
+
+- a noise scale for each tile of the photo;
+- a z-score for the brightness difference;
+- a 2 × 2 opening.
+
+Together they raised recall on those sequences from 0.40 to 0.45. On the held-out sequences (ubc, trees, boat), recall rose from 0.17 to 0.35. False "changed" findings per damage run rose from 0.24 to 0.76, and precision fell from 0.60 to 0.50. A false damage finding hurts the renter that the report is meant to protect, so the changes were not kept. The figures above are for the unchanged engine.
 
 ## 8. Ablations
 
