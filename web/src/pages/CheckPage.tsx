@@ -237,6 +237,7 @@ export default function CheckPage({ id }: { id: string }) {
 
         <section className="stage" aria-live="polite">
           {error && <p className="form-error" role="alert">{error}</p>}
+          {sealed && !isSample && check.spots.every((s) => !s.after) && <KeepLink id={check.id} name={check.name} />}
 
           {!sealed && (
             <>
@@ -289,6 +290,27 @@ export default function CheckPage({ id }: { id: string }) {
         </section>
       </div>
     </>
+  );
+}
+
+function KeepLink({ id, name }: { id: string; name: string }) {
+  const [copied, setCopied] = useState(false);
+  const url = `${location.origin}${location.pathname}#/check/${id}`;
+  const copy = () => navigator.clipboard.writeText(url).then(() => setCopied(true));
+  const mail = `mailto:?subject=${encodeURIComponent(`Twice: ${name}`)}&body=${encodeURIComponent(`Open this link at move-out:
+${url}`)}`;
+  return (
+    <div className="keep">
+      <div>
+        <span className="label">Sealed. Keep this link.</span>
+        <p>You need it at move-out. Twice has no accounts, so this link is the only way back to your photos.</p>
+        <code className="keep-url">{url}</code>
+      </div>
+      <div className="keep-actions">
+        <button className="btn btn-primary" onClick={copy}>{copied ? "Copied" : "Copy the link"}</button>
+        <a className="btn" href={mail}>Email it to me</a>
+      </div>
+    </div>
   );
 }
 

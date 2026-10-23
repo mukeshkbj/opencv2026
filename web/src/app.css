@@ -541,6 +541,36 @@
   color: var(--signal-ink);
 }
 
+.keep {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  align-items: end;
+  padding: 20px;
+  border-radius: var(--r-m);
+  background: var(--paper-raised);
+  box-shadow: 0 0 0 1px var(--line);
+}
+
+.keep p {
+  margin: 6px 0 10px;
+  color: var(--ink-2);
+  max-width: 60ch;
+}
+
+.keep-url {
+  display: block;
+  font: 400 0.8125rem var(--f-mono);
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.keep-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 .result-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -656,6 +686,7 @@
     position: static;
   }
   .result-grid,
+  .keep,
   .followup {
     grid-template-columns: 1fr;
   }
