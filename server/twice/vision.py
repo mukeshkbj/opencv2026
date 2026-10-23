@@ -185,6 +185,7 @@ class Region:
     chroma: float
     illumination: float
     brightening: float = 0
+    veil: float = 0
 
     @property
     def lighting_only(self) -> bool:
@@ -220,7 +221,11 @@ def compare(before: Keyframe, after: Keyframe, z_thresh: float = 9.0, min_area: 
     h, w = before.gray.shape
     warped = cv2.warpPerspective(after.image, H, (w, h), flags=cv2.INTER_LINEAR)
     valid = cv2.warpPerspective(np.full(after.gray.shape, 255, np.uint8), H, (w, h), flags=cv2.INTER_NEAREST)
-    warped[valid == 0] = before.image[valid == 0]
+    covered = (valid > 0).astype(np.float32)
+    seen = lambda img: cv2.GaussianBlur(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY).astype(np.float32) * covered, (0, 0), 25)
+    gain = np.clip((seen(warped) + 1) / (seen(before.image) + 1), 0.5, 2)
+    outside = valid == 0
+    warped[outside] = np.clip(before.image[outside] * gain[outside, None], 0, 255).astype(np.uint8)
     border = max(9, (min(h, w) // 40) | 1)
     valid = cv2.erode(valid, np.ones((border, border), np.uint8))
     overlap = float((valid > 0).mean())
@@ -251,7 +256,7 @@ def compare(before: Keyframe, after: Keyframe, z_thresh: float = 9.0, min_area: 
     band = max(8, min(h, w) // 28)
     valid[:band], valid[-band:], valid[:, :band], valid[:, -band:] = 0, 0, 0, 0
 
-    zs, zc = _robust_z(structure, valid), _robust_z(chroma, valid)
+    zs, zc = _robust_z(structure, valid), _robust_z(chroma, valid, floor=1.5)
     z = np.maximum(zs, zc * 0.8)
     mask = ((z > z_thresh) & ((absolute > 9) | (chroma > 6))).astype(np.uint8) * 255
     mask = cv2.morphologyEx(mask, cv2.MORPH_OPEN, np.ones((3, 3), np.uint8))
@@ -281,6 +286,7 @@ def compare(before: Keyframe, after: Keyframe, z_thresh: float = 9.0, min_area: 
             chroma=round(float(zc[y:y + bh, x:x + bw][sel].mean()), 2),
             illumination=round(_illumination_likeness(lb, la, x, y, bw, bh), 3),
             brightening=round(_brightening(lb, la, x, y, bw, bh), 3),
+            veil=round(_veil(lb, la, x, y, bw, bh), 3),
         ))
     regions = _merge_overlapping(regions, gap=group)
     regions.sort(key=lambda r: -r.score * np.sqrt(r.area))
@@ -306,7 +312,7 @@ def _merge_overlapping(regions: list["Region"], gap: int) -> list["Region"]:
                     regions[i] = Region(x0, y0, x1 - x0, y1 - y0, score=max(a.score, b.score), area=wa + wb,
                                         structure=mix(a.structure, b.structure), chroma=mix(a.chroma, b.chroma),
                                         illumination=min(a.illumination, b.illumination),
-                                        brightening=mix(a.brightening, b.brightening))
+                                        brightening=mix(a.brightening, b.brightening), veil=mix(a.veil, b.veil))
                     del regions[j]
                     merged = True
                     break
@@ -335,12 +341,13 @@ def _lighting_regions(lb: np.ndarray, la: np.ndarray, valid: np.ndarray, changed
     return sorted(out, key=lambda r: -r.area)[:3]
 
 
-def _robust_z(m: np.ndarray, valid: np.ndarray) -> np.ndarray:
+def _robust_z(m: np.ndarray, valid: np.ndarray, floor: float = 1e-3) -> np.ndarray:
     """Standardise a difference map by its noise level. The scale falls back to the upper tail because
-    tolerant differences are zero for most pixels, which collapses the median absolute deviation."""
+    tolerant differences are zero for most pixels, which collapses the median absolute deviation.
+    `floor` keeps a near-constant map (the chroma of a grey wall) from turning JPEG noise into huge scores."""
     v = m[valid > 0]
     med = float(np.median(v))
-    scale = max(1.4826 * float(np.median(np.abs(v - med))), (float(np.percentile(v, 95)) - med) / 2, 1e-3)
+    scale = max(1.4826 * float(np.median(np.abs(v - med))), (float(np.percentile(v, 95)) - med) / 2, floor)
     z = (m - med) / scale
     z[valid == 0] = 0
     return z
@@ -366,8 +373,26 @@ def _brightening(lb: np.ndarray, la: np.ndarray, x: int, y: int, w: int, h: int)
     return float((a > 250).mean() - (b > 250).mean())
 
 
+def _veil(lb: np.ndarray, la: np.ndarray, x: int, y: int, w: int, h: int) -> float:
+    """How well the change fits a smooth blend toward white, the way glare veils a surface.
+    0 when the region did not lighten; near 1 for a pure veil."""
+    pad = max(10, max(w, h))
+    H, W = lb.shape
+    ring = (slice(max(0, y - pad), min(H, y + h + pad)), slice(max(0, x - pad), min(W, x + w + pad)))
+    g = float(np.median(la[ring]) + 4) / float(np.median(lb[ring]) + 4)
+    lift = la[ring] / g - lb[ring]
+    a = lift / (263 - lb[ring])
+    inner = np.s_[y - ring[0].start:y - ring[0].start + h, x - ring[1].start:x - ring[1].start + w]
+    if float(np.median(a[inner])) < 0.1 or float(np.median(lift[inner])) < 8:
+        return 0.0
+    smooth = cv2.GaussianBlur(a, (0, 0), max(3.0, min(w, h) / 3))
+    return max(0.0, 1 - float(((a - smooth) ** 2).sum()) / float((a ** 2).sum()))
+
+
 def _illumination_likeness(lb: np.ndarray, la: np.ndarray, x: int, y: int, w: int, h: int) -> float:
-    """Share of the change explained by a smooth multiplicative light field (1 = pure shadow or glare)."""
+    """Share of the change explained by a smooth multiplicative light field (1 = pure shadow or glare).
+    0 when the box holds a sharp new edge (over 20 % local contrast), which no light field makes:
+    a scratch inside a fresh shadow must not be explained away by the shadow around it."""
     pad = max(8, max(w, h) // 2)
     H, W = lb.shape
     x0, y0, x1, y1 = max(0, x - pad), max(0, y - pad), min(W, x + w + pad), min(H, y + h + pad)
@@ -376,6 +401,7 @@ def _illumination_likeness(lb: np.ndarray, la: np.ndarray, x: int, y: int, w: in
     total = float((r ** 2).sum())
     if total < 1e-6:
         return 1.0
-    sigma = max(3.0, min(w, h) / 3)
-    residual = float(((r - cv2.GaussianBlur(r, (0, 0), sigma)) ** 2).sum())
-    return 1 - residual / total
+    residual = r - cv2.GaussianBlur(r, (0, 0), max(3.0, min(w, h) / 3))
+    if np.percentile(np.abs(residual[y - y0:y - y0 + h, x - x0:x - x0 + w]), 98) > 0.2:
+        return 0.0
+    return 1 - float((residual ** 2).sum()) / total

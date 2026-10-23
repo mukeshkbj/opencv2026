@@ -1,6 +1,6 @@
 """Extended Twice benchmark: damage, no-change and lighting controls, registration stress, ablations, latency.
 
-Run from server/:  python eval/bench.py <imgdir> [--out ../docs/eval] [--quick]
+Run from server/:  python eval/bench.py [eval/scenes] [--out ../docs/eval] [--quick]
 Every pair is generated from a seed derived from (seed, set, index), so any pair can be rebuilt on demand.
 """
 import argparse
@@ -84,15 +84,15 @@ def make_pair(kind: str, idx: int, scenes: list) -> dict:
         shadowed = bool(rng.random() < 0.5)
         if shadowed:
             synth.add_shadow(damaged, rng)
-        after = synth.camera(damaged, rng, 0.02)
-        meta = {"shadowed": shadowed}
+        world, meta = damaged, {"shadowed": shadowed}
     elif kind == "nochange":
-        after, meta = synth.camera(scene.copy(), rng, 0.02), {}
+        world, meta = scene.copy(), {}
     else:
-        lit = scene.copy()
-        _lighting(lit, kind, rng)
-        after, meta = synth.camera(lit, rng, 0.02), {}
-    return {"set": kind, "idx": idx, "scene": name, "before": before, "after": after, "defects": defects, **meta}
+        world, meta = scene.copy(), {}
+        _lighting(world, kind, rng)
+    after = synth.camera(world, rng, 0.02)
+    return {"set": kind, "idx": idx, "scene": name, "before": before, "after": after, "defects": defects,
+            "world": world, "source": scene, **meta}
 
 
 # ---------------------------------------------------------------- evaluation
@@ -464,7 +464,7 @@ def main() -> None:
     from concurrent.futures import ProcessPoolExecutor
 
     ap = argparse.ArgumentParser()
-    ap.add_argument("imgdir")
+    ap.add_argument("imgdir", nargs="?", default=str(Path(__file__).resolve().parent / "scenes"))
     ap.add_argument("--out", default=str(Path(__file__).resolve().parents[2] / "docs" / "eval"))
     ap.add_argument("--quick", action="store_true", help="tiny run for smoke testing")
     args = ap.parse_args()

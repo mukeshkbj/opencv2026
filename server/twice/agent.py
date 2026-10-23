@@ -118,10 +118,14 @@ class Agent:
             self.log("relight_check", f"{f.id}: lighting only", "rule out")
             return
         area_frac = _area_frac(f, res.before.shape)
-        if abs(m["brightening"]) > 0.05:
+        if abs(m["brightening"]) > 0.05 or m.get("veil", 0) > 0.3:
             f.kind = "glare?"
-            f.evidence.append(f"{abs(m['brightening']):.0%} of the region {'turned' if m['brightening'] > 0 else 'stopped being'} near white: possible reflection")
-            self.log("glare_check", f"{f.id}: specular change {m['brightening']:+.0%}", "needs a parallax shot")
+            if abs(m["brightening"]) > 0.05:
+                f.evidence.append(f"{abs(m['brightening']):.0%} of the region {'turned' if m['brightening'] > 0 else 'stopped being'} near white: possible reflection")
+                self.log("glare_check", f"{f.id}: specular change {m['brightening']:+.0%}", "needs a parallax shot")
+            else:
+                f.evidence.append(f"the surface lightened like a veil of glare (fit {m['veil']:.0%}): possible reflection")
+                self.log("glare_check", f"{f.id}: glare-like veil, fit {m['veil']:.0%}", "needs a parallax shot")
             return
         if m["illumination"] > 0.8 and m["chroma"] < 4:
             f.evidence.append(f"soft edges like a shadow, but colour shifted (z={m['chroma']:.1f})")

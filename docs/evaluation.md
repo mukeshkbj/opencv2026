@@ -28,6 +28,12 @@ Every pair derives from the seed `[20260, set id, pair index]`. Any pair can be 
 Run it from `server/`:
 
 ```
+python eval/bench.py
+```
+
+The ten scenes are committed in `server/eval/scenes/`. A different folder can be passed as the first argument.
+
+```
 python eval/bench.py <image folder> --out ../docs/eval
 ```
 
