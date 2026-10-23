@@ -27,7 +27,7 @@
     const tl = gsap.timeline({ paused: true });
     const blurIn = (sel, t) => tl.fromTo(sel, { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, t);
     const blurOut = (sel, t) => tl.to(sel, { opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power3.in" }, t);
-    blurIn("#s9-a", 2.9);
+    blurIn("#s9-a", 1.2);
     blurIn("#s9-src1", 0.5);
     blurOut("#s9-a", 4.6);
     blurIn("#s9-b", 4.8);

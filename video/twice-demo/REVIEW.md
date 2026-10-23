@@ -9,15 +9,26 @@
 
 ## Footage cuts
 
-All clips come from the local app at 1440 × 810, converted to constant 30 fps (`video/footage/*_cfr.mp4`), then cut:
+All clips come from the local app at 1440 × 810, converted to constant 30 fps (`video/footage/*_cfr.mp4`), then cut. `r4_flow` is the second take, recorded after judge round 4 (ghost guide in the sample, named findings, zoomed crops).
 
 | Clip | Source | In (s) | Length (s) | Speed |
 |---|---|---|---|---|
 | hero | r1_landing | 0.5 | 13 | 1× |
-| steps | r3_steps | 6.5 | 15 | 1× |
-| car | r2_flow | 13 | 12.7 | 0.683× |
-| room | r2_flow | 25.8 | 12.8 | 0.75× |
-| report | r2_flow | 47.2 | 19 | 1.5× |
+| steps | r3_steps | 6.5 | 6.4 | 1× |
+| guide | r4_flow | 12.0 | 8.0 | 1× |
+| car_a | r4_flow | 20.0 | 2.0 | 0.29× (the side-step request holds still) |
+| car_b | r4_flow | 22.0 | 10.6 | 0.91× |
+| room | r4_flow | 32.6 | 18.9 | 1.11× |
+| report | r4_flow | 61.9 | 20 | 1.57× |
+
+Scenes 3 to 5 zoom the main column 1.4× and scene 6 zooms the report 1.35×, so the UI text reads at 1080p.
+
+## Second pass, after judge round 4
+
+- S1 has a shorter voice line (15.9 s, was 18.7 s), so the product appears at 0:17.
+- S3 now ends on the real ghost guide in the sample check.
+- S4 and S5 show the zoomed finding crops.
+- S9 shows "90%" at 1.2 s instead of 2.9 s, so the scene no longer opens on an empty frame.
 
 ## What was measured and what was only looked at
 

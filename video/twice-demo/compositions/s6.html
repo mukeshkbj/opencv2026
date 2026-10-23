@@ -1,17 +1,17 @@
 <template>
   <style>
     #root { position: absolute; inset: 0; background: #f1eee7; overflow: hidden; }
-    #s6-cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
-    #s6-video { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
+    #root .cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+    #root video { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; object-fit: cover; }
   </style>
-  <div data-hf-id="hf-7obi" id="root" data-composition-id="s6" data-width="1920" data-height="1080">
-    <div data-hf-id="hf-h3i0" id="s6-cam">
-      <video data-hf-id="hf-v5ru" id="s6-video" class="clip" src="assets/clips/report.mp4" data-start="0" data-duration="12.7" data-track-index="0" muted playsinline></video>
+  <div id="root" data-composition-id="s6" data-width="1920" data-height="1080">
+    <div id="s6-cam0" class="cam">
+      <video id="s6-v0" class="clip" src="assets/clips/report.mp4" data-start="0" data-duration="12.7" data-track-index="0" muted playsinline></video>
     </div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
-
+    tl.set("#s6-cam0", { scale: 1.35, x: -336, y: -100 }, 0);
     window.__timelines["s6"] = tl;
   </script>
 </template>

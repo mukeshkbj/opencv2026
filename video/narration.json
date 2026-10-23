@@ -1,5 +1,5 @@
 {
- "s1_bill": "This is the bill one Hertz renter got, minutes after returning a car. Two hundred and fifty dollars for a one-inch scuff on a wheel, plus one hundred and ninety in fees. A House subcommittee chair says Hertz bills from these scans without human review. The company has an AI scanner. The renter has a phone.",
+ "s1_bill": "One Hertz renter got this bill minutes after returning a car. Four hundred and forty dollars, for a one-inch scuff on a wheel. A House subcommittee chair says Hertz sends these bills without human review. The company has an AI scanner. The renter has a phone.",
  "s2_idea": "Twice gives the renter the same evidence. Take the same photo twice: when you move in, and when you move out. Twice lines the two photos up, finds what really changed, and signs the proof.",
  "s3_capture": "At move-in, the shutter waits until each photo is sharp and detailed enough to match months later. At move-out, a ghost of the first photo guides you back to the same angle, and the camera fires when OpenCV locks on.",
  "s4_car": "Here is a sample check. On the car, a reflection looks like damage. One photo cannot tell them apart, so the agent asks for one more, from a step to the side. A reflection moves with the camera. A scratch stays on the paint. So the reflection is ruled out, and the scratch is reported.",

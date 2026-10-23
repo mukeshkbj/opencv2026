@@ -54,20 +54,20 @@
   <script>
     const tl = gsap.timeline({ paused: true });
     tl.fromTo("#s1-receipt", { y: 40 }, { y: 0, duration: 0.9, ease: "expo.out" }, 0);
-    tl.fromTo(".s1-item", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 2.6);
-    tl.fromTo(".s1-item", { backgroundSize: "0% 4px" }, { backgroundSize: "100% 4px", duration: 0.5, ease: "expo.out" }, 6.4);
+    tl.fromTo(".s1-item", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 1.8);
+    tl.fromTo(".s1-item", { backgroundSize: "0% 4px" }, { backgroundSize: "100% 4px", duration: 0.5, ease: "expo.out" }, 6.6);
     tl.fromTo("#s1-lede", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power4.out" }, 0.6);
-    [["#s1-r1", 4.7], ["#s1-r2", 8.5], ["#s1-r3", 8.9], ["#s1-r4", 9.8]].forEach(([id, t]) => {
+    [["#s1-r1", 4.1], ["#s1-r2", 4.5], ["#s1-r3", 4.9], ["#s1-r4", 5.4]].forEach(([id, t]) => {
       tl.fromTo(id, { opacity: 0, x: -16 }, { opacity: 1, x: 0, duration: 0.35, ease: "expo.out" }, t);
     });
-    tl.fromTo("#s1-quote", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power4.out" }, 10.5);
-    tl.fromTo("#s1-src", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 10.9);
-    tl.fromTo("#s1-stamp", { opacity: 0, scale: 1.6, rotation: -12 }, { opacity: 1, scale: 1, rotation: -7, duration: 0.18, ease: "power4.out" }, 13.9);
-    tl.fromTo("#s1-receipt", { x: 0 }, { x: -10, duration: 0.06, yoyo: true, repeat: 1, ease: "power1.inOut" }, 14.06);
-    tl.to(["#s1-lede", "#s1-quote", "#s1-src"], { opacity: 0, filter: "blur(8px)", duration: 0.22, ease: "power3.in" }, 15.1);
-    tl.fromTo("#s1-co", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power4.out" }, 15.5);
-    tl.fromTo("#s1-me", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power4.out" }, 17.8);
-    tl.to("#root", { opacity: 0, duration: 0.25, ease: "power3.in" }, 19.3);
+    tl.fromTo("#s1-quote", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power4.out" }, 7.9);
+    tl.fromTo("#s1-src", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 8.3);
+    tl.fromTo("#s1-stamp", { opacity: 0, scale: 1.6, rotation: -12 }, { opacity: 1, scale: 1, rotation: -7, duration: 0.18, ease: "power4.out" }, 11.0);
+    tl.fromTo("#s1-receipt", { x: 0 }, { x: -10, duration: 0.06, yoyo: true, repeat: 1, ease: "power1.inOut" }, 11.16);
+    tl.to(["#s1-lede", "#s1-quote", "#s1-src"], { opacity: 0, filter: "blur(8px)", duration: 0.22, ease: "power3.in" }, 12.1);
+    tl.fromTo("#s1-co", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power4.out" }, 12.6);
+    tl.fromTo("#s1-me", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.25, ease: "power4.out" }, 14.9);
+    tl.to("#root", { opacity: 0, duration: 0.25, ease: "power3.in" }, 16.5);
     window.__timelines["s1"] = tl;
   </script>
 </template>
