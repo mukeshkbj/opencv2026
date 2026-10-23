@@ -1,7 +1,9 @@
+import io
 import json
 import os
 import secrets
 import time
+import zipfile
 from datetime import datetime, timezone
 from functools import lru_cache
 from pathlib import Path
@@ -322,7 +324,25 @@ def verify(cid: str) -> dict:
                       "digest_ok": evidence.sha256(body) == entry["digest"] and linked,
                       "signature_ok": evidence.verify(pem, entry["algorithm"], body, entry["signature"])})
     return {"files": files, "seals": seals, "algorithm": signer.algorithm, "public_key": pem,
+            "fingerprint": evidence.fingerprint(pem),
             "ok": all(f["ok"] for f in files) and all(s["digest_ok"] and s["signature_ok"] for s in seals)}
+
+
+@app.get("/api/checks/{cid}/bundle")
+def bundle(cid: str) -> Response:
+    check = load(cid)
+    if not check["seals"]:
+        raise HTTPException(409, "seal the move-in set first")
+    buf = io.BytesIO()
+    with zipfile.ZipFile(buf, "w", zipfile.ZIP_DEFLATED) as z:
+        z.writestr("seals.json", json.dumps(check["seals"], indent=1, ensure_ascii=False))
+        z.writestr("public_key.pem", signer.public_pem())
+        z.write(Path(__file__).with_name("offline_verify.py"), "verify.py")
+        for s in check["spots"]:
+            for p in [s["before"], *([s["after"]] if s["after"] else []), *s["followups"]]:
+                z.writestr(f"photos/{p['sha256']}.jpg", store.get(p["key"]))
+    return Response(buf.getvalue(), media_type="application/zip",
+                    headers={"Content-Disposition": f'attachment; filename="twice-{cid}.zip"'})
 
 
 @app.post("/api/samples/{name}")

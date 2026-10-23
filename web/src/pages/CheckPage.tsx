@@ -259,7 +259,7 @@ export default function CheckPage({ id }: { id: string }) {
                 <h1>{spot.label}</h1>
                 <p>
                   {spot.state.status === "retake"
-                    ? "Twice could not match this photo to the move-in photo. Stand where you stood the first time and try again."
+                    ? "This photo does not line up with the move-in photo. Stand where you stood the first time and try again."
                     : "Go back to this spot. The ghost of your move-in photo will guide you to the same angle."}
                 </p>
               </header>

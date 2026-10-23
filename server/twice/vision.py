@@ -114,6 +114,13 @@ def _plausible(H: np.ndarray, shape: tuple) -> bool:
     return 0.15 < ratio < 6
 
 
+def _same_view(H: np.ndarray) -> bool:
+    """A comparison is fair only from roughly the same spot: scale within 0.8 to 1.25 and little tilt.
+    The live guide locks far tighter; this bound also covers photos uploaded without it."""
+    sv = np.linalg.svd(H[:2, :2], compute_uv=False)
+    return 0.8 < float(np.sqrt(sv[0] * sv[1])) < 1.25 and sv[0] / sv[1] < 1.3
+
+
 @dataclass
 class Guidance:
     aligned: bool
@@ -218,6 +225,8 @@ def compare(before: Keyframe, after: Keyframe, z_thresh: float = 9.0, min_area: 
     H, inliers = match(after, before)
     if H is None:
         return Comparison(False, "no_registration", inliers)
+    if not _same_view(H):
+        return Comparison(False, "different_view", inliers)
     h, w = before.gray.shape
     warped = cv2.warpPerspective(after.image, H, (w, h), flags=cv2.INTER_LINEAR)
     valid = cv2.warpPerspective(np.full(after.gray.shape, 255, np.uint8), H, (w, h), flags=cv2.INTER_NEAREST)

@@ -1,0 +1,449 @@
+{
+ "summary": {
+  "pairs": 40,
+  "registered": 23,
+  "retakes": {
+   "different_view": 9,
+   "no_registration": 8
+  },
+  "pairs_with_false_changed": 2,
+  "false_changed_per_pair": 0.17,
+  "pairs_with_followup_request": 10,
+  "by_sequence": {
+   "leuven": {
+    "registered": 5,
+    "with_false_changed": 0
+   },
+   "bikes": {
+    "registered": 5,
+    "with_false_changed": 0
+   },
+   "trees": {
+    "registered": 4,
+    "with_false_changed": 1
+   },
+   "ubc": {
+    "registered": 5,
+    "with_false_changed": 0
+   },
+   "graf": {
+    "registered": 1,
+    "with_false_changed": 0
+   },
+   "wall": {
+    "registered": 1,
+    "with_false_changed": 0
+   },
+   "boat": {
+    "registered": 1,
+    "with_false_changed": 1
+   },
+   "bark": {
+    "registered": 1,
+    "with_false_changed": 0
+   }
+  }
+ },
+ "pairs": [
+  {
+   "sequence": "leuven",
+   "stress": "light",
+   "pair": "1-2",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 2
+  },
+  {
+   "sequence": "leuven",
+   "stress": "light",
+   "pair": "1-3",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 3
+  },
+  {
+   "sequence": "leuven",
+   "stress": "light",
+   "pair": "1-4",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 3
+  },
+  {
+   "sequence": "leuven",
+   "stress": "light",
+   "pair": "1-5",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 3
+  },
+  {
+   "sequence": "leuven",
+   "stress": "light",
+   "pair": "1-6",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 3
+  },
+  {
+   "sequence": "bikes",
+   "stress": "blur",
+   "pair": "1-2",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "bikes",
+   "stress": "blur",
+   "pair": "1-3",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": true,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "bikes",
+   "stress": "blur",
+   "pair": "1-4",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": true,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "bikes",
+   "stress": "blur",
+   "pair": "1-5",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": true,
+   "ruled_out": 1
+  },
+  {
+   "sequence": "bikes",
+   "stress": "blur",
+   "pair": "1-6",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": true,
+   "ruled_out": 1
+  },
+  {
+   "sequence": "trees",
+   "stress": "blur",
+   "pair": "1-2",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": true,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "trees",
+   "stress": "blur",
+   "pair": "1-3",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": true,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "trees",
+   "stress": "blur",
+   "pair": "1-4",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": true,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "trees",
+   "stress": "blur",
+   "pair": "1-5",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 1,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "trees",
+   "stress": "blur",
+   "pair": "1-6",
+   "registered": false,
+   "retake_reason": "no_registration",
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "ubc",
+   "stress": "JPEG",
+   "pair": "1-2",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "ubc",
+   "stress": "JPEG",
+   "pair": "1-3",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "ubc",
+   "stress": "JPEG",
+   "pair": "1-4",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "ubc",
+   "stress": "JPEG",
+   "pair": "1-5",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "ubc",
+   "stress": "JPEG",
+   "pair": "1-6",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "graf",
+   "stress": "viewpoint",
+   "pair": "1-2",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": true,
+   "ruled_out": 1
+  },
+  {
+   "sequence": "graf",
+   "stress": "viewpoint",
+   "pair": "1-3",
+   "registered": false,
+   "retake_reason": "different_view",
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "graf",
+   "stress": "viewpoint",
+   "pair": "1-4",
+   "registered": false,
+   "retake_reason": "different_view",
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "graf",
+   "stress": "viewpoint",
+   "pair": "1-5",
+   "registered": false,
+   "retake_reason": "no_registration",
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "graf",
+   "stress": "viewpoint",
+   "pair": "1-6",
+   "registered": false,
+   "retake_reason": "no_registration",
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "wall",
+   "stress": "viewpoint",
+   "pair": "1-2",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "wall",
+   "stress": "viewpoint",
+   "pair": "1-3",
+   "registered": false,
+   "retake_reason": "different_view",
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "wall",
+   "stress": "viewpoint",
+   "pair": "1-4",
+   "registered": false,
+   "retake_reason": "different_view",
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "wall",
+   "stress": "viewpoint",
+   "pair": "1-5",
+   "registered": false,
+   "retake_reason": "different_view",
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "wall",
+   "stress": "viewpoint",
+   "pair": "1-6",
+   "registered": false,
+   "retake_reason": "no_registration",
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "boat",
+   "stress": "zoom and rotation",
+   "pair": "1-2",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 3,
+   "followup_asked": true,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "boat",
+   "stress": "zoom and rotation",
+   "pair": "1-3",
+   "registered": false,
+   "retake_reason": "different_view",
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "boat",
+   "stress": "zoom and rotation",
+   "pair": "1-4",
+   "registered": false,
+   "retake_reason": "different_view",
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "boat",
+   "stress": "zoom and rotation",
+   "pair": "1-5",
+   "registered": false,
+   "retake_reason": "different_view",
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "boat",
+   "stress": "zoom and rotation",
+   "pair": "1-6",
+   "registered": false,
+   "retake_reason": "no_registration",
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "bark",
+   "stress": "zoom and rotation",
+   "pair": "1-2",
+   "registered": true,
+   "retake_reason": null,
+   "changed": 0,
+   "followup_asked": true,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "bark",
+   "stress": "zoom and rotation",
+   "pair": "1-3",
+   "registered": false,
+   "retake_reason": "different_view",
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "bark",
+   "stress": "zoom and rotation",
+   "pair": "1-4",
+   "registered": false,
+   "retake_reason": "no_registration",
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "bark",
+   "stress": "zoom and rotation",
+   "pair": "1-5",
+   "registered": false,
+   "retake_reason": "no_registration",
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  },
+  {
+   "sequence": "bark",
+   "stress": "zoom and rotation",
+   "pair": "1-6",
+   "registered": false,
+   "retake_reason": "no_registration",
+   "changed": 0,
+   "followup_asked": false,
+   "ruled_out": 0
+  }
+ ]
+}

@@ -235,12 +235,12 @@ export default function Landing() {
             <li><span className="label">Sign</span><code>SHA-256 · AWS KMS</code><p>Seals the photos and the findings. Any edit breaks the signature.</p></li>
           </ol>
           <dl className="stats" data-reveal>
-            <div><dt>Recall</dt><dd>0.91</dd></div>
-            <div><dt>Precision</dt><dd>0.84</dd></div>
-            <div><dt>False alarms per pair</dt><dd>0.35</dd></div>
-            <div><dt>Time to compare</dt><dd>~0.4 s</dd></div>
+            <div><dt>Damage found</dt><dd>90%</dd></div>
+            <div><dt>Flags that are real</dt><dd>99%</dd></div>
+            <div><dt>Lighting false alarms</dt><dd>3%</dd></div>
+            <div><dt>Time to compare</dt><dd>0.9 s</dd></div>
           </dl>
-          <p className="stats-note">Synthetic benchmark: 40 photo pairs with known damage, random camera moves, lighting changes and shadows. Method and failure cases are in the technical report.</p>
+          <p className="stats-note">Full agent loop on 170 synthetic photo pairs with known damage, camera moves, exposure, colour, shadow and glare, including the follow-up shots it asks for. On 40 real photo pairs of unchanged scenes, 2 of the 23 judged pairs got a false alarm. The other 17 got a retake request. Method and failure cases are in the technical report.</p>
         </section>
 
         <section className="closer" data-reveal>

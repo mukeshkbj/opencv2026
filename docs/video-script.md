@@ -41,7 +41,7 @@ Voice-over is in plain sentences. Times are cumulative.
 
 **Screen:** the architecture diagram, then the agent loop diagram. Then the README evaluation section.
 
-**Voice:** "Everything runs in one container on Lambda on Graviton. Photos go to S3 with Object Lock. Claude on Bedrock names each change, but it cannot delete one. The object check runs NanoDet on the new OpenCV 5 DNN engine, three and a half times faster than the classic engine on the same CPU. On our synthetic benchmark Twice finds ninety-one percent of the damage, with a third of a false alarm per photo pair. The failure cases are in the report."
+**Voice:** "Everything runs in one container on Lambda on Graviton. Photos go to S3 with Object Lock. Claude on Bedrock names each change, but it cannot delete one. The object check runs NanoDet on the new OpenCV 5 DNN engine, three and a half times faster than the classic engine on the same CPU. On our synthetic benchmark Twice finds ninety percent of the damage, and ninety-nine percent of its flags are real. On real photos of unchanged scenes, two of twenty-three pairs got a false alarm. The failure cases are in the report."
 
 ## 4:05 to 4:30 — Close
 

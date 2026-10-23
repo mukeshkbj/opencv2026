@@ -69,6 +69,12 @@ def make_signer():
     return LocalSigner(Path(os.environ.get("TWICE_DATA", "data")) / "signing-key.pem")
 
 
+def fingerprint(pem: str) -> str:
+    key = serialization.load_pem_public_key(pem.encode())
+    der = key.public_bytes(serialization.Encoding.DER, serialization.PublicFormat.SubjectPublicKeyInfo)
+    return "sha256:" + sha256(der)
+
+
 def verify(pem: str, algorithm: str, message: bytes, signature_b64: str) -> bool:
     key = serialization.load_pem_public_key(pem.encode())
     sig = base64.b64decode(signature_b64)

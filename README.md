@@ -52,7 +52,12 @@ Every photo is hashed with SHA-256 on arrival. The move-in set is sealed with a 
 
 The full method, ablations, latency and a failure gallery are in [docs/evaluation.md](docs/evaluation.md).
 
-On the synthetic benchmark (real photos with synthetic scratches, stains, chips and cracks, random camera moves, exposure changes and cast shadows), Twice reaches recall 0.91 and precision 0.84, with 0.35 false alarms per pair. All three bundled samples resolve to their ground truth, including the reflection on the car. There is no set of real move-in and move-out pairs yet. That is the most important limit of this evaluation.
+Two benchmarks cover the engine.
+
+- **Synthetic, full agent loop** (`server/eval/agent_bench.py`, 170 pairs with known damage, camera moves, exposure, colour, shadow and glare, plus the follow-up shots the agent asks for): recall 0.90, precision 0.99, 0.01 false "changed" findings per damage pair. Lighting-only pairs got a false alarm in 3% of cases.
+- **Real photos, nothing changed** (`server/eval/real_bench.py`, the Oxford affine sequences): of 40 pairs, 23 were judged. The agent asked for a retake on the other 17: 9 because the camera stood too far from the first spot, 8 because the photos could not be matched. Two judged pairs got a false alarm: trees and a harbour, where leaves and water may really move.
+
+All three bundled samples resolve to their ground truth, including the reflection on the car. There is no set of real move-in and move-out pairs with labelled damage yet. That is the most important limit of this evaluation.
 
 NanoDet-Plus runs in a median of 16.3 ms per frame on `ENGINE_NEW` against 56.5 ms on `ENGINE_CLASSIC` on the same CPU. Reproduce with `cd server && python -m eval.engines`.
 

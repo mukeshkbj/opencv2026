@@ -1,11 +1,15 @@
 """End-to-end check on the bundled sample: before set, after shots, follow-ups, signed report, verification."""
+import io
+import json
 import os
 import tempfile
+import zipfile
 
 os.environ["TWICE_DATA"] = tempfile.mkdtemp()
 
 from fastapi.testclient import TestClient  # noqa: E402
 
+from twice import offline_verify  # noqa: E402
 from twice.app import app  # noqa: E402
 
 client = TestClient(app)
@@ -97,3 +101,19 @@ def test_photos_rejected_after_report_and_before_seal():
     with open("../web/public/hero/room-b.jpg", "rb") as f:
         r = client.post(f"/api/checks/{cid}/spots/{sid}/after", files={"file": ("b.jpg", f.read(), "image/jpeg")})
     assert r.status_code == 409
+
+
+def test_offline_bundle_verifies_and_catches_edits(tmp_path):
+    cid = run_sample()["id"]
+    res = client.get(f"/api/checks/{cid}/bundle")
+    assert res.status_code == 200
+    zipfile.ZipFile(io.BytesIO(res.content)).extractall(tmp_path)
+    assert offline_verify.check(tmp_path) == []
+    photo = next((tmp_path / "photos").iterdir())
+    photo.write_bytes(photo.read_bytes() + b"\0")
+    seals = json.loads((tmp_path / "seals.json").read_text(encoding="utf-8"))
+    seals[1]["manifest"]["spots"][0]["findings"] = []
+    (tmp_path / "seals.json").write_text(json.dumps(seals), encoding="utf-8")
+    problems = offline_verify.check(tmp_path)
+    assert any("was altered" in p for p in problems), problems
+    assert any("report seal: the digest" in p for p in problems), problems

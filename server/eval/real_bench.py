@@ -45,7 +45,7 @@ def main() -> None:
             state = SpotState()
             res = Agent(state).on_after(ref, Keyframe.build(img))
             verdicts = [f.verdict for f in state.findings]
-            rows.append({"sequence": seq, "stress": stress, "pair": f"1-{k}", "registered": res.ok,
+            rows.append({"sequence": seq, "stress": stress, "pair": f"1-{k}", "registered": res.ok, "retake_reason": None if res.ok else res.reason,
                          "changed": verdicts.count("changed"), "followup_asked": state.status == "needs_followup",
                          "ruled_out": verdicts.count("lighting")})
             print(rows[-1], flush=True)
@@ -53,6 +53,7 @@ def main() -> None:
     summary = {
         "pairs": len(rows),
         "registered": len(reg),
+        "retakes": {k: sum(r["retake_reason"] == k for r in rows) for k in ("different_view", "no_registration")},
         "pairs_with_false_changed": sum(r["changed"] > 0 for r in reg),
         "false_changed_per_pair": round(sum(r["changed"] for r in reg) / max(1, len(reg)), 2),
         "pairs_with_followup_request": sum(r["followup_asked"] for r in reg),

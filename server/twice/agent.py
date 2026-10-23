@@ -118,7 +118,7 @@ class Agent:
             self.log("relight_check", f"{f.id}: lighting only", "rule out")
             return
         area_frac = _area_frac(f, res.before.shape)
-        if abs(m["brightening"]) > 0.05 or m.get("veil", 0) > 0.3:
+        if abs(m["brightening"]) > 0.05 or m["veil"] > 0.3:
             f.kind = "glare?"
             if abs(m["brightening"]) > 0.05:
                 f.evidence.append(f"{abs(m['brightening']):.0%} of the region {'turned' if m['brightening'] > 0 else 'stopped being'} near white: possible reflection")

@@ -32,7 +32,11 @@ apartments and rental cars. Spec: docs/spec.md. Persona critique: docs/critique-
       verdicts, S3 uses bucket KMS key, concurrency cap + budget, car-first sample, keep-this-link card.
 - [x] 6f. Engine hill-climb from the eval (agent-level bench server/eval/agent_bench.py):
       precision 0.972 -> 0.993, recall 0.852 -> 0.901, lighting false alarms 0.30 -> 0.033 of pairs.
-- [ ] 6g. Full bench re-run in progress; then refresh docs/evaluation.md, report section 7, README, landing stats.
+- [x] 6h. Real-photo bench (server/eval/real_bench.py, Oxford affine sequences, nothing changes). New retake rule
+      `_same_view` in vision.compare (scale 0.8 to 1.25, anisotropy below 1.3): pairs with a false "changed" 7 -> 2 of
+      the judged pairs; 9 pairs now get a retake. Agent bench unchanged (recall 0.901, precision 0.993).
+- [x] 6i. README evaluation paragraph, landing stats, video-script numbers refreshed with agent-level numbers.
+- [ ] 6g. Full bench re-run (task bej1llv9q, /tmp/bench.log); then refresh docs/evaluation.md and report section 7.
 - [x] 6c. README, docs/report.md (eval section placeholder EVAL_SUMMARY), docs/video-script.md.
 - [x] 6d. Verification now checks photos against signed manifests; report seal links to move-in seal. 6 tests pass.
 - [ ] 7. Hill-climb: dark theme check, second persona critique on the built product, code-deslop pass.

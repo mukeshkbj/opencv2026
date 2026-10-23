@@ -95,6 +95,7 @@ export interface Verification {
   ok: boolean;
   algorithm: string;
   public_key: string;
+  fingerprint: string;
   files: { spot: string; role: string; sha256: string; ok: boolean }[];
   seals: { phase: string; digest: string; digest_ok: boolean; signature_ok: boolean }[];
 }

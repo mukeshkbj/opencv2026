@@ -20,13 +20,6 @@ function marksOf(spot: Spot): { marks: Mark[]; ratio: number } {
   };
 }
 
-function download(name: string, data: unknown) {
-  const url = URL.createObjectURL(new Blob([JSON.stringify(data, null, 2)], { type: "application/json" }));
-  const a = Object.assign(document.createElement("a"), { href: url, download: name });
-  a.click();
-  URL.revokeObjectURL(url);
-}
-
 export default function ReportPage({ id }: { id: string }) {
   const [check, setCheck] = useState<Check | null>(null);
   const [verify, setVerify] = useState<Verification | null>(null);
@@ -179,12 +172,12 @@ export default function ReportPage({ id }: { id: string }) {
           })}
           {verify && (
             <details className="pubkey">
-              <summary>Public key ({verify.algorithm})</summary>
+              <summary>Public key ({verify.algorithm}) <code className="mono">{verify.fingerprint}</code></summary>
               <pre className="mono">{verify.public_key}</pre>
             </details>
           )}
           <div className="report-actions">
-            <button className="btn" onClick={() => download(`twice-${check.id}.json`, { check, verification: verify })}>Download evidence file</button>
+            <a className="btn" href={`/api/checks/${check.id}/bundle`} download>Download evidence bundle</a>
             <button
               className="btn"
               onClick={() => navigator.clipboard.writeText(share).then(() => { setCopied(true); setTimeout(() => setCopied(false), 1800); })}
@@ -192,6 +185,7 @@ export default function ReportPage({ id }: { id: string }) {
               {copied ? "Link copied" : "Copy share link"}
             </button>
           </div>
+          <p className="bundle-note">The bundle holds every photo, both signatures, the public key and <code>verify.py</code>. Anyone can check it without Twice: <code>pip install cryptography</code>, then <code>python verify.py</code>.</p>
         </section>
 
         <section className="limits">
