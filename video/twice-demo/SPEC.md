@@ -1,21 +1,23 @@
-# Twice: submission film
+# Twice: submission film (storyline A, "Scratch or reflection?")
 
-GOAL:    A judge who has never seen Twice can say what it does, why a renter needs it, and why the proof holds, after one viewing.
+GOAL:    In the first five seconds a judge sees the product's hardest case as a question they cannot answer. After one viewing they can say what Twice does, why a renter needs it, and why the proof holds.
 OUTPUT:  HyperFrames, 1920 x 1080, 30 fps.
-TIME:    147 s x 30 = 4410 frames. Voice-led (Kokoro af_heart). No music: the music library needs a HeyGen sign-in that this machine does not have.
-LOOK:    The product's own system, taken from `web/src`. Ground #f1eee7 paper, flat, no texture. Ink #17160f. One accent, signal #e2401a, on one element per shot (the stamp, the italic "twice", the failing line, the faster bar). Display Gambetta 400 at 120-200 px, tracking -2%. Body Switzer 500 at 34-44 px. Data JetBrains Mono 400 at 26-30 px. Product screens fill the frame edge to edge.
-OBJECTS: A printed rental receipt (white, 1 px hairline, zigzag tear at the foot, 0 18 40 rgb(23 22 15 / 0.12) shadow). A rubber stamp in signal red, 6 px border, rotated -7 deg. A terminal window (#17160f, title bar with three dots). The architecture diagram from `docs/diagrams`.
-MOTION:  Arrivals expo.out 0.5-0.7 s. Camera moves power2.inOut 0.9-1.2 s. Exits power3.in 0.25 s. The stamp lands in 0.18 s (scale 1.6 to 1, power4.out). Lines of text land, then hold still.
+TIME:    100 s x 30 = 3000 frames. Voice-led (Kokoro af_heart, speed 1.06, lines in video/narration_v2.json).
+SOUND:   Our own music, composed in code by score.py at 105 bpm in A minor and ducked 10 dB under the voice. Sound effects come from the earshot bank (earshot sfx render). First sound at 0.03 s. One riser into the reflection beat (42.4 s). One stop-down plus impact on NOT VALID (69.8 s). One resolving hit on "Take them twice" (96.0 s). Delivered at -16 LUFS, true peak -1.5 dBTP.
+CAPTIONS: Burned in for muted viewing. 3 to 7 words a group, Switzer 500 52 px, ink on a 94% paper pill, 96 px from the bottom. No captions where the screen already shows the words (the numbers, the end line, "3.5x faster").
+LOOK:    The product's own system, taken from `web/src`. Ground #f1eee7 paper, flat. Ink #17160f. One accent, signal #e2401a, on one element per shot. Display Gambetta 400, body Switzer 500, data JetBrains Mono 400. Product screens fill the frame.
+MOTION:  Arrivals expo.out 0.5-0.7 s. Camera moves power2.inOut 1.0 s. The red question boxes and the stamp land in 0.18 s (scale 1.25 or 1.6 to 1, power4.out). Text lands, then holds still.
 SHOTS:
-  S1   0.0-16.8  The receipt prints as the voice reads the total. "No human review" stamps onto it at "without human review". Two lines replace the text: the company has an AI scanner; the renter has a phone.
-  S2  16.8-29.3  Landing page: the hero locks the move-out photo onto the move-in photo.
-  S3  29.3-43.7  Landing steps section, push onto the quality chips. Cut at 6.4 s to the sample check: the ghost glides into lock and the shutter fires.
-  S4  43.7-62.3  Sample check, car, 1.4x: side-step request, reflection ruled out, pan down to the kept scratch, scroll to the zoomed crop.
-  S5  62.3-79.4  Sample check, living room, 1.4x: change map on and off, scroll to the stain and scuff crops.
-  S6  79.4-92.1  Signed report, 1.35x zoom, about 1.6x speed.
-  S7  92.1-102.1 Terminal: real verify.py output, VALID, then one byte added to a photo, NOT VALID in red.
-  S8 102.1-124.3 Architecture diagram tour: Lambda, S3, KMS, Bedrock, the DNN row; then measured bars, ENGINE_NEW 16.3 ms vs ENGINE_CLASSIC 56.5 ms.
-  S9 124.3-140.6 One number per beat on one stage: 88%, 100%, 0 of 22.
-  S10 140.6-147.0 "Take them twice."
-BANNED:  dark void grounds, glow, gradients, glass cards, three cards in a row, KPI grids, corner labels, everything fading up at once, text that moves while it is read, a logo end card, numbers that are not in docs/evaluation.md.
-QA:      t=5.8 receipt total visible; t=11.3 stamp on; t=37 ghost guide; t=57 car crop; t=70 change map; t=98 terminal VALID; t=101.6 NOT VALID; t=122 bars; t=134 "0 of 22"; t=146 end line.
+  A0   0.0-6.6   The real car photo full-bleed. Box "A ?" lands on the scratch at "scratch", box "B ?" on the reflection at "reflection". Slow push to 1.06.
+  S1   6.6-21.8  The receipt prints; "No human review" stamps at 16.6 s. Then: the company has an AI scanner; the renter has a phone.
+  S2  21.8-27.6  Landing hero locks the move-out photo onto the move-in photo. The music opens up.
+  S3  27.6-35.6  Sample check: the ghost glides into lock; the shutter fires at 31.6 s.
+  S4  35.6-49.6  Car at 1.4x: the side-step request, the reflection ruled out, a pan down to the kept scratch.
+  S5  49.6-58.6  Living room at 1.4x: the shadow ruled out, the stain and the scuff kept.
+  S6  58.6-65.8  Signed report at about 1.7x speed.
+  S7  65.8-71.6  Terminal: real verify.py output, VALID, one byte added, NOT VALID with a shake. The music stops.
+  S8  71.6-82.2  Architecture tour, then the measured bars, ENGINE_NEW 16.3 ms vs ENGINE_CLASSIC 56.5 ms.
+  S9  82.2-93.4  One number per beat: 88%, 100%, 0 of 22.
+  S10 93.4-100.0 "Take them twice."
+BANNED:  dark void grounds, glow, gradients, glass cards, three cards in a row, KPI grids, a logo end card, numbers that are not in docs/evaluation.md, stock music.
+QA:      t=2 box A; t=4 box B; t=16.7 stamp; t=31.6 shutter flash; t=44 scratch kept; t=52 room; t=67.6 VALID; t=70.2 NOT VALID; t=80 bars; t=88.5 "0 of 22"; t=97 end line.

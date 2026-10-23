@@ -25,15 +25,16 @@
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
-    tl.fromTo("#s7-win", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "expo.out" }, 0);
-    tl.fromTo("#s7-c1", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 1.4);
-    tl.fromTo("#s7-t1", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.7, ease: "steps(16)" }, 1.4);
-    ["#s7-o1", "#s7-o2", "#s7-o3", "#s7-o4"].forEach((id, i) => tl.fromTo(id, { opacity: 0 }, { opacity: 1, duration: 0.01 }, 2.4 + i * 0.15));
-    tl.fromTo("#s7-o5", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 3.2);
-    tl.fromTo("#s7-c2", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 6.3);
-    tl.fromTo("#s7-t2", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 1.2, ease: "steps(48)" }, 6.3);
-    tl.fromTo("#s7-o6", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 8.3);
-    tl.fromTo("#s7-o7", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 8.35);
+    tl.fromTo("#s7-win", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5, ease: "expo.out" }, 0);
+    tl.fromTo("#s7-c1", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 0.4);
+    tl.fromTo("#s7-t1", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.45, ease: "steps(16)" }, 0.4);
+    ["#s7-o1", "#s7-o2", "#s7-o3", "#s7-o4"].forEach((id, i) => tl.fromTo(id, { opacity: 0 }, { opacity: 1, duration: 0.01 }, 1.0 + i * 0.1));
+    tl.fromTo("#s7-o5", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 1.5);
+    tl.fromTo("#s7-c2", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 2.4);
+    tl.fromTo("#s7-t2", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.9, ease: "steps(48)" }, 2.4);
+    tl.fromTo("#s7-o6", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 4.0);
+    tl.fromTo("#s7-o7", { opacity: 0 }, { opacity: 1, duration: 0.01 }, 4.05);
+    tl.fromTo("#s7-win", { x: 0 }, { x: -12, duration: 0.05, yoyo: true, repeat: 3, ease: "power1.inOut" }, 4.0);
     window.__timelines["s7"] = tl;
   </script>
 </template>

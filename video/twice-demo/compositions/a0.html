@@ -1,0 +1,26 @@
+<template>
+  <style>
+    @font-face { font-family: 'JetBrains Mono'; src: url('assets/fonts/jbmono-400.woff2') format('woff2'); font-weight: 400; }
+    #root { position: absolute; inset: 0; background: #17160f; overflow: hidden; }
+    #a0-cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 960px 520px; }
+    #a0-photo { position: absolute; left: 0; top: -360px; width: 1920px; height: 1441px; }
+    .a0-box { position: absolute; border: 5px solid #e2401a; border-radius: 6px; }
+    #a0-scr { left: 284px; top: 486px; width: 335px; height: 63px; }
+    #a0-ref { left: 1534px; top: 787px; width: 227px; height: 176px; }
+    .a0-tag { position: absolute; left: -5px; top: -52px; padding: 4px 14px; background: #e2401a; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 30px; line-height: 40px; border-radius: 6px 6px 6px 0; white-space: nowrap; }
+  </style>
+  <div id="root" data-composition-id="a0" data-width="1920" data-height="1080">
+    <div id="a0-cam">
+      <img id="a0-photo" src="assets/car-after.jpg" alt="Rental car front quarter panel, move-out photo" />
+      <div class="a0-box" id="a0-scr"><span class="a0-tag" id="a0-t1">A ?</span></div>
+      <div class="a0-box" id="a0-ref"><span class="a0-tag" id="a0-t2">B ?</span></div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#a0-cam", { scale: 1.0 }, { scale: 1.06, duration: 6.6, ease: "none" }, 0);
+    tl.fromTo("#a0-scr", { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 0.18, ease: "power4.out" }, 1.4);
+    tl.fromTo("#a0-ref", { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 0.18, ease: "power4.out" }, 3.1);
+    window.__timelines["a0"] = tl;
+  </script>
+</template>

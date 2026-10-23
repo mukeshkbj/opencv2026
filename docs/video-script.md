@@ -1,64 +1,70 @@
 # Twice: demo video script
 
-The final film is 2 min 27 s at 1920 × 1080 and 30 fps. It is a HyperFrames project in `video/twice-demo`. The voice is Kokoro (af_heart), generated on this machine. The film has no music. App footage is a screen recording of the local app at 1440 × 810. The terminal output is real `verify.py` output from a downloaded bundle.
+The final film is 1 min 40 s at 1920 × 1080 and 30 fps. It is a HyperFrames project in `video/twice-demo`. The voice is Kokoro (af_heart), generated on this machine. The music is our own, composed in code by `video/twice-demo/score.py`. The sound effects come from the earshot sound bank. Captions are burned in for muted viewing. App footage is a screen recording of the local app at 1440 × 810. The terminal output is real `verify.py` output from a downloaded bundle.
 
 Times are cumulative.
 
-## 0:00 to 0:17 — The bill
+## 0:00 to 0:07 — The question
 
-**Screen:** a printed receipt. The charges print as the voice reads the total. A red "No human review" stamp lands on it. Then two lines replace the text on the right.
+**Screen:** the real car photo, full frame. A red box marked "A ?" lands on the scratch. A second box marked "B ?" lands on the reflection.
 
-**Voice:** "One Hertz renter got this bill minutes after returning a car. Four hundred and forty dollars, for a one-inch scuff on a wheel. A House subcommittee chair says Hertz sends these bills without human review. The company has an AI scanner. The renter has a phone."
+**Voice:** "One of these marks is a scratch. The other is just a reflection. Can you tell which one you would pay for?"
 
-## 0:17 to 0:29 — The idea
+## 0:07 to 0:22 — The bill
 
-**Screen:** the landing page. The hero locks the move-out photo onto the move-in photo and marks the two changes.
+**Screen:** a printed receipt. A red "No human review" stamp lands on it. Then two lines replace the text: the company has an AI scanner; the renter has a phone.
 
-**Voice:** "Twice gives the renter the same evidence. Take the same photo twice: when you move in, and when you move out. Twice lines the two photos up, finds what really changed, and signs the proof."
+**Voice:** "One Hertz renter got a four hundred and forty dollar bill for a one-inch scuff, minutes after returning the car. A House subcommittee chair says Hertz bills from these scans without human review. The company has an AI scanner. The renter has a phone."
 
-## 0:29 to 0:44 — Move in, move out
+## 0:22 to 0:28 — The idea
 
-**Screen:** the landing page steps, with a push onto the quality chips. Then the sample check: the ghost of the move-in photo glides into lock, the HUD says "Pan left", "Move closer", "Locked", and the shutter fires.
+**Screen:** the landing page. The hero locks the move-out photo onto the move-in photo.
 
-**Voice:** "At move-in, the shutter waits until each photo is sharp and detailed enough to match months later. At move-out, a ghost of the first photo guides you back to the same angle, and the camera fires when OpenCV locks on."
+**Voice:** "Twice gives the renter proof. Take the same photo twice: when you move in, and when you move out."
 
-## 0:44 to 1:02 — The car
+## 0:28 to 0:36 — The ghost guide
 
-**Screen:** the car spot at 1.4× zoom. The agent asks for a side-step photo. The reflection is ruled out and the scratch stays. The page scrolls to the finding and its zoomed move-in and move-out crop.
+**Screen:** the sample check. The ghost of the move-in photo glides into lock, and the shutter fires.
 
-**Voice:** "Here is a sample check. On the car, a reflection looks like damage. One photo cannot tell them apart, so the agent asks for one more, from a step to the side. A reflection moves with the camera. A scratch stays on the paint. So the reflection is ruled out, and the scratch is reported."
+**Voice:** "At move-out, a ghost of your first photo walks you back to the exact spot. The shutter fires when OpenCV locks on."
 
-## 1:02 to 1:19 — The living room
+## 0:36 to 0:50 — The answer
 
-**Screen:** the living room spot at 1.4× zoom. The change map turns on, then off. The page scrolls to the stain and scuff crops.
+**Screen:** the car spot at 1.4× zoom. The agent asks for a side-step photo. The reflection is ruled out. The camera pans down to the scratch, which stays.
 
-**Voice:** "In the living room, a plain image difference would also flag the new shadow. Twice compares structure and colour, ignores exposure and small shifts, and tests whether a smooth change of light explains the difference. The shadow is ruled out. The stain and the scuff stay."
+**Voice:** "So: scratch, or reflection? One photo cannot tell. Twice asks for one more, from a step to the side. The reflection slides away. The scratch stays put."
 
-## 1:19 to 1:32 — The report
+## 0:50 to 0:59 — The living room
 
-**Screen:** the signed report at 1.35× zoom, scrolled at about 1.6× speed.
+**Screen:** the living room spot at 1.4× zoom, with the shadow ruled out and the stain and scuff marked.
 
-**Voice:** "The report shows every change, every ruled-out shadow, and the measurements behind each one. Every photo is hashed on arrival, and the move-in set is signed before any move-out photo exists."
+**Voice:** "In the living room, the new shadow is ruled out. The stain and the scuff stay."
 
-## 1:32 to 1:42 — Anyone can check it
+## 0:59 to 1:06 — The report
 
-**Screen:** a terminal. `python verify.py` prints VALID. One byte is added to a photo, and the next run prints NOT VALID.
+**Screen:** the signed report, scrolled at about 1.7× speed.
 
-**Voice:** "Anyone can download the evidence bundle and check it with the script inside, without trusting our server. Change one photo, and the check fails."
+**Voice:** "Every finding lands in a signed report. The move-in photos were sealed before the move-out photos existed."
 
-## 1:42 to 2:04 — How it runs
+## 1:06 to 1:12 — Anyone can check it
 
-**Screen:** the architecture diagram. The camera visits Lambda, S3, KMS, Bedrock and the DNN row. Two bars show the measured NanoDet time: 16.3 ms on `ENGINE_NEW`, 56.5 ms on `ENGINE_CLASSIC`.
+**Screen:** a terminal. `python verify.py` prints VALID. One byte is added to a photo, and the next run prints NOT VALID. The music stops.
 
-**Voice:** "Twice runs in one container on AWS Lambda. Photos go to S3 with Object Lock, and a KMS key signs every report. Claude on Bedrock names each change, but it can never delete one. Objects are checked with NanoDet on the new OpenCV 5 DNN engine, more than three times faster than the classic engine."
+**Voice:** "Anyone can check it, without trusting us. Change one byte, and the check fails."
 
-## 2:04 to 2:21 — The numbers
+## 1:12 to 1:22 — How it runs
+
+**Screen:** the architecture diagram, then two bars with the measured NanoDet time: 16.3 ms on `ENGINE_NEW`, 56.5 ms on `ENGINE_CLASSIC`.
+
+**Voice:** "OpenCV 5 does the vision, on AWS. Object detection runs on the new DNN engine, more than three times faster than the classic one."
+
+## 1:22 to 1:33 — The numbers
 
 **Screen:** one number at a time: 88%, 100%, then "0 of 22" with 22 squares.
 
-**Voice:** "On our synthetic benchmark, Twice finds eighty-eight percent of the damage, and every flag is real. On real photos of unchanged scenes, it raised no false alarm in twenty-two judged pairs. Every failure case is in the report."
+**Voice:** "On our benchmark, Twice finds eighty-eight percent of the damage, and every flag is real. On twenty-two real photo pairs of unchanged scenes: zero false alarms."
 
-## 2:21 to 2:27 — Close
+## 1:33 to 1:40 — Close
 
 **Screen:** "Take them twice."
 
@@ -68,8 +74,10 @@ Times are cumulative.
 
 ```bash
 cd video/twice-demo
+C:/Users/mukes/tools/earshot/.venv/Scripts/python.exe score.py   # music and sound effects
 npx hyperframes check
 npx hyperframes render -o renders/twice-demo.mp4
+ffmpeg -i renders/twice-demo.mp4 -c:v copy -af loudnorm=I=-14:TP=-1.0:LRA=7 -c:a aac -b:a 192k ../../docs/video/twice-demo.mp4
 ```
 
-The voice lines are in `video/narration.json`. The footage cuts and their source times are in `video/twice-demo/REVIEW.md`.
+The voice lines are in `video/narration_v2.json`. The footage cuts and their source times are in `video/twice-demo/REVIEW.md`.

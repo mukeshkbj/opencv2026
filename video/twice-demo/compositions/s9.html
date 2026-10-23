@@ -9,6 +9,7 @@
     .s9-num em { font-style: normal; color: #e2401a; }
     .s9-label { margin-top: 36px; font-family: 'Switzer', sans-serif; font-size: 56px; line-height: 1.2; max-width: 1520px; }
     .s9-src { position: absolute; left: 200px; top: 920px; font-family: 'JetBrains Mono', monospace; font-size: 28px; color: #6b675c; }
+    #s9-src3 { top: 970px; }
     #s9-dots { position: absolute; left: 200px; top: 790px; display: flex; gap: 14px; }
     .s9-dot { width: 40px; height: 40px; border-radius: 6px; background: #3d3b33; }
     #s9-end { position: absolute; left: 200px; top: 380px; font-family: 'Gambetta', serif; font-size: 120px; line-height: 1.08; letter-spacing: -0.02em; width: 1500px; }
@@ -20,24 +21,21 @@
     <div data-hf-id="hf-8tzn" class="s9-beat" id="s9-c"><div data-hf-id="hf-zj6q" class="s9-num"><em data-hf-id="hf-khz3">0</em> of 22</div><div data-hf-id="hf-n7wq" class="s9-label">real photo pairs of unchanged scenes got a false alarm</div></div>
     <div data-hf-id="hf-e2yu" id="s9-dots"><span data-hf-id="hf-zf5m" class="s9-dot" id="s9-d0"></span><span data-hf-id="hf-3d9n" class="s9-dot" id="s9-d1"></span><span data-hf-id="hf-shs0" class="s9-dot" id="s9-d2"></span><span data-hf-id="hf-vh1l" class="s9-dot" id="s9-d3"></span><span data-hf-id="hf-kljy" class="s9-dot" id="s9-d4"></span><span data-hf-id="hf-ojnz" class="s9-dot" id="s9-d5"></span><span data-hf-id="hf-fvs4" class="s9-dot" id="s9-d6"></span><span data-hf-id="hf-gnfx" class="s9-dot" id="s9-d7"></span><span data-hf-id="hf-qur6" class="s9-dot" id="s9-d8"></span><span data-hf-id="hf-usv7" class="s9-dot" id="s9-d9"></span><span data-hf-id="hf-iv15" class="s9-dot" id="s9-d10"></span><span data-hf-id="hf-i3dc" class="s9-dot" id="s9-d11"></span><span data-hf-id="hf-syuz" class="s9-dot" id="s9-d12"></span><span data-hf-id="hf-mt56" class="s9-dot" id="s9-d13"></span><span data-hf-id="hf-6919" class="s9-dot" id="s9-d14"></span><span data-hf-id="hf-5hdg" class="s9-dot" id="s9-d15"></span><span data-hf-id="hf-e59b" class="s9-dot" id="s9-d16"></span><span data-hf-id="hf-a75a" class="s9-dot" id="s9-d17"></span><span data-hf-id="hf-aamp" class="s9-dot" id="s9-d18"></span><span data-hf-id="hf-9iyw" class="s9-dot" id="s9-d19"></span><span data-hf-id="hf-hrew" class="s9-dot" id="s9-d20"></span><span data-hf-id="hf-ij2p" class="s9-dot" id="s9-d21"></span></div>
     <div data-hf-id="hf-z31i" class="s9-src" id="s9-src2">Real photos: Oxford affine sequences, 22 judged pairs</div>
-    <div data-hf-id="hf-gjaa" id="s9-end">Every failure case is in the report.</div>
-    <div data-hf-id="hf-b2s8" class="s9-src" id="s9-src3">docs/evaluation.md</div>
+    <div data-hf-id="hf-b2s8" class="s9-src" id="s9-src3">Every failure case: docs/evaluation.md</div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
     const blurIn = (sel, t) => tl.fromTo(sel, { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, t);
     const blurOut = (sel, t) => tl.to(sel, { opacity: 0, filter: "blur(10px)", duration: 0.18, ease: "power3.in" }, t);
-    blurIn("#s9-a", 1.2);
-    blurIn("#s9-src1", 0.5);
-    blurOut("#s9-a", 4.6);
-    blurIn("#s9-b", 4.8);
-    blurOut(["#s9-b", "#s9-src1"], 7.2);
-    blurIn("#s9-c", 7.6);
-    blurIn("#s9-src2", 7.9);
-    tl.fromTo(".s9-dot", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out", stagger: 0.03 }, 10.5);
-    blurOut(["#s9-c", "#s9-src2", "#s9-dots"], 13.4);
-    blurIn("#s9-end", 13.6);
-    blurIn("#s9-src3", 14.0);
+    blurIn("#s9-src1", 0.4);
+    blurIn("#s9-a", 1.6);
+    blurOut("#s9-a", 3.6);
+    blurIn("#s9-b", 3.8);
+    blurOut(["#s9-b", "#s9-src1"], 5.4);
+    blurIn("#s9-c", 5.7);
+    blurIn("#s9-src2", 6.0);
+    tl.fromTo(".s9-dot", { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.25, ease: "expo.out", stagger: 0.03 }, 6.3);
+    blurIn("#s9-src3", 8.9);
     window.__timelines["s9"] = tl;
   </script>
 </template>

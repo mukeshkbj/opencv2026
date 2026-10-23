@@ -52,9 +52,10 @@ apartments and rental cars. Spec: docs/spec.md. Persona critique: docs/critique-
 - [x] 6d. Verification now checks photos against signed manifests; report seal links to move-in seal. 6 tests pass.
 - [x] 7. Hill-climb: dark theme checked on the report, persona critique rounds 2 and 3, deslop pass on the diff.
 - [ ] 8. Owner: run deploy/deploy.sh with AWS credentials, then follow "Before you submit" in deploy/README.md.
-- [x] 9. Submission film: docs/video/twice-demo.mp4 (147 s, second pass after judge round 4, 1920x1080, 30 fps, -16 LUFS). Source: HyperFrames
-      project video/twice-demo (SPEC.md, REVIEW.md). Kokoro voice, no music (needs HeyGen sign-in). Check passes;
-      review sheets read and fixed. docs/video-script.md matches the film. Linked from the README.
+- [x] 9. Submission film: docs/video/twice-demo.mp4 (100 s, fourth pass, storyline A "Scratch or reflection?", 1920x1080,
+      30 fps, -14.3 LUFS). Source: HyperFrames project video/twice-demo (SPEC.md, REVIEW.md, STORYLINES.md). Kokoro voice
+      (video/narration_v2.json), music composed in code (score.py), earshot bank SFX, burned-in captions. Check passes;
+      earshot critique launch-grade (22 of 23). docs/video-script.md matches the film. Linked from the README.
       Owner: upload the MP4 to YouTube or Vimeo for Devpost. Raw footage (video/footage) is gitignored.
 - [x] 10. docs/winners-research.md: 8 fetched winner write-ups, OpenCV winners 2021 to 2025 with sources, and a
       checklist against Twice. Open gaps it names: live endpoint (owner), no labelled real damage pairs, no real users.

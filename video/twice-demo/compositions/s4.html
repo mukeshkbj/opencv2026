@@ -6,17 +6,17 @@
   </style>
   <div id="root" data-composition-id="s4" data-width="1920" data-height="1080">
     <div id="s4-cam0" class="cam">
-      <video id="s4-v0" class="clip" src="assets/clips/car_a.mp4" data-start="0" data-duration="7" data-track-index="0" muted playsinline></video>
+      <video id="s4-v0" class="clip" src="assets/clips/car_a.mp4" data-start="0" data-duration="5" data-track-index="0" muted playsinline></video>
     </div>
     <div id="s4-cam1" class="cam">
-      <video id="s4-v1" class="clip" src="assets/clips/car_b.mp4" data-start="7" data-duration="11.6" data-track-index="0" muted playsinline></video>
+      <video id="s4-v1" class="clip" src="assets/clips/car_b.mp4" data-start="5" data-duration="9" data-track-index="0" muted playsinline></video>
     </div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
     tl.set(["#s4-cam0", "#s4-cam1"], { scale: 1.4, x: -702, y: -120 }, 0);
-    tl.to("#s4-cam1", { y: -380, duration: 1, ease: "power2.inOut" }, 8.6);
-    tl.to("#s4-cam1", { y: -120, duration: 1, ease: "power2.inOut" }, 11.4);
+    tl.to("#s4-cam1", { y: -380, duration: 1, ease: "power2.inOut" }, 6.6);
+    tl.to("#s4-cam1", { y: -120, duration: 1, ease: "power2.inOut" }, 9.4);
     window.__timelines["s4"] = tl;
   </script>
 </template>
