@@ -317,6 +317,24 @@ p {
   padding-bottom: 0.6em;
 }
 
+.hero-hook {
+  display: block;
+  margin: 0 0 14px;
+  max-width: 44ch;
+  font: 400 0.8125rem/1.5 var(--f-mono);
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.hero-hook b {
+  font-weight: 500;
+  color: var(--signal-ink);
+}
+
+.hero-hook:hover {
+  color: var(--ink);
+}
+
 .hero-lede {
   margin: 0 0 24px;
   max-width: 44ch;

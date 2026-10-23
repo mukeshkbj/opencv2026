@@ -167,6 +167,13 @@
   font-size: 0.8125rem;
 }
 
+.ftable .ev strong {
+  display: block;
+  margin-bottom: 2px;
+  font-weight: 500;
+  color: var(--ink-2);
+}
+
 .hashes {
   list-style: none;
   margin: 0;

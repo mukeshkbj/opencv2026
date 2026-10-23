@@ -84,6 +84,9 @@ export default function Landing() {
               Take it <em>twice.</em>
             </h1>
             <div className="hero-side">
+              <a className="hero-hook" href="#hook">
+                <b>$440</b> billed by an AI scanner for a one-inch scuff. The renter had only a phone.
+              </a>
               <p className="hero-lede">
                 Photograph your apartment or rental car when you get it. Photograph it again when you give it back. Twice walks you to
                 the exact same spot, finds what really changed, and signs the proof.
@@ -119,7 +122,7 @@ export default function Landing() {
           </figure>
         </section>
 
-        <section className="hook">
+        <section className="hook" id="hook">
           <div className="hook-figure" data-reveal>
             <span className="hook-number">$440</span>
             <span className="label">for a one-inch scuff on a wheel</span>
@@ -233,7 +236,7 @@ export default function Landing() {
             <li><span className="label">Refine</span><code>DIS optical flow, clamped</code><p>Corrects the last few pixels a handheld phone leaves behind.</p></li>
             <li><span className="label">Compare</span><code>Shift-tolerant structure + colour</code><p>Ignores blur, exposure and sub-pixel jitter. Keeps new texture.</p></li>
             <li><span className="label">Decide</span><code>Agent · NanoDet on dnn ENGINE_NEW</code><p>Rules out light, names missing objects, asks for a parallax shot or a close-up when unsure.</p></li>
-            <li><span className="label">Sign</span><code>SHA-256 · AWS KMS (Ed25519 when run locally)</code><p>Seals the photos and the findings. Any edit breaks the signature.</p></li>
+            <li><span className="label">Sign</span><code>SHA-256 · AWS KMS, ECDSA P-256 (Ed25519 when run locally)</code><p>Seals the photos and the findings. Any edit breaks the signature.</p></li>
           </ol>
           <dl className="stats" data-reveal>
             <div><dt>Damage found</dt><dd>90%</dd><small>170 synthetic pairs</small></div>

@@ -6,7 +6,7 @@ in half of them) are drawn in the frame of image 1 and projected into the move-o
 homography of the sequence. Nothing else is simulated: the move-out photo keeps its real blur, noise, light and viewpoint.
 Lighting-only controls draw a cast shadow or a glare patch alone. Follow-up requests are answered as in agent_bench.py,
 except that a side-step shot is another real photo of the same sequence and a close-up is a crop of the real move-out photo.
-Each job runs the full agent under its own RANSAC seed. The plain-difference ablation runs the same jobs.
+Each job runs the full agent under its own RANSAC seed. The tolerant-first-pass ablation (the engine before the switch) runs the same jobs.
 """
 import argparse
 import functools
@@ -29,7 +29,7 @@ from twice.vision import Keyframe  # noqa: E402
 
 HYBRID_ID = 8
 DRAWS = {"damage": 8, "clean": 3, "shadow": 3, "specular": 3}
-ABLATIONS = ("full", "plain_abs_diff")
+ABLATIONS = ("full", "tolerant_first_pass")
 images = functools.cache(real_bench.images)
 
 

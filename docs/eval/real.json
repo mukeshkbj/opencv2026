@@ -3,11 +3,11 @@
   "pairs": 40,
   "registered": 22,
   "retakes": {
-   "no_registration": 8,
-   "different_view": 10
+   "different_view": 10,
+   "no_registration": 8
   },
-  "pairs_with_false_changed": 2,
-  "false_changed_per_pair": 0.18,
+  "pairs_with_false_changed": 0,
+  "false_changed_per_pair": 0.0,
   "pairs_with_followup_request": 9,
   "by_sequence": {
    "leuven": {
@@ -20,7 +20,7 @@
    },
    "trees": {
     "registered": 4,
-    "with_false_changed": 1
+    "with_false_changed": 0
    },
    "ubc": {
     "registered": 5,
@@ -36,7 +36,7 @@
    },
    "boat": {
     "registered": 1,
-    "with_false_changed": 1
+    "with_false_changed": 0
    },
    "bark": {
     "registered": 1,
@@ -181,8 +181,8 @@
    "pair": "1-5",
    "registered": true,
    "retake_reason": null,
-   "changed": 1,
-   "followup_asked": false,
+   "changed": 0,
+   "followup_asked": true,
    "ruled_out": 0
   },
   {
@@ -351,8 +351,8 @@
    "pair": "1-2",
    "registered": true,
    "retake_reason": null,
-   "changed": 3,
-   "followup_asked": true,
+   "changed": 0,
+   "followup_asked": false,
    "ruled_out": 0
   },
   {

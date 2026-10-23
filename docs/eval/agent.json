@@ -1,38 +1,38 @@
 {
  "summary": {
-  "recall": 0.901,
-  "precision": 0.993,
-  "false_changed_per_damage_pair": 0.01,
+  "recall": 0.878,
+  "precision": 1.0,
+  "false_changed_per_damage_pair": 0.0,
   "nochange_false_alarm_rate": 0.033,
-  "lighting_false_alarm_rate": 0.027,
+  "lighting_false_alarm_rate": 0.023,
   "lighting_false_alarm_by_type": {
-   "exposure": 0.013,
-   "colortemp": 0.053,
-   "shadow": 0.0,
-   "specular": 0.04
+   "exposure": 0.0,
+   "colortemp": 0.0,
+   "shadow": 0.027,
+   "specular": 0.067
   },
-  "followups_per_pair": 0.24,
+  "followups_per_pair": 0.2,
   "followup_kinds": {
-   "parallax": 126,
-   "closeup": 75
+   "parallax": 122,
+   "closeup": 52
   },
-  "cant_judge_per_pair": 0.07
+  "cant_judge_per_pair": 0.02
  },
  "per_seed": {
   "recall": {
-   "mean": 0.901,
-   "min": 0.901,
-   "max": 0.901
+   "mean": 0.878,
+   "min": 0.877,
+   "max": 0.883
   },
   "precision": {
-   "mean": 0.993,
-   "min": 0.993,
-   "max": 0.993
+   "mean": 1.0,
+   "min": 1.0,
+   "max": 1.0
   },
   "false_changed_per_damage_pair": {
-   "mean": 0.01,
-   "min": 0.01,
-   "max": 0.01
+   "mean": 0.0,
+   "min": 0.0,
+   "max": 0.0
   },
   "nochange_false_alarm_rate": {
    "mean": 0.033,
@@ -40,23 +40,23 @@
    "max": 0.033
   },
   "lighting_false_alarm_rate": {
-   "mean": 0.027,
+   "mean": 0.023,
    "min": 0.017,
    "max": 0.033
   },
   "followups_per_pair": {
-   "mean": 0.238,
-   "min": 0.22,
-   "max": 0.25
+   "mean": 0.204,
+   "min": 0.2,
+   "max": 0.21
   },
   "cant_judge_per_pair": {
-   "mean": 0.072,
-   "min": 0.06,
-   "max": 0.09
+   "mean": 0.02,
+   "min": 0.02,
+   "max": 0.02
   }
  },
  "seeds": 5,
- "seconds": 201.0,
+ "seconds": 173.3,
  "pairs": [
   {
    "set": "damage",
@@ -104,6 +104,7 @@
    "seed": 0,
    "status": "done",
    "followups": [
+    "parallax",
     "parallax"
    ],
    "changed": 4,
@@ -130,14 +131,15 @@
    "seed": 0,
    "status": "done",
    "followups": [
-    "parallax"
+    "parallax",
+    "closeup"
    ],
-   "changed": 3,
-   "uncertain": 0,
+   "changed": 2,
+   "uncertain": 1,
    "defects": [
     {
      "kind": "crack",
-     "hit": true
+     "hit": false
     },
     {
      "kind": "scratch",
@@ -155,9 +157,7 @@
    "idx": 4,
    "seed": 0,
    "status": "done",
-   "followups": [
-    "parallax"
-   ],
+   "followups": [],
    "changed": 1,
    "uncertain": 0,
    "defects": [
@@ -189,7 +189,9 @@
    "idx": 6,
    "seed": 0,
    "status": "done",
-   "followups": [],
+   "followups": [
+    "closeup"
+   ],
    "changed": 2,
    "uncertain": 0,
    "defects": [
@@ -324,10 +326,10 @@
    "seed": 0,
    "status": "done",
    "followups": [
-    "closeup"
+    "parallax"
    ],
    "changed": 2,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "chip",
@@ -410,7 +412,7 @@
    "seed": 0,
    "status": "done",
    "followups": [],
-   "changed": 4,
+   "changed": 3,
    "uncertain": 0,
    "defects": [
     {
@@ -433,13 +435,15 @@
    "idx": 18,
    "seed": 0,
    "status": "done",
-   "followups": [],
-   "changed": 3,
-   "uncertain": 0,
+   "followups": [
+    "closeup"
+   ],
+   "changed": 1,
+   "uncertain": 1,
    "defects": [
     {
      "kind": "stain",
-     "hit": true
+     "hit": false
     },
     {
      "kind": "stain",
@@ -454,7 +458,7 @@
    "seed": 0,
    "status": "done",
    "followups": [],
-   "changed": 4,
+   "changed": 3,
    "uncertain": 0,
    "defects": [
     {
@@ -477,7 +481,9 @@
    "idx": 20,
    "seed": 0,
    "status": "done",
-   "followups": [],
+   "followups": [
+    "closeup"
+   ],
    "changed": 4,
    "uncertain": 0,
    "defects": [
@@ -566,10 +572,10 @@
    "seed": 0,
    "status": "done",
    "followups": [
-    "closeup"
+    "parallax"
    ],
    "changed": 3,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "scratch",
@@ -607,7 +613,9 @@
    "idx": 26,
    "seed": 0,
    "status": "done",
-   "followups": [],
+   "followups": [
+    "closeup"
+   ],
    "changed": 3,
    "uncertain": 0,
    "defects": [
@@ -631,12 +639,9 @@
    "idx": 27,
    "seed": 0,
    "status": "done",
-   "followups": [
-    "parallax",
-    "parallax"
-   ],
-   "changed": 3,
-   "uncertain": 1,
+   "followups": [],
+   "changed": 2,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "scratch",
@@ -718,9 +723,7 @@
    "idx": 31,
    "seed": 0,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
    "uncertain": 0,
    "defects": [
@@ -834,7 +837,7 @@
    "status": "done",
    "followups": [],
    "changed": 0,
-   "uncertain": 2,
+   "uncertain": 1,
    "defects": [
     {
      "kind": "scratch",
@@ -885,7 +888,7 @@
    "seed": 0,
    "status": "done",
    "followups": [],
-   "changed": 1,
+   "changed": 2,
    "uncertain": 0,
    "defects": [
     {
@@ -894,7 +897,7 @@
     },
     {
      "kind": "crack",
-     "hit": false
+     "hit": true
     }
    ],
    "false_changed": 0
@@ -990,19 +993,16 @@
    "idx": 44,
    "seed": 0,
    "status": "done",
-   "followups": [
-    "closeup",
-    "closeup"
-   ],
-   "changed": 1,
-   "uncertain": 1,
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "crack",
      "hit": false
     }
    ],
-   "false_changed": 1
+   "false_changed": 0
   },
   {
    "set": "damage",
@@ -1129,9 +1129,7 @@
    "idx": 51,
    "seed": 0,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 1,
    "uncertain": 0,
    "defects": [
@@ -1168,7 +1166,7 @@
    "seed": 0,
    "status": "done",
    "followups": [],
-   "changed": 3,
+   "changed": 4,
    "uncertain": 0,
    "defects": [
     {
@@ -1364,10 +1362,11 @@
    "seed": 0,
    "status": "done",
    "followups": [
-    "parallax"
+    "closeup",
+    "closeup"
    ],
-   "changed": 1,
-   "uncertain": 0,
+   "changed": 2,
+   "uncertain": 1,
    "defects": [
     {
      "kind": "scratch",
@@ -1427,8 +1426,10 @@
    "idx": 66,
    "seed": 0,
    "status": "done",
-   "followups": [],
-   "changed": 3,
+   "followups": [
+    "closeup"
+   ],
+   "changed": 2,
    "uncertain": 0,
    "defects": [
     {
@@ -1441,7 +1442,7 @@
     },
     {
      "kind": "stain",
-     "hit": true
+     "hit": false
     }
    ],
    "false_changed": 0
@@ -1451,7 +1452,9 @@
    "idx": 67,
    "seed": 0,
    "status": "done",
-   "followups": [],
+   "followups": [
+    "parallax"
+   ],
    "changed": 1,
    "uncertain": 0,
    "defects": [
@@ -1559,8 +1562,10 @@
    "idx": 73,
    "seed": 0,
    "status": "done",
-   "followups": [],
-   "changed": 1,
+   "followups": [
+    "closeup"
+   ],
+   "changed": 0,
    "uncertain": 0,
    "defects": [
     {
@@ -1569,7 +1574,7 @@
     },
     {
      "kind": "stain",
-     "hit": true
+     "hit": false
     }
    ],
    "false_changed": 0
@@ -1579,8 +1584,11 @@
    "idx": 74,
    "seed": 0,
    "status": "done",
-   "followups": [],
-   "changed": 3,
+   "followups": [
+    "parallax",
+    "parallax"
+   ],
+   "changed": 2,
    "uncertain": 0,
    "defects": [
     {
@@ -1589,7 +1597,7 @@
     },
     {
      "kind": "stain",
-     "hit": true
+     "hit": false
     },
     {
      "kind": "scratch",
@@ -1680,7 +1688,7 @@
    "seed": 0,
    "status": "done",
    "followups": [],
-   "changed": 2,
+   "changed": 3,
    "uncertain": 0,
    "defects": [
     {
@@ -1732,9 +1740,7 @@
    "idx": 3,
    "seed": 0,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
    "uncertain": 0,
    "defects": [],
@@ -1745,11 +1751,9 @@
    "idx": 4,
    "seed": 0,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [],
    "false_changed": 0
   },
@@ -1824,9 +1828,7 @@
    "idx": 11,
    "seed": 0,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
    "uncertain": 0,
    "defects": [],
@@ -1852,7 +1854,7 @@
     "closeup"
    ],
    "changed": 2,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [],
    "false_changed": 2
   },
@@ -2070,480 +2072,471 @@
    "idx": 3,
    "seed": 0,
    "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 4,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 5,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 6,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 7,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 8,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 9,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 10,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 11,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 12,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 13,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 14,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 0,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 1,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 2,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 3,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 4,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 5,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 6,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 7,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 8,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 9,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 10,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 11,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 12,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 13,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 14,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 0,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 1,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 2,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 3,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 4,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 5,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 6,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 7,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 8,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 9,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 10,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 11,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 12,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 13,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 14,
+   "seed": 0,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "specular",
+   "idx": 0,
+   "seed": 0,
+   "status": "done",
    "followups": [
     "parallax",
-    "parallax"
-   ],
-   "changed": 0,
-   "uncertain": 2,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 4,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 5,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 6,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 7,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 8,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 9,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 10,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 11,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 12,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 13,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 14,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 0,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 1,
-   "seed": 0,
-   "status": "done",
-   "followups": [
-    "closeup",
     "closeup"
-   ],
-   "changed": 0,
-   "uncertain": 1,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 2,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 3,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 4,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 1,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 1
-  },
-  {
-   "set": "colortemp",
-   "idx": 5,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 6,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 7,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 8,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 9,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 10,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 11,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 12,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 13,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 14,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 0,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 1,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 2,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 3,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 4,
-   "seed": 0,
-   "status": "done",
-   "followups": [
-    "closeup"
-   ],
-   "changed": 0,
-   "uncertain": 1,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 5,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 6,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 7,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 8,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 9,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 10,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 11,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 12,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 13,
-   "seed": 0,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 14,
-   "seed": 0,
-   "status": "done",
-   "followups": [
-    "closeup"
-   ],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "specular",
-   "idx": 0,
-   "seed": 0,
-   "status": "done",
-   "followups": [
-    "parallax"
    ],
    "changed": 0,
    "uncertain": 0,
@@ -2802,14 +2795,15 @@
    "seed": 1,
    "status": "done",
    "followups": [
-    "parallax"
+    "parallax",
+    "closeup"
    ],
-   "changed": 3,
-   "uncertain": 0,
+   "changed": 2,
+   "uncertain": 1,
    "defects": [
     {
      "kind": "crack",
-     "hit": true
+     "hit": false
     },
     {
      "kind": "scratch",
@@ -2827,9 +2821,7 @@
    "idx": 4,
    "seed": 1,
    "status": "done",
-   "followups": [
-    "parallax"
-   ],
+   "followups": [],
    "changed": 1,
    "uncertain": 0,
    "defects": [
@@ -2861,7 +2853,9 @@
    "idx": 6,
    "seed": 1,
    "status": "done",
-   "followups": [],
+   "followups": [
+    "closeup"
+   ],
    "changed": 2,
    "uncertain": 0,
    "defects": [
@@ -2996,10 +2990,10 @@
    "seed": 1,
    "status": "done",
    "followups": [
-    "closeup"
+    "parallax"
    ],
    "changed": 2,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "chip",
@@ -3082,7 +3076,7 @@
    "seed": 1,
    "status": "done",
    "followups": [],
-   "changed": 4,
+   "changed": 3,
    "uncertain": 0,
    "defects": [
     {
@@ -3105,13 +3099,15 @@
    "idx": 18,
    "seed": 1,
    "status": "done",
-   "followups": [],
-   "changed": 3,
-   "uncertain": 0,
+   "followups": [
+    "closeup"
+   ],
+   "changed": 1,
+   "uncertain": 1,
    "defects": [
     {
      "kind": "stain",
-     "hit": true
+     "hit": false
     },
     {
      "kind": "stain",
@@ -3126,7 +3122,7 @@
    "seed": 1,
    "status": "done",
    "followups": [],
-   "changed": 4,
+   "changed": 3,
    "uncertain": 0,
    "defects": [
     {
@@ -3149,7 +3145,9 @@
    "idx": 20,
    "seed": 1,
    "status": "done",
-   "followups": [],
+   "followups": [
+    "closeup"
+   ],
    "changed": 4,
    "uncertain": 0,
    "defects": [
@@ -3238,11 +3236,10 @@
    "seed": 1,
    "status": "done",
    "followups": [
-    "closeup",
-    "closeup"
+    "parallax"
    ],
    "changed": 3,
-   "uncertain": 2,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "scratch",
@@ -3280,7 +3277,9 @@
    "idx": 26,
    "seed": 1,
    "status": "done",
-   "followups": [],
+   "followups": [
+    "closeup"
+   ],
    "changed": 3,
    "uncertain": 0,
    "defects": [
@@ -3304,12 +3303,9 @@
    "idx": 27,
    "seed": 1,
    "status": "done",
-   "followups": [
-    "parallax",
-    "parallax"
-   ],
-   "changed": 3,
-   "uncertain": 1,
+   "followups": [],
+   "changed": 2,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "scratch",
@@ -3391,9 +3387,7 @@
    "idx": 31,
    "seed": 1,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
    "uncertain": 0,
    "defects": [
@@ -3507,7 +3501,7 @@
    "status": "done",
    "followups": [],
    "changed": 0,
-   "uncertain": 2,
+   "uncertain": 1,
    "defects": [
     {
      "kind": "scratch",
@@ -3558,7 +3552,7 @@
    "seed": 1,
    "status": "done",
    "followups": [],
-   "changed": 1,
+   "changed": 2,
    "uncertain": 0,
    "defects": [
     {
@@ -3567,7 +3561,7 @@
     },
     {
      "kind": "crack",
-     "hit": false
+     "hit": true
     }
    ],
    "false_changed": 0
@@ -3663,19 +3657,16 @@
    "idx": 44,
    "seed": 1,
    "status": "done",
-   "followups": [
-    "closeup",
-    "closeup"
-   ],
-   "changed": 1,
-   "uncertain": 1,
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "crack",
      "hit": false
     }
    ],
-   "false_changed": 1
+   "false_changed": 0
   },
   {
    "set": "damage",
@@ -3802,9 +3793,7 @@
    "idx": 51,
    "seed": 1,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 1,
    "uncertain": 0,
    "defects": [
@@ -3841,7 +3830,7 @@
    "seed": 1,
    "status": "done",
    "followups": [],
-   "changed": 3,
+   "changed": 4,
    "uncertain": 0,
    "defects": [
     {
@@ -4036,8 +4025,10 @@
    "idx": 63,
    "seed": 1,
    "status": "done",
-   "followups": [],
-   "changed": 1,
+   "followups": [
+    "closeup"
+   ],
+   "changed": 2,
    "uncertain": 0,
    "defects": [
     {
@@ -4098,8 +4089,10 @@
    "idx": 66,
    "seed": 1,
    "status": "done",
-   "followups": [],
-   "changed": 3,
+   "followups": [
+    "closeup"
+   ],
+   "changed": 2,
    "uncertain": 0,
    "defects": [
     {
@@ -4112,7 +4105,7 @@
     },
     {
      "kind": "stain",
-     "hit": true
+     "hit": false
     }
    ],
    "false_changed": 0
@@ -4122,7 +4115,9 @@
    "idx": 67,
    "seed": 1,
    "status": "done",
-   "followups": [],
+   "followups": [
+    "parallax"
+   ],
    "changed": 1,
    "uncertain": 0,
    "defects": [
@@ -4230,8 +4225,10 @@
    "idx": 73,
    "seed": 1,
    "status": "done",
-   "followups": [],
-   "changed": 1,
+   "followups": [
+    "closeup"
+   ],
+   "changed": 0,
    "uncertain": 0,
    "defects": [
     {
@@ -4240,7 +4237,7 @@
     },
     {
      "kind": "stain",
-     "hit": true
+     "hit": false
     }
    ],
    "false_changed": 0
@@ -4250,8 +4247,11 @@
    "idx": 74,
    "seed": 1,
    "status": "done",
-   "followups": [],
-   "changed": 3,
+   "followups": [
+    "parallax",
+    "parallax"
+   ],
+   "changed": 2,
    "uncertain": 0,
    "defects": [
     {
@@ -4260,7 +4260,7 @@
     },
     {
      "kind": "stain",
-     "hit": true
+     "hit": false
     },
     {
      "kind": "scratch",
@@ -4351,7 +4351,7 @@
    "seed": 1,
    "status": "done",
    "followups": [],
-   "changed": 2,
+   "changed": 3,
    "uncertain": 0,
    "defects": [
     {
@@ -4414,11 +4414,9 @@
    "idx": 4,
    "seed": 1,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [],
    "false_changed": 0
   },
@@ -4493,9 +4491,7 @@
    "idx": 11,
    "seed": 1,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
    "uncertain": 0,
    "defects": [],
@@ -4521,7 +4517,7 @@
     "closeup"
    ],
    "changed": 2,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [],
    "false_changed": 2
   },
@@ -4739,478 +4735,471 @@
    "idx": 3,
    "seed": 1,
    "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 4,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 5,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 6,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 7,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 8,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 9,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 10,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 11,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 12,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 13,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 14,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 0,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 1,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 2,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 3,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 4,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 5,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 6,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 7,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 8,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 9,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 10,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 11,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 12,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 13,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 14,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 0,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 1,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 2,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 3,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 1,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 1
+  },
+  {
+   "set": "shadow",
+   "idx": 4,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 5,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 6,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 7,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 8,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 9,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 10,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 11,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 12,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 13,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 14,
+   "seed": 1,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "specular",
+   "idx": 0,
+   "seed": 1,
+   "status": "done",
    "followups": [
     "parallax",
-    "parallax"
-   ],
-   "changed": 0,
-   "uncertain": 2,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 4,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 5,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 6,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 7,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 8,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 9,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 10,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 11,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 12,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 13,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 14,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 0,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 1,
-   "seed": 1,
-   "status": "done",
-   "followups": [
-    "closeup",
     "closeup"
-   ],
-   "changed": 0,
-   "uncertain": 1,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 2,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 3,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 4,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 1,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 1
-  },
-  {
-   "set": "colortemp",
-   "idx": 5,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 6,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 7,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 8,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 9,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 10,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 11,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 12,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 13,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 14,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 0,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 1,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 2,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 3,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 4,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 5,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 6,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 7,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 8,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 9,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 10,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 11,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 12,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 13,
-   "seed": 1,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 14,
-   "seed": 1,
-   "status": "done",
-   "followups": [
-    "closeup"
-   ],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "specular",
-   "idx": 0,
-   "seed": 1,
-   "status": "done",
-   "followups": [
-    "parallax"
    ],
    "changed": 0,
    "uncertain": 0,
@@ -5469,14 +5458,15 @@
    "seed": 2,
    "status": "done",
    "followups": [
-    "parallax"
+    "parallax",
+    "closeup"
    ],
-   "changed": 3,
-   "uncertain": 0,
+   "changed": 2,
+   "uncertain": 1,
    "defects": [
     {
      "kind": "crack",
-     "hit": true
+     "hit": false
     },
     {
      "kind": "scratch",
@@ -5494,9 +5484,7 @@
    "idx": 4,
    "seed": 2,
    "status": "done",
-   "followups": [
-    "parallax"
-   ],
+   "followups": [],
    "changed": 1,
    "uncertain": 0,
    "defects": [
@@ -5528,7 +5516,9 @@
    "idx": 6,
    "seed": 2,
    "status": "done",
-   "followups": [],
+   "followups": [
+    "closeup"
+   ],
    "changed": 2,
    "uncertain": 0,
    "defects": [
@@ -5663,10 +5653,10 @@
    "seed": 2,
    "status": "done",
    "followups": [
-    "closeup"
+    "parallax"
    ],
    "changed": 2,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "chip",
@@ -5749,7 +5739,7 @@
    "seed": 2,
    "status": "done",
    "followups": [],
-   "changed": 4,
+   "changed": 3,
    "uncertain": 0,
    "defects": [
     {
@@ -5772,13 +5762,15 @@
    "idx": 18,
    "seed": 2,
    "status": "done",
-   "followups": [],
-   "changed": 3,
-   "uncertain": 0,
+   "followups": [
+    "closeup"
+   ],
+   "changed": 1,
+   "uncertain": 1,
    "defects": [
     {
      "kind": "stain",
-     "hit": true
+     "hit": false
     },
     {
      "kind": "stain",
@@ -5793,7 +5785,7 @@
    "seed": 2,
    "status": "done",
    "followups": [],
-   "changed": 4,
+   "changed": 3,
    "uncertain": 0,
    "defects": [
     {
@@ -5816,7 +5808,9 @@
    "idx": 20,
    "seed": 2,
    "status": "done",
-   "followups": [],
+   "followups": [
+    "closeup"
+   ],
    "changed": 4,
    "uncertain": 0,
    "defects": [
@@ -5905,15 +5899,14 @@
    "seed": 2,
    "status": "done",
    "followups": [
-    "closeup",
-    "closeup"
+    "parallax"
    ],
-   "changed": 3,
-   "uncertain": 2,
+   "changed": 4,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "scratch",
-     "hit": false
+     "hit": true
     },
     {
      "kind": "scratch",
@@ -5947,7 +5940,9 @@
    "idx": 26,
    "seed": 2,
    "status": "done",
-   "followups": [],
+   "followups": [
+    "closeup"
+   ],
    "changed": 3,
    "uncertain": 0,
    "defects": [
@@ -5971,12 +5966,9 @@
    "idx": 27,
    "seed": 2,
    "status": "done",
-   "followups": [
-    "parallax",
-    "parallax"
-   ],
-   "changed": 3,
-   "uncertain": 1,
+   "followups": [],
+   "changed": 2,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "scratch",
@@ -6058,9 +6050,7 @@
    "idx": 31,
    "seed": 2,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
    "uncertain": 0,
    "defects": [
@@ -6174,7 +6164,7 @@
    "status": "done",
    "followups": [],
    "changed": 0,
-   "uncertain": 2,
+   "uncertain": 1,
    "defects": [
     {
      "kind": "scratch",
@@ -6225,7 +6215,7 @@
    "seed": 2,
    "status": "done",
    "followups": [],
-   "changed": 1,
+   "changed": 2,
    "uncertain": 0,
    "defects": [
     {
@@ -6234,7 +6224,7 @@
     },
     {
      "kind": "crack",
-     "hit": false
+     "hit": true
     }
    ],
    "false_changed": 0
@@ -6330,19 +6320,16 @@
    "idx": 44,
    "seed": 2,
    "status": "done",
-   "followups": [
-    "closeup",
-    "closeup"
-   ],
-   "changed": 1,
-   "uncertain": 1,
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "crack",
      "hit": false
     }
    ],
-   "false_changed": 1
+   "false_changed": 0
   },
   {
    "set": "damage",
@@ -6469,9 +6456,7 @@
    "idx": 51,
    "seed": 2,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 1,
    "uncertain": 0,
    "defects": [
@@ -6508,7 +6493,7 @@
    "seed": 2,
    "status": "done",
    "followups": [],
-   "changed": 3,
+   "changed": 4,
    "uncertain": 0,
    "defects": [
     {
@@ -6704,9 +6689,9 @@
    "seed": 2,
    "status": "done",
    "followups": [
-    "parallax"
+    "closeup"
    ],
-   "changed": 1,
+   "changed": 2,
    "uncertain": 0,
    "defects": [
     {
@@ -6767,8 +6752,10 @@
    "idx": 66,
    "seed": 2,
    "status": "done",
-   "followups": [],
-   "changed": 3,
+   "followups": [
+    "closeup"
+   ],
+   "changed": 2,
    "uncertain": 0,
    "defects": [
     {
@@ -6781,7 +6768,7 @@
     },
     {
      "kind": "stain",
-     "hit": true
+     "hit": false
     }
    ],
    "false_changed": 0
@@ -6901,8 +6888,10 @@
    "idx": 73,
    "seed": 2,
    "status": "done",
-   "followups": [],
-   "changed": 1,
+   "followups": [
+    "closeup"
+   ],
+   "changed": 0,
    "uncertain": 0,
    "defects": [
     {
@@ -6911,7 +6900,7 @@
     },
     {
      "kind": "stain",
-     "hit": true
+     "hit": false
     }
    ],
    "false_changed": 0
@@ -6921,8 +6910,11 @@
    "idx": 74,
    "seed": 2,
    "status": "done",
-   "followups": [],
-   "changed": 3,
+   "followups": [
+    "parallax",
+    "parallax"
+   ],
+   "changed": 2,
    "uncertain": 0,
    "defects": [
     {
@@ -6931,7 +6923,7 @@
     },
     {
      "kind": "stain",
-     "hit": true
+     "hit": false
     },
     {
      "kind": "scratch",
@@ -7022,7 +7014,7 @@
    "seed": 2,
    "status": "done",
    "followups": [],
-   "changed": 2,
+   "changed": 3,
    "uncertain": 0,
    "defects": [
     {
@@ -7074,9 +7066,7 @@
    "idx": 3,
    "seed": 2,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
    "uncertain": 0,
    "defects": [],
@@ -7087,12 +7077,9 @@
    "idx": 4,
    "seed": 2,
    "status": "done",
-   "followups": [
-    "closeup",
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [],
    "false_changed": 0
   },
@@ -7167,9 +7154,7 @@
    "idx": 11,
    "seed": 2,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
    "uncertain": 0,
    "defects": [],
@@ -7195,7 +7180,7 @@
     "closeup"
    ],
    "changed": 2,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [],
    "false_changed": 2
   },
@@ -7413,12 +7398,9 @@
    "idx": 3,
    "seed": 2,
    "status": "done",
-   "followups": [
-    "parallax",
-    "parallax"
-   ],
+   "followups": [],
    "changed": 0,
-   "uncertain": 2,
+   "uncertain": 0,
    "defects": [],
    "false_changed": 0
   },
@@ -7559,12 +7541,9 @@
    "idx": 1,
    "seed": 2,
    "status": "done",
-   "followups": [
-    "closeup",
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [],
    "false_changed": 0
   },
@@ -7592,6 +7571,345 @@
   },
   {
    "set": "colortemp",
+   "idx": 4,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 5,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 6,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 7,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 8,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 9,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 10,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 11,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 12,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 13,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 14,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 0,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 1,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 2,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 3,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 1,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 1
+  },
+  {
+   "set": "shadow",
+   "idx": 4,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 5,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 6,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 7,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 8,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 9,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 10,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 11,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 12,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 13,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 14,
+   "seed": 2,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "specular",
+   "idx": 0,
+   "seed": 2,
+   "status": "done",
+   "followups": [
+    "parallax",
+    "closeup"
+   ],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "specular",
+   "idx": 1,
+   "seed": 2,
+   "status": "done",
+   "followups": [
+    "parallax"
+   ],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "specular",
+   "idx": 2,
+   "seed": 2,
+   "status": "done",
+   "followups": [
+    "parallax"
+   ],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "specular",
+   "idx": 3,
+   "seed": 2,
+   "status": "done",
+   "followups": [
+    "parallax"
+   ],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "specular",
    "idx": 4,
    "seed": 2,
    "status": "done",
@@ -7602,348 +7920,6 @@
    "false_changed": 1
   },
   {
-   "set": "colortemp",
-   "idx": 5,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 6,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 7,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 8,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 9,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 10,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 11,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 12,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 13,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 14,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 0,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 1,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 2,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 3,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 4,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 5,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 6,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 7,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 8,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 9,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 10,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 11,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 12,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 13,
-   "seed": 2,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 14,
-   "seed": 2,
-   "status": "done",
-   "followups": [
-    "closeup"
-   ],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "specular",
-   "idx": 0,
-   "seed": 2,
-   "status": "done",
-   "followups": [
-    "parallax"
-   ],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "specular",
-   "idx": 1,
-   "seed": 2,
-   "status": "done",
-   "followups": [
-    "parallax"
-   ],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "specular",
-   "idx": 2,
-   "seed": 2,
-   "status": "done",
-   "followups": [
-    "parallax"
-   ],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "specular",
-   "idx": 3,
-   "seed": 2,
-   "status": "done",
-   "followups": [
-    "parallax"
-   ],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "specular",
-   "idx": 4,
-   "seed": 2,
-   "status": "done",
-   "followups": [
-    "parallax"
-   ],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
    "set": "specular",
    "idx": 5,
    "seed": 2,
@@ -8119,6 +8095,7 @@
    "seed": 3,
    "status": "done",
    "followups": [
+    "parallax",
     "parallax"
    ],
    "changed": 4,
@@ -8145,204 +8122,205 @@
    "seed": 3,
    "status": "done",
    "followups": [
-    "parallax"
-   ],
-   "changed": 3,
-   "uncertain": 0,
-   "defects": [
-    {
-     "kind": "crack",
-     "hit": true
-    },
-    {
-     "kind": "scratch",
-     "hit": true
-    },
-    {
-     "kind": "chip",
-     "hit": true
-    }
-   ],
-   "false_changed": 0
-  },
-  {
-   "set": "damage",
-   "idx": 4,
-   "seed": 3,
-   "status": "done",
-   "followups": [
-    "parallax"
-   ],
-   "changed": 1,
-   "uncertain": 0,
-   "defects": [
-    {
-     "kind": "stain",
-     "hit": true
-    }
-   ],
-   "false_changed": 0
-  },
-  {
-   "set": "damage",
-   "idx": 5,
-   "seed": 3,
-   "status": "done",
-   "followups": [],
-   "changed": 1,
-   "uncertain": 0,
-   "defects": [
-    {
-     "kind": "chip",
-     "hit": true
-    }
-   ],
-   "false_changed": 0
-  },
-  {
-   "set": "damage",
-   "idx": 6,
-   "seed": 3,
-   "status": "done",
-   "followups": [],
-   "changed": 2,
-   "uncertain": 0,
-   "defects": [
-    {
-     "kind": "crack",
-     "hit": true
-    }
-   ],
-   "false_changed": 0
-  },
-  {
-   "set": "damage",
-   "idx": 7,
-   "seed": 3,
-   "status": "done",
-   "followups": [],
-   "changed": 4,
-   "uncertain": 0,
-   "defects": [
-    {
-     "kind": "scratch",
-     "hit": true
-    },
-    {
-     "kind": "chip",
-     "hit": true
-    },
-    {
-     "kind": "chip",
-     "hit": true
-    }
-   ],
-   "false_changed": 0
-  },
-  {
-   "set": "damage",
-   "idx": 8,
-   "seed": 3,
-   "status": "done",
-   "followups": [],
-   "changed": 1,
-   "uncertain": 0,
-   "defects": [
-    {
-     "kind": "chip",
-     "hit": true
-    }
-   ],
-   "false_changed": 0
-  },
-  {
-   "set": "damage",
-   "idx": 9,
-   "seed": 3,
-   "status": "done",
-   "followups": [
-    "parallax"
-   ],
-   "changed": 2,
-   "uncertain": 0,
-   "defects": [
-    {
-     "kind": "stain",
-     "hit": true
-    },
-    {
-     "kind": "stain",
-     "hit": true
-    }
-   ],
-   "false_changed": 0
-  },
-  {
-   "set": "damage",
-   "idx": 10,
-   "seed": 3,
-   "status": "done",
-   "followups": [],
-   "changed": 2,
-   "uncertain": 0,
-   "defects": [
-    {
-     "kind": "stain",
-     "hit": true
-    },
-    {
-     "kind": "scratch",
-     "hit": true
-    }
-   ],
-   "false_changed": 0
-  },
-  {
-   "set": "damage",
-   "idx": 11,
-   "seed": 3,
-   "status": "done",
-   "followups": [],
-   "changed": 1,
-   "uncertain": 0,
-   "defects": [
-    {
-     "kind": "crack",
-     "hit": true
-    }
-   ],
-   "false_changed": 0
-  },
-  {
-   "set": "damage",
-   "idx": 12,
-   "seed": 3,
-   "status": "done",
-   "followups": [],
-   "changed": 2,
-   "uncertain": 0,
-   "defects": [
-    {
-     "kind": "chip",
-     "hit": true
-    },
-    {
-     "kind": "chip",
-     "hit": true
-    }
-   ],
-   "false_changed": 0
-  },
-  {
-   "set": "damage",
-   "idx": 13,
-   "seed": 3,
-   "status": "done",
-   "followups": [
+    "parallax",
     "closeup"
    ],
    "changed": 2,
    "uncertain": 1,
+   "defects": [
+    {
+     "kind": "crack",
+     "hit": false
+    },
+    {
+     "kind": "scratch",
+     "hit": true
+    },
+    {
+     "kind": "chip",
+     "hit": true
+    }
+   ],
+   "false_changed": 0
+  },
+  {
+   "set": "damage",
+   "idx": 4,
+   "seed": 3,
+   "status": "done",
+   "followups": [],
+   "changed": 1,
+   "uncertain": 0,
+   "defects": [
+    {
+     "kind": "stain",
+     "hit": true
+    }
+   ],
+   "false_changed": 0
+  },
+  {
+   "set": "damage",
+   "idx": 5,
+   "seed": 3,
+   "status": "done",
+   "followups": [],
+   "changed": 1,
+   "uncertain": 0,
+   "defects": [
+    {
+     "kind": "chip",
+     "hit": true
+    }
+   ],
+   "false_changed": 0
+  },
+  {
+   "set": "damage",
+   "idx": 6,
+   "seed": 3,
+   "status": "done",
+   "followups": [
+    "closeup"
+   ],
+   "changed": 2,
+   "uncertain": 0,
+   "defects": [
+    {
+     "kind": "crack",
+     "hit": true
+    }
+   ],
+   "false_changed": 0
+  },
+  {
+   "set": "damage",
+   "idx": 7,
+   "seed": 3,
+   "status": "done",
+   "followups": [],
+   "changed": 4,
+   "uncertain": 0,
+   "defects": [
+    {
+     "kind": "scratch",
+     "hit": true
+    },
+    {
+     "kind": "chip",
+     "hit": true
+    },
+    {
+     "kind": "chip",
+     "hit": true
+    }
+   ],
+   "false_changed": 0
+  },
+  {
+   "set": "damage",
+   "idx": 8,
+   "seed": 3,
+   "status": "done",
+   "followups": [],
+   "changed": 1,
+   "uncertain": 0,
+   "defects": [
+    {
+     "kind": "chip",
+     "hit": true
+    }
+   ],
+   "false_changed": 0
+  },
+  {
+   "set": "damage",
+   "idx": 9,
+   "seed": 3,
+   "status": "done",
+   "followups": [
+    "parallax"
+   ],
+   "changed": 2,
+   "uncertain": 0,
+   "defects": [
+    {
+     "kind": "stain",
+     "hit": true
+    },
+    {
+     "kind": "stain",
+     "hit": true
+    }
+   ],
+   "false_changed": 0
+  },
+  {
+   "set": "damage",
+   "idx": 10,
+   "seed": 3,
+   "status": "done",
+   "followups": [],
+   "changed": 2,
+   "uncertain": 0,
+   "defects": [
+    {
+     "kind": "stain",
+     "hit": true
+    },
+    {
+     "kind": "scratch",
+     "hit": true
+    }
+   ],
+   "false_changed": 0
+  },
+  {
+   "set": "damage",
+   "idx": 11,
+   "seed": 3,
+   "status": "done",
+   "followups": [],
+   "changed": 1,
+   "uncertain": 0,
+   "defects": [
+    {
+     "kind": "crack",
+     "hit": true
+    }
+   ],
+   "false_changed": 0
+  },
+  {
+   "set": "damage",
+   "idx": 12,
+   "seed": 3,
+   "status": "done",
+   "followups": [],
+   "changed": 2,
+   "uncertain": 0,
+   "defects": [
+    {
+     "kind": "chip",
+     "hit": true
+    },
+    {
+     "kind": "chip",
+     "hit": true
+    }
+   ],
+   "false_changed": 0
+  },
+  {
+   "set": "damage",
+   "idx": 13,
+   "seed": 3,
+   "status": "done",
+   "followups": [
+    "parallax"
+   ],
+   "changed": 2,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "chip",
@@ -8425,7 +8403,7 @@
    "seed": 3,
    "status": "done",
    "followups": [],
-   "changed": 4,
+   "changed": 3,
    "uncertain": 0,
    "defects": [
     {
@@ -8448,13 +8426,15 @@
    "idx": 18,
    "seed": 3,
    "status": "done",
-   "followups": [],
-   "changed": 3,
-   "uncertain": 0,
+   "followups": [
+    "closeup"
+   ],
+   "changed": 1,
+   "uncertain": 1,
    "defects": [
     {
      "kind": "stain",
-     "hit": true
+     "hit": false
     },
     {
      "kind": "stain",
@@ -8469,7 +8449,7 @@
    "seed": 3,
    "status": "done",
    "followups": [],
-   "changed": 4,
+   "changed": 3,
    "uncertain": 0,
    "defects": [
     {
@@ -8492,7 +8472,9 @@
    "idx": 20,
    "seed": 3,
    "status": "done",
-   "followups": [],
+   "followups": [
+    "closeup"
+   ],
    "changed": 4,
    "uncertain": 0,
    "defects": [
@@ -8581,11 +8563,10 @@
    "seed": 3,
    "status": "done",
    "followups": [
-    "closeup",
-    "closeup"
+    "parallax"
    ],
    "changed": 3,
-   "uncertain": 2,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "scratch",
@@ -8623,7 +8604,9 @@
    "idx": 26,
    "seed": 3,
    "status": "done",
-   "followups": [],
+   "followups": [
+    "closeup"
+   ],
    "changed": 3,
    "uncertain": 0,
    "defects": [
@@ -8647,12 +8630,9 @@
    "idx": 27,
    "seed": 3,
    "status": "done",
-   "followups": [
-    "parallax",
-    "parallax"
-   ],
-   "changed": 3,
-   "uncertain": 1,
+   "followups": [],
+   "changed": 2,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "scratch",
@@ -8676,7 +8656,7 @@
    "status": "done",
    "followups": [],
    "changed": 1,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "scratch",
@@ -8734,9 +8714,7 @@
    "idx": 31,
    "seed": 3,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
    "uncertain": 0,
    "defects": [
@@ -8850,7 +8828,7 @@
    "status": "done",
    "followups": [],
    "changed": 0,
-   "uncertain": 2,
+   "uncertain": 1,
    "defects": [
     {
      "kind": "scratch",
@@ -8901,7 +8879,7 @@
    "seed": 3,
    "status": "done",
    "followups": [],
-   "changed": 1,
+   "changed": 2,
    "uncertain": 0,
    "defects": [
     {
@@ -8910,7 +8888,7 @@
     },
     {
      "kind": "crack",
-     "hit": false
+     "hit": true
     }
    ],
    "false_changed": 0
@@ -9006,19 +8984,16 @@
    "idx": 44,
    "seed": 3,
    "status": "done",
-   "followups": [
-    "closeup",
-    "closeup"
-   ],
-   "changed": 1,
-   "uncertain": 1,
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "crack",
      "hit": false
     }
    ],
-   "false_changed": 1
+   "false_changed": 0
   },
   {
    "set": "damage",
@@ -9145,9 +9120,7 @@
    "idx": 51,
    "seed": 3,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 1,
    "uncertain": 0,
    "defects": [
@@ -9184,7 +9157,7 @@
    "seed": 3,
    "status": "done",
    "followups": [],
-   "changed": 3,
+   "changed": 4,
    "uncertain": 0,
    "defects": [
     {
@@ -9380,10 +9353,11 @@
    "seed": 3,
    "status": "done",
    "followups": [
-    "parallax"
+    "closeup",
+    "closeup"
    ],
-   "changed": 1,
-   "uncertain": 0,
+   "changed": 2,
+   "uncertain": 1,
    "defects": [
     {
      "kind": "scratch",
@@ -9443,8 +9417,10 @@
    "idx": 66,
    "seed": 3,
    "status": "done",
-   "followups": [],
-   "changed": 3,
+   "followups": [
+    "closeup"
+   ],
+   "changed": 2,
    "uncertain": 0,
    "defects": [
     {
@@ -9457,7 +9433,7 @@
     },
     {
      "kind": "stain",
-     "hit": true
+     "hit": false
     }
    ],
    "false_changed": 0
@@ -9467,7 +9443,9 @@
    "idx": 67,
    "seed": 3,
    "status": "done",
-   "followups": [],
+   "followups": [
+    "parallax"
+   ],
    "changed": 1,
    "uncertain": 0,
    "defects": [
@@ -9575,8 +9553,10 @@
    "idx": 73,
    "seed": 3,
    "status": "done",
-   "followups": [],
-   "changed": 1,
+   "followups": [
+    "closeup"
+   ],
+   "changed": 0,
    "uncertain": 0,
    "defects": [
     {
@@ -9585,7 +9565,7 @@
     },
     {
      "kind": "stain",
-     "hit": true
+     "hit": false
     }
    ],
    "false_changed": 0
@@ -9595,8 +9575,11 @@
    "idx": 74,
    "seed": 3,
    "status": "done",
-   "followups": [],
-   "changed": 3,
+   "followups": [
+    "parallax",
+    "parallax"
+   ],
+   "changed": 2,
    "uncertain": 0,
    "defects": [
     {
@@ -9605,7 +9588,7 @@
     },
     {
      "kind": "stain",
-     "hit": true
+     "hit": false
     },
     {
      "kind": "scratch",
@@ -9696,7 +9679,7 @@
    "seed": 3,
    "status": "done",
    "followups": [],
-   "changed": 2,
+   "changed": 3,
    "uncertain": 0,
    "defects": [
     {
@@ -9759,12 +9742,9 @@
    "idx": 4,
    "seed": 3,
    "status": "done",
-   "followups": [
-    "closeup",
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [],
    "false_changed": 0
   },
@@ -9839,9 +9819,7 @@
    "idx": 11,
    "seed": 3,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
    "uncertain": 0,
    "defects": [],
@@ -9867,7 +9845,7 @@
     "closeup"
    ],
    "changed": 2,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [],
    "false_changed": 2
   },
@@ -10085,12 +10063,9 @@
    "idx": 3,
    "seed": 3,
    "status": "done",
-   "followups": [
-    "parallax",
-    "parallax"
-   ],
+   "followups": [],
    "changed": 0,
-   "uncertain": 2,
+   "uncertain": 0,
    "defects": [],
    "false_changed": 0
   },
@@ -10231,12 +10206,9 @@
    "idx": 1,
    "seed": 3,
    "status": "done",
-   "followups": [
-    "closeup",
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [],
    "false_changed": 0
   },
@@ -10267,11 +10239,9 @@
    "idx": 4,
    "seed": 3,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [],
    "false_changed": 0
   },
@@ -10434,11 +10404,9 @@
    "idx": 4,
    "seed": 3,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [],
    "false_changed": 0
   },
@@ -10535,9 +10503,7 @@
    "idx": 13,
    "seed": 3,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
    "uncertain": 0,
    "defects": [],
@@ -10548,9 +10514,7 @@
    "idx": 14,
    "seed": 3,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
    "uncertain": 0,
    "defects": [],
@@ -10562,7 +10526,8 @@
    "seed": 3,
    "status": "done",
    "followups": [
-    "parallax"
+    "parallax",
+    "closeup"
    ],
    "changed": 0,
    "uncertain": 0,
@@ -10821,14 +10786,15 @@
    "seed": 4,
    "status": "done",
    "followups": [
-    "parallax"
+    "parallax",
+    "closeup"
    ],
-   "changed": 3,
-   "uncertain": 0,
+   "changed": 2,
+   "uncertain": 1,
    "defects": [
     {
      "kind": "crack",
-     "hit": true
+     "hit": false
     },
     {
      "kind": "scratch",
@@ -10846,9 +10812,7 @@
    "idx": 4,
    "seed": 4,
    "status": "done",
-   "followups": [
-    "parallax"
-   ],
+   "followups": [],
    "changed": 1,
    "uncertain": 0,
    "defects": [
@@ -10880,7 +10844,9 @@
    "idx": 6,
    "seed": 4,
    "status": "done",
-   "followups": [],
+   "followups": [
+    "closeup"
+   ],
    "changed": 2,
    "uncertain": 0,
    "defects": [
@@ -11015,10 +10981,10 @@
    "seed": 4,
    "status": "done",
    "followups": [
-    "closeup"
+    "parallax"
    ],
    "changed": 2,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "chip",
@@ -11101,7 +11067,7 @@
    "seed": 4,
    "status": "done",
    "followups": [],
-   "changed": 4,
+   "changed": 3,
    "uncertain": 0,
    "defects": [
     {
@@ -11124,13 +11090,15 @@
    "idx": 18,
    "seed": 4,
    "status": "done",
-   "followups": [],
-   "changed": 3,
-   "uncertain": 0,
+   "followups": [
+    "closeup"
+   ],
+   "changed": 1,
+   "uncertain": 1,
    "defects": [
     {
      "kind": "stain",
-     "hit": true
+     "hit": false
     },
     {
      "kind": "stain",
@@ -11145,7 +11113,7 @@
    "seed": 4,
    "status": "done",
    "followups": [],
-   "changed": 4,
+   "changed": 3,
    "uncertain": 0,
    "defects": [
     {
@@ -11168,7 +11136,9 @@
    "idx": 20,
    "seed": 4,
    "status": "done",
-   "followups": [],
+   "followups": [
+    "closeup"
+   ],
    "changed": 4,
    "uncertain": 0,
    "defects": [
@@ -11257,11 +11227,10 @@
    "seed": 4,
    "status": "done",
    "followups": [
-    "closeup",
-    "closeup"
+    "parallax"
    ],
    "changed": 3,
-   "uncertain": 2,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "scratch",
@@ -11299,7 +11268,9 @@
    "idx": 26,
    "seed": 4,
    "status": "done",
-   "followups": [],
+   "followups": [
+    "closeup"
+   ],
    "changed": 3,
    "uncertain": 0,
    "defects": [
@@ -11323,12 +11294,9 @@
    "idx": 27,
    "seed": 4,
    "status": "done",
-   "followups": [
-    "parallax",
-    "parallax"
-   ],
-   "changed": 3,
-   "uncertain": 1,
+   "followups": [],
+   "changed": 2,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "scratch",
@@ -11410,9 +11378,7 @@
    "idx": 31,
    "seed": 4,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
    "uncertain": 0,
    "defects": [
@@ -11526,7 +11492,7 @@
    "status": "done",
    "followups": [],
    "changed": 0,
-   "uncertain": 2,
+   "uncertain": 1,
    "defects": [
     {
      "kind": "scratch",
@@ -11577,7 +11543,7 @@
    "seed": 4,
    "status": "done",
    "followups": [],
-   "changed": 1,
+   "changed": 2,
    "uncertain": 0,
    "defects": [
     {
@@ -11586,7 +11552,7 @@
     },
     {
      "kind": "crack",
-     "hit": false
+     "hit": true
     }
    ],
    "false_changed": 0
@@ -11682,19 +11648,16 @@
    "idx": 44,
    "seed": 4,
    "status": "done",
-   "followups": [
-    "closeup",
-    "closeup"
-   ],
-   "changed": 1,
-   "uncertain": 1,
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
    "defects": [
     {
      "kind": "crack",
      "hit": false
     }
    ],
-   "false_changed": 1
+   "false_changed": 0
   },
   {
    "set": "damage",
@@ -11821,9 +11784,7 @@
    "idx": 51,
    "seed": 4,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 1,
    "uncertain": 0,
    "defects": [
@@ -11860,7 +11821,7 @@
    "seed": 4,
    "status": "done",
    "followups": [],
-   "changed": 3,
+   "changed": 4,
    "uncertain": 0,
    "defects": [
     {
@@ -12056,9 +12017,9 @@
    "seed": 4,
    "status": "done",
    "followups": [
-    "parallax"
+    "closeup"
    ],
-   "changed": 1,
+   "changed": 2,
    "uncertain": 0,
    "defects": [
     {
@@ -12119,8 +12080,10 @@
    "idx": 66,
    "seed": 4,
    "status": "done",
-   "followups": [],
-   "changed": 3,
+   "followups": [
+    "closeup"
+   ],
+   "changed": 2,
    "uncertain": 0,
    "defects": [
     {
@@ -12133,7 +12096,7 @@
     },
     {
      "kind": "stain",
-     "hit": true
+     "hit": false
     }
    ],
    "false_changed": 0
@@ -12143,7 +12106,9 @@
    "idx": 67,
    "seed": 4,
    "status": "done",
-   "followups": [],
+   "followups": [
+    "parallax"
+   ],
    "changed": 1,
    "uncertain": 0,
    "defects": [
@@ -12251,8 +12216,10 @@
    "idx": 73,
    "seed": 4,
    "status": "done",
-   "followups": [],
-   "changed": 1,
+   "followups": [
+    "closeup"
+   ],
+   "changed": 0,
    "uncertain": 0,
    "defects": [
     {
@@ -12261,7 +12228,7 @@
     },
     {
      "kind": "stain",
-     "hit": true
+     "hit": false
     }
    ],
    "false_changed": 0
@@ -12271,8 +12238,11 @@
    "idx": 74,
    "seed": 4,
    "status": "done",
-   "followups": [],
-   "changed": 3,
+   "followups": [
+    "parallax",
+    "parallax"
+   ],
+   "changed": 2,
    "uncertain": 0,
    "defects": [
     {
@@ -12281,7 +12251,7 @@
     },
     {
      "kind": "stain",
-     "hit": true
+     "hit": false
     },
     {
      "kind": "scratch",
@@ -12372,7 +12342,7 @@
    "seed": 4,
    "status": "done",
    "followups": [],
-   "changed": 2,
+   "changed": 3,
    "uncertain": 0,
    "defects": [
     {
@@ -12424,9 +12394,7 @@
    "idx": 3,
    "seed": 4,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
    "uncertain": 0,
    "defects": [],
@@ -12437,12 +12405,9 @@
    "idx": 4,
    "seed": 4,
    "status": "done",
-   "followups": [
-    "closeup",
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [],
    "false_changed": 0
   },
@@ -12517,9 +12482,7 @@
    "idx": 11,
    "seed": 4,
    "status": "done",
-   "followups": [
-    "closeup"
-   ],
+   "followups": [],
    "changed": 0,
    "uncertain": 0,
    "defects": [],
@@ -12545,7 +12508,7 @@
     "closeup"
    ],
    "changed": 2,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [],
    "false_changed": 2
   },
@@ -12763,185 +12726,518 @@
    "idx": 3,
    "seed": 4,
    "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 4,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 5,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 6,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 7,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 8,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 9,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 10,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 11,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 12,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 13,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "exposure",
+   "idx": 14,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 0,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 1,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 2,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 3,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 4,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 5,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 6,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 7,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 8,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 9,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 10,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 11,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 12,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 13,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "colortemp",
+   "idx": 14,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 0,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 1,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 2,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 3,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 4,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 5,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 6,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 7,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 8,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 9,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 10,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 11,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 12,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 13,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "shadow",
+   "idx": 14,
+   "seed": 4,
+   "status": "done",
+   "followups": [],
+   "changed": 0,
+   "uncertain": 0,
+   "defects": [],
+   "false_changed": 0
+  },
+  {
+   "set": "specular",
+   "idx": 0,
+   "seed": 4,
+   "status": "done",
    "followups": [
     "parallax",
     "closeup"
    ],
-   "changed": 1,
-   "uncertain": 1,
-   "defects": [],
-   "false_changed": 1
-  },
-  {
-   "set": "exposure",
-   "idx": 4,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
    "changed": 0,
    "uncertain": 0,
    "defects": [],
    "false_changed": 0
   },
   {
-   "set": "exposure",
-   "idx": 5,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 6,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 7,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 8,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 9,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 10,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 11,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 12,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 13,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "exposure",
-   "idx": 14,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 0,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
+   "set": "specular",
    "idx": 1,
    "seed": 4,
    "status": "done",
    "followups": [
-    "closeup",
-    "closeup"
+    "parallax"
    ],
    "changed": 0,
-   "uncertain": 1,
+   "uncertain": 0,
    "defects": [],
    "false_changed": 0
   },
   {
-   "set": "colortemp",
+   "set": "specular",
    "idx": 2,
    "seed": 4,
    "status": "done",
-   "followups": [],
+   "followups": [
+    "parallax"
+   ],
    "changed": 0,
    "uncertain": 0,
    "defects": [],
    "false_changed": 0
   },
   {
-   "set": "colortemp",
+   "set": "specular",
    "idx": 3,
    "seed": 4,
    "status": "done",
-   "followups": [],
+   "followups": [
+    "parallax"
+   ],
    "changed": 0,
    "uncertain": 0,
    "defects": [],
    "false_changed": 0
   },
   {
-   "set": "colortemp",
+   "set": "specular",
    "idx": 4,
    "seed": 4,
    "status": "done",
@@ -12950,348 +13246,6 @@
    "uncertain": 0,
    "defects": [],
    "false_changed": 1
-  },
-  {
-   "set": "colortemp",
-   "idx": 5,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 6,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 7,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 8,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 9,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 10,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 11,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 12,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 13,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "colortemp",
-   "idx": 14,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 0,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 1,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 2,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 3,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 4,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 5,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 6,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 7,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 8,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 9,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 10,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 11,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 12,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 13,
-   "seed": 4,
-   "status": "done",
-   "followups": [],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "shadow",
-   "idx": 14,
-   "seed": 4,
-   "status": "done",
-   "followups": [
-    "closeup"
-   ],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "specular",
-   "idx": 0,
-   "seed": 4,
-   "status": "done",
-   "followups": [
-    "parallax"
-   ],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "specular",
-   "idx": 1,
-   "seed": 4,
-   "status": "done",
-   "followups": [
-    "parallax"
-   ],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "specular",
-   "idx": 2,
-   "seed": 4,
-   "status": "done",
-   "followups": [
-    "parallax"
-   ],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "specular",
-   "idx": 3,
-   "seed": 4,
-   "status": "done",
-   "followups": [
-    "parallax"
-   ],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
-  },
-  {
-   "set": "specular",
-   "idx": 4,
-   "seed": 4,
-   "status": "done",
-   "followups": [
-    "parallax"
-   ],
-   "changed": 0,
-   "uncertain": 0,
-   "defects": [],
-   "false_changed": 0
   },
   {
    "set": "specular",

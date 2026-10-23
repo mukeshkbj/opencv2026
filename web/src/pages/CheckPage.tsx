@@ -69,11 +69,17 @@ function Findings({ findings, active, setActive, view }: { findings: Finding[]; 
             <strong>{findingTitle(f)}</strong>
           </div>
           {(f.verdict === "changed" || f.verdict === "uncertain") && <CropPair box={f.box} view={view} />}
-          <ul className="evidence">
-            {f.evidence.map((e, k) => (
-              <li key={k}>{e}</li>
-            ))}
-          </ul>
+          {f.evidence.length > 0 && <p className="evidence-lead">{f.evidence[f.evidence.length - 1]}</p>}
+          {f.evidence.length > 1 && (
+            <details className="evidence">
+              <summary>How it decided</summary>
+              <ol>
+                {f.evidence.map((e, k) => (
+                  <li key={k}>{e}</li>
+                ))}
+              </ol>
+            </details>
+          )}
         </li>
       ))}
     </ul>

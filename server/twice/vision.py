@@ -229,8 +229,9 @@ def _lnorm(x: np.ndarray, sigma: float = 12) -> np.ndarray:
     return (x - mu) / sd
 
 
-def compare(before: Keyframe, after: Keyframe, z_thresh: float = 9.0, min_area: int = 40) -> Comparison:
-    """Register `after` onto `before` and return the regions that physically changed."""
+def compare(before: Keyframe, after: Keyframe, z_thresh: float = 9.0, min_area: int = 40, shift: int = 0) -> Comparison:
+    """Register `after` onto `before` and return the regions that physically changed.
+    `shift` is the misalignment in pixels that the difference ignores. Follow-up shots move the camera on purpose, so they use 1."""
     H, inliers = match(after, before)
     if H is None:
         return Comparison(False, "no_registration", inliers)
@@ -264,9 +265,9 @@ def compare(before: Keyframe, after: Keyframe, z_thresh: float = 9.0, min_area: 
     la = lab_a[..., 0]
 
     sb, sa = cv2.GaussianBlur(lb, (0, 0), 1.0), cv2.GaussianBlur(la, (0, 0), 1.0)
-    structure = cv2.GaussianBlur(_tolerant_diff(_lnorm(sb), _lnorm(sa)), (0, 0), 1.2)
+    structure = cv2.GaussianBlur(_tolerant_diff(_lnorm(sb), _lnorm(sa), shift), (0, 0), 1.2)
     gain = cv2.GaussianBlur(sa + 4, (0, 0), 30) / cv2.GaussianBlur(sb + 4, (0, 0), 30)
-    absolute = _tolerant_diff(sb * gain, sa)
+    absolute = _tolerant_diff(sb * gain, sa, shift)
     chroma = np.linalg.norm(lab_a[..., 1:] - lab_b[..., 1:], axis=2)
     chroma = cv2.GaussianBlur(chroma, (0, 0), 2)
     clipped = ((lb > 248) | (la > 248) | ((lb < 6) & (la < 6))).astype(np.uint8)
@@ -388,7 +389,7 @@ def _brightening(lb: np.ndarray, la: np.ndarray, x: int, y: int, w: int, h: int)
     ring = (slice(max(0, y - pad), min(H, y + h + pad)), slice(max(0, x - pad), min(W, x + w + pad)))
     g = float(np.median(la[ring]) + 4) / float(np.median(lb[ring]) + 4)
     a, b = la[y:y + h, x:x + w] / g, lb[y:y + h, x:x + w]
-    return float((a > 250).mean() - (b > 250).mean())
+    return float(((a > 250) | (la[y:y + h, x:x + w] > 253)).mean() - (b > 250).mean())
 
 
 def _veil(lb: np.ndarray, la: np.ndarray, x: int, y: int, w: int, h: int) -> float:

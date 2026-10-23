@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export interface Mark {
   box: [number, number, number, number];
@@ -63,7 +63,10 @@ interface WipeProps {
 
 export default function Wipe({ before, after, ratio, marks = [], heat, showHeat, active, labels = ["Before", "After"] }: WipeProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [pos, setPos] = useState(0.5);
+  const lefts = marks.filter((m) => m.verdict === "changed").map((m) => m.box[0]);
+  const start = lefts.length ? Math.min(0.5, Math.max(0.08, Math.min(...lefts) - 0.04)) : 0.5;
+  const [pos, setPos] = useState(start);
+  useEffect(() => setPos(start), [start]);
   const [loupe, setLoupe] = useState<{ x: number; y: number } | null>(null);
 
   const fromEvent = useCallback((clientX: number, clientY: number) => {

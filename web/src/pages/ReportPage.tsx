@@ -142,7 +142,10 @@ export default function ReportPage({ id }: { id: string }) {
                           {f.caption || (f.verdict === "lighting" ? (f.kind === "glare" ? "Reflection" : "Shadow or light change") : f.kind === "object" ? "Object added, moved or removed" : "Surface change")}
                           {(f.verdict === "changed" || f.verdict === "uncertain") && <CropPair box={f.box} view={view} />}
                         </td>
-                        <td className="ev">{f.evidence.join(". ")}</td>
+                        <td className="ev">
+                          <strong>{f.evidence[f.evidence.length - 1]}</strong>
+                          {f.evidence.length > 1 && <span> {f.evidence.slice(0, -1).join(". ")}</span>}
+                        </td>
                       </tr>
                     ))}
                   </tbody>

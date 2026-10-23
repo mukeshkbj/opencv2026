@@ -90,7 +90,7 @@ class Agent:
             here = lambda ds, name=None: [d for d in ds if _covers(d.box, f.box) and name in (None, d.name)]
             if here(after, "person") and not here(before, "person"):
                 f.verdict = "uncertain"
-                f.evidence.append("a person is in the move-out photo here: retake without people")
+                f.evidence.append("A person is in the move-out photo here: retake it without people")
                 self.log("object_check", f"{f.id}: person in frame", "mark cannot judge")
                 continue
             if f.verdict != "changed":
@@ -101,7 +101,7 @@ class Agent:
                 d = (gone or new)[0]
                 f.kind = "object"
                 f.caption = f"{d.name.capitalize()} missing" if gone else f"New {d.name}"
-                f.evidence.append(f"detector saw a {d.name} ({d.conf:.2f}) only in the move-{'in' if gone else 'out'} photo")
+                f.evidence.append(f"The detector saw a {d.name} ({d.conf:.2f}) only in the move-{'in' if gone else 'out'} photo")
                 self.log("object_check", f"{f.id}: {d.name} {'gone' if gone else 'added'}", "label the finding")
 
     def _finding(self, i: int, r: Region) -> Finding:
@@ -114,32 +114,32 @@ class Agent:
             if m["structure"] == 0:
                 f.evidence.append(f"{abs(m['brightening']):.0%} {'brighter' if m['brightening'] > 0 else 'darker'}, texture unchanged: a shadow or a light")
             else:
-                f.evidence.append(f"smooth light field explains {m['illumination']:.0%} of the change, chroma shift z={m['chroma']:.1f}")
+                f.evidence.append(f"A smooth change of light explains {m['illumination']:.0%} of the difference (colour z={m['chroma']:.1f})")
             self.log("relight_check", f"{f.id}: lighting only", "rule out")
             return
         area_frac = _area_frac(f, res.before.shape)
         if abs(m["brightening"]) > 0.05 or m["veil"] > 0.3:
             f.kind = "glare?"
             if abs(m["brightening"]) > 0.05:
-                f.evidence.append(f"{abs(m['brightening']):.0%} of the region {'turned' if m['brightening'] > 0 else 'stopped being'} near white: possible reflection")
+                f.evidence.append(f"{abs(m['brightening']):.0%} of the area {'turned' if m['brightening'] > 0 else 'stopped being'} near white: possibly a reflection")
                 self.log("glare_check", f"{f.id}: specular change {m['brightening']:+.0%}", "needs a parallax shot")
             else:
-                f.evidence.append(f"the surface lightened like a veil of glare (fit {m['veil']:.0%}): possible reflection")
+                f.evidence.append(f"The surface lightened like a veil of glare (fit {m['veil']:.0%}): possibly a reflection")
                 self.log("glare_check", f"{f.id}: glare-like veil, fit {m['veil']:.0%}", "needs a parallax shot")
             return
         if m["illumination"] > 0.8 and m["chroma"] < 4:
-            f.evidence.append(f"soft edges like a shadow, but colour shifted (z={m['chroma']:.1f})")
+            f.evidence.append(f"Soft edges like a shadow, but the colour shifted (colour z={m['chroma']:.1f})")
             self.log("relight_check", f"{f.id}: soft change with colour shift", "needs a close-up")
             return
         f.kind = _kind(f, area_frac)
         f.verdict = "changed"
         strength = "strong" if m["score"] >= 40 else "clear" if m["score"] >= 18 else "weak"
         what = "texture and colour" if min(m["structure"], m["chroma"]) >= 4 else "colour" if m["chroma"] > m["structure"] else "texture"
-        f.evidence.append(f"{strength} change in {what} "
-                          f"(structure z={m['structure']:.1f}, colour z={m['chroma']:.1f}, peak z={m['score']:.1f})")
+        f.evidence.append(f"measured: structure z={m['structure']:.1f}, colour z={m['chroma']:.1f}, peak z={m['score']:.1f}")
+        f.evidence.append(f"A {strength} change in {what} that light, exposure and small shifts do not explain")
         if area_frac < 0.0015 and m["score"] < 18:
             f.verdict = "pending"
-            f.evidence.append("small and weak: a close-up will confirm it")
+            f.evidence.append("Small and weak: a close-up photo will confirm it")
             self.log("size_check", f"{f.id}: {area_frac:.2%} of view, peak z={m['score']:.1f}", "needs a close-up")
             return
         self.log("classify", f"{f.id}: {f.kind} change", "report")
@@ -151,7 +151,7 @@ class Agent:
                 continue
             if self.s.followups_used >= FOLLOWUP_BUDGET:
                 f.verdict = "uncertain"
-                f.evidence.append("follow-up budget used: left for a human to judge")
+                f.evidence.append("No follow-up photos left: a person should judge this one")
                 self.log("budget", f"{f.id}: no follow-ups left", "mark cannot judge")
                 continue
             parallax = f.kind == "glare?"
@@ -176,39 +176,39 @@ class Agent:
         f = next(x for x in self.s.findings if x.id == req.finding)
         self.s.followups_used += 1
         if req.kind == "parallax":
-            res = compare(before, Keyframe.build(image))
+            res = compare(before, Keyframe.build(image), shift=1)
             if not res.ok:
                 f.verdict = "uncertain"
-                f.evidence.append(f"parallax shot failed to register ({res.reason})")
+                f.evidence.append(f"The side-step photo did not line up ({res.reason})")
                 self.log("compare_followup", f"{f.id}: parallax shot did not register", "mark cannot judge")
             elif _persists(f.box, res.regions):
                 f.verdict, f.kind = "changed", _kind(f, _area_frac(f, before.image.shape))
-                f.evidence.append("change stayed fixed to the surface when the camera moved")
+                f.evidence.append("The mark stayed on the surface when the camera moved, so it is not a reflection")
                 self.log("compare_followup", f"{f.id}: persists under parallax", f"report as {f.kind} change")
             else:
                 f.verdict, f.kind = "lighting", "glare"
-                f.evidence.append("change vanished when the camera moved: a reflection")
+                f.evidence.append("The mark moved away when the camera moved: a reflection, not damage")
                 self.log("compare_followup", f"{f.id}: vanished under parallax", "rule out as glare")
         else:
             crop, offset = _crop_around(before.image, f.box)
             up = min(2.0, 800 / max(crop.shape[:2]))
             if up > 1:
                 crop = cv2.resize(crop, None, fx=up, fy=up, interpolation=cv2.INTER_CUBIC)
-            res = compare(Keyframe.build(crop), Keyframe.build(image))
+            res = compare(Keyframe.build(crop), Keyframe.build(image), shift=1)
             if not res.ok:
                 f.verdict = "uncertain"
-                f.evidence.append(f"close-up did not match the area ({res.reason})")
+                f.evidence.append(f"The close-up photo did not match the area ({res.reason})")
                 self.log("compare_followup", f"{f.id}: close-up did not register", "mark cannot judge")
             else:
                 scale = res.before.shape[1] / crop.shape[1] * max(up, 1)
                 local = [round(v * scale) for v in (f.box[0] - offset[0], f.box[1] - offset[1], f.box[2], f.box[3])]
                 if _persists(local, res.regions):
                     f.verdict = "changed"
-                    f.evidence.append("close-up confirms the change at higher detail")
+                    f.evidence.append("The close-up photo shows the same change in more detail")
                     self.log("compare_followup", f"{f.id}: confirmed in close-up", "report")
                 else:
                     f.verdict, f.kind = "unchanged", "noise"
-                    f.evidence.append("close-up shows no change: first detection was noise")
+                    f.evidence.append("The close-up photo shows no change: the first reading was noise")
                     self.log("compare_followup", f"{f.id}: not present in close-up", "rule out")
         self._plan()
 

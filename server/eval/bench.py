@@ -308,6 +308,7 @@ class _NoClahe:
 ABLATIONS = {
     "full": {},
     "plain_abs_diff": {"_tolerant_diff": lambda a, b, r=1: np.abs(a - b)},
+    "tolerant_first_pass": {"_tolerant_diff": lambda a, b, r=0, _t=vision._tolerant_diff: _t(a, b, 1)},
     "no_local_norm": {"_lnorm": lambda x, sigma=12: x},
     "no_flow_refine": {"cv2": _Cv2Proxy(drop_flow=True)},
     "no_clahe": {"_clahe": _NoClahe()},
