@@ -46,7 +46,7 @@ The agent is a rule planner with a budget of two follow-up photos per spot. Each
 
 ### Evidence
 
-Every photo is hashed with SHA-256 on arrival. The move-in set is sealed with a signed manifest before any move-out photo exists. The final report is a second signed manifest over all photos, findings and agent traces. On AWS the signer is an asymmetric KMS key (ECDSA P-256), and the photos sit in an S3 bucket with Object Lock. `GET /api/checks/{id}/verify` re-hashes every stored file and checks both signatures against the published public key.
+Every photo is hashed with SHA-256 on arrival. The move-in set is sealed with a signed manifest before any move-out photo exists. The final report is a second signed manifest over all photos, findings and agent traces. On AWS the signer is an asymmetric KMS key (ECDSA P-256), and the photos sit in an S3 bucket with Object Lock. `GET /api/checks/{id}/verify` re-hashes every stored file and checks both signatures against the published public key. The report also offers an evidence bundle: a zip with the photos, the seals, the public key and `verify.py`. Anyone can run `python verify.py` on it without the Twice server.
 
 ## Evaluation
 
@@ -91,10 +91,12 @@ docker run -p 8000:8000 twice
 ```bash
 cd server && ../.venv/bin/python -m pytest -q tests
 python eval/synth.py <folder of photos> 40           # synthetic benchmark
-python eval/bench.py                                  # full evaluation, see docs/evaluation.md
+python eval/bench.py                                  # engine level, see docs/evaluation.md
+python eval/agent_bench.py                            # agent level, with follow-up photos
+python eval/real_bench.py                             # real photos, false alarms only
 ```
 
-The tests run the full sample flow through the API: seal, three move-out photos, follow-ups, signed report, verification, and a tamper test that edits a stored photo and expects verification to fail.
+The tests run the full sample flow through the API: seal, three move-out photos, follow-ups, signed report, verification, tamper tests that edit a stored photo or a signed record and expect verification to fail, and an offline check of the evidence bundle.
 
 ## Deploy to AWS
 

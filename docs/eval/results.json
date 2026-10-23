@@ -29,42 +29,42 @@
  "latency": {
   "bench_924px_threads32": {
    "pairs": 30,
-   "build_ms_median": 126.0,
-   "compare_ms_median": 682.7,
-   "total_s_median": 0.915,
-   "total_s_p95": 1.253
+   "build_ms_median": 95.7,
+   "compare_ms_median": 678.6,
+   "total_s_median": 0.856,
+   "total_s_p95": 1.063
   },
   "phone_4032px_threads32": {
    "pairs": 12,
-   "build_ms_median": 135.9,
-   "compare_ms_median": 755.7,
-   "total_s_median": 1.036,
-   "total_s_p95": 1.238
+   "build_ms_median": 123.1,
+   "compare_ms_median": 878.9,
+   "total_s_median": 1.114,
+   "total_s_p95": 1.293
   },
   "bench_924px_threads1": {
    "pairs": 30,
-   "build_ms_median": 426.7,
-   "compare_ms_median": 847.7,
-   "total_s_median": 1.715,
-   "total_s_p95": 3.2
+   "build_ms_median": 363.1,
+   "compare_ms_median": 789.7,
+   "total_s_median": 1.6,
+   "total_s_p95": 1.947
   },
   "phone_4032px_threads1": {
    "pairs": 12,
-   "build_ms_median": 797.8,
-   "compare_ms_median": 1191.7,
-   "total_s_median": 2.834,
-   "total_s_p95": 3.962
+   "build_ms_median": 504.2,
+   "compare_ms_median": 1065.7,
+   "total_s_median": 2.26,
+   "total_s_p95": 2.473
   }
  },
  "synth_reference": {
   "trials": 40,
   "registration_failures": 0,
-  "recall": 0.912,
-  "precision": 0.839,
-  "false_positives_per_pair": 0.35,
-  "false_positives_in_shadow_pairs": 3,
+  "recall": 0.938,
+  "precision": 0.872,
+  "false_positives_per_pair": 0.28,
+  "false_positives_in_shadow_pairs": 0,
   "recall_by_kind": {
-   "scratch": 0.909,
+   "scratch": 1.0,
    "stain": 0.889,
    "chip": 1.0,
    "crack": 0.864
@@ -75,29 +75,29 @@
    "damage_pairs": 80,
    "defects": 162,
    "damage_registration_failures": 0,
-   "recall": 0.858,
-   "precision": 0.88,
-   "fp_per_pair": 0.24,
+   "recall": 0.914,
+   "precision": 0.931,
+   "fp_per_pair": 0.14,
    "fp_in_shadow_pairs": 4,
    "shadow_pairs": 39,
    "nochange_pairs": 30,
-   "nochange_false_alarm_rate": 0.167,
-   "nochange_flags_per_pair": 0.27,
+   "nochange_false_alarm_rate": 0.1,
+   "nochange_flags_per_pair": 0.17,
    "nochange_registration_failures": 0,
    "lighting_pairs": 60,
-   "lighting_false_alarm_rate": 0.45,
-   "lighting_flags_per_pair": 0.95,
+   "lighting_false_alarm_rate": 0.333,
+   "lighting_flags_per_pair": 0.4,
    "lighting_registration_failures": 0,
    "lighting_by_kind": {
     "exposure": {
      "pairs": 15,
-     "false_alarm_rate": 0.467,
-     "flags": 26
+     "false_alarm_rate": 0.067,
+     "flags": 4
     },
     "colortemp": {
      "pairs": 15,
-     "false_alarm_rate": 0.2,
-     "flags": 4
+     "false_alarm_rate": 0.133,
+     "flags": 3
     },
     "shadow": {
      "pairs": 15,
@@ -107,38 +107,38 @@
     "specular": {
      "pairs": 15,
      "false_alarm_rate": 1.0,
-     "flags": 25
+     "flags": 15
     }
    },
-   "seconds": 701.3
+   "seconds": 354.0
   },
   "plain_abs_diff": {
    "damage_pairs": 80,
    "defects": 162,
    "damage_registration_failures": 0,
-   "recall": 0.864,
-   "precision": 0.946,
-   "fp_per_pair": 0.1,
-   "fp_in_shadow_pairs": 2,
+   "recall": 0.907,
+   "precision": 0.993,
+   "fp_per_pair": 0.01,
+   "fp_in_shadow_pairs": 0,
    "shadow_pairs": 39,
    "nochange_pairs": 30,
-   "nochange_false_alarm_rate": 0.1,
-   "nochange_flags_per_pair": 0.13,
+   "nochange_false_alarm_rate": 0.033,
+   "nochange_flags_per_pair": 0.1,
    "nochange_registration_failures": 0,
    "lighting_pairs": 60,
-   "lighting_false_alarm_rate": 0.367,
-   "lighting_flags_per_pair": 0.73,
+   "lighting_false_alarm_rate": 0.25,
+   "lighting_flags_per_pair": 0.27,
    "lighting_registration_failures": 0,
    "lighting_by_kind": {
     "exposure": {
      "pairs": 15,
-     "false_alarm_rate": 0.4,
-     "flags": 16
+     "false_alarm_rate": 0.0,
+     "flags": 0
     },
     "colortemp": {
      "pairs": 15,
-     "false_alarm_rate": 0.067,
-     "flags": 1
+     "false_alarm_rate": 0.0,
+     "flags": 0
     },
     "shadow": {
      "pairs": 15,
@@ -148,16 +148,16 @@
     "specular": {
      "pairs": 15,
      "false_alarm_rate": 1.0,
-     "flags": 27
+     "flags": 16
     }
    },
-   "seconds": 678.8
+   "seconds": 347.0
   },
   "no_local_norm": {
    "damage_pairs": 80,
    "defects": 162,
    "damage_registration_failures": 0,
-   "recall": 0.21,
+   "recall": 0.216,
    "precision": 1.0,
    "fp_per_pair": 0.0,
    "fp_in_shadow_pairs": 0,
@@ -168,7 +168,7 @@
    "nochange_registration_failures": 0,
    "lighting_pairs": 60,
    "lighting_false_alarm_rate": 0.25,
-   "lighting_flags_per_pair": 0.4,
+   "lighting_flags_per_pair": 0.25,
    "lighting_registration_failures": 0,
    "lighting_by_kind": {
     "exposure": {
@@ -189,38 +189,38 @@
     "specular": {
      "pairs": 15,
      "false_alarm_rate": 0.933,
-     "flags": 23
+     "flags": 14
     }
    },
-   "seconds": 637.1
+   "seconds": 334.1
   },
   "no_flow_refine": {
    "damage_pairs": 80,
    "defects": 162,
    "damage_registration_failures": 0,
-   "recall": 0.864,
-   "precision": 0.886,
-   "fp_per_pair": 0.23,
-   "fp_in_shadow_pairs": 6,
+   "recall": 0.914,
+   "precision": 0.955,
+   "fp_per_pair": 0.09,
+   "fp_in_shadow_pairs": 2,
    "shadow_pairs": 39,
    "nochange_pairs": 30,
    "nochange_false_alarm_rate": 0.133,
-   "nochange_flags_per_pair": 0.23,
+   "nochange_flags_per_pair": 0.2,
    "nochange_registration_failures": 0,
    "lighting_pairs": 60,
-   "lighting_false_alarm_rate": 0.45,
-   "lighting_flags_per_pair": 0.9,
+   "lighting_false_alarm_rate": 0.317,
+   "lighting_flags_per_pair": 0.37,
    "lighting_registration_failures": 0,
    "lighting_by_kind": {
     "exposure": {
      "pairs": 15,
-     "false_alarm_rate": 0.467,
-     "flags": 22
+     "false_alarm_rate": 0.067,
+     "flags": 3
     },
     "colortemp": {
      "pairs": 15,
-     "false_alarm_rate": 0.267,
-     "flags": 6
+     "false_alarm_rate": 0.133,
+     "flags": 3
     },
     "shadow": {
      "pairs": 15,
@@ -230,10 +230,10 @@
     "specular": {
      "pairs": 15,
      "false_alarm_rate": 1.0,
-     "flags": 25
+     "flags": 15
     }
    },
-   "seconds": 579.8,
+   "seconds": 328.3,
    "patched_calls": {
     "cv2": 170
    }
@@ -242,29 +242,29 @@
    "damage_pairs": 80,
    "defects": 162,
    "damage_registration_failures": 0,
-   "recall": 0.858,
-   "precision": 0.863,
-   "fp_per_pair": 0.28,
-   "fp_in_shadow_pairs": 6,
+   "recall": 0.907,
+   "precision": 0.942,
+   "fp_per_pair": 0.11,
+   "fp_in_shadow_pairs": 4,
    "shadow_pairs": 39,
    "nochange_pairs": 30,
-   "nochange_false_alarm_rate": 0.167,
-   "nochange_flags_per_pair": 0.27,
+   "nochange_false_alarm_rate": 0.133,
+   "nochange_flags_per_pair": 0.23,
    "nochange_registration_failures": 0,
    "lighting_pairs": 60,
-   "lighting_false_alarm_rate": 0.45,
-   "lighting_flags_per_pair": 0.95,
+   "lighting_false_alarm_rate": 0.317,
+   "lighting_flags_per_pair": 0.42,
    "lighting_registration_failures": 0,
    "lighting_by_kind": {
     "exposure": {
      "pairs": 15,
-     "false_alarm_rate": 0.467,
-     "flags": 24
+     "false_alarm_rate": 0.067,
+     "flags": 5
     },
     "colortemp": {
      "pairs": 15,
-     "false_alarm_rate": 0.267,
-     "flags": 6
+     "false_alarm_rate": 0.133,
+     "flags": 3
     },
     "shadow": {
      "pairs": 15,
@@ -274,38 +274,38 @@
     "specular": {
      "pairs": 15,
      "false_alarm_rate": 1.0,
-     "flags": 26
+     "flags": 16
     }
    },
-   "seconds": 652.6
+   "seconds": 340.6
   },
   "no_clipped_mask": {
    "damage_pairs": 80,
    "defects": 162,
    "damage_registration_failures": 0,
-   "recall": 0.864,
-   "precision": 0.875,
-   "fp_per_pair": 0.25,
+   "recall": 0.92,
+   "precision": 0.925,
+   "fp_per_pair": 0.15,
    "fp_in_shadow_pairs": 5,
    "shadow_pairs": 39,
    "nochange_pairs": 30,
-   "nochange_false_alarm_rate": 0.167,
-   "nochange_flags_per_pair": 0.33,
+   "nochange_false_alarm_rate": 0.1,
+   "nochange_flags_per_pair": 0.23,
    "nochange_registration_failures": 0,
    "lighting_pairs": 60,
-   "lighting_false_alarm_rate": 0.45,
-   "lighting_flags_per_pair": 0.93,
+   "lighting_false_alarm_rate": 0.333,
+   "lighting_flags_per_pair": 0.4,
    "lighting_registration_failures": 0,
    "lighting_by_kind": {
     "exposure": {
      "pairs": 15,
-     "false_alarm_rate": 0.467,
-     "flags": 21
+     "false_alarm_rate": 0.067,
+     "flags": 1
     },
     "colortemp": {
      "pairs": 15,
-     "false_alarm_rate": 0.267,
-     "flags": 9
+     "false_alarm_rate": 0.2,
+     "flags": 7
     },
     "shadow": {
      "pairs": 15,
@@ -315,10 +315,10 @@
     "specular": {
      "pairs": 15,
      "false_alarm_rate": 1.0,
-     "flags": 25
+     "flags": 15
     }
    },
-   "seconds": 700.4,
+   "seconds": 354.4,
    "patched_calls": {
     "cv2": 170
    }
@@ -327,111 +327,111 @@
    "damage_pairs": 80,
    "defects": 162,
    "damage_registration_failures": 0,
-   "recall": 0.907,
-   "precision": 0.812,
-   "fp_per_pair": 0.42,
-   "fp_in_shadow_pairs": 14,
+   "recall": 0.914,
+   "precision": 0.897,
+   "fp_per_pair": 0.21,
+   "fp_in_shadow_pairs": 9,
    "shadow_pairs": 39,
    "nochange_pairs": 30,
-   "nochange_false_alarm_rate": 0.167,
-   "nochange_flags_per_pair": 0.37,
+   "nochange_false_alarm_rate": 0.1,
+   "nochange_flags_per_pair": 0.17,
    "nochange_registration_failures": 0,
    "lighting_pairs": 60,
-   "lighting_false_alarm_rate": 0.5,
-   "lighting_flags_per_pair": 1.27,
+   "lighting_false_alarm_rate": 0.333,
+   "lighting_flags_per_pair": 0.47,
    "lighting_registration_failures": 0,
    "lighting_by_kind": {
     "exposure": {
      "pairs": 15,
-     "false_alarm_rate": 0.533,
-     "flags": 40
+     "false_alarm_rate": 0.067,
+     "flags": 6
     },
     "colortemp": {
      "pairs": 15,
-     "false_alarm_rate": 0.267,
-     "flags": 8
+     "false_alarm_rate": 0.133,
+     "flags": 5
     },
     "shadow": {
      "pairs": 15,
-     "false_alarm_rate": 0.2,
-     "flags": 3
+     "false_alarm_rate": 0.133,
+     "flags": 2
     },
     "specular": {
      "pairs": 15,
      "false_alarm_rate": 1.0,
-     "flags": 25
+     "flags": 15
     }
    },
-   "seconds": 696.7
+   "seconds": 352.8
   },
   "threshold_z6": {
    "damage_pairs": 80,
    "defects": 162,
    "damage_registration_failures": 0,
-   "recall": 0.901,
-   "precision": 0.568,
-   "fp_per_pair": 1.39,
-   "fp_in_shadow_pairs": 39,
+   "recall": 0.951,
+   "precision": 0.644,
+   "fp_per_pair": 1.06,
+   "fp_in_shadow_pairs": 34,
    "shadow_pairs": 39,
    "nochange_pairs": 30,
-   "nochange_false_alarm_rate": 0.367,
-   "nochange_flags_per_pair": 1.03,
+   "nochange_false_alarm_rate": 0.333,
+   "nochange_flags_per_pair": 0.87,
    "nochange_registration_failures": 0,
    "lighting_pairs": 60,
-   "lighting_false_alarm_rate": 0.733,
-   "lighting_flags_per_pair": 2.13,
+   "lighting_false_alarm_rate": 0.533,
+   "lighting_flags_per_pair": 1.33,
    "lighting_registration_failures": 0,
    "lighting_by_kind": {
     "exposure": {
      "pairs": 15,
-     "false_alarm_rate": 0.667,
-     "flags": 35
+     "false_alarm_rate": 0.133,
+     "flags": 9
     },
     "colortemp": {
      "pairs": 15,
-     "false_alarm_rate": 0.8,
-     "flags": 37
+     "false_alarm_rate": 0.667,
+     "flags": 33
     },
     "shadow": {
      "pairs": 15,
-     "false_alarm_rate": 0.467,
-     "flags": 16
+     "false_alarm_rate": 0.333,
+     "flags": 10
     },
     "specular": {
      "pairs": 15,
      "false_alarm_rate": 1.0,
-     "flags": 40
+     "flags": 28
     }
    },
-   "seconds": 702.3
+   "seconds": 354.5
   },
   "threshold_z12": {
    "damage_pairs": 80,
    "defects": 162,
    "damage_registration_failures": 0,
-   "recall": 0.821,
-   "precision": 0.964,
-   "fp_per_pair": 0.06,
-   "fp_in_shadow_pairs": 2,
+   "recall": 0.883,
+   "precision": 1.0,
+   "fp_per_pair": 0.0,
+   "fp_in_shadow_pairs": 0,
    "shadow_pairs": 39,
    "nochange_pairs": 30,
-   "nochange_false_alarm_rate": 0.1,
-   "nochange_flags_per_pair": 0.2,
+   "nochange_false_alarm_rate": 0.033,
+   "nochange_flags_per_pair": 0.07,
    "nochange_registration_failures": 0,
    "lighting_pairs": 60,
-   "lighting_false_alarm_rate": 0.383,
-   "lighting_flags_per_pair": 0.63,
+   "lighting_false_alarm_rate": 0.267,
+   "lighting_flags_per_pair": 0.27,
    "lighting_registration_failures": 0,
    "lighting_by_kind": {
     "exposure": {
      "pairs": 15,
-     "false_alarm_rate": 0.4,
-     "flags": 11
+     "false_alarm_rate": 0.067,
+     "flags": 1
     },
     "colortemp": {
      "pairs": 15,
-     "false_alarm_rate": 0.133,
-     "flags": 2
+     "false_alarm_rate": 0.0,
+     "flags": 0
     },
     "shadow": {
      "pairs": 15,
@@ -441,10 +441,10 @@
     "specular": {
      "pairs": 15,
      "false_alarm_rate": 1.0,
-     "flags": 25
+     "flags": 15
     }
    },
-   "seconds": 702.2
+   "seconds": 352.7
   }
  },
  "registration": {
@@ -526,7 +526,7 @@
     "pairs": 12,
     "registered": 12,
     "accurate": 12,
-    "usable": 12,
+    "usable": 0,
     "registered_rate": 1.0,
     "accurate_rate": 1.0,
     "median_error_px": 0.1
@@ -536,7 +536,7 @@
     "pairs": 12,
     "registered": 12,
     "accurate": 12,
-    "usable": 12,
+    "usable": 0,
     "registered_rate": 1.0,
     "accurate_rate": 1.0,
     "median_error_px": 0.2
@@ -546,7 +546,7 @@
     "pairs": 12,
     "registered": 12,
     "accurate": 12,
-    "usable": 4,
+    "usable": 0,
     "registered_rate": 1.0,
     "accurate_rate": 1.0,
     "median_error_px": 0.25
@@ -588,17 +588,17 @@
     "pairs": 12,
     "registered": 12,
     "accurate": 12,
-    "usable": 12,
+    "usable": 7,
     "registered_rate": 1.0,
     "accurate_rate": 1.0,
-    "median_error_px": 0.03
+    "median_error_px": 0.04
    },
    {
     "level": 2,
     "pairs": 12,
     "registered": 12,
     "accurate": 12,
-    "usable": 7,
+    "usable": 0,
     "registered_rate": 1.0,
     "accurate_rate": 1.0,
     "median_error_px": 0.04
@@ -611,7 +611,7 @@
     "usable": 0,
     "registered_rate": 0.583,
     "accurate_rate": 0.5,
-    "median_error_px": 0.05
+    "median_error_px": 0.04
    },
    {
     "level": 4,
@@ -650,7 +650,7 @@
     "pairs": 12,
     "registered": 12,
     "accurate": 12,
-    "usable": 12,
+    "usable": 10,
     "registered_rate": 1.0,
     "accurate_rate": 1.0,
     "median_error_px": 0.07
@@ -660,20 +660,20 @@
     "pairs": 12,
     "registered": 12,
     "accurate": 12,
-    "usable": 12,
+    "usable": 8,
     "registered_rate": 1.0,
     "accurate_rate": 1.0,
-    "median_error_px": 0.13
+    "median_error_px": 0.14
    },
    {
     "level": 3,
     "pairs": 12,
     "registered": 12,
     "accurate": 12,
-    "usable": 9,
+    "usable": 2,
     "registered_rate": 1.0,
     "accurate_rate": 1.0,
-    "median_error_px": 0.21
+    "median_error_px": 0.2
    },
    {
     "level": 4,
@@ -683,7 +683,7 @@
     "usable": 0,
     "registered_rate": 0.833,
     "accurate_rate": 0.75,
-    "median_error_px": 0.25
+    "median_error_px": 0.24
    },
    {
     "level": 5,
@@ -724,7 +724,7 @@
      "area": 2822,
      "contrast": 27.9,
      "hit": true,
-     "iou": 0.683,
+     "iou": 0.673,
      "gt_box": [
       245,
       433,
@@ -752,12 +752,12 @@
       253,
       430,
       71,
-      57
+      58
      ],
-     "score": 31.86,
-     "structure": 13.85,
-     "chroma": -0.98,
-     "illumination": 0.555,
+     "score": 32.75,
+     "structure": 14.04,
+     "chroma": -0.97,
+     "illumination": 0.546,
      "brightening": 0.0
     },
     {
@@ -767,10 +767,10 @@
       50,
       27
      ],
-     "score": 31.54,
-     "structure": 17.3,
+     "score": 32.41,
+     "structure": 17.6,
      "chroma": -1.15,
-     "illumination": 0.284,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -780,10 +780,10 @@
       29,
       63
      ],
-     "score": 32.55,
-     "structure": 18.62,
-     "chroma": -0.09,
-     "illumination": 0.223,
+     "score": 33.46,
+     "structure": 18.81,
+     "chroma": -0.1,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -821,10 +821,10 @@
       58,
       53
      ],
-     "score": 89.72,
-     "structure": 29.55,
+     "score": 90.2,
+     "structure": 29.68,
      "chroma": 7.62,
-     "illumination": 0.708,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -888,10 +888,10 @@
       19,
       30
      ],
-     "score": 88.66,
-     "structure": 40.06,
+     "score": 88.83,
+     "structure": 40.14,
      "chroma": 3.44,
-     "illumination": 0.557,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -901,10 +901,10 @@
       10,
       37
      ],
-     "score": 43.35,
-     "structure": 26.88,
+     "score": 43.43,
+     "structure": 26.94,
      "chroma": -0.53,
-     "illumination": 0.571,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -914,10 +914,10 @@
       34,
       22
      ],
-     "score": 37.36,
-     "structure": 22.5,
+     "score": 37.49,
+     "structure": 22.58,
      "chroma": -0.44,
-     "illumination": 0.174,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -927,10 +927,10 @@
       13,
       41
      ],
-     "score": 32.42,
-     "structure": 17.28,
+     "score": 32.48,
+     "structure": 17.31,
      "chroma": 0.24,
-     "illumination": 0.343,
+     "illumination": 0.0,
      "brightening": 0.038
     }
    ],
@@ -994,10 +994,10 @@
       20,
       38
      ],
-     "score": 52.53,
-     "structure": 24.43,
+     "score": 54.02,
+     "structure": 25.0,
      "chroma": 1.2,
-     "illumination": 0.469,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -1007,10 +1007,10 @@
       59,
       116
      ],
-     "score": 38.58,
-     "structure": 14.84,
-     "chroma": -0.43,
-     "illumination": 0.183,
+     "score": 39.67,
+     "structure": 14.92,
+     "chroma": -0.45,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -1020,10 +1020,10 @@
       20,
       7
      ],
-     "score": 21.59,
-     "structure": 14.64,
+     "score": 22.2,
+     "structure": 14.79,
      "chroma": -0.75,
-     "illumination": 0.378,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -1044,7 +1044,7 @@
      "area": 1852,
      "contrast": 37.2,
      "hit": true,
-     "iou": 0.53,
+     "iou": 0.523,
      "gt_box": [
       192,
       265,
@@ -1057,40 +1057,14 @@
     {
      "box": [
       196,
-      260,
+      259,
       37,
-      42
+      43
      ],
-     "score": 24.95,
-     "structure": 14.93,
-     "chroma": 0.19,
-     "illumination": 0.318,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      22,
-      293,
-      5,
-      18
-     ],
-     "score": 14.78,
-     "structure": 11.54,
-     "chroma": 0.66,
-     "illumination": 0.506,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      22,
-      94,
-      6,
-      18
-     ],
-     "score": 12.31,
-     "structure": 10.14,
-     "chroma": 0.44,
-     "illumination": 0.365,
+     "score": 26.31,
+     "structure": 15.12,
+     "chroma": 0.18,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -1098,18 +1072,18 @@
       470,
       358,
       3,
-      27
+      29
      ],
-     "score": 13.16,
-     "structure": 10.83,
-     "chroma": 0.66,
-     "illumination": 0.726,
+     "score": 13.88,
+     "structure": 11.08,
+     "chroma": 0.67,
+     "illumination": 0.735,
      "brightening": 0.0
     }
    ],
    "lighting_regions": 2,
    "shadowed": false,
-   "unmatched": 3
+   "unmatched": 1
   },
   {
    "set": "damage",
@@ -1124,7 +1098,7 @@
      "area": 1238,
      "contrast": 79.6,
      "hit": true,
-     "iou": 0.529,
+     "iou": 0.506,
      "gt_box": [
       282,
       386,
@@ -1137,14 +1111,14 @@
     {
      "box": [
       271,
-      381,
+      379,
       56,
-      68
+      71
      ],
-     "score": 75.54,
-     "structure": 17.02,
-     "chroma": 2.97,
-     "illumination": 0.497,
+     "score": 82.11,
+     "structure": 17.9,
+     "chroma": 2.83,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -1182,10 +1156,10 @@
       13,
       31
      ],
-     "score": 35.5,
-     "structure": 20.78,
+     "score": 35.28,
+     "structure": 20.65,
      "chroma": 0.1,
-     "illumination": 0.516,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -1195,10 +1169,10 @@
       10,
       8
      ],
-     "score": 21.86,
-     "structure": 14.81,
+     "score": 21.73,
+     "structure": 14.71,
      "chroma": -0.88,
-     "illumination": 0.336,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -1232,7 +1206,7 @@
      "area": 252,
      "contrast": 97.0,
      "hit": true,
-     "iou": 0.579,
+     "iou": 0.555,
      "gt_box": [
       155,
       324,
@@ -1257,15 +1231,15 @@
    "flagged": [
     {
      "box": [
-      151,
+      150,
       315,
-      23,
+      24,
       32
      ],
-     "score": 102.19,
-     "structure": 27.84,
-     "chroma": 3.45,
-     "illumination": 0.496,
+     "score": 102.3,
+     "structure": 27.77,
+     "chroma": 3.44,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -1275,10 +1249,10 @@
       31,
       34
      ],
-     "score": 46.75,
-     "structure": 27.49,
+     "score": 46.86,
+     "structure": 27.41,
      "chroma": -3.46,
-     "illumination": 0.539,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -1288,10 +1262,10 @@
       7,
       44
      ],
-     "score": 27.78,
-     "structure": 17.18,
+     "score": 27.82,
+     "structure": 17.22,
      "chroma": -2.52,
-     "illumination": 0.549,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -1301,10 +1275,10 @@
       5,
       15
      ],
-     "score": 32.69,
-     "structure": 20.5,
+     "score": 32.77,
+     "structure": 20.55,
      "chroma": -2.48,
-     "illumination": 0.569,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -1342,10 +1316,10 @@
       52,
       74
      ],
-     "score": 42.67,
-     "structure": 15.22,
+     "score": 43.45,
+     "structure": 15.37,
      "chroma": 0.7,
-     "illumination": 0.527,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -1396,10 +1370,10 @@
       54,
       50
      ],
-     "score": 76.64,
-     "structure": 29.32,
+     "score": 77.59,
+     "structure": 29.61,
      "chroma": 2.66,
-     "illumination": 0.421,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -1409,10 +1383,10 @@
       32,
       30
      ],
-     "score": 40.06,
-     "structure": 18.11,
+     "score": 40.55,
+     "structure": 18.33,
      "chroma": 2.22,
-     "illumination": 0.129,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -1445,8 +1419,8 @@
      "kind": "scratch",
      "area": 934,
      "contrast": 85.8,
-     "hit": false,
-     "iou": 0.0,
+     "hit": true,
+     "iou": 0.86,
      "gt_box": [
       217,
       229,
@@ -1458,19 +1432,32 @@
    "flagged": [
     {
      "box": [
+      217,
+      229,
+      88,
+      217
+     ],
+     "score": 121.66,
+     "structure": 43.34,
+     "chroma": 1.41,
+     "illumination": 0.0,
+     "brightening": 0.0
+    },
+    {
+     "box": [
       199,
       476,
       51,
       60
      ],
-     "score": 56.9,
-     "structure": 24.87,
+     "score": 56.97,
+     "structure": 24.9,
      "chroma": 1.87,
      "illumination": 0.763,
      "brightening": 0.0
     }
    ],
-   "lighting_regions": 2,
+   "lighting_regions": 1,
    "shadowed": true,
    "unmatched": 0
   },
@@ -1504,10 +1491,10 @@
       49,
       113
      ],
-     "score": 46.95,
-     "structure": 21.6,
+     "score": 46.99,
+     "structure": 21.61,
      "chroma": -0.19,
-     "illumination": 0.098,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -1558,10 +1545,10 @@
       52,
       46
      ],
-     "score": 180.77,
-     "structure": 28.38,
+     "score": 181.14,
+     "structure": 28.44,
      "chroma": 7.67,
-     "illumination": 0.231,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -1571,10 +1558,10 @@
       51,
       46
      ],
-     "score": 166.49,
-     "structure": 39.96,
-     "chroma": 3.91,
-     "illumination": 0.23,
+     "score": 166.79,
+     "structure": 40.06,
+     "chroma": 3.92,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -1608,7 +1595,7 @@
      "area": 1636,
      "contrast": 56.3,
      "hit": true,
-     "iou": 0.738,
+     "iou": 0.725,
      "gt_box": [
       531,
       347,
@@ -1623,12 +1610,12 @@
       530,
       345,
       51,
-      56
+      57
      ],
-     "score": 52.15,
-     "structure": 28.27,
+     "score": 54.03,
+     "structure": 28.68,
      "chroma": 1.43,
-     "illumination": 0.39,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -1638,16 +1625,29 @@
       10,
       23
      ],
-     "score": 56.71,
-     "structure": 22.5,
+     "score": 57.9,
+     "structure": 22.92,
      "chroma": 1.11,
-     "illumination": 0.427,
+     "illumination": 0.0,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      891,
+      435,
+      7,
+      12
+     ],
+     "score": 14.39,
+     "structure": 11.33,
+     "chroma": 0.16,
+     "illumination": 0.308,
      "brightening": 0.0
     }
    ],
    "lighting_regions": 3,
    "shadowed": false,
-   "unmatched": 0
+   "unmatched": 1
   },
   {
    "set": "damage",
@@ -1675,7 +1675,7 @@
      "area": 284,
      "contrast": 103.5,
      "hit": true,
-     "iou": 0.274,
+     "iou": 0.32,
      "gt_box": [
       568,
       103,
@@ -1692,24 +1692,24 @@
       95,
       40
      ],
-     "score": 119.76,
-     "structure": 31.81,
+     "score": 121.62,
+     "structure": 32.09,
      "chroma": 0.51,
-     "illumination": 0.159,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
      "box": [
-      620,
-      162,
-      60,
-      65
+      615,
+      157,
+      65,
+      70
      ],
-     "score": 104.0,
-     "structure": 29.88,
-     "chroma": 0.59,
-     "illumination": 0.139,
-     "brightening": -0.006
+     "score": 105.61,
+     "structure": 29.86,
+     "chroma": 0.58,
+     "illumination": 0.0,
+     "brightening": -0.005
     },
     {
      "box": [
@@ -1718,10 +1718,10 @@
       20,
       17
      ],
-     "score": 109.6,
-     "structure": 42.08,
+     "score": 111.3,
+     "structure": 42.05,
      "chroma": 0.53,
-     "illumination": 0.241,
+     "illumination": 0.0,
      "brightening": 0.009
     }
    ],
@@ -1755,7 +1755,7 @@
      "area": 1186,
      "contrast": 56.1,
      "hit": true,
-     "iou": 0.429,
+     "iou": 0.423,
      "gt_box": [
       110,
       112,
@@ -1767,15 +1767,15 @@
    "flagged": [
     {
      "box": [
-      92,
+      91,
       111,
-      76,
+      77,
       69
      ],
-     "score": 93.52,
-     "structure": 30.52,
-     "chroma": 2.46,
-     "illumination": 0.341,
+     "score": 96.4,
+     "structure": 31.05,
+     "chroma": 2.43,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -1785,29 +1785,16 @@
       74,
       73
      ],
-     "score": 63.21,
-     "structure": 23.21,
-     "chroma": 0.97,
-     "illumination": 0.043,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      30,
-      285,
-      4,
-      17
-     ],
-     "score": 15.38,
-     "structure": 12.04,
-     "chroma": 1.2,
-     "illumination": 0.313,
+     "score": 65.35,
+     "structure": 23.34,
+     "chroma": 0.94,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
    "lighting_regions": 0,
    "shadowed": false,
-   "unmatched": 1
+   "unmatched": 0
   },
   {
    "set": "damage",
@@ -1865,10 +1852,10 @@
       159,
       89
      ],
-     "score": 42.24,
-     "structure": 20.64,
+     "score": 42.29,
+     "structure": 20.66,
      "chroma": 0.45,
-     "illumination": 0.211,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -1878,10 +1865,10 @@
       39,
       38
      ],
-     "score": 31.23,
-     "structure": 16.89,
+     "score": 31.21,
+     "structure": 16.87,
      "chroma": -0.27,
-     "illumination": 0.329,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -1902,7 +1889,7 @@
      "area": 3637,
      "contrast": 13.9,
      "hit": true,
-     "iou": 0.74,
+     "iou": 0.721,
      "gt_box": [
       222,
       172,
@@ -1945,23 +1932,23 @@
       65,
       32
      ],
-     "score": 40.8,
-     "structure": 20.8,
-     "chroma": 1.0,
-     "illumination": 0.182,
+     "score": 41.14,
+     "structure": 20.69,
+     "chroma": 1.02,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
      "box": [
       232,
-      164,
-      74,
-      60
+      163,
+      73,
+      61
      ],
-     "score": 18.44,
-     "structure": 12.1,
-     "chroma": -2.01,
-     "illumination": 0.647,
+     "score": 18.68,
+     "structure": 12.17,
+     "chroma": -2.0,
+     "illumination": 0.639,
      "brightening": 0.0
     },
     {
@@ -1971,10 +1958,10 @@
       38,
       32
      ],
-     "score": 39.82,
-     "structure": 21.24,
-     "chroma": -1.88,
-     "illumination": 0.14,
+     "score": 40.45,
+     "structure": 21.17,
+     "chroma": -1.86,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -1984,10 +1971,10 @@
       13,
       11
      ],
-     "score": 25.95,
-     "structure": 16.71,
+     "score": 26.18,
+     "structure": 16.86,
      "chroma": -0.99,
-     "illumination": 0.44,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -2038,8 +2025,8 @@
       52,
       55
      ],
-     "score": 33.96,
-     "structure": 16.78,
+     "score": 34.09,
+     "structure": 16.82,
      "chroma": 1.25,
      "illumination": 0.566,
      "brightening": 0.0
@@ -2051,10 +2038,10 @@
       19,
       21
      ],
-     "score": 18.4,
-     "structure": 12.62,
-     "chroma": 1.92,
-     "illumination": 0.688,
+     "score": 18.44,
+     "structure": 12.66,
+     "chroma": 1.93,
+     "illumination": 0.689,
      "brightening": 0.0
     },
     {
@@ -2064,8 +2051,8 @@
       16,
       9
      ],
-     "score": 17.91,
-     "structure": 11.69,
+     "score": 17.98,
+     "structure": 11.73,
      "chroma": 1.6,
      "illumination": 0.793,
      "brightening": 0.0
@@ -2131,10 +2118,10 @@
       63,
       60
      ],
-     "score": 68.98,
-     "structure": 21.39,
+     "score": 69.25,
+     "structure": 21.43,
      "chroma": 7.47,
-     "illumination": 0.186,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -2144,10 +2131,10 @@
       68,
       55
      ],
-     "score": 38.36,
-     "structure": 16.601,
+     "score": 38.5,
+     "structure": 16.637,
      "chroma": 1.0,
-     "illumination": 0.168,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -2157,10 +2144,10 @@
       31,
       33
      ],
-     "score": 51.07,
-     "structure": 22.0,
+     "score": 51.24,
+     "structure": 22.08,
      "chroma": 1.21,
-     "illumination": 0.137,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -2170,10 +2157,10 @@
       7,
       11
      ],
-     "score": 35.39,
-     "structure": 21.32,
+     "score": 35.52,
+     "structure": 21.4,
      "chroma": 1.51,
-     "illumination": 0.354,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -2237,10 +2224,10 @@
       60,
       53
      ],
-     "score": 52.04,
-     "structure": 18.35,
-     "chroma": -0.58,
-     "illumination": 0.326,
+     "score": 52.17,
+     "structure": 18.34,
+     "chroma": -0.57,
+     "illumination": 0.0,
      "brightening": -0.0
     },
     {
@@ -2250,10 +2237,10 @@
       24,
       80
      ],
-     "score": 33.75,
-     "structure": 18.22,
+     "score": 33.77,
+     "structure": 18.23,
      "chroma": -1.58,
-     "illumination": 0.13,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -2263,10 +2250,10 @@
       55,
       11
      ],
-     "score": 26.7,
-     "structure": 16.37,
+     "score": 26.74,
+     "structure": 16.38,
      "chroma": -0.7,
-     "illumination": 0.431,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -2276,10 +2263,10 @@
       15,
       5
      ],
-     "score": 18.13,
-     "structure": 13.84,
+     "score": 18.12,
+     "structure": 13.86,
      "chroma": -1.08,
-     "illumination": 0.341,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -2343,8 +2330,8 @@
       95,
       85
      ],
-     "score": 47.09,
-     "structure": 17.57,
+     "score": 47.08,
+     "structure": 17.56,
      "chroma": 4.68,
      "illumination": 0.577,
      "brightening": 0.0
@@ -2356,7 +2343,7 @@
       82,
       77
      ],
-     "score": 48.72,
+     "score": 48.71,
      "structure": 23.79,
      "chroma": 2.03,
      "illumination": 0.208,
@@ -2369,10 +2356,10 @@
       58,
       34
      ],
-     "score": 46.16,
+     "score": 46.15,
      "structure": 17.83,
      "chroma": 0.79,
-     "illumination": 0.44,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -2423,10 +2410,10 @@
       37,
       42
      ],
-     "score": 54.14,
-     "structure": 24.1,
+     "score": 54.28,
+     "structure": 24.16,
      "chroma": 1.34,
-     "illumination": 0.132,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -2436,10 +2423,10 @@
       33,
       16
      ],
-     "score": 44.5,
-     "structure": 22.67,
+     "score": 44.62,
+     "structure": 22.73,
      "chroma": 1.0,
-     "illumination": 0.121,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -2460,7 +2447,7 @@
      "area": 344,
      "contrast": 63.7,
      "hit": true,
-     "iou": 0.969,
+     "iou": 0.984,
      "gt_box": [
       489,
       98,
@@ -2485,15 +2472,15 @@
    "flagged": [
     {
      "box": [
-      490,
+      489,
       98,
-      62,
+      63,
       70
      ],
-     "score": 43.85,
-     "structure": 23.85,
+     "score": 46.87,
+     "structure": 24.98,
      "chroma": 0.61,
-     "illumination": 0.623,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -2503,29 +2490,16 @@
       65,
       28
      ],
-     "score": 30.49,
-     "structure": 18.18,
+     "score": 32.59,
+     "structure": 19.12,
      "chroma": 0.5,
-     "illumination": 0.529,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      691,
-      661,
-      14,
-      8
-     ],
-     "score": 19.83,
-     "structure": 13.34,
-     "chroma": 1.94,
-     "illumination": 0.203,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
-   "lighting_regions": 5,
+   "lighting_regions": 3,
    "shadowed": true,
-   "unmatched": 1
+   "unmatched": 0
   },
   {
    "set": "damage",
@@ -2583,10 +2557,10 @@
       25,
       15
      ],
-     "score": 74.92,
-     "structure": 28.43,
+     "score": 73.01,
+     "structure": 27.96,
      "chroma": 0.39,
-     "illumination": 0.454,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -2596,10 +2570,10 @@
       9,
       8
      ],
-     "score": 99.14,
-     "structure": 42.33,
-     "chroma": -0.83,
-     "illumination": 0.566,
+     "score": 96.7,
+     "structure": 41.87,
+     "chroma": -0.84,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -2609,16 +2583,42 @@
       12,
       13
      ],
-     "score": 63.69,
-     "structure": 27.74,
+     "score": 62.07,
+     "structure": 27.25,
      "chroma": -0.34,
-     "illumination": 0.513,
+     "illumination": 0.0,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      28,
+      206,
+      6,
+      15
+     ],
+     "score": 15.65,
+     "structure": 12.18,
+     "chroma": 0.9,
+     "illumination": 0.261,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      29,
+      113,
+      7,
+      8
+     ],
+     "score": 14.88,
+     "structure": 10.7,
+     "chroma": 0.78,
+     "illumination": 0.413,
      "brightening": 0.0
     }
    ],
    "lighting_regions": 3,
    "shadowed": true,
-   "unmatched": 0
+   "unmatched": 2
   },
   {
    "set": "damage",
@@ -2650,10 +2650,10 @@
       78,
       49
      ],
-     "score": 69.22,
-     "structure": 22.68,
+     "score": 69.45,
+     "structure": 22.71,
      "chroma": 1.14,
-     "illumination": 0.078,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -2687,7 +2687,7 @@
      "area": 1572,
      "contrast": 22.8,
      "hit": true,
-     "iou": 0.631,
+     "iou": 0.62,
      "gt_box": [
       642,
       345,
@@ -2717,23 +2717,23 @@
       20,
       40
      ],
-     "score": 67.31,
-     "structure": 27.65,
+     "score": 72.19,
+     "structure": 29.11,
      "chroma": 1.68,
-     "illumination": 0.22,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
      "box": [
       647,
-      344,
+      343,
       38,
-      35
+      36
      ],
-     "score": 20.86,
-     "structure": 14.75,
+     "score": 22.38,
+     "structure": 15.64,
      "chroma": -0.03,
-     "illumination": 0.536,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -2743,14 +2743,14 @@
       9,
       12
      ],
-     "score": 23.14,
-     "structure": 15.86,
+     "score": 24.82,
+     "structure": 16.61,
      "chroma": 0.66,
-     "illumination": 0.414,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
-   "lighting_regions": 4,
+   "lighting_regions": 2,
    "shadowed": true,
    "unmatched": 0
   },
@@ -2767,7 +2767,7 @@
      "area": 602,
      "contrast": 79.2,
      "hit": true,
-     "iou": 0.236,
+     "iou": 0.29,
      "gt_box": [
       543,
       354,
@@ -2780,7 +2780,7 @@
      "area": 145,
      "contrast": 69.9,
      "hit": true,
-     "iou": 0.18,
+     "iou": 0.19,
      "gt_box": [
       363,
       575,
@@ -2793,7 +2793,7 @@
      "area": 2295,
      "contrast": 14.0,
      "hit": true,
-     "iou": 0.024,
+     "iou": 0.026,
      "gt_box": [
       523,
       131,
@@ -2805,15 +2805,15 @@
    "flagged": [
     {
      "box": [
-      549,
-      429,
-      7,
-      68
+      548,
+      424,
+      8,
+      73
      ],
-     "score": 35.14,
-     "structure": 19.02,
+     "score": 36.34,
+     "structure": 19.15,
      "chroma": -0.89,
-     "illumination": 0.64,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -2823,55 +2823,42 @@
       5,
       29
      ],
-     "score": 22.14,
-     "structure": 15.65,
+     "score": 22.9,
+     "structure": 16.19,
      "chroma": -0.35,
-     "illumination": 0.547,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
      "box": [
       362,
       601,
-      19,
+      20,
       13
      ],
-     "score": 22.31,
-     "structure": 14.64,
-     "chroma": -1.04,
-     "illumination": 0.296,
+     "score": 23.07,
+     "structure": 14.77,
+     "chroma": -1.01,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
      "box": [
-      30,
-      632,
-      6,
-      24
-     ],
-     "score": 12.7,
-     "structure": 10.5,
-     "chroma": 0.99,
-     "illumination": 0.689,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      531,
+      532,
       145,
       7,
-      10
+      11
      ],
-     "score": 10.68,
-     "structure": 9.72,
-     "chroma": 6.27,
-     "illumination": 0.901,
+     "score": 10.92,
+     "structure": 9.85,
+     "chroma": 6.28,
+     "illumination": 0.904,
      "brightening": 0.0
     }
    ],
    "lighting_regions": 1,
    "shadowed": true,
-   "unmatched": 1
+   "unmatched": 0
   },
   {
    "set": "damage",
@@ -2885,8 +2872,8 @@
      "kind": "scratch",
      "area": 890,
      "contrast": 67.7,
-     "hit": false,
-     "iou": 0.0,
+     "hit": true,
+     "iou": 0.814,
      "gt_box": [
       615,
       74,
@@ -2895,10 +2882,37 @@
      ]
     }
    ],
-   "flagged": [],
+   "flagged": [
+    {
+     "box": [
+      608,
+      73,
+      88,
+      209
+     ],
+     "score": 104.32,
+     "structure": 28.31,
+     "chroma": 1.19,
+     "illumination": 0.0,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      884,
+      516,
+      7,
+      7
+     ],
+     "score": 11.41,
+     "structure": 10.29,
+     "chroma": 0.67,
+     "illumination": 0.748,
+     "brightening": 0.0
+    }
+   ],
    "lighting_regions": 2,
    "shadowed": true,
-   "unmatched": 0
+   "unmatched": 1
   },
   {
    "set": "damage",
@@ -2913,7 +2927,7 @@
      "area": 2851,
      "contrast": 10.6,
      "hit": true,
-     "iou": 0.505,
+     "iou": 0.513,
      "gt_box": [
       521,
       528,
@@ -2956,10 +2970,10 @@
       56,
       48
      ],
-     "score": 166.21,
-     "structure": 38.73,
+     "score": 166.71,
+     "structure": 38.83,
      "chroma": 2.01,
-     "illumination": 0.219,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -2969,23 +2983,23 @@
       60,
       53
      ],
-     "score": 40.63,
-     "structure": 17.25,
+     "score": 40.74,
+     "structure": 17.27,
      "chroma": 5.68,
-     "illumination": 0.35,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
      "box": [
       534,
-      535,
+      534,
       29,
-      63
+      64
      ],
-     "score": 31.13,
-     "structure": 16.12,
-     "chroma": 3.45,
-     "illumination": 0.177,
+     "score": 31.23,
+     "structure": 16.14,
+     "chroma": 3.44,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -3018,8 +3032,8 @@
      "kind": "crack",
      "area": 215,
      "contrast": 59.1,
-     "hit": false,
-     "iou": 0.0,
+     "hit": true,
+     "iou": 0.922,
      "gt_box": [
       556,
       272,
@@ -3036,14 +3050,27 @@
       33,
       35
      ],
-     "score": 63.07,
-     "structure": 22.08,
-     "chroma": 2.67,
-     "illumination": 0.48,
+     "score": 63.7,
+     "structure": 22.0,
+     "chroma": 2.65,
+     "illumination": 0.0,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      556,
+      273,
+      77,
+      29
+     ],
+     "score": 46.12,
+     "structure": 20.27,
+     "chroma": 2.28,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
-   "lighting_regions": 2,
+   "lighting_regions": 1,
    "shadowed": true,
    "unmatched": 0
   },
@@ -3114,7 +3141,7 @@
      "area": 2106,
      "contrast": 18.2,
      "hit": true,
-     "iou": 0.668,
+     "iou": 0.59,
      "gt_box": [
       385,
       437,
@@ -3140,14 +3167,14 @@
     {
      "box": [
       391,
-      442,
-      43,
-      42
+      444,
+      42,
+      38
      ],
      "score": 30.82,
-     "structure": 9.95,
-     "chroma": 15.34,
-     "illumination": 0.152,
+     "structure": 15.83,
+     "chroma": 7.95,
+     "illumination": 0.0,
      "brightening": -0.001
     },
     {
@@ -3159,8 +3186,8 @@
      ],
      "score": 51.29,
      "structure": 33.23,
-     "chroma": 3.49,
-     "illumination": 0.211,
+     "chroma": 1.9,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -3172,8 +3199,8 @@
      ],
      "score": 39.14,
      "structure": 24.57,
-     "chroma": 6.56,
-     "illumination": 0.259,
+     "chroma": 3.57,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -3194,7 +3221,7 @@
      "area": 4410,
      "contrast": 49.5,
      "hit": true,
-     "iou": 0.681,
+     "iou": 0.677,
      "gt_box": [
       205,
       281,
@@ -3220,7 +3247,7 @@
      "area": 131,
      "contrast": 19.8,
      "hit": true,
-     "iou": 0.895,
+     "iou": 0.907,
      "gt_box": [
       168,
       154,
@@ -3232,73 +3259,34 @@
    "flagged": [
     {
      "box": [
-      193,
+      192,
       290,
-      95,
-      66
+      97,
+      67
      ],
-     "score": 48.84,
-     "structure": 20.07,
-     "chroma": 0.23,
-     "illumination": 0.703,
+     "score": 53.78,
+     "structure": 21.25,
+     "chroma": 0.24,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
      "box": [
       168,
-      154,
-      29,
-      49
+      153,
+      28,
+      50
      ],
-     "score": 45.17,
-     "structure": 21.35,
-     "chroma": -0.69,
-     "illumination": 0.396,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      753,
-      37,
-      18,
-      7
-     ],
-     "score": 15.02,
-     "structure": 12.03,
-     "chroma": 0.46,
-     "illumination": 0.577,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      40,
-      24,
-      13,
-      5
-     ],
-     "score": 19.21,
-     "structure": 14.03,
-     "chroma": -0.79,
-     "illumination": 0.376,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      116,
-      25,
-      9,
-      7
-     ],
-     "score": 13.98,
-     "structure": 10.97,
-     "chroma": -0.74,
-     "illumination": 0.219,
+     "score": 48.96,
+     "structure": 22.38,
+     "chroma": -0.7,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
-   "lighting_regions": 4,
+   "lighting_regions": 3,
    "shadowed": false,
-   "unmatched": 3
+   "unmatched": 0
   },
   {
    "set": "damage",
@@ -3356,10 +3344,10 @@
       37,
       49
      ],
-     "score": 81.14,
-     "structure": 30.76,
+     "score": 81.23,
+     "structure": 30.72,
      "chroma": -0.07,
-     "illumination": 0.161,
+     "illumination": 0.0,
      "brightening": -0.025
     },
     {
@@ -3369,10 +3357,10 @@
       32,
       83
      ],
-     "score": 39.69,
-     "structure": 17.78,
+     "score": 39.74,
+     "structure": 17.8,
      "chroma": 0.13,
-     "illumination": 0.337,
+     "illumination": 0.0,
      "brightening": 0.003
     },
     {
@@ -3382,10 +3370,10 @@
       11,
       27
      ],
-     "score": 24.96,
-     "structure": 15.84,
+     "score": 25.01,
+     "structure": 15.87,
      "chroma": -0.64,
-     "illumination": 0.426,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -3431,8 +3419,8 @@
      "kind": "crack",
      "area": 166,
      "contrast": 56.3,
-     "hit": false,
-     "iou": 0.0,
+     "hit": true,
+     "iou": 0.963,
      "gt_box": [
       794,
       547,
@@ -3444,19 +3432,32 @@
    "flagged": [
     {
      "box": [
+      794,
+      547,
+      26,
+      69
+     ],
+     "score": 34.17,
+     "structure": 20.83,
+     "chroma": 0.57,
+     "illumination": 0.0,
+     "brightening": 0.0
+    },
+    {
+     "box": [
       436,
       678,
       24,
       14
      ],
-     "score": 20.97,
-     "structure": 14.62,
+     "score": 21.18,
+     "structure": 14.77,
      "chroma": 0.32,
-     "illumination": 0.275,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
-   "lighting_regions": 4,
+   "lighting_regions": 3,
    "shadowed": true,
    "unmatched": 0
   },
@@ -3490,10 +3491,10 @@
       8,
       32
      ],
-     "score": 19.23,
+     "score": 19.22,
      "structure": 14.12,
      "chroma": -0.11,
-     "illumination": 0.384,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -3504,9 +3505,9 @@
       25
      ],
      "score": 18.63,
-     "structure": 14.03,
+     "structure": 14.02,
      "chroma": -0.23,
-     "illumination": 0.324,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -3527,7 +3528,7 @@
      "area": 629,
      "contrast": 75.1,
      "hit": true,
-     "iou": 0.501,
+     "iou": 0.458,
      "gt_box": [
       162,
       578,
@@ -3540,7 +3541,7 @@
      "area": 142,
      "contrast": 62.7,
      "hit": true,
-     "iou": 0.561,
+     "iou": 0.594,
      "gt_box": [
       693,
       625,
@@ -3553,14 +3554,14 @@
     {
      "box": [
       154,
-      568,
-      46,
-      43
+      566,
+      47,
+      46
      ],
-     "score": 57.31,
-     "structure": 19.16,
-     "chroma": -0.97,
-     "illumination": 0.411,
+     "score": 61.41,
+     "structure": 19.37,
+     "chroma": -0.86,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -3568,16 +3569,16 @@
       693,
       627,
       50,
-      12
+      11
      ],
-     "score": 43.68,
-     "structure": 20.35,
-     "chroma": 0.84,
-     "illumination": 0.526,
+     "score": 46.95,
+     "structure": 21.69,
+     "chroma": 0.85,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
-   "lighting_regions": 1,
+   "lighting_regions": 0,
    "shadowed": false,
    "unmatched": 0
   },
@@ -3611,10 +3612,10 @@
       89,
       20
      ],
-     "score": 99.53,
-     "structure": 47.4,
+     "score": 99.38,
+     "structure": 47.33,
      "chroma": 1.26,
-     "illumination": 0.268,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -3665,10 +3666,10 @@
       32,
       184
      ],
-     "score": 269.48,
-     "structure": 75.16,
-     "chroma": 4.5,
-     "illumination": 0.2,
+     "score": 270.31,
+     "structure": 75.18,
+     "chroma": 4.17,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -3734,8 +3735,8 @@
      ],
      "score": 155.58,
      "structure": 38.17,
-     "chroma": 2.13,
-     "illumination": 0.095,
+     "chroma": 1.38,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -3747,7 +3748,7 @@
      ],
      "score": 55.98,
      "structure": 21.82,
-     "chroma": 1.66,
+     "chroma": 1.07,
      "illumination": 0.124,
      "brightening": 0.0
     }
@@ -3781,8 +3782,8 @@
      "kind": "crack",
      "area": 274,
      "contrast": 68.7,
-     "hit": false,
-     "iou": 0.0,
+     "hit": true,
+     "iou": 0.853,
      "gt_box": [
       392,
       207,
@@ -3794,19 +3795,32 @@
    "flagged": [
     {
      "box": [
+      392,
+      206,
+      77,
+      118
+     ],
+     "score": 75.17,
+     "structure": 26.31,
+     "chroma": 0.92,
+     "illumination": 0.0,
+     "brightening": 0.0
+    },
+    {
+     "box": [
       654,
       494,
       48,
       71
      ],
-     "score": 33.95,
-     "structure": 16.84,
+     "score": 34.0,
+     "structure": 16.86,
      "chroma": 1.13,
      "illumination": 0.732,
      "brightening": 0.002
     }
    ],
-   "lighting_regions": 3,
+   "lighting_regions": 2,
    "shadowed": true,
    "unmatched": 0
   },
@@ -3840,10 +3854,10 @@
       44,
       96
      ],
-     "score": 70.69,
-     "structure": 26.6,
+     "score": 70.83,
+     "structure": 26.53,
      "chroma": 2.48,
-     "illumination": 0.726,
+     "illumination": 0.0,
      "brightening": 0.004
     }
    ],
@@ -3907,10 +3921,10 @@
       32,
       30
      ],
-     "score": 60.78,
-     "structure": 37.45,
+     "score": 61.73,
+     "structure": 38.03,
      "chroma": 0.0,
-     "illumination": 0.088,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -3943,41 +3957,41 @@
    "flagged": [
     {
      "box": [
-      895,
-      63,
-      5,
-      29
-     ],
-     "score": 25.83,
-     "structure": 16.24,
-     "chroma": 0.53,
-     "illumination": 0.795,
-     "brightening": 0.0
-    },
-    {
-     "box": [
       36,
       275,
-      8,
-      7
+      20,
+      23
      ],
-     "score": 26.64,
-     "structure": 15.48,
+     "score": 28.16,
+     "structure": 14.72,
      "chroma": 0.94,
-     "illumination": 0.263,
+     "illumination": 0.23,
      "brightening": 0.0
     },
     {
      "box": [
-      660,
-      22,
-      27,
-      5
+      58,
+      184,
+      11,
+      20
      ],
-     "score": 18.82,
-     "structure": 12.15,
-     "chroma": 0.67,
-     "illumination": 0.336,
+     "score": 15.44,
+     "structure": 11.52,
+     "chroma": 0.92,
+     "illumination": 0.387,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      52,
+      314,
+      7,
+      11
+     ],
+     "score": 12.83,
+     "structure": 10.97,
+     "chroma": 0.8,
+     "illumination": 0.499,
      "brightening": 0.0
     }
    ],
@@ -4011,7 +4025,7 @@
      "area": 5355,
      "contrast": 15.6,
      "hit": true,
-     "iou": 0.78,
+     "iou": 0.782,
      "gt_box": [
       460,
       209,
@@ -4041,23 +4055,23 @@
       77,
       61
      ],
-     "score": 64.22,
-     "structure": 19.22,
+     "score": 64.57,
+     "structure": 19.27,
      "chroma": 0.32,
-     "illumination": 0.238,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
      "box": [
-      455,
-      215,
-      87,
-      78
+      454,
+      214,
+      88,
+      79
      ],
-     "score": 46.11,
-     "structure": 17.08,
+     "score": 46.41,
+     "structure": 17.01,
      "chroma": 1.25,
-     "illumination": 0.164,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -4067,10 +4081,10 @@
       75,
       32
      ],
-     "score": 56.86,
-     "structure": 23.53,
+     "score": 57.07,
+     "structure": 24.26,
      "chroma": 0.48,
-     "illumination": 0.13,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -4134,10 +4148,10 @@
       51,
       40
      ],
-     "score": 330.02,
-     "structure": 99.08,
-     "chroma": 12.83,
-     "illumination": 0.42,
+     "score": 331.76,
+     "structure": 99.6,
+     "chroma": 8.32,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -4147,10 +4161,10 @@
       32,
       62
      ],
-     "score": 139.12,
-     "structure": 76.29,
-     "chroma": -0.22,
-     "illumination": 0.143,
+     "score": 139.86,
+     "structure": 76.69,
+     "chroma": -0.15,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -4160,10 +4174,10 @@
       98,
       144
      ],
-     "score": 71.64,
-     "structure": 40.3,
-     "chroma": 4.44,
-     "illumination": 0.279,
+     "score": 72.03,
+     "structure": 40.49,
+     "chroma": 2.88,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -4201,10 +4215,10 @@
       34,
       83
      ],
-     "score": 43.69,
-     "structure": 22.86,
+     "score": 43.01,
+     "structure": 22.58,
      "chroma": 1.16,
-     "illumination": 0.235,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -4255,10 +4269,10 @@
       67,
       107
      ],
-     "score": 97.44,
-     "structure": 16.33,
-     "chroma": 24.26,
-     "illumination": 0.545,
+     "score": 97.34,
+     "structure": 20.92,
+     "chroma": 12.89,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -4268,10 +4282,10 @@
       55,
       61
      ],
-     "score": 81.69,
-     "structure": 45.32,
-     "chroma": 5.46,
-     "illumination": 0.113,
+     "score": 81.58,
+     "structure": 45.28,
+     "chroma": 2.59,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -4322,8 +4336,8 @@
       66,
       74
      ],
-     "score": 42.19,
-     "structure": 17.83,
+     "score": 42.21,
+     "structure": 17.84,
      "chroma": 2.73,
      "illumination": 0.428,
      "brightening": 0.0
@@ -4335,10 +4349,10 @@
       80,
       34
      ],
-     "score": 64.19,
-     "structure": 29.95,
+     "score": 64.22,
+     "structure": 29.96,
      "chroma": 0.15,
-     "illumination": 0.574,
+     "illumination": 0.0,
      "brightening": -0.0
     }
    ],
@@ -4376,10 +4390,10 @@
       77,
       69
      ],
-     "score": 122.21,
-     "structure": 35.55,
+     "score": 122.61,
+     "structure": 35.64,
      "chroma": -0.44,
-     "illumination": 0.33,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -4417,10 +4431,10 @@
       52,
       55
      ],
-     "score": 28.06,
-     "structure": 16.62,
-     "chroma": 4.75,
-     "illumination": 0.654,
+     "score": 28.14,
+     "structure": 16.59,
+     "chroma": 4.74,
+     "illumination": 0.653,
      "brightening": 0.0
     },
     {
@@ -4430,10 +4444,10 @@
       15,
       22
      ],
-     "score": 14.48,
-     "structure": 11.0,
+     "score": 14.46,
+     "structure": 10.98,
      "chroma": 0.06,
-     "illumination": 0.787,
+     "illumination": 0.788,
      "brightening": 0.0
     }
    ],
@@ -4485,9 +4499,9 @@
       30
      ],
      "score": 105.36,
-     "structure": 34.52,
+     "structure": 34.48,
      "chroma": 3.05,
-     "illumination": 0.353,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -4500,7 +4514,7 @@
      "score": 96.44,
      "structure": 42.74,
      "chroma": 1.25,
-     "illumination": 0.488,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -4551,7 +4565,7 @@
       56,
       68
      ],
-     "score": 42.75,
+     "score": 42.76,
      "structure": 19.55,
      "chroma": 0.81,
      "illumination": 0.473,
@@ -4564,10 +4578,10 @@
       20,
       9
      ],
-     "score": 41.11,
-     "structure": 25.07,
-     "chroma": 0.4,
-     "illumination": 0.363,
+     "score": 41.12,
+     "structure": 25.08,
+     "chroma": 0.39,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -4577,10 +4591,10 @@
       11,
       28
      ],
-     "score": 29.35,
-     "structure": 17.23,
+     "score": 29.36,
+     "structure": 17.24,
      "chroma": 0.09,
-     "illumination": 0.465,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -4618,10 +4632,10 @@
       10,
       86
      ],
-     "score": 139.78,
-     "structure": 84.74,
-     "chroma": 2.08,
-     "illumination": 0.404,
+     "score": 140.19,
+     "structure": 85.02,
+     "chroma": 0.81,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -4685,10 +4699,10 @@
       62,
       55
      ],
-     "score": 191.99,
-     "structure": 27.51,
+     "score": 192.2,
+     "structure": 27.53,
      "chroma": 0.2,
-     "illumination": 0.268,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -4698,10 +4712,10 @@
       84,
       84
      ],
-     "score": 75.35,
-     "structure": 28.36,
-     "chroma": 1.23,
-     "illumination": 0.293,
+     "score": 75.32,
+     "structure": 28.29,
+     "chroma": 1.22,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -4721,8 +4735,8 @@
      "kind": "crack",
      "area": 252,
      "contrast": 60.9,
-     "hit": false,
-     "iou": 0.0,
+     "hit": true,
+     "iou": 0.813,
      "gt_box": [
       611,
       152,
@@ -4765,10 +4779,10 @@
       56,
       52
      ],
-     "score": 63.31,
-     "structure": 27.11,
+     "score": 62.75,
+     "structure": 26.99,
      "chroma": -0.55,
-     "illumination": 0.417,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -4778,14 +4792,27 @@
       49,
       67
      ],
-     "score": 46.82,
-     "structure": 24.57,
+     "score": 46.41,
+     "structure": 24.48,
      "chroma": -0.63,
-     "illumination": 0.562,
+     "illumination": 0.0,
      "brightening": 0.0
+    },
+    {
+     "box": [
+      612,
+      158,
+      13,
+      103
+     ],
+     "score": 34.69,
+     "structure": 19.45,
+     "chroma": 0.11,
+     "illumination": 0.0,
+     "brightening": 0.033
     }
    ],
-   "lighting_regions": 4,
+   "lighting_regions": 3,
    "shadowed": true,
    "unmatched": 0
   },
@@ -4815,7 +4842,7 @@
      "area": 151,
      "contrast": 36.7,
      "hit": true,
-     "iou": 0.432,
+     "iou": 0.455,
      "gt_box": [
       647,
       194,
@@ -4828,7 +4855,7 @@
      "area": 211,
      "contrast": 101.0,
      "hit": true,
-     "iou": 0.969,
+     "iou": 0.906,
      "gt_box": [
       574,
       165,
@@ -4841,14 +4868,14 @@
     {
      "box": [
       574,
-      165,
+      167,
       17,
-      31
+      29
      ],
-     "score": 46.4,
-     "structure": 27.14,
-     "chroma": 10.37,
-     "illumination": 0.566,
+     "score": 45.17,
+     "structure": 27.1,
+     "chroma": 10.46,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -4858,23 +4885,23 @@
       46,
       86
      ],
-     "score": 30.26,
-     "structure": 17.44,
-     "chroma": 4.06,
-     "illumination": 0.833,
+     "score": 29.45,
+     "structure": 17.09,
+     "chroma": 4.07,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
      "box": [
       647,
-      191,
+      192,
       23,
       31
      ],
-     "score": 28.5,
-     "structure": 16.1,
-     "chroma": 1.29,
-     "illumination": 0.204,
+     "score": 27.36,
+     "structure": 15.99,
+     "chroma": 1.33,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -4912,10 +4939,10 @@
       46,
       127
      ],
-     "score": 131.33,
-     "structure": 33.48,
-     "chroma": 7.09,
-     "illumination": 0.288,
+     "score": 131.2,
+     "structure": 33.45,
+     "chroma": 4.08,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -4966,10 +4993,10 @@
       39,
       61
      ],
-     "score": 187.88,
-     "structure": 50.84,
+     "score": 188.28,
+     "structure": 50.92,
      "chroma": 0.8,
-     "illumination": 0.249,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -4979,10 +5006,10 @@
       43,
       83
      ],
-     "score": 87.97,
-     "structure": 27.93,
+     "score": 88.16,
+     "structure": 27.99,
      "chroma": 0.78,
-     "illumination": 0.097,
+     "illumination": 0.0,
      "brightening": -0.001
     }
    ],
@@ -5002,8 +5029,8 @@
      "kind": "scratch",
      "area": 426,
      "contrast": 42.3,
-     "hit": false,
-     "iou": 0.0,
+     "hit": true,
+     "iou": 0.619,
      "gt_box": [
       506,
       78,
@@ -5012,8 +5039,22 @@
      ]
     }
    ],
-   "flagged": [],
-   "lighting_regions": 2,
+   "flagged": [
+    {
+     "box": [
+      502,
+      80,
+      32,
+      193
+     ],
+     "score": 43.63,
+     "structure": 18.99,
+     "chroma": -1.12,
+     "illumination": 0.0,
+     "brightening": 0.0
+    }
+   ],
+   "lighting_regions": 1,
    "shadowed": true,
    "unmatched": 0
   },
@@ -5063,7 +5104,7 @@
      "score": 53.66,
      "structure": 21.02,
      "chroma": 0.68,
-     "illumination": 0.312,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -5076,7 +5117,7 @@
      "score": 20.67,
      "structure": 14.25,
      "chroma": -0.27,
-     "illumination": 0.31,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -5114,10 +5155,10 @@
       51,
       40
      ],
-     "score": 58.22,
-     "structure": 37.978,
-     "chroma": 5.967,
-     "illumination": 0.11,
+     "score": 57.89,
+     "structure": 37.766,
+     "chroma": 2.918,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -5138,7 +5179,7 @@
      "area": 290,
      "contrast": 14.1,
      "hit": true,
-     "iou": 0.789,
+     "iou": 0.8,
      "gt_box": [
       698,
       570,
@@ -5150,47 +5191,34 @@
    "flagged": [
     {
      "box": [
-      684,
+      686,
       569,
-      145,
+      143,
       100
      ],
-     "score": 42.21,
-     "structure": 14.633,
-     "chroma": 0.615,
-     "illumination": 0.157,
+     "score": 42.99,
+     "structure": 14.386,
+     "chroma": 0.618,
+     "illumination": 0.651,
      "brightening": 0.0
     },
     {
      "box": [
       24,
-      540,
-      28,
-      42
-     ],
-     "score": 35.0,
-     "structure": 16.9,
-     "chroma": 0.94,
-     "illumination": 0.35,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      24,
-      609,
+      610,
       9,
-      27
+      25
      ],
-     "score": 16.65,
-     "structure": 11.67,
-     "chroma": 1.06,
-     "illumination": 0.765,
-     "brightening": -0.128
+     "score": 15.19,
+     "structure": 11.07,
+     "chroma": 1.07,
+     "illumination": 0.783,
+     "brightening": -0.138
     }
    ],
-   "lighting_regions": 2,
+   "lighting_regions": 3,
    "shadowed": false,
-   "unmatched": 2
+   "unmatched": 1
   },
   {
    "set": "damage",
@@ -5217,8 +5245,8 @@
      "kind": "scratch",
      "area": 492,
      "contrast": 86.6,
-     "hit": false,
-     "iou": 0.0,
+     "hit": true,
+     "iou": 0.309,
      "gt_box": [
       427,
       329,
@@ -5248,14 +5276,27 @@
       53,
       107
      ],
-     "score": 104.87,
-     "structure": 33.348,
-     "chroma": 0.741,
-     "illumination": 0.192,
+     "score": 106.2,
+     "structure": 33.619,
+     "chroma": 0.739,
+     "illumination": 0.0,
      "brightening": 0.0
+    },
+    {
+     "box": [
+      422,
+      334,
+      19,
+      114
+     ],
+     "score": 76.05,
+     "structure": 27.65,
+     "chroma": 0.68,
+     "illumination": 0.0,
+     "brightening": 0.36
     }
    ],
-   "lighting_regions": 2,
+   "lighting_regions": 1,
    "shadowed": true,
    "unmatched": 0
   },
@@ -5285,7 +5326,7 @@
      "area": 386,
      "contrast": 52.9,
      "hit": true,
-     "iou": 0.844,
+     "iou": 0.824,
      "gt_box": [
       425,
       139,
@@ -5297,15 +5338,15 @@
    "flagged": [
     {
      "box": [
-      419,
+      418,
       138,
-      85,
-      85
+      86,
+      86
      ],
-     "score": 82.49,
-     "structure": 26.52,
-     "chroma": 0.11,
-     "illumination": 0.328,
+     "score": 93.33,
+     "structure": 27.69,
+     "chroma": 0.07,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -5315,14 +5356,14 @@
       92,
       192
      ],
-     "score": 52.19,
-     "structure": 21.68,
-     "chroma": 0.72,
+     "score": 59.05,
+     "structure": 23.68,
+     "chroma": 0.73,
      "illumination": 0.334,
      "brightening": 0.0
     }
    ],
-   "lighting_regions": 3,
+   "lighting_regions": 1,
    "shadowed": false,
    "unmatched": 0
   },
@@ -5339,7 +5380,7 @@
      "area": 341,
      "contrast": 49.9,
      "hit": true,
-     "iou": 0.698,
+     "iou": 0.664,
      "gt_box": [
       487,
       229,
@@ -5352,7 +5393,7 @@
      "area": 744,
      "contrast": 109.9,
      "hit": true,
-     "iou": 0.442,
+     "iou": 0.469,
      "gt_box": [
       761,
       383,
@@ -5365,7 +5406,7 @@
      "area": 2000,
      "contrast": 6.2,
      "hit": true,
-     "iou": 0.469,
+     "iou": 0.488,
      "gt_box": [
       795,
       456,
@@ -5379,58 +5420,45 @@
      "box": [
       751,
       368,
-      37,
+      39,
       52
      ],
-     "score": 115.1,
-     "structure": 45.36,
-     "chroma": -0.17,
-     "illumination": 0.436,
+     "score": 123.23,
+     "structure": 46.39,
+     "chroma": -0.15,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
      "box": [
-      486,
+      485,
       224,
-      18,
+      19,
       33
      ],
-     "score": 119.58,
-     "structure": 39.96,
-     "chroma": -0.63,
-     "illumination": 0.514,
+     "score": 128.02,
+     "structure": 40.91,
+     "chroma": -0.61,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
      "box": [
-      801,
+      800,
       461,
-      51,
-      31
+      53,
+      32
      ],
-     "score": 23.26,
-     "structure": 13.78,
-     "chroma": 2.001,
-     "illumination": 0.351,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      236,
-      33,
-      21,
-      3
-     ],
-     "score": 14.82,
-     "structure": 11.59,
-     "chroma": -0.5,
-     "illumination": 0.433,
+     "score": 24.91,
+     "structure": 14.037,
+     "chroma": 1.983,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
-   "lighting_regions": 3,
+   "lighting_regions": 1,
    "shadowed": true,
-   "unmatched": 1
+   "unmatched": 0
   },
   {
    "set": "damage",
@@ -5462,10 +5490,10 @@
       33,
       34
      ],
-     "score": 31.46,
-     "structure": 12.6,
+     "score": 31.41,
+     "structure": 12.59,
      "chroma": 2.02,
-     "illumination": 0.45,
+     "illumination": 0.449,
      "brightening": 0.0
     }
    ],
@@ -5529,10 +5557,10 @@
       65,
       110
      ],
-     "score": 116.67,
-     "structure": 42.92,
-     "chroma": 1.26,
-     "illumination": 0.101,
+     "score": 117.96,
+     "structure": 43.25,
+     "chroma": 1.27,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -5542,10 +5570,10 @@
       17,
       25
      ],
-     "score": 40.98,
-     "structure": 22.65,
+     "score": 41.44,
+     "structure": 22.91,
      "chroma": 1.57,
-     "illumination": 0.289,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -5583,10 +5611,10 @@
       22,
       23
      ],
-     "score": 199.47,
-     "structure": 51.43,
-     "chroma": 0.09,
-     "illumination": 0.247,
+     "score": 199.45,
+     "structure": 51.58,
+     "chroma": 0.1,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -5650,10 +5678,10 @@
       81,
       107
      ],
-     "score": 83.68,
-     "structure": 40.71,
+     "score": 83.69,
+     "structure": 40.72,
      "chroma": 0.55,
-     "illumination": 0.055,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -5732,10 +5760,10 @@
       33,
       33
      ],
-     "score": 44.21,
-     "structure": 24.58,
-     "chroma": -0.83,
-     "illumination": 0.181,
+     "score": 43.72,
+     "structure": 24.55,
+     "chroma": -0.85,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -5769,7 +5797,7 @@
      "area": 2423,
      "contrast": 18.2,
      "hit": true,
-     "iou": 0.601,
+     "iou": 0.694,
      "gt_box": [
       304,
       498,
@@ -5782,46 +5810,20 @@
     {
      "box": [
       313,
-      512,
-      42,
-      46
+      504,
+      43,
+      54
      ],
-     "score": 19.62,
-     "structure": 12.63,
-     "chroma": 0.98,
-     "illumination": 0.433,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      128,
-      24,
-      13,
-      7
-     ],
-     "score": 28.13,
-     "structure": 15.93,
-     "chroma": -0.81,
-     "illumination": 0.546,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      172,
-      24,
-      22,
-      8
-     ],
-     "score": 18.86,
-     "structure": 13.05,
-     "chroma": -0.72,
-     "illumination": 0.492,
+     "score": 21.22,
+     "structure": 13.07,
+     "chroma": 0.94,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
-   "lighting_regions": 3,
+   "lighting_regions": 2,
    "shadowed": false,
-   "unmatched": 2
+   "unmatched": 0
   },
   {
    "set": "damage",
@@ -5879,10 +5881,10 @@
       109,
       47
      ],
-     "score": 50.77,
-     "structure": 24.07,
+     "score": 52.79,
+     "structure": 24.74,
      "chroma": -0.9,
-     "illumination": 0.279,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -5892,10 +5894,10 @@
       37,
       17
      ],
-     "score": 76.3,
-     "structure": 28.71,
-     "chroma": 0.51,
-     "illumination": 0.383,
+     "score": 79.22,
+     "structure": 29.38,
+     "chroma": 0.5,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -5905,9 +5907,9 @@
       26,
       23
      ],
-     "score": 43.9,
-     "structure": 22.6,
-     "chroma": -0.47,
+     "score": 45.62,
+     "structure": 23.32,
+     "chroma": -0.46,
      "illumination": 0.738,
      "brightening": 0.023
     }
@@ -5946,10 +5948,10 @@
       63,
       61
      ],
-     "score": 44.6,
-     "structure": 27.44,
-     "chroma": 5.57,
-     "illumination": 0.135,
+     "score": 44.41,
+     "structure": 27.32,
+     "chroma": 2.96,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -6000,8 +6002,8 @@
       39,
       42
      ],
-     "score": 50.83,
-     "structure": 21.08,
+     "score": 51.55,
+     "structure": 21.11,
      "chroma": 0.87,
      "illumination": 0.332,
      "brightening": 0.0
@@ -6013,10 +6015,10 @@
       45,
       11
      ],
-     "score": 39.35,
-     "structure": 21.36,
+     "score": 39.94,
+     "structure": 21.63,
      "chroma": 1.04,
-     "illumination": 0.497,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -6054,10 +6056,10 @@
       132,
       50
      ],
-     "score": 36.63,
-     "structure": 25.81,
-     "chroma": 5.45,
-     "illumination": 0.108,
+     "score": 36.79,
+     "structure": 25.98,
+     "chroma": 2.7,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -6078,7 +6080,7 @@
      "area": 311,
      "contrast": 36.7,
      "hit": true,
-     "iou": 0.266,
+     "iou": 0.279,
      "gt_box": [
       665,
       514,
@@ -6090,8 +6092,8 @@
      "kind": "crack",
      "area": 161,
      "contrast": 32.6,
-     "hit": false,
-     "iou": 0.0,
+     "hit": true,
+     "iou": 0.022,
      "gt_box": [
       179,
       603,
@@ -6104,7 +6106,7 @@
      "area": 4407,
      "contrast": 13.3,
      "hit": true,
-     "iou": 0.471,
+     "iou": 0.502,
      "gt_box": [
       661,
       514,
@@ -6121,23 +6123,36 @@
       30,
       14
      ],
-     "score": 77.75,
-     "structure": 44.99,
-     "chroma": 0.57,
-     "illumination": 0.462,
+     "score": 79.71,
+     "structure": 45.08,
+     "chroma": 0.58,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
      "box": [
       683,
       515,
-      45,
+      48,
       62
      ],
-     "score": 37.96,
-     "structure": 16.336,
-     "chroma": 2.466,
-     "illumination": 0.591,
+     "score": 39.01,
+     "structure": 15.89,
+     "chroma": 2.51,
+     "illumination": 0.0,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      181,
+      603,
+      10,
+      6
+     ],
+     "score": 35.48,
+     "structure": 19.12,
+     "chroma": 1.67,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -6188,10 +6203,10 @@
       51,
       73
      ],
-     "score": 55.63,
-     "structure": 24.21,
+     "score": 55.53,
+     "structure": 24.16,
      "chroma": 1.87,
-     "illumination": 0.298,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -6201,10 +6216,10 @@
       23,
       16
      ],
-     "score": 50.18,
-     "structure": 29.26,
+     "score": 50.12,
+     "structure": 29.23,
      "chroma": 1.46,
-     "illumination": 0.218,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -6259,50 +6274,10 @@
    "reason": null,
    "inliers": 2061,
    "defects": [],
-   "flagged": [
-    {
-     "box": [
-      709,
-      639,
-      38,
-      30
-     ],
-     "score": 25.38,
-     "structure": 14.74,
-     "chroma": 1.1,
-     "illumination": 0.517,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      666,
-      658,
-      14,
-      11
-     ],
-     "score": 25.52,
-     "structure": 13.78,
-     "chroma": 1.06,
-     "illumination": 0.504,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      895,
-      543,
-      5,
-      12
-     ],
-     "score": 17.97,
-     "structure": 12.69,
-     "chroma": 0.34,
-     "illumination": 0.126,
-     "brightening": 0.0
-    }
-   ],
+   "flagged": [],
    "lighting_regions": 0,
    "shadowed": null,
-   "unmatched": 3
+   "unmatched": 0
   },
   {
    "set": "nochange",
@@ -6315,15 +6290,15 @@
    "flagged": [
     {
      "box": [
-      895,
-      34,
+      22,
+      244,
       7,
-      31
+      10
      ],
-     "score": 29.27,
-     "structure": 18.01,
-     "chroma": 0.34,
-     "illumination": 0.444,
+     "score": 15.21,
+     "structure": 11.7,
+     "chroma": 0.57,
+     "illumination": 0.192,
      "brightening": 0.0
     }
    ],
@@ -6460,15 +6435,15 @@
    "flagged": [
     {
      "box": [
-      682,
-      603,
-      81,
-      66
+      677,
+      601,
+      94,
+      68
      ],
-     "score": 34.4,
-     "structure": 14.19,
+     "score": 34.34,
+     "structure": 14.07,
      "chroma": 0.81,
-     "illumination": 0.633,
+     "illumination": 0.617,
      "brightening": 0.0
     },
     {
@@ -6478,16 +6453,29 @@
       8,
       20
      ],
-     "score": 28.51,
-     "structure": 17.3,
-     "chroma": 0.9,
+     "score": 32.81,
+     "structure": 19.11,
+     "chroma": 0.91,
      "illumination": 0.786,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      894,
+      218,
+      6,
+      30
+     ],
+     "score": 13.3,
+     "structure": 10.54,
+     "chroma": 0.35,
+     "illumination": 0.494,
      "brightening": 0.0
     }
    ],
-   "lighting_regions": 5,
+   "lighting_regions": 2,
    "shadowed": null,
-   "unmatched": 2
+   "unmatched": 3
   },
   {
    "set": "nochange",
@@ -6601,24 +6589,10 @@
    "reason": null,
    "inliers": 1798,
    "defects": [],
-   "flagged": [
-    {
-     "box": [
-      24,
-      591,
-      6,
-      14
-     ],
-     "score": 15.81,
-     "structure": 12.36,
-     "chroma": 1.14,
-     "illumination": 0.335,
-     "brightening": 0.0
-    }
-   ],
+   "flagged": [],
    "lighting_regions": 1,
    "shadowed": null,
-   "unmatched": 1
+   "unmatched": 0
   },
   {
    "set": "nochange",
@@ -6719,50 +6693,10 @@
    "reason": null,
    "inliers": 1143,
    "defects": [],
-   "flagged": [
-    {
-     "box": [
-      133,
-      28,
-      34,
-      9
-     ],
-     "score": 23.99,
-     "structure": 14.8,
-     "chroma": 0.89,
-     "illumination": 0.779,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      28,
-      34,
-      23,
-      9
-     ],
-     "score": 18.78,
-     "structure": 13.67,
-     "chroma": 0.66,
-     "illumination": 0.46,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      81,
-      31,
-      13,
-      9
-     ],
-     "score": 18.63,
-     "structure": 13.62,
-     "chroma": 0.65,
-     "illumination": 0.287,
-     "brightening": 0.0
-    }
-   ],
+   "flagged": [],
    "lighting_regions": 0,
    "shadowed": null,
-   "unmatched": 3
+   "unmatched": 0
   },
   {
    "set": "exposure",
@@ -6802,40 +6736,40 @@
     {
      "box": [
       24,
-      503,
-      84,
-      55
+      502,
+      93,
+      51
      ],
-     "score": 15.77,
-     "structure": 11.014,
-     "chroma": -0.212,
-     "illumination": 0.501,
+     "score": 16.51,
+     "structure": 11.036,
+     "chroma": 0.051,
+     "illumination": 0.312,
      "brightening": 0.0
     },
     {
      "box": [
       742,
-      551,
+      552,
       16,
-      23
+      21
      ],
-     "score": 18.48,
-     "structure": 13.97,
-     "chroma": 0.03,
-     "illumination": 0.756,
+     "score": 18.9,
+     "structure": 14.26,
+     "chroma": 0.04,
+     "illumination": 0.73,
      "brightening": 0.0
     },
     {
      "box": [
       723,
       462,
-      35,
+      42,
       13
      ],
-     "score": 12.24,
+     "score": 12.45,
      "structure": 10.13,
-     "chroma": -0.44,
-     "illumination": 0.626,
+     "chroma": -0.45,
+     "illumination": 0.656,
      "brightening": 0.0
     },
     {
@@ -6845,10 +6779,10 @@
       10,
       6
      ],
-     "score": 11.51,
-     "structure": 10.17,
-     "chroma": 0.15,
-     "illumination": 0.36,
+     "score": 11.72,
+     "structure": 10.27,
+     "chroma": 0.14,
+     "illumination": 0.37,
      "brightening": 0.0
     }
    ],
@@ -6864,63 +6798,10 @@
    "reason": null,
    "inliers": 1954,
    "defects": [],
-   "flagged": [
-    {
-     "box": [
-      22,
-      43,
-      18,
-      336
-     ],
-     "score": 43.26,
-     "structure": 16.27,
-     "chroma": 0.58,
-     "illumination": 0.717,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      23,
-      607,
-      7,
-      11
-     ],
-     "score": 22.22,
-     "structure": 15.78,
-     "chroma": 2.87,
-     "illumination": 0.351,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      470,
-      22,
-      23,
-      5
-     ],
-     "score": 15.74,
-     "structure": 12.09,
-     "chroma": -0.2,
-     "illumination": 0.228,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      22,
-      445,
-      6,
-      10
-     ],
-     "score": 17.76,
-     "structure": 13.22,
-     "chroma": 2.6,
-     "illumination": 0.216,
-     "brightening": 0.0
-    }
-   ],
-   "lighting_regions": 2,
+   "flagged": [],
+   "lighting_regions": 0,
    "shadowed": null,
-   "unmatched": 4
+   "unmatched": 0
   },
   {
    "set": "exposure",
@@ -6957,7 +6838,7 @@
    "inliers": 1709,
    "defects": [],
    "flagged": [],
-   "lighting_regions": 1,
+   "lighting_regions": 0,
    "shadowed": null,
    "unmatched": 0
   },
@@ -6969,37 +6850,10 @@
    "reason": null,
    "inliers": 1455,
    "defects": [],
-   "flagged": [
-    {
-     "box": [
-      874,
-      420,
-      10,
-      20
-     ],
-     "score": 18.86,
-     "structure": 12.52,
-     "chroma": -1.0,
-     "illumination": 0.225,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      875,
-      368,
-      9,
-      24
-     ],
-     "score": 18.0,
-     "structure": 11.99,
-     "chroma": -1.04,
-     "illumination": 0.455,
-     "brightening": 0.0
-    }
-   ],
-   "lighting_regions": 3,
+   "flagged": [],
+   "lighting_regions": 0,
    "shadowed": null,
-   "unmatched": 2
+   "unmatched": 0
   },
   {
    "set": "exposure",
@@ -7022,102 +6876,10 @@
    "reason": null,
    "inliers": 1003,
    "defects": [],
-   "flagged": [
-    {
-     "box": [
-      28,
-      761,
-      9,
-      11
-     ],
-     "score": 27.56,
-     "structure": 17.47,
-     "chroma": -0.48,
-     "illumination": 0.161,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      28,
-      436,
-      8,
-      33
-     ],
-     "score": 23.44,
-     "structure": 13.8,
-     "chroma": -1.4,
-     "illumination": 0.133,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      28,
-      693,
-      5,
-      14
-     ],
-     "score": 24.08,
-     "structure": 14.26,
-     "chroma": -1.01,
-     "illumination": 0.33,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      28,
-      626,
-      8,
-      11
-     ],
-     "score": 25.97,
-     "structure": 16.63,
-     "chroma": -1.2,
-     "illumination": 0.053,
-     "brightening": 0.011
-    },
-    {
-     "box": [
-      28,
-      306,
-      7,
-      31
-     ],
-     "score": 21.07,
-     "structure": 14.33,
-     "chroma": -1.35,
-     "illumination": 0.132,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      28,
-      654,
-      7,
-      9
-     ],
-     "score": 22.62,
-     "structure": 15.69,
-     "chroma": -1.39,
-     "illumination": 0.101,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      28,
-      271,
-      6,
-      17
-     ],
-     "score": 20.98,
-     "structure": 14.43,
-     "chroma": -0.77,
-     "illumination": 0.165,
-     "brightening": 0.0
-    }
-   ],
-   "lighting_regions": 2,
+   "flagged": [],
+   "lighting_regions": 1,
    "shadowed": null,
-   "unmatched": 7
+   "unmatched": 0
   },
   {
    "set": "exposure",
@@ -7140,50 +6902,10 @@
    "reason": null,
    "inliers": 1668,
    "defects": [],
-   "flagged": [
-    {
-     "box": [
-      493,
-      656,
-      33,
-      8
-     ],
-     "score": 19.91,
-     "structure": 12.93,
-     "chroma": 1.3,
-     "illumination": 0.73,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      763,
-      656,
-      19,
-      8
-     ],
-     "score": 16.43,
-     "structure": 12.58,
-     "chroma": 1.1,
-     "illumination": 0.373,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      825,
-      657,
-      7,
-      7
-     ],
-     "score": 18.2,
-     "structure": 13.07,
-     "chroma": 0.64,
-     "illumination": 0.169,
-     "brightening": 0.0
-    }
-   ],
-   "lighting_regions": 3,
+   "flagged": [],
+   "lighting_regions": 2,
    "shadowed": null,
-   "unmatched": 3
+   "unmatched": 0
   },
   {
    "set": "exposure",
@@ -7193,50 +6915,10 @@
    "reason": null,
    "inliers": 1832,
    "defects": [],
-   "flagged": [
-    {
-     "box": [
-      892,
-      408,
-      8,
-      19
-     ],
-     "score": 15.73,
-     "structure": 11.46,
-     "chroma": 0.1,
-     "illumination": 0.276,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      878,
-      648,
-      6,
-      21
-     ],
-     "score": 13.18,
-     "structure": 10.9,
-     "chroma": -0.67,
-     "illumination": 0.771,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      241,
-      24,
-      8,
-      6
-     ],
-     "score": 15.68,
-     "structure": 11.66,
-     "chroma": -0.64,
-     "illumination": 0.723,
-     "brightening": 0.0
-    }
-   ],
-   "lighting_regions": 7,
+   "flagged": [],
+   "lighting_regions": 3,
    "shadowed": null,
-   "unmatched": 3
+   "unmatched": 0
   },
   {
    "set": "exposure",
@@ -7312,24 +6994,10 @@
    "reason": null,
    "inliers": 1832,
    "defects": [],
-   "flagged": [
-    {
-     "box": [
-      273,
-      24,
-      20,
-      7
-     ],
-     "score": 20.55,
-     "structure": 13.53,
-     "chroma": 0.55,
-     "illumination": 0.398,
-     "brightening": 0.0
-    }
-   ],
+   "flagged": [],
    "lighting_regions": 0,
    "shadowed": null,
-   "unmatched": 1
+   "unmatched": 0
   },
   {
    "set": "colortemp",
@@ -7356,14 +7024,14 @@
     {
      "box": [
       22,
-      239,
+      218,
       39,
-      13
+      34
      ],
-     "score": 17.31,
-     "structure": 12.12,
+     "score": 19.15,
+     "structure": 12.21,
      "chroma": 0.55,
-     "illumination": 0.235,
+     "illumination": 0.079,
      "brightening": 0.0
     }
    ],
@@ -7497,7 +7165,7 @@
    "inliers": 1988,
    "defects": [],
    "flagged": [],
-   "lighting_regions": 2,
+   "lighting_regions": 0,
    "shadowed": null,
    "unmatched": 0
   },
@@ -7614,7 +7282,7 @@
    "inliers": 1536,
    "defects": [],
    "flagged": [],
-   "lighting_regions": 4,
+   "lighting_regions": 3,
    "shadowed": null,
    "unmatched": 0
   },
@@ -7681,15 +7349,15 @@
    "flagged": [
     {
      "box": [
-      26,
-      285,
-      6,
+      739,
+      656,
+      10,
       13
      ],
-     "score": 14.51,
-     "structure": 11.29,
-     "chroma": -0.09,
-     "illumination": 0.278,
+     "score": 11.09,
+     "structure": 10.02,
+     "chroma": 1.84,
+     "illumination": 0.55,
      "brightening": 0.0
     }
    ],
@@ -7713,10 +7381,10 @@
       25,
       22
      ],
-     "score": 14.77,
-     "structure": 10.89,
-     "chroma": 0.28,
-     "illumination": 0.701,
+     "score": 14.92,
+     "structure": 10.96,
+     "chroma": 0.15,
+     "illumination": 0.684,
      "brightening": 0.0
     }
    ],
@@ -7738,12 +7406,12 @@
       523,
       348,
       130,
-      164
+      162
      ],
-     "score": 67.69,
-     "structure": 20.96,
-     "chroma": 13.88,
-     "illumination": 0.786,
+     "score": 69.47,
+     "structure": 21.42,
+     "chroma": 13.83,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -7768,9 +7436,9 @@
       88
      ],
      "score": 17.62,
-     "structure": 11.81,
-     "chroma": 0.68,
-     "illumination": 0.451,
+     "structure": 11.8,
+     "chroma": 0.67,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -7794,10 +7462,10 @@
       67,
       57
      ],
-     "score": 24.82,
-     "structure": 14.91,
+     "score": 24.77,
+     "structure": 14.89,
      "chroma": 1.6,
-     "illumination": 0.282,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -7821,10 +7489,10 @@
       88,
       97
      ],
-     "score": 69.01,
-     "structure": 25.95,
-     "chroma": 1.62,
-     "illumination": 0.426,
+     "score": 69.14,
+     "structure": 25.97,
+     "chroma": 1.58,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -7848,10 +7516,10 @@
       58,
       47
      ],
-     "score": 19.14,
-     "structure": 11.68,
+     "score": 19.27,
+     "structure": 11.73,
      "chroma": 0.76,
-     "illumination": 0.659,
+     "illumination": 0.0,
      "brightening": -0.013
     }
    ],
@@ -7870,15 +7538,15 @@
    "flagged": [
     {
      "box": [
-      402,
+      401,
       201,
-      103,
+      104,
       122
      ],
-     "score": 59.23,
-     "structure": 14.4,
-     "chroma": 0.89,
-     "illumination": 0.72,
+     "score": 59.25,
+     "structure": 14.56,
+     "chroma": 0.87,
+     "illumination": 0.719,
      "brightening": 0.0
     }
    ],
@@ -7902,10 +7570,10 @@
       44,
       42
      ],
-     "score": 16.86,
-     "structure": 11.43,
+     "score": 16.83,
+     "structure": 11.41,
      "chroma": 0.92,
-     "illumination": 0.435,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -7926,13 +7594,13 @@
      "box": [
       198,
       539,
-      54,
-      53
+      47,
+      37
      ],
-     "score": 32.46,
-     "structure": 7.23,
-     "chroma": 10.26,
-     "illumination": 0.37,
+     "score": 32.49,
+     "structure": 12.97,
+     "chroma": 2.45,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -7956,10 +7624,10 @@
       144,
       150
      ],
-     "score": 71.0,
-     "structure": 23.31,
-     "chroma": 5.91,
-     "illumination": 0.598,
+     "score": 73.45,
+     "structure": 23.82,
+     "chroma": 5.89,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -7983,10 +7651,10 @@
       105,
       109
      ],
-     "score": 81.72,
-     "structure": 24.83,
+     "score": 82.16,
+     "structure": 24.96,
      "chroma": 4.67,
-     "illumination": 0.592,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -8005,15 +7673,15 @@
    "flagged": [
     {
      "box": [
-      240,
+      244,
       397,
-      76,
+      72,
       65
      ],
-     "score": 78.71,
-     "structure": 25.66,
-     "chroma": 14.58,
-     "illumination": 0.713,
+     "score": 80.55,
+     "structure": 29.01,
+     "chroma": 11.33,
+     "illumination": 0.699,
      "brightening": 0.0
     }
    ],
@@ -8037,10 +7705,10 @@
       143,
       171
      ],
-     "score": 124.35,
-     "structure": 27.69,
-     "chroma": 7.85,
-     "illumination": 0.649,
+     "score": 124.05,
+     "structure": 27.48,
+     "chroma": 7.83,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -8064,10 +7732,10 @@
       59,
       66
      ],
-     "score": 53.29,
-     "structure": 20.48,
+     "score": 53.28,
+     "structure": 20.47,
      "chroma": 1.68,
-     "illumination": 0.288,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
@@ -8086,151 +7754,21 @@
    "flagged": [
     {
      "box": [
-      410,
+      419,
       460,
-      82,
-      113
+      73,
+      86
      ],
-     "score": 135.54,
-     "structure": 15.57,
-     "chroma": 18.3,
-     "illumination": 0.449,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      207,
-      636,
-      28,
-      33
-     ],
-     "score": 262.69,
-     "structure": 0.4,
-     "chroma": 144.77,
-     "illumination": 0.775,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      790,
-      259,
-      21,
-      24
-     ],
-     "score": 234.39,
-     "structure": 0.09,
-     "chroma": 173.81,
-     "illumination": 0.504,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      556,
-      81,
-      15,
-      17
-     ],
-     "score": 240.76,
-     "structure": 0.98,
-     "chroma": 199.41,
-     "illumination": 0.277,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      861,
-      608,
-      22,
-      12
-     ],
-     "score": 165.54,
-     "structure": 0.11,
-     "chroma": 98.04,
-     "illumination": 0.687,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      842,
-      77,
-      20,
-      19
-     ],
-     "score": 213.93,
-     "structure": 0.4,
-     "chroma": 154.83,
-     "illumination": 0.253,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      497,
-      252,
-      21,
-      20
-     ],
-     "score": 124.99,
-     "structure": -0.05,
-     "chroma": 75.23,
-     "illumination": 0.454,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      365,
-      468,
-      19,
-      23
-     ],
-     "score": 149.56,
-     "structure": 0.39,
-     "chroma": 88.45,
-     "illumination": 0.653,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      441,
-      216,
-      14,
-      12
-     ],
-     "score": 204.66,
-     "structure": 0.21,
-     "chroma": 120.76,
-     "illumination": 0.131,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      407,
-      184,
-      14,
-      13
-     ],
-     "score": 140.11,
-     "structure": -0.04,
-     "chroma": 78.08,
-     "illumination": 0.127,
-     "brightening": 0.0
-    },
-    {
-     "box": [
-      598,
-      159,
-      9,
-      9
-     ],
-     "score": 146.97,
-     "structure": 0.64,
-     "chroma": 122.39,
-     "illumination": 0.552,
+     "score": 59.19,
+     "structure": 19.77,
+     "chroma": 0.0,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ],
-   "lighting_regions": 2,
+   "lighting_regions": 3,
    "shadowed": null,
-   "unmatched": 11
+   "unmatched": 1
   },
   {
    "set": "specular",
@@ -8243,15 +7781,15 @@
    "flagged": [
     {
      "box": [
-      691,
+      690,
       101,
-      42,
+      44,
       64
      ],
-     "score": 32.14,
-     "structure": 17.36,
-     "chroma": 5.39,
-     "illumination": 0.569,
+     "score": 33.7,
+     "structure": 17.75,
+     "chroma": 2.77,
+     "illumination": 0.0,
      "brightening": 0.004
     }
    ],
@@ -8264,29 +7802,29 @@
   "damage_pairs": 80,
   "defects": 162,
   "damage_registration_failures": 0,
-  "recall": 0.858,
-  "precision": 0.88,
-  "fp_per_pair": 0.24,
+  "recall": 0.914,
+  "precision": 0.931,
+  "fp_per_pair": 0.14,
   "fp_in_shadow_pairs": 4,
   "shadow_pairs": 39,
   "nochange_pairs": 30,
-  "nochange_false_alarm_rate": 0.167,
-  "nochange_flags_per_pair": 0.27,
+  "nochange_false_alarm_rate": 0.1,
+  "nochange_flags_per_pair": 0.17,
   "nochange_registration_failures": 0,
   "lighting_pairs": 60,
-  "lighting_false_alarm_rate": 0.45,
-  "lighting_flags_per_pair": 0.95,
+  "lighting_false_alarm_rate": 0.333,
+  "lighting_flags_per_pair": 0.4,
   "lighting_registration_failures": 0,
   "lighting_by_kind": {
    "exposure": {
     "pairs": 15,
-    "false_alarm_rate": 0.467,
-    "flags": 26
+    "false_alarm_rate": 0.067,
+    "flags": 4
    },
    "colortemp": {
     "pairs": 15,
-    "false_alarm_rate": 0.2,
-    "flags": 4
+    "false_alarm_rate": 0.133,
+    "flags": 3
    },
    "shadow": {
     "pairs": 15,
@@ -8296,7 +7834,7 @@
    "specular": {
     "pairs": 15,
     "false_alarm_rate": 1.0,
-    "flags": 25
+    "flags": 15
    }
   }
  },
@@ -8304,8 +7842,8 @@
   "by_kind": {
    "scratch": {
     "n": 38,
-    "recall": 0.842,
-    "recall_iou": 0.579
+    "recall": 0.947,
+    "recall_iou": 0.711
    },
    "stain": {
     "n": 35,
@@ -8319,8 +7857,8 @@
    },
    "crack": {
     "n": 53,
-    "recall": 0.755,
-    "recall_iou": 0.547
+    "recall": 0.849,
+    "recall_iou": 0.623
    }
   },
   "by_size": {
@@ -8331,13 +7869,13 @@
    },
    "medium 150-600 px": {
     "n": 95,
-    "recall": 0.821,
-    "recall_iou": 0.6
+    "recall": 0.895,
+    "recall_iou": 0.674
    },
    "large >600 px": {
     "n": 56,
-    "recall": 0.929,
-    "recall_iou": 0.839
+    "recall": 0.964,
+    "recall_iou": 0.875
    }
   },
   "by_kind_size": {
@@ -8349,13 +7887,13 @@
     },
     "medium 150-600 px": {
      "n": 26,
-     "recall": 0.885,
-     "recall_iou": 0.577
+     "recall": 0.962,
+     "recall_iou": 0.692
     },
     "large >600 px": {
      "n": 10,
-     "recall": 0.8,
-     "recall_iou": 0.6
+     "recall": 1.0,
+     "recall_iou": 0.8
     }
    },
    "stain": {
@@ -8400,8 +7938,8 @@
     },
     "medium 150-600 px": {
      "n": 44,
-     "recall": 0.727,
-     "recall_iou": 0.545
+     "recall": 0.841,
+     "recall_iou": 0.636
     },
     "large >600 px": {
      "n": 0,
@@ -8410,48 +7948,13 @@
     }
    }
   },
-  "median_iou_of_hits": 0.621,
-  "median_contrast_hit": 49.9,
-  "median_contrast_miss": 23.1
+  "median_iou_of_hits": 0.626,
+  "median_contrast_hit": 51.0,
+  "median_contrast_miss": 12.2
  },
  "gallery": [
   {
-   "file": "failures/01_damage30_missed-crack.jpg",
-   "type": "missed crack",
-   "set": "damage",
-   "idx": 30,
-   "scene": "aloeL.jpg",
-   "defect": {
-    "kind": "crack",
-    "area": 215,
-    "contrast": 59.1,
-    "hit": false,
-    "iou": 0.0,
-    "gt_box": [
-     556,
-     272,
-     76,
-     29
-    ]
-   },
-   "flagged": [
-    {
-     "box": [
-      547,
-      695,
-      33,
-      35
-     ],
-     "score": 63.07,
-     "structure": 22.08,
-     "chroma": 2.67,
-     "illumination": 0.48,
-     "brightening": 0.0
-    }
-   ]
-  },
-  {
-   "file": "failures/02_damage16_missed-chip.jpg",
+   "file": "failures/01_damage16_missed-chip.jpg",
    "type": "missed chip",
    "set": "damage",
    "idx": 16,
@@ -8477,10 +7980,10 @@
       159,
       89
      ],
-     "score": 42.24,
-     "structure": 20.64,
+     "score": 42.29,
+     "structure": 20.66,
      "chroma": 0.45,
-     "illumination": 0.211,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -8490,45 +7993,132 @@
       39,
       38
      ],
-     "score": 31.23,
-     "structure": 16.89,
+     "score": 31.21,
+     "structure": 16.87,
      "chroma": -0.27,
-     "illumination": 0.329,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ]
   },
   {
-   "file": "failures/03_damage10_missed-scratch.jpg",
-   "type": "missed scratch",
+   "file": "failures/02_damage31_missed-crack.jpg",
+   "type": "missed crack",
    "set": "damage",
-   "idx": 10,
-   "scene": "aloeL.jpg",
+   "idx": 31,
+   "scene": "baboon.jpg",
    "defect": {
-    "kind": "scratch",
-    "area": 934,
-    "contrast": 85.8,
+    "kind": "crack",
+    "area": 174,
+    "contrast": 22.9,
     "hit": false,
     "iou": 0.0,
     "gt_box": [
-     217,
-     229,
-     76,
-     216
+     101,
+     434,
+     48,
+     40
     ]
    },
    "flagged": [
     {
      "box": [
-      199,
-      476,
-      51,
-      60
+      612,
+      724,
+      5,
+      10
      ],
-     "score": 56.9,
-     "structure": 24.87,
-     "chroma": 1.87,
-     "illumination": 0.763,
+     "score": 12.36,
+     "structure": 10.47,
+     "chroma": -1.06,
+     "illumination": 0.77,
+     "brightening": 0.0
+    }
+   ]
+  },
+  {
+   "file": "failures/03_damage24_missed-scratch.jpg",
+   "type": "missed scratch",
+   "set": "damage",
+   "idx": 24,
+   "scene": "building.jpg",
+   "defect": {
+    "kind": "scratch",
+    "area": 146,
+    "contrast": 23.1,
+    "hit": false,
+    "iou": 0.0,
+    "gt_box": [
+     235,
+     205,
+     38,
+     66
+    ]
+   },
+   "flagged": [
+    {
+     "box": [
+      218,
+      296,
+      25,
+      15
+     ],
+     "score": 73.01,
+     "structure": 27.96,
+     "chroma": 0.39,
+     "illumination": 0.0,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      148,
+      259,
+      9,
+      8
+     ],
+     "score": 96.7,
+     "structure": 41.87,
+     "chroma": -0.84,
+     "illumination": 0.0,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      789,
+      56,
+      12,
+      13
+     ],
+     "score": 62.07,
+     "structure": 27.25,
+     "chroma": -0.34,
+     "illumination": 0.0,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      28,
+      206,
+      6,
+      15
+     ],
+     "score": 15.65,
+     "structure": 12.18,
+     "chroma": 0.9,
+     "illumination": 0.261,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      29,
+      113,
+      7,
+      8
+     ],
+     "score": 14.88,
+     "structure": 10.7,
+     "chroma": 0.78,
+     "illumination": 0.413,
      "brightening": 0.0
     }
    ]
@@ -8560,23 +8150,23 @@
       20,
       40
      ],
-     "score": 67.31,
-     "structure": 27.65,
+     "score": 72.19,
+     "structure": 29.11,
      "chroma": 1.68,
-     "illumination": 0.22,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
      "box": [
       647,
-      344,
+      343,
       38,
-      35
+      36
      ],
-     "score": 20.86,
-     "structure": 14.75,
+     "score": 22.38,
+     "structure": 15.64,
      "chroma": -0.03,
-     "illumination": 0.536,
+     "illumination": 0.0,
      "brightening": 0.0
     },
     {
@@ -8586,10 +8176,10 @@
       9,
       12
      ],
-     "score": 23.14,
-     "structure": 15.86,
+     "score": 24.82,
+     "structure": 16.61,
      "chroma": 0.66,
-     "illumination": 0.414,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ]
@@ -8607,12 +8197,12 @@
       523,
       348,
       130,
-      164
+      162
      ],
-     "score": 67.69,
-     "structure": 20.96,
-     "chroma": 13.88,
-     "illumination": 0.786,
+     "score": 69.47,
+     "structure": 21.42,
+     "chroma": 13.83,
+     "illumination": 0.0,
      "brightening": 0.0
     }
    ]
@@ -8627,15 +8217,15 @@
    "flagged": [
     {
      "box": [
-      26,
-      285,
-      6,
+      739,
+      656,
+      10,
       13
      ],
-     "score": 14.51,
-     "structure": 11.29,
-     "chroma": -0.09,
-     "illumination": 0.278,
+     "score": 11.09,
+     "structure": 10.02,
+     "chroma": 1.84,
+     "illumination": 0.55,
      "brightening": 0.0
     }
    ]
@@ -8677,54 +8267,67 @@
    ]
   },
   {
-   "file": "failures/08_exposure0_false-alarm.jpg",
+   "file": "failures/08_exposure3_false-alarm.jpg",
    "type": "false alarm (exposure)",
    "set": "exposure",
-   "idx": 0,
-   "scene": "aloeL.jpg",
+   "idx": 3,
+   "scene": "box_in_scene.png",
    "defect": null,
    "flagged": [
     {
      "box": [
-      133,
-      28,
-      34,
-      9
+      24,
+      502,
+      93,
+      51
      ],
-     "score": 23.99,
-     "structure": 14.8,
-     "chroma": 0.89,
-     "illumination": 0.779,
+     "score": 16.51,
+     "structure": 11.036,
+     "chroma": 0.051,
+     "illumination": 0.312,
      "brightening": 0.0
     },
     {
      "box": [
-      28,
-      34,
-      23,
-      9
+      742,
+      552,
+      16,
+      21
      ],
-     "score": 18.78,
-     "structure": 13.67,
-     "chroma": 0.66,
-     "illumination": 0.46,
+     "score": 18.9,
+     "structure": 14.26,
+     "chroma": 0.04,
+     "illumination": 0.73,
      "brightening": 0.0
     },
     {
      "box": [
-      81,
-      31,
-      13,
-      9
+      723,
+      462,
+      42,
+      13
      ],
-     "score": 18.63,
-     "structure": 13.62,
-     "chroma": 0.65,
-     "illumination": 0.287,
+     "score": 12.45,
+     "structure": 10.13,
+     "chroma": -0.45,
+     "illumination": 0.656,
+     "brightening": 0.0
+    },
+    {
+     "box": [
+      511,
+      394,
+      10,
+      6
+     ],
+     "score": 11.72,
+     "structure": 10.27,
+     "chroma": 0.14,
+     "illumination": 0.37,
      "brightening": 0.0
     }
    ]
   }
  ],
- "runtime_s": 907.5
+ "runtime_s": 512.6
 }

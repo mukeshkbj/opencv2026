@@ -81,7 +81,7 @@ The agent (`server/twice/agent.py`) is a rule planner. Its tools are OpenCV meas
 
 | Tool | Trigger | Next action |
 |---|---|---|
-| `register` | every move-out photo | Fewer than 25 inliers or an implausible homography: ask for a retake. |
+| `register` | every move-out photo | Fewer than 25 inliers, an implausible homography, or a view too far from the first one (scale outside 0.8 to 1.25, strong tilt): ask for a retake. |
 | `relight_check` | smooth light field explains the change, low chroma | Rule out as lighting. |
 | `glare_check` | near-white share changed by more than 5 % | Request a side-step (parallax) photo. If the change vanishes, it was a reflection. If it persists at the same surface position, it is damage. |
 | `relight_check` (soft) | shadow-like edges but a colour shift | Request a close-up. |
@@ -100,12 +100,27 @@ The language model is deliberately weak. It receives the crops of a finding and 
 - **Seal 1** (move-in): a canonical JSON manifest (sorted keys, no whitespace) lists every move-in photo hash and time. It is signed before any move-out photo can be added; the API returns 409 for new spots after sealing.
 - **Seal 2** (report): a manifest over all photos, follow-ups, findings, evidence and agent traces, plus the digest of seal 1.
 - `GET /api/checks/{id}/verify` re-reads every stored photo, recomputes its hash, recomputes both manifest digests and checks both signatures with the public key. The test suite edits a stored photo and expects verification to fail.
+- **Offline check.** `GET /api/checks/{id}/bundle` returns a zip with every photo (named by its hash), both seals, the public key and `verify.py` (`server/twice/offline_verify.py`). It needs only Python and `cryptography`, so a landlord, a rental company or a court can check the report without trusting the Twice server. It prints the key fingerprint, which the report page also shows. A test edits a photo and a finding inside a bundle and expects both to fail.
 
 ## 7. Evaluation
 
 Summary here; full tables, ablations, latency and the failure gallery are in [evaluation.md](evaluation.md).
 
-EVAL_SUMMARY
+Three benchmarks measure three levels. All numbers come from scripts in `server/eval/` with fixed seeds.
+
+| Benchmark | Data | Result |
+| --- | --- | --- |
+| Agent level (`agent_bench.py`) | 170 synthetic pairs: 80 with 162 drawn defects, 30 with no change, 60 with only an exposure, colour, shadow or glare change. The agent's follow-up photos are generated too | Recall 0.901, precision 0.993. A false "changed" in 1 of 30 no-change pairs and 2 of 60 lighting-only pairs. 0.22 follow-up photos per pair |
+| Engine level (`bench.py`) | The same 170 pairs through `compare` alone, plus 288 registration stress pairs | Recall 0.914, precision 0.931, strict recall (IoU of at least 0.3) 0.735. Every glare pair is flagged at this level and resolved by the agent |
+| Real photos (`real_bench.py`) | 40 pairs from the Oxford affine sequences, where nothing changes | 23 pairs judged, 17 sent back for a retake. 2 judged pairs got a false "changed", in a tree scene and a harbour scene |
+
+Registration stays accurate to 150 degrees of rotation, a 2.2 times zoom and 30 degrees of tilt. The agent asks for a retake when the scale differs by more than 1.25 times or the view is strongly tilted, because a photo from another distance shows the surface at another resolution. This rule cut the real-photo false alarms from 7 pairs to 2. A full compare takes a median of 0.86 s on a desktop CPU.
+
+The evaluation drove five engine changes: an exposure-matched border fill, a sharp-edge test that stops the lighting test from hiding scratches in shadows, a chroma noise floor, a glare veil test and the retake rule. Together they raised agent-level recall from 0.852 to 0.901 and precision from 0.972 to 0.993. Lighting-only false alarms fell from 30% to 3% of pairs.
+
+The ablations show that local normalisation is essential (recall 0.216 without it). On synthetic data, a plain difference beats the shift-tolerant difference. The tolerant difference stays because real handheld photos have parallax, which the synthetic warps do not. The failure gallery shows faint stains and chips (contrast below 15 grey levels), a crack inside a colour-shifted region, and a clipped white surface after a large exposure change.
+
+The main limit: there is no set of real move-in and move-out photos with labelled damage. The real-photo benchmark measures false alarms only.
 
 ## 8. Responsible operation
 
@@ -118,7 +133,7 @@ EVAL_SUMMARY
 
 ## 9. Limitations
 
-- The evaluation uses real photos with synthetic damage. There is no set of real move-in and move-out pairs yet.
+- The damage evaluation uses real photos with synthetic damage. The real-photo benchmark has no damage, so it measures false alarms only. There is no set of real move-in and move-out pairs with labelled damage yet.
 - Strong parallax (a door that moved, a chair pushed aside) is reported as change. That is correct for the renter but can look noisy.
 - Very low texture surfaces (a freshly painted white wall) can fail the quality gate or registration. The app asks for an edge or a corner in the frame.
 - Server timestamps prove when the server received a photo, not when it was taken. A trusted-time service or a counterparty acknowledgment at move-in would close that gap.
