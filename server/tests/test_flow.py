@@ -56,3 +56,18 @@ def test_rejects_non_images():
     cid = client.post("/api/checks", json={"name": "x"}).json()["id"]
     r = client.post(f"/api/checks/{cid}/spots", files={"file": ("a.jpg", b"not an image", "image/jpeg")})
     assert r.status_code == 415
+
+
+def test_swapped_photo_with_rewritten_record_fails_verification():
+    from twice import evidence
+    from twice.app import load, save, store
+
+    check = run_sample()
+    record = load(check["id"])
+    after = record["spots"][0]["after"]
+    fake = store.get(after["key"]) + b"edited"
+    store.put(after["key"], fake)
+    after["sha256"] = evidence.sha256(fake)
+    save(record)
+    v = client.get(f"/api/checks/{check['id']}/verify").json()
+    assert not v["ok"]

@@ -134,11 +134,15 @@ def manifest(check: dict, phase: str) -> dict:
         if phase == "report" and s["after"]:
             entry["after"] = {k: s["after"][k] for k in ("sha256", "at")}
             entry["followups"] = [{k: f[k] for k in ("sha256", "at", "kind")} for f in s["followups"]]
-            entry["findings"] = [{k: f[k] for k in ("id", "box", "verdict", "kind", "caption")}
+            entry["findings"] = [{k: f[k] for k in ("id", "box", "verdict", "kind", "caption", "evidence")}
                                  for f in s["state"]["findings"]]
+            entry["trace"] = s["state"]["trace"]
         spots.append(entry)
-    return {"check": check["id"], "name": check["name"], "phase": phase, "spots": spots,
-            "opencv": cv2.__version__, "signed_at": now()}
+    m = {"check": check["id"], "name": check["name"], "phase": phase, "spots": spots,
+         "opencv": cv2.__version__, "signed_at": now()}
+    if phase == "report":
+        m["move_in_seal"] = next(x["digest"] for x in check["seals"] if x["phase"] == "before")
+    return m
 
 
 def seal(check: dict, phase: str) -> dict:
@@ -275,22 +279,35 @@ def key() -> dict:
     return {"algorithm": signer.algorithm, "public_key": signer.public_pem()}
 
 
+def _signed_hashes(m: dict) -> set[str]:
+    out = set()
+    for s in m["spots"]:
+        out.add(s["before"]["sha256"])
+        if "after" in s:
+            out.add(s["after"]["sha256"])
+            out.update(f["sha256"] for f in s["followups"])
+    return out
+
+
 @app.get("/api/checks/{cid}/verify")
 def verify(cid: str) -> dict:
     check = load(cid)
+    signed = set().union(*(_signed_hashes(e["manifest"]) for e in check["seals"]))
     files = []
     for s in check["spots"]:
         photos = [("before", s["before"])] + ([("after", s["after"])] if s["after"] else [])
         photos += [(f["kind"], f) for f in s["followups"]]
         for role, p in photos:
-            ok = evidence.sha256(store.get(p["key"])) == p["sha256"]
+            ok = p["sha256"] in signed and evidence.sha256(store.get(p["key"])) == p["sha256"]
             files.append({"spot": s["id"], "role": role, "sha256": p["sha256"], "ok": ok})
     pem = signer.public_pem()
+    move_in = next((e["digest"] for e in check["seals"] if e["phase"] == "before"), None)
     seals = []
     for entry in check["seals"]:
         body = evidence.canonical(entry["manifest"])
+        linked = entry["phase"] != "report" or entry["manifest"].get("move_in_seal") == move_in
         seals.append({"phase": entry["phase"], "digest": entry["digest"],
-                      "digest_ok": evidence.sha256(body) == entry["digest"],
+                      "digest_ok": evidence.sha256(body) == entry["digest"] and linked,
                       "signature_ok": evidence.verify(pem, entry["algorithm"], body, entry["signature"])})
     return {"files": files, "seals": seals, "algorithm": signer.algorithm, "public_key": pem,
             "ok": all(f["ok"] for f in files) and all(s["digest_ok"] and s["signature_ok"] for s in seals)}
