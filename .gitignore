@@ -5,3 +5,4 @@ node_modules/
 web/dist/
 *.pyc
 .aws-sam/
+server/eval/oxford/

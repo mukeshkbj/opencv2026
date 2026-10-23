@@ -468,8 +468,10 @@ p {
   box-shadow: var(--shadow-lift);
 }
 
-.step:nth-child(2) .step-img { aspect-ratio: 4 / 3.6; }
-.step:nth-child(3) .step-img { aspect-ratio: 4 / 4.4; }
+.steps .step-img {
+  aspect-ratio: auto;
+  height: clamp(240px, 23vw, 340px);
+}
 
 .step-img img {
   width: 100%;
@@ -522,11 +524,22 @@ p {
 
 .exhibit {
   display: grid;
-  place-items: center;
-  background: radial-gradient(circle at 30% 20%, rgb(255 255 255 / 0.06), transparent 50%), var(--frame);
+  place-items: end center;
+  padding-bottom: 20px;
+}
+
+.step-img .exhibit-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 80% 40%;
+  filter: brightness(0.7) saturate(0.85);
 }
 
 .exhibit-card {
+  position: relative;
   display: grid;
   gap: 8px;
   width: 78%;
@@ -721,9 +734,9 @@ p {
   .steps {
     grid-template-columns: 1fr;
   }
-  .step .step-img,
-  .step:nth-child(n) .step-img {
+  .steps .step-img {
     aspect-ratio: 4 / 3;
+    height: auto;
   }
   .pipeline {
     grid-template-columns: 1fr;

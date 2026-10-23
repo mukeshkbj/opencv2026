@@ -175,6 +175,7 @@ export default function Landing() {
             </li>
             <li className="step" data-reveal>
               <div className="step-img exhibit">
+                <img className="exhibit-photo" src="/hero/room-b.jpg" alt="" loading="lazy" />
                 <div className="exhibit-card">
                   <span className="label">Exhibit A · Wall stain</span>
                   <span className="mono">sha256 c0c9…3769</span>
