@@ -55,11 +55,11 @@ The move-out photo is matched to the move-in photo the same way, then warped wit
 
 ### 4.4 Change map
 
-A naive absolute difference flags every edge after a sub-pixel shift, every exposure change and every shadow. The change map is built in four steps:
+A naive absolute difference of the photos flags every exposure change, every shadow and every edge after a sub-pixel shift. The change map is built in four steps:
 
 1. Both images are converted to Lab and blurred with a Gaussian (σ = 1).
 2. The L channel is locally normalised: subtract a local mean and divide by a local standard deviation (σ = 12). This removes exposure and gain changes.
-3. **Shift-tolerant difference.** Each pixel is compared with the other image's min/max envelope over a small window (`dilate` / `erode`), in both directions. A value inside the envelope counts as zero. This removes edge ghosts from sub-pixel misalignment but keeps new texture.
+3. **Difference.** The first comparison takes the plain absolute difference of the two normalised images, after the flow refinement of section 4.3. The side-step and close-up photos move the camera on purpose, so they use a shift-tolerant difference. It compares each pixel with the other image's min/max envelope over a 1 px window (`dilate` / `erode`), in both directions. A value inside the envelope counts as zero. This removes edge ghosts from misalignment but keeps new texture.
 4. **Robust z-score.** The difference is standardised by its noise level. The median absolute deviation collapses to zero for a tolerant difference, so the scale falls back to the 95th-percentile tail.
 
 A pixel is a candidate when its z-score exceeds 9 and an absolute gate also passes (L difference above 9 after gain compensation, or a chroma difference above 6). Clipped highlights and a thin border band are masked. Speckle is removed with a morphological opening, nearby fragments are grouped by dilation, and overlapping boxes are merged so one physical mark is one finding.
@@ -69,7 +69,7 @@ A pixel is a candidate when its z-score exceeds 9 and an absolute gate also pass
 For every region, two measurements separate light from damage:
 
 - **Illumination likeness.** A smooth multiplicative light field is fitted to the log ratio of the two images. If it explains more than 80 % of the change and the chroma shift is small, the region is lighting only. Large smooth regions (shadows, lamps, sun patches) are also reported as separate "lighting only" findings, so the report can show what was ignored.
-- **Brightening.** The share of pixels that newly reach near-white (above 250 after gain compensation). A reflection appearing or vanishing changes this share. It cannot be resolved from one photo, so it triggers a parallax request (section 5).
+- **Brightening.** The share of pixels that newly reach near-white (above 250 after gain compensation, or above 253 in the move-out photo whatever the gain). A reflection appearing or vanishing changes this share. It cannot be resolved from one photo, so it triggers a parallax request (section 5).
 
 ### 4.6 Objects on the new DNN engine
 
@@ -112,18 +112,18 @@ Four benchmarks measure four levels. All numbers come from scripts in `server/ev
 
 | Benchmark | Data | Result |
 | --- | --- | --- |
-| Agent level (`agent_bench.py`) | 170 synthetic pairs: 80 with 162 drawn defects, 30 with no change, 60 with only an exposure, colour, shadow or glare change. The agent's follow-up photos are generated too | Recall 0.901, precision 0.993 under each of 5 RANSAC seeds. A false "changed" in 1 of 30 no-change pairs and in 1 or 2 of 60 lighting-only pairs. 0.24 follow-up photos per pair |
-| Engine level (`bench.py`) | The same 170 pairs through `compare` alone, plus 288 registration stress pairs | Recall 0.914, precision 0.931, strict recall (IoU of at least 0.3) 0.735. Every glare pair is flagged at this level and resolved by the agent |
-| Real photos (`real_bench.py`) | 40 pairs from the Oxford affine sequences, where nothing changes | 22 pairs judged, 18 sent back for a retake. 2 judged pairs got a false "changed", in a tree scene and a harbour scene |
-| Hybrid (`hybrid_bench.py`) | The 22 judged Oxford pairs with synthetic defects drawn onto the move-out photo: 176 damage runs, 370 defects | Recall 0.289, strict recall 0.178, precision 0.849, against 0.901 recall on the synthetic pairs. With the plain difference: 0.238, 0.159 and 0.957. Drawn defects are not real damage |
+| Agent level (`agent_bench.py`) | 170 synthetic pairs: 80 with 162 drawn defects, 30 with no change, 60 with only an exposure, colour, shadow or glare change. The agent's follow-up photos are generated too | Recall 0.878 (142 or 143 of 162 defects), precision 1.000, under each of 5 RANSAC seeds. A false "changed" in 1 of 30 no-change pairs and in 1 or 2 of 60 lighting-only pairs. 0.20 follow-up photos per pair |
+| Engine level (`bench.py`) | The same 170 pairs through `compare` alone, plus 288 registration stress pairs | Recall 0.907, precision 0.993, strict recall (IoU of at least 0.3) 0.704. Every glare pair is flagged at this level and resolved by the agent |
+| Real photos (`real_bench.py`) | 40 pairs from the Oxford affine sequences, where nothing changes | 22 pairs judged, 18 sent back for a retake. No judged pair got a false "changed" |
+| Hybrid (`hybrid_bench.py`) | The 22 judged Oxford pairs with synthetic defects drawn onto the move-out photo: 176 damage runs, 370 defects | Recall 0.241, strict recall 0.159, precision 0.957, against 0.878 recall on the synthetic pairs. With the tolerant difference in the first pass: 0.289, 0.178 and 0.849. Drawn defects are not real damage |
 
-Registration stays accurate to 150 degrees of rotation, a 2.2 times zoom and 30 degrees of tilt. The agent asks for a retake when the local scale at the centre or a corner differs by more than 1.25 times, or the view is strongly tilted, because a photo from another distance shows the surface at another resolution. This rule cut the real-photo false alarms from 7 pairs to 2. A full compare takes a median of 0.87 s on a desktop CPU.
+Registration stays accurate to 150 degrees of rotation, a 2.2 times zoom and 30 degrees of tilt. The agent asks for a retake when the local scale at the centre or a corner differs by more than 1.25 times, or the view is strongly tilted, because a photo from another distance shows the surface at another resolution. This rule cut the real-photo false alarms from 7 pairs to 2. The plain first-pass difference then removed the last 2. A full compare takes a median of 1.50 s on a desktop CPU.
 
-The evaluation drove five engine changes: an exposure-matched border fill, a sharp-edge test that stops the lighting test from hiding scratches in shadows, a chroma noise floor, a glare veil test and the retake rule. Together they raised agent-level recall from 0.852 to 0.901 and precision from 0.972 to 0.993. Lighting-only false alarms fell from 30% to about 3% of pairs.
+The evaluation drove seven engine changes: an exposure-matched border fill, a sharp-edge test that stops the lighting test from hiding scratches in shadows, a chroma noise floor, a glare veil test, the retake rule, the plain difference in the first pass and a glare test that counts clipped pixels as near-white. The first five raised agent-level recall from 0.852 to 0.901 and precision from 0.972 to 0.993. The last two traded recall for precision: agent-level recall is now 0.878 and precision 1.000. Lighting-only false alarms fell from 30% to 2.3% of pairs.
 
-The ablations show that local normalisation is essential (recall 0.216 without it). On synthetic data, a plain difference beats the shift-tolerant difference. The tolerant difference stays because real handheld photos have parallax, which the synthetic warps do not. The failure gallery shows faint stains and chips (contrast below 15 grey levels), a crack inside a colour-shifted region, and a clipped white surface after a large exposure change.
+The ablations show that local normalisation is essential (recall 0.247 without it). On synthetic data, the plain and the shift-tolerant difference have nearly the same recall (0.907 and 0.914), and the tolerant one has far more false positives (0.14 per pair against 0.01). The first comparison therefore uses the plain difference. The agent, real and hybrid benchmarks all showed fewer false alarms with it, for a loss in recall. The side-step and close-up photos keep a 1 px tolerance, because they move the camera on purpose, and the plain difference there broke the parallax check on the sample car. The failure gallery shows faint stains and chips (contrast below 15 grey levels), a crack inside a colour-shifted region, small flags on a white bag in a colour-cast pair, and flags left over from glare.
 
-The main limit: there is no set of real move-in and move-out photos with labelled damage. The real-photo benchmark measures false alarms only, and the hybrid benchmark uses drawn defects.
+The main limit: there is no set of real move-in and move-out photos with labelled damage. The real-photo benchmark measures false alarms only, and the hybrid benchmark uses drawn defects. The choice of the plain difference came after the real and hybrid results, so those sets are no longer fully untouched.
 
 ## 8. Responsible operation
 
@@ -132,7 +132,7 @@ The main limit: there is no set of real move-in and move-out photos with labelle
 - **Limits are printed.** The report states that it covers only the photographed spots, that times come from the server clock, and that a valid signature does not prove a photo shows what it claims.
 - **Data minimisation.** No accounts. Photos expire after 30 days by default. The bucket blocks public access and denies non-TLS requests.
 - **Least privilege.** The Lambda role can only read and write its bucket, sign with its key, and invoke the configured Claude model.
-- **Cost.** One analysis is one Lambda invocation at 3 GB. Its time on Lambda is not measured yet; on one desktop CPU thread a compare takes a median of 1.6 s, plus one short Bedrock call per confirmed change. Reserved concurrency of 10 caps the spend under abuse. The camera waits for each guide answer before it sends the next frame, so one user holds at most one execution at a time and the cap serves about ten users at once. Raise it in `template.yaml` for a larger audience. If an alarm address is set, an AWS Budget emails at 80 % of 25 USD a month.
+- **Cost.** One analysis is one Lambda invocation at 3 GB. Its time on Lambda is not measured yet; on one desktop CPU thread a compare takes a median of 3.2 s, plus one short Bedrock call per confirmed change. Reserved concurrency of 10 caps the spend under abuse. The camera waits for each guide answer before it sends the next frame, so one user holds at most one execution at a time and the cap serves about ten users at once. Raise it in `template.yaml` for a larger audience. If an alarm address is set, an AWS Budget emails at 80 % of 25 USD a month.
 
 ## 9. Limitations
 
