@@ -1,5 +1,7 @@
 # Persona critique, round 2
 
+> **Status, 2026-10-23:** the findings below were applied. Item 6e in `progress.md` lists the fixes. The text below is the original critique.
+
 This round reviews the built product, not the plan. The reviewer read the README, the spec, the engine, the agent, the API, the SAM template and the web app. The reviewer also ran the app, took screenshots at 1440 and 500 pixels wide, and attacked the API.
 
 Evidence gathered:

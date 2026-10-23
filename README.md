@@ -10,11 +10,11 @@ Built for the OpenCV AI Competition 2026. OpenCV 5 does all the image analysis. 
 
 ## Why
 
-Rental companies now scan returned cars with AI. One Hertz renter received a $440 bill for a one-inch scuff: $250 damage, $125 processing and $65 administration ([The Drive](https://www.thedrive.com/news/this-is-what-happens-when-hertzs-ai-scanner-finds-damage-on-your-rental)). A House subcommittee chair has asked Hertz to explain the system ([House Oversight](https://oversight.house.gov/release/mace-investigates-use-of-artificial-intelligence-for-car-rental-damage-assessments)). Landlords keep detailed move-out photos too. Most renters keep a few blurry phone shots that nobody can compare. Twice gives the renter the same quality of evidence as the company.
+Rental companies now scan returned cars with AI. One Hertz renter received a $440 bill for a one-inch scuff: $250 damage, $125 processing and $65 administration ([The Drive](https://www.thedrive.com/news/this-is-what-happens-when-hertzs-ai-scanner-finds-damage-on-your-rental)). A House subcommittee chair wrote that Hertz is the only rental company that issues these damage assessments without human review, and asked Hertz for a briefing ([House Oversight](https://oversight.house.gov/release/mace-investigates-use-of-artificial-intelligence-for-car-rental-damage-assessments), [Repairer Driven News](https://www.repairerdrivennews.com/2025/08/25/subcommittee-requests-briefing-from-hertz-on-ai-scanning-technology/)). Landlords keep detailed move-out photos too. Most renters keep a few blurry phone shots that nobody can compare. Twice gives the renter the same quality of evidence as the company.
 
 ## What a judge can try in two minutes
 
-1. Open the app and press **Try the sample check**. It loads three move-in photos that were sealed earlier: a rental car, a living room and a desk.
+1. Open the app and press **Try the sample check**. It loads three move-in photos (a rental car, a living room and a desk) and seals them on the spot, as a move-in day would.
 2. Press **Take the move-out photo** on each spot. The sample uses prepared photos instead of your camera.
 3. Watch the agent. On the car, a reflection looks like damage. The agent asks for a side-step photo, sees the reflection move, and rules it out. The scratch stays.
 
@@ -27,7 +27,7 @@ Rental companies now scan returned cars with AI. One Hertz renter received a $44
 
 A 46-second recording of the whole sample flow is in [docs/img/demo.mp4](docs/img/demo.mp4).
 
-With a phone, press **Start my own** to run the same flow on your own room.
+With a phone, press **Start my own** to run the same flow on your own room. On a laptop, use **Upload a photo** at each step.
 
 ## How it works
 
@@ -62,8 +62,8 @@ The full method, ablations, latency and a failure gallery are in [docs/evaluatio
 
 Two benchmarks cover the engine.
 
-- **Synthetic, full agent loop** (`server/eval/agent_bench.py`, 170 pairs with known damage, camera moves, exposure, colour, shadow and glare, plus the follow-up shots the agent asks for): recall 0.90, precision 0.99, 0.01 false "changed" findings per damage pair. Lighting-only pairs got a false alarm in 3% of cases. Every pair runs under 5 RANSAC seeds.
-- **Real photos, nothing changed** (`server/eval/real_bench.py`, the Oxford affine sequences): of 40 pairs, 22 were judged. The agent asked for a retake on the other 18: 10 because the camera stood too far from the first spot, 8 because the photos could not be matched. Two judged pairs got a false alarm: trees and a harbour, where leaves and water may really move.
+- **Synthetic, full agent loop** (`server/eval/agent_bench.py`, 170 pairs with known damage, camera moves, exposure, colour, shadow and glare, plus the follow-up shots the agent asks for): recall 0.90, precision 0.99, 0.01 false "changed" findings per damage pair. Recall counts a defect as found when a flagged box touches it; at engine level, recall drops from 0.91 to 0.74 when the box must also overlap the defect with an IoU of 0.3. Lighting-only pairs got a false alarm in 3% of cases. Every pair runs under 5 RANSAC seeds.
+- **Real photos, nothing changed** (`server/eval/real_bench.py`, the Oxford affine sequences): of 40 pairs, 22 were judged. The agent asked for a retake on the other 18: 10 because the camera stood too far from the first spot, 8 because the photos could not be matched. Each sequence gets harder on purpose; the later viewpoint and zoom images go far beyond what the ghost guide lets through. Two judged pairs got a false alarm: trees and a harbour, where leaves and water may really move.
 
 All three bundled samples resolve to their ground truth, including the reflection on the car. There is no set of real move-in and move-out pairs with labelled damage yet. That is the most important limit of this evaluation.
 
@@ -71,7 +71,7 @@ NanoDet-Plus runs in a median of 16.3 ms per frame on `ENGINE_NEW` against 56.5 
 
 ## Run it locally
 
-Requirements: Python 3.12 or newer, Node 24.
+Requirements: Python 3.12 or newer (tested with 3.12 in the Docker image and 3.14 in development), Node 24.
 
 ```bash
 python -m venv .venv

@@ -87,6 +87,9 @@ export default function ReportPage({ id }: { id: string }) {
           <div><dt>Can't judge</dt><dd>{unsure}</dd></div>
           <div><dt>Spots</dt><dd>{check.spots.length}</dd></div>
         </dl>
+        {unsure > 0 && (
+          <p className="unsure-note">Twice could not decide {unsure === 1 ? "one difference" : `${unsure} differences`}. Look at those photos together with the other party before anyone pays for them.</p>
+        )}
 
         {check.spots.map((spot, n) => {
           const { marks, ratio } = marksOf(spot);
@@ -139,10 +142,10 @@ export default function ReportPage({ id }: { id: string }) {
                 </table>
               )}
               <ul className="hashes">
-                {photos.map(({ role, p }) => {
+                {photos.map(({ role, p }, i) => {
                   const ok = verify?.files.find((f) => f.sha256 === p.sha256)?.ok;
                   return (
-                    <li key={p.sha256} className="mono">
+                    <li key={i} className="mono">
                       <span className="hash-role">{role}</span>
                       <span>{when(p.at)}</span>
                       <span className="hash">{p.sha256}</span>

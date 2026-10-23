@@ -4,7 +4,7 @@ OpenCV AI Competition 2026. Repository: this repo. Live endpoint: see README.
 
 ## 1. Problem
 
-Rental companies and landlords document the condition of a car or an apartment with detailed photos and, increasingly, with AI scanners. Renters rarely have comparable evidence. A Hertz renter received a $440 bill for a one-inch scuff found by an airport scanner, with no human review before the bill went out ([The Drive](https://www.thedrive.com/news/this-is-what-happens-when-hertzs-ai-scanner-finds-damage-on-your-rental)). A House subcommittee chair has asked Hertz for a briefing on the system ([House Oversight](https://oversight.house.gov/release/mace-investigates-use-of-artificial-intelligence-for-car-rental-damage-assessments)). In apartments, deposit disputes follow the same pattern: the landlord has move-out photos, and the tenant has a few unmatched phone shots.
+Rental companies and landlords document the condition of a car or an apartment with detailed photos and, increasingly, with AI scanners. Renters rarely have comparable evidence. A Hertz renter received a $440 bill for a one-inch wheel scuff found by an airport scanner, minutes after the return ([The Drive](https://www.thedrive.com/news/this-is-what-happens-when-hertzs-ai-scanner-finds-damage-on-your-rental)). A House subcommittee chair wrote that Hertz is the only rental company that issues these damage assessments without human review, and asked Hertz for a briefing ([House Oversight](https://oversight.house.gov/release/mace-investigates-use-of-artificial-intelligence-for-car-rental-damage-assessments), [Repairer Driven News](https://www.repairerdrivennews.com/2025/08/25/subcommittee-requests-briefing-from-hertz-on-ai-scanning-technology/)). In apartments, deposit disputes follow the same pattern: the landlord has move-out photos, and the tenant has a few unmatched phone shots.
 
 Unmatched photos fail as evidence for three reasons:
 
@@ -39,6 +39,8 @@ The browser shrinks every photo to at most 2400 px before upload, which keeps re
 
 All image analysis uses OpenCV 5.0.0 (`opencv-contrib-python-headless`). The engine is `server/twice/vision.py`.
 
+**What is specific to OpenCV 5.** Most calls here (SIFT, USAC MAGSAC, DIS optical flow, CLAHE) also exist in OpenCV 4. The part that needs OpenCV 5 is the new DNN engine: the object check loads NanoDet-Plus with `engine=cv2.dnn.ENGINE_NEW` and runs it about 3.3 times faster than the classic engine on the same CPU (section 4.6). The rest of the pipeline is ordinary, well-tested OpenCV, combined in a new way: guided re-capture, a lighting-aware change map and an agent that decides which photo to take next.
+
 ### 4.1 Capture quality gate
 
 Each preview frame is scored for brightness, clipped highlights, sharpness (variance of the Laplacian) and the number of SIFT features on a CLAHE-equalised image. A photo with fewer than 80 features or a sharpness below 60 is rejected, because it cannot be registered reliably months later.
@@ -71,7 +73,7 @@ For every region, two measurements separate light from damage:
 
 ### 4.6 Objects on the new DNN engine
 
-NanoDet-Plus (416 × 416, from opencv_zoo) runs on both aligned photos with `cv2.dnn.readNetFromONNX(path, engine=cv2.dnn.ENGINE_NEW)`. On the development CPU, the new engine runs the model in a median of 16.3 ms per frame against 56.5 ms on `ENGINE_CLASSIC` (100 runs, `python -m eval.engines`). The two engines return the six output tensors in different orders, so the decoder pairs them by shape instead of by index.
+NanoDet-Plus (416 × 416, from opencv_zoo) runs on both aligned photos with `cv2.dnn.readNetFromONNX(path, engine=cv2.dnn.ENGINE_NEW)`. On the development CPU, the new engine runs the model in a median of 16.3 ms per frame against 56.5 ms on `ENGINE_CLASSIC` (100 runs after 10 warm-up runs, 32 threads on an i9-13900K, `python -m eval.engines`). A later rerun gave 17.7 ms against 56.4 ms, with 90th percentiles of 19.0 ms and 59.4 ms. The two engines return the six output tensors in different orders, so the decoder pairs them by shape instead of by index.
 
 ## 5. Agent
 
@@ -129,7 +131,7 @@ The main limit: there is no set of real move-in and move-out photos with labelle
 - **Limits are printed.** The report states that it covers only the photographed spots, that times come from the server clock, and that a valid signature does not prove a photo shows what it claims.
 - **Data minimisation.** No accounts. Photos expire after 30 days by default. The bucket blocks public access and denies non-TLS requests.
 - **Least privilege.** The Lambda role can only read and write its bucket, sign with its key, and invoke the configured Claude model.
-- **Cost.** One analysis is one Lambda invocation of about one second at 3 GB, plus one short Bedrock call per confirmed change. Reserved concurrency of 10 caps the spend under abuse. If an alarm address is set, an AWS Budget emails at 80 % of 25 USD a month.
+- **Cost.** One analysis is one Lambda invocation at 3 GB. Its time on Lambda is not measured yet; on one desktop CPU thread a compare takes a median of 1.6 s, plus one short Bedrock call per confirmed change. Reserved concurrency of 10 caps the spend under abuse. The camera waits for each guide answer before it sends the next frame, so one user holds at most one execution at a time and the cap serves about ten users at once. Raise it in `template.yaml` for a larger audience. If an alarm address is set, an AWS Budget emails at 80 % of 25 USD a month.
 
 ## 9. Limitations
 

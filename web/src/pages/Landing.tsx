@@ -127,8 +127,8 @@ export default function Landing() {
           <div className="hook-copy" data-reveal>
             <h2>Rental companies scan with AI. Renters have a phone.</h2>
             <p>
-              Hertz uses AI scanners at airport returns. One renter received a $440 bill for a scuff about one inch long. Nobody looked
-              at it before the bill went out. A House subcommittee chair has asked Hertz to explain the system.
+              Hertz uses AI scanners at airport returns. One renter got a $440 bill for a one-inch wheel scuff, minutes after the return.
+              A House subcommittee chair wrote that Hertz is the only rental company that bills from these scans without human review.
             </p>
             <p>
               Apartments work the same way. The landlord keeps detailed move-out photos. Most renters keep a few blurry ones and hope.
@@ -136,6 +136,7 @@ export default function Landing() {
             <p className="source">
               Sources: <a href="https://www.thedrive.com/news/this-is-what-happens-when-hertzs-ai-scanner-finds-damage-on-your-rental" target="_blank" rel="noreferrer">The Drive ↗</a> 
               <a href="https://oversight.house.gov/release/mace-investigates-use-of-artificial-intelligence-for-car-rental-damage-assessments" target="_blank" rel="noreferrer">House Oversight ↗</a>
+              <a href="https://www.repairerdrivennews.com/2025/08/25/subcommittee-requests-briefing-from-hertz-on-ai-scanning-technology/" target="_blank" rel="noreferrer">Repairer Driven News ↗</a>
             </p>
           </div>
           <div className="receipt" data-reveal aria-label="The $440 bill, itemised">
@@ -143,7 +144,7 @@ export default function Landing() {
             <div className="receipt-row"><span>Processing</span><span>$125.00</span></div>
             <div className="receipt-row"><span>Administrative fee</span><span>$65.00</span></div>
             <div className="receipt-row total"><span>Total</span><span>$440.00</span></div>
-            <p className="receipt-note">Reviewed by a person: no</p>
+            <p className="receipt-note">Sent minutes after the return</p>
           </div>
         </section>
 
@@ -240,7 +241,7 @@ export default function Landing() {
             <div><dt>Lighting false alarms</dt><dd>3%</dd></div>
             <div><dt>Time to compare</dt><dd>0.9 s</dd></div>
           </dl>
-          <p className="stats-note">Full agent loop on 170 synthetic photo pairs with known damage, camera moves, exposure, colour, shadow and glare, including the follow-up shots it asks for. On 40 real photo pairs of unchanged scenes, 2 of the 22 judged pairs got a false alarm. The other 18 got a retake request. Method and failure cases are in the technical report.</p>
+          <p className="stats-note">Synthetic benchmark: the full agent loop on 170 photo pairs with known damage, camera moves, exposure, colour, shadow and glare, including the follow-up shots it asks for. On 40 real photo pairs of unchanged scenes, 2 of the 22 judged pairs got a false alarm. The other 18 got a retake request. Compare time is on a desktop CPU. Method and failure cases are in the technical report.</p>
         </section>
 
         <section className="closer" data-reveal>

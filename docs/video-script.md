@@ -7,7 +7,7 @@ Voice-over is in plain sentences. Times are cumulative.
 
 **Screen:** the landing page `$440` section. Slow scroll over the itemised bill.
 
-**Voice:** "This is the bill one Hertz renter received, line by line. Two hundred and fifty dollars for a one-inch scuff, plus one hundred and ninety in fees. An AI scanner found the scuff. Nobody looked at it. The company has detailed photos. The renter has a phone."
+**Voice:** "This is the bill one Hertz renter received, line by line. Two hundred and fifty dollars for a one-inch scuff, plus one hundred and ninety in fees. An AI scanner found the scuff, and the bill arrived minutes later. A House subcommittee chair says Hertz bills from these scans without human review. The company has detailed photos. The renter has a phone."
 
 ## 0:25 to 0:50 — The idea
 
@@ -56,4 +56,4 @@ Voice-over is in plain sentences. Times are cumulative.
 - Sample check: car follow-up and trace, then room result and change map toggle.
 - Report: stamp, exhibits, hashes, signatures, limits.
 - Diagrams: `docs/diagrams/architecture.png`, `docs/diagrams/agent-loop.png`.
-- Terminal: `curl <url>/api/health` showing OpenCV 5.0.0, ENGINE_NEW, the KMS signer and the Bedrock captioner.
+- Terminal, after the AWS deploy: `curl <url>/api/health` showing OpenCV 5.0.0, ENGINE_NEW, the KMS signer (`ECDSA_SHA_256`) and the Bedrock captioner. Locally it shows `Ed25519` and `rules`.
