@@ -1,0 +1,327 @@
+{
+ "Sample check": [
+  {
+   "label": "Rental car, front quarter panel",
+   "photos": 2,
+   "status": "done",
+   "findings": [
+    {
+     "id": "f1",
+     "verdict": "lighting",
+     "kind": "glare",
+     "evidence": [
+      "12% of the area turned near white: possibly a reflection",
+      "The mark moved away when the camera moved: a reflection, not damage"
+     ]
+    },
+    {
+     "id": "f2",
+     "verdict": "changed",
+     "kind": "surface",
+     "evidence": [
+      "measured: structure z=49.8, colour z=0.2, peak z=87.0",
+      "A strong change in texture that light, exposure and small shifts do not explain"
+     ]
+    }
+   ],
+   "trace": [
+    {
+     "tool": "register",
+     "result": "1730 inlier matches, 95% overlap (1630 ms)",
+     "decision": ""
+    },
+    {
+     "tool": "change_map",
+     "result": "2 candidate regions",
+     "decision": ""
+    },
+    {
+     "tool": "glare_check",
+     "result": "f1: specular change +12%",
+     "decision": "needs a parallax shot"
+    },
+    {
+     "tool": "classify",
+     "result": "f2: surface change",
+     "decision": "report"
+    },
+    {
+     "tool": "object_check",
+     "result": "NanoDet on the OpenCV 5 DNN engine, objects found: 1 at move-in, 1 at move-out (141 ms)",
+     "decision": ""
+    },
+    {
+     "tool": "plan",
+     "result": "f1 unresolved",
+     "decision": "request parallax photo"
+    },
+    {
+     "tool": "compare_followup",
+     "result": "f1: vanished after the camera moved 2.5%",
+     "decision": "rule out as glare"
+    },
+    {
+     "tool": "finalize",
+     "result": "lighting 1, changed 1",
+     "decision": ""
+    },
+    {
+     "tool": "caption",
+     "result": "1 named from the sample's ground truth",
+     "decision": ""
+    }
+   ]
+  },
+  {
+   "label": "Living room, east wall",
+   "photos": 1,
+   "status": "done",
+   "findings": [
+    {
+     "id": "f1",
+     "verdict": "changed",
+     "kind": "surface",
+     "evidence": [
+      "measured: structure z=21.8, colour z=0.4, peak z=70.5",
+      "A strong change in texture that light, exposure and small shifts do not explain"
+     ]
+    },
+    {
+     "id": "f2",
+     "verdict": "changed",
+     "kind": "surface",
+     "evidence": [
+      "measured: structure z=17.5, colour z=1.9, peak z=29.6",
+      "A clear change in texture that light, exposure and small shifts do not explain"
+     ]
+    },
+    {
+     "id": "f3",
+     "verdict": "lighting",
+     "kind": "lighting",
+     "evidence": [
+      "23% darker, texture unchanged: a shadow or a light"
+     ]
+    }
+   ],
+   "trace": [
+    {
+     "tool": "register",
+     "result": "1852 inlier matches, 95% overlap (854 ms)",
+     "decision": ""
+    },
+    {
+     "tool": "change_map",
+     "result": "3 candidate regions",
+     "decision": ""
+    },
+    {
+     "tool": "classify",
+     "result": "f1: surface change",
+     "decision": "report"
+    },
+    {
+     "tool": "classify",
+     "result": "f2: surface change",
+     "decision": "report"
+    },
+    {
+     "tool": "relight_check",
+     "result": "f3: lighting only",
+     "decision": "rule out"
+    },
+    {
+     "tool": "object_check",
+     "result": "NanoDet on the OpenCV 5 DNN engine, objects found: 2 at move-in, 2 at move-out (99 ms)",
+     "decision": ""
+    },
+    {
+     "tool": "finalize",
+     "result": "changed 2, lighting 1",
+     "decision": ""
+    },
+    {
+     "tool": "caption",
+     "result": "2 named from the sample's ground truth",
+     "decision": ""
+    }
+   ]
+  },
+  {
+   "label": "Desk top",
+   "photos": 2,
+   "status": "done",
+   "findings": [
+    {
+     "id": "f1",
+     "verdict": "changed",
+     "kind": "object",
+     "evidence": [
+      "15% of the area turned near white: possibly a reflection",
+      "The mark stayed on the surface when the camera moved, so it is not a reflection"
+     ]
+    },
+    {
+     "id": "f2",
+     "verdict": "changed",
+     "kind": "surface",
+     "evidence": [
+      "measured: structure z=16.4, colour z=2.3, peak z=33.8",
+      "A clear change in texture that light, exposure and small shifts do not explain"
+     ]
+    },
+    {
+     "id": "f3",
+     "verdict": "lighting",
+     "kind": "lighting",
+     "evidence": [
+      "20% darker, texture unchanged: a shadow or a light"
+     ]
+    }
+   ],
+   "trace": [
+    {
+     "tool": "register",
+     "result": "358 inlier matches, 93% overlap (1096 ms)",
+     "decision": ""
+    },
+    {
+     "tool": "change_map",
+     "result": "3 candidate regions",
+     "decision": ""
+    },
+    {
+     "tool": "glare_check",
+     "result": "f1: specular change +15%",
+     "decision": "needs a parallax shot"
+    },
+    {
+     "tool": "classify",
+     "result": "f2: surface change",
+     "decision": "report"
+    },
+    {
+     "tool": "relight_check",
+     "result": "f3: lighting only",
+     "decision": "rule out"
+    },
+    {
+     "tool": "object_check",
+     "result": "NanoDet on the OpenCV 5 DNN engine, objects found: 1 at move-in, 2 at move-out (93 ms)",
+     "decision": ""
+    },
+    {
+     "tool": "plan",
+     "result": "f1 unresolved",
+     "decision": "request parallax photo"
+    },
+    {
+     "tool": "compare_followup",
+     "result": "f1: persists after the camera moved 2.5%",
+     "decision": "report as object change"
+    },
+    {
+     "tool": "finalize",
+     "result": "changed 2, lighting 1",
+     "decision": ""
+    },
+    {
+     "tool": "caption",
+     "result": "2 named from the sample's ground truth",
+     "decision": ""
+    }
+   ]
+  }
+ ],
+ "Counterfactual: the camera does not move for the side-step photo": [
+  {
+   "label": "Rental car, front quarter panel",
+   "photos": 3,
+   "status": "done",
+   "findings": [
+    {
+     "id": "f1",
+     "verdict": "uncertain",
+     "kind": "glare?",
+     "evidence": [
+      "12% of the area turned near white: possibly a reflection",
+      "The side-step photo was taken from the same place (the view moved 0.0%), so it cannot tell a reflection from damage",
+      "The side-step photo was taken from the same place (the view moved 0.0%), so it cannot tell a reflection from damage",
+      "No follow-up photos left: a person should judge this one"
+     ]
+    },
+    {
+     "id": "f2",
+     "verdict": "changed",
+     "kind": "surface",
+     "evidence": [
+      "measured: structure z=49.8, colour z=0.2, peak z=87.0",
+      "A strong change in texture that light, exposure and small shifts do not explain"
+     ]
+    }
+   ],
+   "trace": [
+    {
+     "tool": "register",
+     "result": "1730 inlier matches, 95% overlap (984 ms)",
+     "decision": ""
+    },
+    {
+     "tool": "change_map",
+     "result": "2 candidate regions",
+     "decision": ""
+    },
+    {
+     "tool": "glare_check",
+     "result": "f1: specular change +12%",
+     "decision": "needs a parallax shot"
+    },
+    {
+     "tool": "classify",
+     "result": "f2: surface change",
+     "decision": "report"
+    },
+    {
+     "tool": "object_check",
+     "result": "NanoDet on the OpenCV 5 DNN engine, objects found: 1 at move-in, 1 at move-out (91 ms)",
+     "decision": ""
+    },
+    {
+     "tool": "plan",
+     "result": "f1 unresolved",
+     "decision": "request parallax photo"
+    },
+    {
+     "tool": "parallax_check",
+     "result": "f1: camera moved 0.0% of the frame, under 1%",
+     "decision": "ask again, a full step to the side"
+    },
+    {
+     "tool": "plan",
+     "result": "f1 unresolved",
+     "decision": "request parallax photo"
+    },
+    {
+     "tool": "parallax_check",
+     "result": "f1: camera moved 0.0% of the frame, under 1%",
+     "decision": "ask again, a full step to the side"
+    },
+    {
+     "tool": "budget",
+     "result": "f1: no follow-ups left",
+     "decision": "mark cannot judge"
+    },
+    {
+     "tool": "finalize",
+     "result": "uncertain 1, changed 1",
+     "decision": ""
+    },
+    {
+     "tool": "caption",
+     "result": "1 named from the sample's ground truth",
+     "decision": ""
+    }
+   ]
+  }
+ ]
+}

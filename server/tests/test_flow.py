@@ -123,3 +123,21 @@ def test_offline_bundle_verifies_and_catches_edits(tmp_path, capsys):
     capsys.readouterr()
     offline_verify.check(tmp_path)
     assert "there is no signed report" in capsys.readouterr().out
+
+
+def test_side_step_from_the_same_place_is_not_evidence():
+    from twice.app import load, save
+
+    check = client.post("/api/samples/apartment").json()
+    record = load(check["id"])
+    car = record["spots"][0]
+    car["sample"]["parallax"] = car["sample"]["after"]
+    save(record)
+    url = f"/api/checks/{check['id']}/spots/{car['id']}/sample-shot"
+    for _ in range(4):
+        state = client.post(url).json()["state"]
+        if state["status"] == "done":
+            break
+    assert [t["tool"] for t in state["trace"]].count("parallax_check") == 2, state["trace"]
+    glare = next(f for f in state["findings"] if f["kind"] == "glare?")
+    assert glare["verdict"] == "uncertain", glare

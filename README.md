@@ -8,7 +8,7 @@ Built for the OpenCV AI Competition 2026. OpenCV 5 does all the image analysis. 
 
 **Live demo:** _the Function URL goes here after `deploy/deploy.sh` runs (see [deploy/README.md](deploy/README.md), "Before you submit")._
 
-**Video (2 min 27 s):** [docs/video/twice-demo.mp4](docs/video/twice-demo.mp4). The source is a HyperFrames project in [video/twice-demo](video/twice-demo).
+**Video (1 min 40 s):** [docs/video/twice-demo.mp4](docs/video/twice-demo.mp4). The source is a HyperFrames project in [video/twice-demo](video/twice-demo).
 
 ![Twice landing page](docs/img/landing.png)
 
@@ -52,6 +52,7 @@ The agent is a rule planner with a budget of two follow-up photos per spot. Each
 
 - `relight_check`: a smooth light field with no colour shift is a shadow or a lamp. Ruled out.
 - `glare_check`: near-white pixels grew. The agent asks for a side-step photo. A reflection moves with the camera; damage stays on the surface.
+- `parallax_check`: the homography of the side-step photo shows how far the camera moved. Under 1% of the frame, the photo cannot tell a reflection from damage, so the agent asks again. When no follow-ups are left, a person decides.
 - `size_check`: a small, weak change gets a close-up request. The close-up is compared at higher resolution.
 - `object_check`: NanoDet on the new DNN engine, as above.
 - `caption`: Claude on Amazon Bedrock names each confirmed change. It can label a finding or hand it to a human. It cannot delete a finding. Without Bedrock, rule-based labels are used.
@@ -59,6 +60,11 @@ The agent is a rule planner with a budget of two follow-up photos per spot. Each
 ### Evidence
 
 Every photo is hashed with SHA-256 on arrival. The move-in set is sealed with a signed manifest before any move-out photo exists. The final report is a second signed manifest over all photos, findings and agent traces. On AWS the signer is an asymmetric KMS key (ECDSA P-256), and the photos sit in an S3 bucket with Object Lock. `GET /api/checks/{id}/verify` re-hashes every stored file and checks both signatures against the published public key. The report also offers an evidence bundle: a zip with the photos, the seals, the public key and `verify.py`. Anyone can run `python verify.py` on it without the Twice server.
+
+## Special awards
+
+- **Agentic Vision with OpenCV 5:** [docs/agentic-vision.md](docs/agentic-vision.md) has the workflow diagram, a trace and a counterfactual trace in which only the visual evidence differs, and the evaluation of task success (754 of 850 benchmark runs), failure handling, observability and human control.
+- **Best Use of COOL:** [docs/cool.md](docs/cool.md) and `deploy/cool/cool.py`. One command runs the Twice check on COOL on Graviton4, on pip OpenCV on the same instance, and on pip OpenCV on x86. It records evidence that COOL executed the workload and writes the results to `docs/eval/cool/`. A second command serves the app on COOL. The kit has not run on AWS yet, so this README claims no COOL numbers.
 
 ## Evaluation
 
@@ -151,7 +157,7 @@ server/eval/       synthetic benchmark and full evaluation
 server/samples/    sample check generator and hero export
 server/tests/      API flow and detector tests
 web/               React app (Vite): landing, guided capture, results, report
-deploy/            SAM template and deploy script
+deploy/            SAM template and deploy script; deploy/cool runs Twice on COOL (Graviton4)
 docs/              spec, research, persona critique, evaluation, diagrams
 ```
 

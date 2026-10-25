@@ -221,6 +221,7 @@ class Comparison:
     before: np.ndarray | None = None
     after_aligned: np.ndarray | None = None
     heat: np.ndarray | None = None
+    H: np.ndarray | None = None
 
 
 def _lnorm(x: np.ndarray, sigma: float = 12) -> np.ndarray:
@@ -312,7 +313,7 @@ def compare(before: Keyframe, after: Keyframe, z_thresh: float = 9.0, min_area: 
     regions = regions[:12] + _lighting_regions(lb, la, valid, mask)
     heat = np.clip(z / (z_thresh * 2), 0, 1)
     return Comparison(True, None, inliers, overlap, regions, before.image, cv2.remap(
-        warped, mx, my, cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE), heat)
+        warped, mx, my, cv2.INTER_LINEAR, borderMode=cv2.BORDER_REPLICATE), heat, H)
 
 
 def _merge_overlapping(regions: list["Region"], gap: int) -> list["Region"]:

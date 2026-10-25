@@ -9,6 +9,7 @@ from . import objects
 from .vision import Comparison, Keyframe, Region, compare
 
 FOLLOWUP_BUDGET = 2
+MIN_SIDESTEP = 0.01
 
 
 @dataclass
@@ -69,7 +70,8 @@ class Agent:
             self.log("register", f"failed: {res.reason}, {res.inliers} inliers ({ms} ms)",
                      "ask for a retake from the same spot")
             return res
-        self.s.registration = {"inliers": res.inliers, "overlap": round(res.overlap, 3), "ms": ms}
+        self.s.registration = {"inliers": res.inliers, "overlap": round(res.overlap, 3), "ms": ms,
+                               "view": _view(res.H, after.gray.shape, before.gray.shape)}
         self.log("register", f"{res.inliers} inlier matches, {res.overlap:.0%} overlap ({ms} ms)")
         self.log("change_map", f"{len(res.regions)} candidate regions")
         self.s.findings = [self._finding(i, r) for i, r in enumerate(res.regions)]
@@ -155,11 +157,13 @@ class Agent:
                 self.log("budget", f"{f.id}: no follow-ups left", "mark cannot judge")
                 continue
             parallax = f.kind == "glare?"
+            again = any(t["tool"] == "parallax_check" and t["result"].startswith(f"{f.id}:") for t in self.s.trace)
             self.s.pending = Request(
                 id=f"r{self.s.followups_used + 1}",
                 finding=f.id,
                 kind="parallax" if parallax else "closeup",
-                prompt="Take one step to the side and shoot this spot again. Reflections move, damage stays."
+                prompt=("That photo was taken from the same place. Take a full step to the side and shoot again."
+                        if again else "Take one step to the side and shoot this spot again. Reflections move, damage stays.")
                 if parallax else "Move in close to the marked area and take a sharp photo.",
                 box=f.box,
             )
@@ -176,19 +180,25 @@ class Agent:
         f = next(x for x in self.s.findings if x.id == req.finding)
         self.s.followups_used += 1
         if req.kind == "parallax":
-            res = compare(before, Keyframe.build(image), shift=1)
+            side = Keyframe.build(image)
+            res = compare(before, side, shift=1)
             if not res.ok:
                 f.verdict = "uncertain"
                 f.evidence.append(f"The side-step photo did not line up ({res.reason})")
                 self.log("compare_followup", f"{f.id}: parallax shot did not register", "mark cannot judge")
+            elif (moved := _moved(self.s.registration.get("view"), _view(res.H, side.gray.shape, before.gray.shape))) < MIN_SIDESTEP:
+                f.evidence.append(f"The side-step photo was taken from the same place (the view moved {moved:.1%}), "
+                                  "so it cannot tell a reflection from damage")
+                self.log("parallax_check", f"{f.id}: camera moved {moved:.1%} of the frame, under {MIN_SIDESTEP:.0%}",
+                         "ask again, a full step to the side")
             elif _persists(f.box, res.regions):
                 f.verdict, f.kind = "changed", _kind(f, _area_frac(f, before.image.shape))
                 f.evidence.append("The mark stayed on the surface when the camera moved, so it is not a reflection")
-                self.log("compare_followup", f"{f.id}: persists under parallax", f"report as {f.kind} change")
+                self.log("compare_followup", f"{f.id}: persists after the camera moved {moved:.1%}", f"report as {f.kind} change")
             else:
                 f.verdict, f.kind = "lighting", "glare"
                 f.evidence.append("The mark moved away when the camera moved: a reflection, not damage")
-                self.log("compare_followup", f"{f.id}: vanished under parallax", "rule out as glare")
+                self.log("compare_followup", f"{f.id}: vanished after the camera moved {moved:.1%}", "rule out as glare")
         else:
             crop, offset = _crop_around(before.image, f.box)
             up = min(2.0, 800 / max(crop.shape[:2]))
@@ -231,6 +241,17 @@ def _area_frac(f: Finding, shape: tuple) -> float:
 def _kind(f: Finding, area_frac: float) -> str:
     fill = f.metrics["area"] / (f.box[2] * f.box[3])
     return "object" if area_frac > 0.008 and fill > 0.3 and f.metrics["structure"] > 6 else "surface"
+
+
+def _view(H: np.ndarray, src_shape: tuple, dst_shape: tuple) -> list[float]:
+    """Corners of the source photo on the move-in photo, as fractions of the move-in width."""
+    h, w = src_shape[:2]
+    quad = cv2.perspectiveTransform(np.float32([[[0, 0]], [[w, 0]], [[w, h]], [[0, h]]]), H).reshape(-1)
+    return [round(float(v) / dst_shape[1], 4) for v in quad]
+
+
+def _moved(a: list[float] | None, b: list[float]) -> float:
+    return max(abs(x - y) for x, y in zip(a, b)) if a else 1.0
 
 
 def _persists(box: list[int], regions: list[Region]) -> bool:

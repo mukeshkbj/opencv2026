@@ -1,6 +1,7 @@
 import io
 import json
 import os
+import platform
 import secrets
 import time
 import zipfile
@@ -41,6 +42,12 @@ def metric(name: str, value: float, unit: str = "Milliseconds", **dims: str) -> 
             "Namespace": "Twice", "Dimensions": [list(dims)] if dims else [[]],
             "Metrics": [{"Name": name, "Unit": unit}]}]},
         name: value, **dims}))
+
+
+def count_decisions(state: SpotState, since: int) -> None:
+    for t in state.trace[since:]:
+        if t["decision"]:
+            metric("AgentDecision", 1, "Count", Tool=t["tool"])
 
 
 def load(cid: str) -> dict:
@@ -88,7 +95,8 @@ def before_frames(key: str) -> tuple[vision.Keyframe, vision.Keyframe]:
 
 @app.get("/api/health")
 def health() -> dict:
-    return {"ok": True, "opencv": cv2.__version__, "dnn": "ENGINE_NEW", "signer": signer.algorithm, "captioner": captioner.source}
+    return {"ok": True, "opencv": cv2.__version__, "opencv_build": "COOL" if "/opt/cool" in cv2.__file__ else "pip",
+            "machine": platform.machine(), "dnn": "ENGINE_NEW", "signer": signer.algorithm, "captioner": captioner.source}
 
 
 @app.post("/api/checks")
@@ -241,6 +249,7 @@ def run_after(cid: str, sid: str, data: bytes, img: np.ndarray) -> dict:
     t0 = time.perf_counter()
     res = Agent(state).on_after(before_frames(spot["before"]["key"])[0], vision.Keyframe.build(img))
     metric("CompareLatency", round((time.perf_counter() - t0) * 1000, 1), Route="after")
+    count_decisions(state, 0)
     if res.ok:
         _persist_views(cid, sid, res)
     if state.status == "done":
@@ -264,7 +273,9 @@ def run_followup(cid: str, sid: str, data: bytes, img: np.ndarray) -> dict:
         raise HTTPException(409, "no follow-up requested")
     kind = state.pending.kind
     spot["followups"].append({**put_photo(cid, f"{sid}-{state.pending.id}", data, img), "kind": kind})
+    seen = len(state.trace)
     Agent(state).on_followup(before_frames(spot["before"]["key"])[0], img)
+    count_decisions(state, seen)
     if state.status == "done":
         _caption(cid, sid, state, spot.get("sample", {}).get("labels", []))
     spot["state"] = state.to_dict()

@@ -12,6 +12,7 @@ COPY server/requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 COPY server/twice ./twice
 COPY server/samples ./samples
+COPY server/models ./models
 COPY --from=web /web/dist /web/dist
 ENV PORT=8000 \
     AWS_LWA_READINESS_CHECK_PATH=/api/health \

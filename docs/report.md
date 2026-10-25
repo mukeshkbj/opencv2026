@@ -86,6 +86,7 @@ The agent (`server/twice/agent.py`) is a rule planner. Its tools are OpenCV meas
 | `register` | every move-out photo | Fewer than 25 inliers, an implausible homography, or a view too far from the first one (scale outside 0.8 to 1.25, strong tilt): ask for a retake. |
 | `relight_check` | smooth light field explains the change, low chroma | Rule out as lighting. |
 | `glare_check` | near-white share changed by more than 5 % | Request a side-step (parallax) photo. If the change vanishes, it was a reflection. If it persists at the same surface position, it is damage. |
+| `parallax_check` | a side-step photo arrives | The homography shows how far the camera moved. Under 1% of the frame, the photo is not evidence: ask again, then mark "can't judge". |
 | `relight_check` (soft) | shadow-like edges but a colour shift | Request a close-up. |
 | `size_check` | small region (under 0.15 % of the view) with a weak peak | Request a close-up. The close-up is cropped around the box, upscaled up to 2x and compared again. |
 | `object_check` | any finding not ruled out | A person over the finding in only the move-out photo: "can't judge". An object present in only one photo: label it "missing" or "new". |

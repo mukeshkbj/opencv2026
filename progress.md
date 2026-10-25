@@ -72,13 +72,20 @@ apartments and rental cars. Spec: docs/spec.md. Persona critique: docs/critique-
       findings lead with a plain sentence, steps behind "How it decided". Docs, landing tiles and film S9 updated.
       Film S3 to S6 re-recorded (take r5_flow); S4 pans down to the scratch. "What is next" section added. Not done: Lambda RIE proof.
       Tried and rejected: tiled noise scale + brightness z + 2x2 opening (held-out false alarms tripled).
+- [x] 12. Criteria pass for the special awards (docs/judging.md). Agentic: parallax_check (the side-step photo must move
+      the camera 1% of the frame, else ask again, then "can't judge"; it was a false damage finding), AgentDecision metric,
+      docs/agentic-vision.md, server/eval/trace.py with a counterfactual trace, diagram tagged perception/decision/action.
+      Agent benchmark re-run: summary unchanged. COOL: server/eval/cool_bench.py, deploy/cool/cool.py (bench, serve, report),
+      docs/cool.md; tested locally with pip OpenCV only. Fixed: the Docker image did not copy server/models (NanoDet), so
+      every move-out photo would have failed on AWS.
+- [ ] 13. Owner: push the repo to public GitHub (no remote yet); deploy; run `python deploy/cool/cool.py bench`; upload the video.
 - [ ] 11. Owner, optional: photograph 5 to 10 real move-in and move-out pairs with real marks, run them through the
       app, and add the results to docs/evaluation.md. Show the app to a few renters and note what they say.
 
 ## How to run locally
 - API: `cd server && ../.venv/Scripts/python.exe -m uvicorn twice.app:app --reload --port 8000` (TWICE_DATA defaults to local store).
 - Web: `cd web && npx vite --port 5288` (proxies /api to 8000). Port 5173 is used by another app.
-- Tests: `cd server && ../.venv/Scripts/python.exe -m pytest -q tests` (10 pass).
+- Tests: `cd server && ../.venv/Scripts/python.exe -m pytest -q tests` (11 pass).
 - Bench: `cd server && python eval/bench.py` (about 15 min), then `python eval/agent_bench.py` (about 3 min, 5 seeds), `python eval/real_bench.py`.
 
 ## Surprises
