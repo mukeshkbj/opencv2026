@@ -1,0 +1,351 @@
+{
+ "planner": "scripted",
+ "still_camera": false,
+ "steps": [
+  {
+   "actor": "scripted",
+   "reason": "Record which OpenCV build runs the tools.",
+   "tool": "health",
+   "args": {},
+   "result": {
+    "opencv": "5.0.0",
+    "opencv_build": "pip",
+    "machine": "AMD64"
+   },
+   "error": false
+  },
+  {
+   "actor": "scripted",
+   "reason": "Start the sample check.",
+   "tool": "start_sample_check",
+   "args": {},
+   "result": {
+    "sealed": [
+     "before"
+    ],
+    "spots": [
+     "s1",
+     "s2",
+     "s3"
+    ]
+   },
+   "error": false
+  },
+  {
+   "actor": "scripted",
+   "reason": "Rental car, front quarter panel: no move-out photo yet.",
+   "tool": "take_sample_photo",
+   "args": {
+    "check_id": "f33fb64817786197",
+    "spot_id": "s1"
+   },
+   "result": {
+    "status": "needs_followup",
+    "request": {
+     "id": "r1",
+     "finding": "f1",
+     "kind": "parallax",
+     "prompt": "Take one step to the side and shoot this spot again. Reflections move, damage stays.",
+     "box": [
+      818,
+      615,
+      118,
+      90
+     ]
+    },
+    "findings": [
+     "f1 pending (glare?)",
+     "f2 changed (surface)"
+    ],
+    "opencv_trace": [
+     "register: 1730 inlier matches, 95% overlap (1546 ms)",
+     "change_map: 2 candidate regions",
+     "glare_check: f1: specular change +12% -> needs a parallax shot",
+     "classify: f2: surface change -> report",
+     "object_check: NanoDet on the OpenCV 5 DNN engine, objects found: 1 at move-in, 1 at move-out (514 ms)",
+     "plan: f1 unresolved -> request parallax photo"
+    ]
+   },
+   "error": false
+  },
+  {
+   "actor": "scripted",
+   "reason": "OpenCV asked for a parallax photo of f1.",
+   "tool": "take_sample_photo",
+   "args": {
+    "check_id": "f33fb64817786197",
+    "spot_id": "s1"
+   },
+   "result": {
+    "status": "done",
+    "request": null,
+    "findings": [
+     "f1 lighting (glare)",
+     "f2 changed (surface)"
+    ],
+    "opencv_trace": [
+     "compare_followup: f1: vanished after the camera moved 2.5% -> rule out as glare",
+     "finalize: lighting 1, changed 1",
+     "caption: 1 named from the sample's ground truth"
+    ]
+   },
+   "error": false
+  },
+  {
+   "actor": "scripted",
+   "reason": "f2 is changed.",
+   "tool": "request_human_review",
+   "args": {
+    "check_id": "f33fb64817786197",
+    "spot_id": "s1",
+    "finding_id": "f2",
+    "reason": "A person must confirm a damage claim: A strong change in texture that light, exposure and small shifts do not explain"
+   },
+   "result": {
+    "queued": {
+     "spot_id": "s1",
+     "finding_id": "f2",
+     "reason": "A person must confirm a damage claim: A strong change in texture that light, exposure and small shifts do not explain",
+     "at": 1793048779.549
+    }
+   },
+   "error": false
+  },
+  {
+   "actor": "scripted",
+   "reason": "Living room, east wall: no move-out photo yet.",
+   "tool": "take_sample_photo",
+   "args": {
+    "check_id": "f33fb64817786197",
+    "spot_id": "s2"
+   },
+   "result": {
+    "status": "done",
+    "request": null,
+    "findings": [
+     "f1 changed (surface)",
+     "f2 changed (surface)",
+     "f3 lighting (lighting)"
+    ],
+    "opencv_trace": [
+     "register: 1852 inlier matches, 95% overlap (662 ms)",
+     "change_map: 3 candidate regions",
+     "classify: f1: surface change -> report",
+     "classify: f2: surface change -> report",
+     "relight_check: f3: lighting only -> rule out",
+     "object_check: NanoDet on the OpenCV 5 DNN engine, objects found: 2 at move-in, 2 at move-out (81 ms)",
+     "finalize: changed 2, lighting 1",
+     "caption: 2 named from the sample's ground truth"
+    ]
+   },
+   "error": false
+  },
+  {
+   "actor": "scripted",
+   "reason": "f1 is changed.",
+   "tool": "request_human_review",
+   "args": {
+    "check_id": "f33fb64817786197",
+    "spot_id": "s2",
+    "finding_id": "f1",
+    "reason": "A person must confirm a damage claim: A strong change in texture that light, exposure and small shifts do not explain"
+   },
+   "result": {
+    "queued": {
+     "spot_id": "s2",
+     "finding_id": "f1",
+     "reason": "A person must confirm a damage claim: A strong change in texture that light, exposure and small shifts do not explain",
+     "at": 1793048780.653
+    }
+   },
+   "error": false
+  },
+  {
+   "actor": "scripted",
+   "reason": "f2 is changed.",
+   "tool": "request_human_review",
+   "args": {
+    "check_id": "f33fb64817786197",
+    "spot_id": "s2",
+    "finding_id": "f2",
+    "reason": "A person must confirm a damage claim: A clear change in texture that light, exposure and small shifts do not explain"
+   },
+   "result": {
+    "queued": {
+     "spot_id": "s2",
+     "finding_id": "f2",
+     "reason": "A person must confirm a damage claim: A clear change in texture that light, exposure and small shifts do not explain",
+     "at": 1793048780.656
+    }
+   },
+   "error": false
+  },
+  {
+   "actor": "scripted",
+   "reason": "Desk top: no move-out photo yet.",
+   "tool": "take_sample_photo",
+   "args": {
+    "check_id": "f33fb64817786197",
+    "spot_id": "s3"
+   },
+   "result": {
+    "status": "needs_followup",
+    "request": {
+     "id": "r1",
+     "finding": "f1",
+     "kind": "parallax",
+     "prompt": "Take one step to the side and shoot this spot again. Reflections move, damage stays.",
+     "box": [
+      200,
+      274,
+      145,
+      140
+     ]
+    },
+    "findings": [
+     "f1 pending (glare?)",
+     "f2 changed (surface)",
+     "f3 lighting (lighting)"
+    ],
+    "opencv_trace": [
+     "register: 358 inlier matches, 93% overlap (1209 ms)",
+     "change_map: 3 candidate regions",
+     "glare_check: f1: specular change +15% -> needs a parallax shot",
+     "classify: f2: surface change -> report",
+     "relight_check: f3: lighting only -> rule out",
+     "object_check: NanoDet on the OpenCV 5 DNN engine, objects found: 1 at move-in, 2 at move-out (90 ms)",
+     "plan: f1 unresolved -> request parallax photo"
+    ]
+   },
+   "error": false
+  },
+  {
+   "actor": "scripted",
+   "reason": "OpenCV asked for a parallax photo of f1.",
+   "tool": "take_sample_photo",
+   "args": {
+    "check_id": "f33fb64817786197",
+    "spot_id": "s3"
+   },
+   "result": {
+    "status": "done",
+    "request": null,
+    "findings": [
+     "f1 changed (object)",
+     "f2 changed (surface)",
+     "f3 lighting (lighting)"
+    ],
+    "opencv_trace": [
+     "compare_followup: f1: persists after the camera moved 2.5% -> report as object change",
+     "finalize: changed 2, lighting 1",
+     "caption: 2 named from the sample's ground truth"
+    ]
+   },
+   "error": false
+  },
+  {
+   "actor": "scripted",
+   "reason": "f1 is changed.",
+   "tool": "request_human_review",
+   "args": {
+    "check_id": "f33fb64817786197",
+    "spot_id": "s3",
+    "finding_id": "f1",
+    "reason": "A person must confirm a damage claim: The mark stayed on the surface when the camera moved, so it is not a reflection"
+   },
+   "result": {
+    "queued": {
+     "spot_id": "s3",
+     "finding_id": "f1",
+     "reason": "A person must confirm a damage claim: The mark stayed on the surface when the camera moved, so it is not a reflection",
+     "at": 1793048783.757
+    }
+   },
+   "error": false
+  },
+  {
+   "actor": "scripted",
+   "reason": "f2 is changed.",
+   "tool": "request_human_review",
+   "args": {
+    "check_id": "f33fb64817786197",
+    "spot_id": "s3",
+    "finding_id": "f2",
+    "reason": "A person must confirm a damage claim: A clear change in texture that light, exposure and small shifts do not explain"
+   },
+   "result": {
+    "queued": {
+     "spot_id": "s3",
+     "finding_id": "f2",
+     "reason": "A person must confirm a damage claim: A clear change in texture that light, exposure and small shifts do not explain",
+     "at": 1793048783.762
+    }
+   },
+   "error": false
+  },
+  {
+   "actor": "scripted",
+   "reason": "Every spot is done.",
+   "tool": "seal_report",
+   "args": {
+    "check_id": "f33fb64817786197"
+   },
+   "result": {
+    "sealed": [
+     "before",
+     "report"
+    ],
+    "verified": true,
+    "human_reviews": [
+     {
+      "spot_id": "s1",
+      "finding_id": "f2",
+      "reason": "A person must confirm a damage claim: A strong change in texture that light, exposure and small shifts do not explain",
+      "at": 1793048779.549
+     },
+     {
+      "spot_id": "s2",
+      "finding_id": "f1",
+      "reason": "A person must confirm a damage claim: A strong change in texture that light, exposure and small shifts do not explain",
+      "at": 1793048780.653
+     },
+     {
+      "spot_id": "s2",
+      "finding_id": "f2",
+      "reason": "A person must confirm a damage claim: A clear change in texture that light, exposure and small shifts do not explain",
+      "at": 1793048780.656
+     },
+     {
+      "spot_id": "s3",
+      "finding_id": "f1",
+      "reason": "A person must confirm a damage claim: The mark stayed on the surface when the camera moved, so it is not a reflection",
+      "at": 1793048783.757
+     },
+     {
+      "spot_id": "s3",
+      "finding_id": "f2",
+      "reason": "A person must confirm a damage claim: A clear change in texture that light, exposure and small shifts do not explain",
+      "at": 1793048783.762
+     }
+    ],
+    "findings": [
+     "f1 lighting (glare)",
+     "f2 changed (surface)",
+     "f1 changed (surface)",
+     "f2 changed (surface)",
+     "f3 lighting (lighting)",
+     "f1 changed (object)",
+     "f2 changed (surface)",
+     "f3 lighting (lighting)"
+    ],
+    "spots": [
+     "s1",
+     "s2",
+     "s3"
+    ]
+   },
+   "error": false
+  }
+ ],
+ "final": "Sealed: True. Findings: f1 lighting (glare), f2 changed (surface), f1 changed (surface), f2 changed (surface), f3 lighting (lighting), f1 changed (object), f2 changed (surface), f3 lighting (lighting)."
+}

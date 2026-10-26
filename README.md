@@ -63,7 +63,7 @@ Every photo is hashed with SHA-256 on arrival. The move-in set is sealed with a 
 
 ## Special awards
 
-- **Agentic Vision with OpenCV 5:** [docs/agentic-vision.md](docs/agentic-vision.md) has the workflow diagram, a trace and a counterfactual trace in which only the visual evidence differs, and the evaluation of task success (754 of 850 benchmark runs), failure handling, observability and human control.
+- **Agentic Vision with OpenCV 5:** [docs/agentic-vision.md](docs/agentic-vision.md) has the workflow diagram, a trace and a counterfactual trace in which only the visual evidence differs, and the evaluation of task success (754 of 850 benchmark runs), failure handling, observability and human control. Section 4 exposes the same OpenCV 5 tools over MCP (`server/twice/mcp_server.py`), and `server/eval/mcp_agent.py` runs an agent through them, with a counterfactual where only the photo differs and the agent's next call changes.
 - **Best Use of COOL:** [docs/cool.md](docs/cool.md) and `deploy/cool/cool.py`. One command runs the Twice check on COOL on Graviton4, on pip OpenCV on the same instance, and on pip OpenCV on x86. It records evidence that COOL executed the workload and writes the results to `docs/eval/cool/`. A second command serves the app on COOL. The kit has not run on AWS yet, so this README claims no COOL numbers.
 
 ## Evaluation
@@ -115,6 +115,8 @@ python eval/synth.py <folder of photos> 40           # synthetic benchmark
 python eval/bench.py                                  # engine level, see docs/evaluation.md
 python eval/agent_bench.py                            # agent level, with follow-up photos
 python eval/real_bench.py                             # real photos, false alarms only
+python -m eval.mcp_agent --scripted                   # an agent runs the sample check over MCP
+python -m twice.mcp_server                            # the OpenCV 5 tools as an MCP server (stdio)
 ```
 
 The tests run the full sample flow through the API: seal, three move-out photos, follow-ups, signed report, verification, tamper tests that edit a stored photo or a signed record and expect verification to fail, and an offline check of the evidence bundle.
@@ -152,7 +154,7 @@ This builds an arm64 container for Lambda on Graviton behind a Function URL. The
 ## Repository
 
 ```
-server/twice/      FastAPI app, OpenCV engine (vision.py), agent, detector, evidence, storage
+server/twice/      FastAPI app, OpenCV engine (vision.py), agent, detector, evidence, storage, MCP server
 server/eval/       synthetic benchmark and full evaluation
 server/samples/    sample check generator and hero export
 server/tests/      API flow and detector tests

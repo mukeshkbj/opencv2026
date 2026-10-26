@@ -85,3 +85,38 @@ On real photos of unchanged scenes (`server/eval/real_bench.py`, the Oxford affi
 - The language model only names changes. It can flag a finding for a human, but it cannot add, delete or change a verdict. Geometry and measurement decide every verdict.
 - The budget caps the loop at two follow-up photos per spot.
 - Anyone can check the signed result with `python verify.py` from the evidence bundle, without trusting the Twice server.
+
+## 4. The same loop as MCP tools
+
+`server/twice/mcp_server.py` exposes Twice's OpenCV 5 tools over the Model Context Protocol, so any agent can drive a check: Claude Desktop, Claude Code, or `server/eval/mcp_agent.py`. Every tool calls the real API in-process, so the photos, seals, trace and signed report are the same as in the web app.
+
+| Tool | What it does |
+|---|---|
+| `health` | OpenCV version and build (`COOL` or `pip`), CPU architecture, signer |
+| `start_sample_check`, `start_check` | Create a check and seal the move-in photos |
+| `check_photo_quality` | Sharpness, exposure and texture of a photo |
+| `compare_move_out` | Registration, change map, triage and the next request |
+| `submit_followup`, `take_sample_photo` | The side-step or close-up photo the last result asked for |
+| `detect_objects` | NanoDet on `cv2.dnn.ENGINE_NEW` |
+| `request_human_review` | Hand a finding to a person |
+| `seal_report` | Sign the report and verify photos and seals |
+
+Here the agent is a separate process that only sees the tools. It reads each OpenCV result and picks the next call: another photo when a result carries a `request`, a retake on `retake`, human review for `uncertain` and `changed` findings, and the seal when every spot is done. The tools still decide every verdict.
+
+`cd server && python -m eval.mcp_agent` runs Claude as the planner (with `ANTHROPIC_API_KEY`, or `TWICE_BEDROCK_REGION` for Bedrock). `--scripted` runs a fixed policy with the same tools and no model. `--still-camera` is the counterfactual. Traces from the scripted policy:
+
+| Run | Car spot, finding f1 (the chrome reflection) | Agent's next call |
+|---|---|---|
+| [Renter steps aside](eval/mcp-agent-trace-scripted.md) | `compare_followup`: vanished after the camera moved, rule out as glare | next spot; no review for f1 |
+| [Renter does not move](eval/mcp-agent-trace-still-scripted.md) | `parallax_check`: camera moved 0.0% twice, then `budget`: mark cannot judge | `request_human_review(f1)` |
+
+`tests/test_mcp.py` drives both runs through an in-process MCP client and checks that the photo alone changes the agent's call.
+
+To use the tools from Claude Desktop, add this to `claude_desktop_config.json` (use your own paths):
+
+```json
+{"mcpServers": {"twice-opencv": {"command": "D:\\opencv\\.venv\\Scripts\\python.exe",
+  "args": ["-m", "twice.mcp_server"], "cwd": "D:\\opencv\\server"}}}
+```
+
+On a COOL instance, run the same server with COOL's Python: `health` then reports `"opencv_build": "COOL"`, and every tool call runs on COOL.

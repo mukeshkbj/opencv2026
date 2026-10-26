@@ -74,3 +74,7 @@ python deploy/cool/cool.py report    # rebuild docs/eval/cool/README.md from the
 ```
 
 If the Marketplace search does not find the AMI, pass `--ami ami-...`. The serve mode stores photos on the instance and signs with a local key. The Lambda stack keeps S3, KMS and Bedrock.
+
+## Agents on COOL
+
+The MCP tool server (`server/twice/mcp_server.py`, see [agentic-vision.md](agentic-vision.md), section 4) runs unchanged on the COOL instance. Start it with COOL's Python (`python -m twice.mcp_server --http`, port 8765, path `/mcp`), and an agent's every OpenCV call runs on COOL. The `health` tool reports the build, so a trace records which OpenCV ran it.

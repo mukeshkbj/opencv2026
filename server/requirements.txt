@@ -6,3 +6,4 @@ python-multipart==0.0.32
 boto3==1.43.118
 anthropic==2.1.0
 cryptography==50.0.2
+mcp==2.3.0
