@@ -2,7 +2,7 @@
 
 Paste each section into the matching Devpost field. Fill in the three links once they exist.
 
-- **Repository:** https://github.com/mukeshkbj/opencv2026 (branch `twice`)
+- **Repository:** https://github.com/mukeshkbj/opencv2026
 - **Live demo:** _Function URL from `sam deploy`_ (or offer a live screen-share demo)
 - **Video:** https://youtu.be/KoST2ohiBUM
 
