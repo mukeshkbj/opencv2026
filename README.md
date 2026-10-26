@@ -8,7 +8,7 @@ Built for the OpenCV AI Competition 2026. OpenCV 5 does all the image analysis. 
 
 **Live demo:** _the Function URL goes here after `deploy/deploy.sh` runs (see [deploy/README.md](deploy/README.md), "Before you submit")._
 
-**Video (1 min 40 s):** [docs/video/twice-demo.mp4](docs/video/twice-demo.mp4). The source is a HyperFrames project in [video/twice-demo](video/twice-demo).
+**Video (1 min 40 s):** [youtu.be/KoST2ohiBUM](https://youtu.be/KoST2ohiBUM) (file: [docs/video/twice-demo.mp4](docs/video/twice-demo.mp4)). The source is a HyperFrames project in [video/twice-demo](video/twice-demo).
 
 ![Twice landing page](docs/img/landing.png)
 
